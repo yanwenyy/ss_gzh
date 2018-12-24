@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/cafe-interview.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>邀请记录</title>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back">
+    我的邀请
+</div>
+<div class="mine-free-ques mine-invite-record">
+    <img src="../img/icon_inviting_banner.png" alt="">
+    <div>
+        <div class="invite-rigister-btn"><div><span>¥</span><span class="record_mondy">200</span><span> </span></div><img src="../img/icon-Invitation-red bag.png" alt="" ></div>
+        <div class="wxts"><img src="../img/icon-Invitation-tip.png" alt=""></div>
+        <ul class="wxts-ul">
+            <li>1、邀请注册得问答红包，被邀请人注册后可获50元问答红包，您可获得15元问答红包。</li>
+            <li>2、邀请注册奖励红包不设上限</li>
+        </ul>
+        <div class="wxts"><img src="../img/-s-icon-Invitation-list.png" alt=""></div>
+        <table class="yqjl-table">
+            <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>注册日期</th>
+                    <th>奖励红包</th>
+                </tr>
+            </thead>
+            <tbody class="record-list">
+                <!--<tr>-->
+                    <!--<td>邓家佳</td>-->
+                    <!--<td>2018-8-8</td>-->
+                    <!--<td>￥15</td>-->
+                <!--</tr>-->
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        function get_record(data){
+            console.log(data);
+            $(".record_mondy").html(data.amount||0);
+            var list=data.datas,html='';
+            for(var i=0;i<list.length;i++){
+                html+=`
+                    <tr>
+                        <td>${list[i].inviterName}</td>
+                        <td>${format(list[i].time)}</td>
+                        <td>￥${list[i].money}</td>
+                    </tr>
+                `
+            }
+            $(".record-list").html(html);
+        }
+        function get_record_more(data){
+            $(".record_mondy").html(data.amount||0);
+            var list=data.datas,html='';
+            for(var i=0;i<list.length;i++){
+                html+=`
+                    <tr>
+                        <td>${list[i].inviterName}</td>
+                        <td>${format(list[i].time)}</td>
+                        <td>￥${list[i].money}</td>
+                    </tr>
+                `
+            }
+            $(".record-list").append(html);
+        }
+        ajax(http_url.url+"/inviterUserRecord",{"sinceId":count_start,
+            "maxId":count_end},get_record);
+        scroll_more(http_url.url+"/inviterUserRecord",{"sinceId":count_start,
+            "maxId":count_end},get_record_more)
+    });
+</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>抢答</title>
+    <style>
+        .tax-category{
+            min-height: 48.7rem;
+            height:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="jsb_header">
+        <!--<img src="../img/back.png" alt="" class="back">-->
+        抢答详情
+        <div class="release inline-block">提交</div>
+    </div>
+    <div class="answer-answer index-card">
+        <div class="card-list zx-list">
+            <div class="box-sizing">
+                <div class="clist-head">
+                    <img src="" class="look-hp-image" alt="" onerror=src="../img/user.png">
+                    <div class="inline-block">
+                        <div class="user-name">
+
+                            <div class="user-grade inline-block zx-detail-grade">
+                                <img src="../img/icon-index-gold member.png" alt="">
+                            </div>
+                        </div>
+                        <div class="zx-detail-date"></div>
+                    </div>
+                    <div class="money-reword">赏金:<span>15元</span></div>
+                </div>
+                <div class="clist-msg">
+
+                </div>
+                <div class="zx-detail-img">
+                    <!--<img src="../img/ceshi.jpg" alt="">-->
+                    <!--<img src="../img/ceshi.jpg" alt="">-->
+                </div>
+                <div class="zx-detail-city">
+                    <img src="../img/label.png" alt="">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="huida box-sizing">回答</div>
+    <div class="answer-text">
+        <textarea name="" id="answer-textarea" class="box-sizing" placeholder="请输入您的回答内容,帮助用户答疑解惑" ></textarea>
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access">  <!--href="answer-special.html"-->
+                <div class="weui-cell__bd">
+                    <p>所属专题(单选)：</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="请选择" readonly="" id="hy">
+                </div>
+                <img src="../img/more.png" alt="" class="more-img">
+            </a>
+        </div>
+        <input type="hidden" class="sz_list">
+        <div class="tax-category">
+            <div>所属税种(多选)：</div>
+            <div class="sz_sel">
+                <!--<div class="inline-block tax-category-act">增值税</div>-->
+                <!--<div class="inline-block">消费税</div>-->
+                <!--<div class="inline-block">营业税</div>-->
+                <!--<div class="inline-block">个人所得税</div>-->
+                <!--<div class="inline-block">企业所得税</div>-->
+                <!--<div class="inline-block">资源税</div>-->
+                <!--<div class="inline-block">城镇土地使用税</div>-->
+                <!--<div class="inline-block">城市维护建设税</div>-->
+                <!--<div class="inline-block">征地占用税</div>-->
+                <!--<div class="inline-block">土地增值税</div>-->
+                <!--<div class="inline-block">房产税</div>-->
+                <!--<div class="inline-block">其他</div>-->
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/answer.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

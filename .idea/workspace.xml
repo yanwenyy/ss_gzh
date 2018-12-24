@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="eca9a6e4-b1ff-41ee-a296-0445d2ccdb31" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2160">
+              <caret line="80" column="70" lean-forward="false" selection-start-line="80" selection-start-column="70" selection-end-line="80" selection-end-column="70" />
+              <folding>
+                <element signature="n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mine-personal-data.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/mine-personal-data.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27">
+              <caret line="69" column="75" lean-forward="false" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get-openid.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/get-openid.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="free-question.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/free-question.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="766">
+              <caret line="132" column="45" lean-forward="false" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="watch-anwser.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/watch-anwser.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3402">
+              <caret line="126" column="57" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="57" />
+              <folding>
+                <element signature="e#5510#6830#0" expanded="false" />
+                <element signature="e#7033#8193#0" expanded="false" />
+                <marker date="1545312624962" expanded="true" signature="1535:2930" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="1572:2206" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="1813:2187" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="1857:2096" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="1978:2069" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="2242:2301" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="2341:2388" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="2447:2915" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="2490:2643" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="2696:2896" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="3469:4324" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="3506:4216" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="3744:4197" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="3788:4091" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="3905:4064" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="4252:4309" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="4355:4736" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="4372:4521" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="4538:4722" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="4638:4704" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="4861:5087" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="4879:5020" ph="..." />
+                <marker date="1545312624962" expanded="true" signature="4944:5001" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cafe-interview.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/cafe-interview.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="537">
+              <caret line="115" column="46" lean-forward="false" selection-start-line="115" selection-start-column="46" selection-end-line="115" selection-end-column="46" />
+              <folding>
+                <element signature="e#328#842#0" expanded="false" />
+                <element signature="e#884#950#0" expanded="false" />
+                <element signature="e#992#1050#0" expanded="false" />
+                <element signature="e#1235#1280#0" expanded="false" />
+                <element signature="e#1340#1526#0" expanded="false" />
+                <element signature="n#!!block;n#format#0" expanded="false" />
+                <element signature="n#!!block;n#reload_msg#0" expanded="false" />
+                <element signature="n#!!block;n#get_score#0" expanded="false" />
+                <element signature="n#!!block;n#back_login#0" expanded="false" />
+                <element signature="e#5452#5914#0" expanded="false" />
+                <element signature="n#!!block;n#get_name#0" expanded="false" />
+                <element signature="e#6927#7419#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index-msg.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/index-msg.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1215">
+              <caret line="78" column="22" lean-forward="false" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
+              <folding>
+                <element signature="e#528#1142#0" expanded="false" />
+                <element signature="e#1268#2066#0" expanded="false" />
+                <element signature="e#1705#2052#0" expanded="false" />
+                <element signature="e#5002#5387#0" expanded="false" />
+                <element signature="e#5509#7799#0" expanded="false" />
+                <element signature="e#7970#8382#0" expanded="false" />
+                <element signature="e#8430#10643#0" expanded="false" />
+                <element signature="e#10844#11326#0" expanded="false" />
+                <element signature="e#11368#13584#0" expanded="false" />
+                <element signature="e#13705#16001#0" expanded="false" />
+                <element signature="e#17045#17640#0" expanded="false" />
+                <element signature="e#17796#17922#0" expanded="false" />
+                <element signature="e#17965#18573#0" expanded="false" />
+                <element signature="e#18730#19014#0" expanded="false" />
+                <marker date="1545191686971" expanded="true" signature="3396:4604" ph="..." />
+                <marker date="1545191686971" expanded="true" signature="3441:4128" ph="..." />
+                <marker date="1545191686971" expanded="true" signature="3679:4001" ph="..." />
+                <marker date="1545191686971" expanded="true" signature="3731:3818" ph="..." />
+                <marker date="1545191686971" expanded="true" signature="3871:3970" ph="..." />
+                <marker date="1545191686971" expanded="true" signature="4172:4233" ph="..." />
+                <marker date="1545191686971" expanded="true" signature="4278:4581" ph="..." />
+                <marker date="1545191686971" expanded="true" signature="4356:4554" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="watch-pay.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/watch-pay.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="watch-pay.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/watch-pay.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1269">
+              <caret line="47" column="12" lean-forward="false" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="wx_model" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>@</find>
+      <find>zan-csq-detail</find>
+      <find>tab-class-list</find>
+      <find>ymmd-click</find>
+      <find>head</find>
+      <find>机构列表</find>
+      <find>ym</find>
+      <find>/head</find>
+      <find>/body</find>
+      <find>财税</find>
+      <find>财税圈</find>
+      <find>今日</find>
+      <find>zxwd-more</find>
+      <find>最新</find>
+      <find>评论</find>
+      <find>打赏</find>
+      <find>wx64eaa52e2ff9ec97</find>
+      <find>appid=wx57543e0ae2e282e9&amp;redirect_uri=http%3a%2f%2ftest.jieshuibao.com</find>
+      <find>mine-private-questions-score.</find>
+      <find>http://test.jieshuibao.com/</find>
+      <find>share_urltotal_share_url</find>
+      <find>share_url</find>
+      <find>getUrlParms</find>
+      <find>cnzz_stat_icon_1275561782</find>
+      <find>会员等级</find>
+      <find>.hangxin_vip_card .mine-hydj</find>
+      <find>.wacth-search-list li</find>
+      <find>get_score</find>
+      <find>sub_comment</find>
+      <find>围观</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>onerror=src=&quot;../img/user.png&quot;</replace>
+      <replace>https%3a%2f%2fapi.jieshuibao.com</replace>
+      <replace>https://api.jieshuibao.com</replace>
+      <replace>¥</replace>
+      <replace>http%3a%2f%2ftest.jieshuibao.com</replace>
+      <replace>http://test.jieshuibao.com</replace>
+      <replace>wx57543e0ae2e282e9</replace>
+      <replace>&quot;+ym_md.url+&quot;</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/css/map.css" />
+        <option value="$PROJECT_DIR$/js/map.js" />
+        <option value="$PROJECT_DIR$/html/register.html" />
+        <option value="$PROJECT_DIR$/html/watch-anwser.html" />
+        <option value="$PROJECT_DIR$/js/mine-wallet-transaction-record.js" />
+        <option value="$PROJECT_DIR$/html/video-cs.html" />
+        <option value="$PROJECT_DIR$/js/register-next.js" />
+        <option value="$PROJECT_DIR$/js/new-answer-more.js" />
+        <option value="$PROJECT_DIR$/html/new-answer-more.html" />
+        <option value="$PROJECT_DIR$/js/watch-pay.js" />
+        <option value="$PROJECT_DIR$/js/index-wk.js" />
+        <option value="$PROJECT_DIR$/js/cwatch.js" />
+        <option value="$PROJECT_DIR$/js/mine-learning-consultant-card.js" />
+        <option value="$PROJECT_DIR$/html/video.html" />
+        <option value="$PROJECT_DIR$/js/mine-invite-prize.js" />
+        <option value="$PROJECT_DIR$/html/mine-finance-answer-card.html" />
+        <option value="$PROJECT_DIR$/js/mine-answer-detail.js" />
+        <option value="$PROJECT_DIR$/js/csq_detail.js" />
+        <option value="$PROJECT_DIR$/js/wk-search.js" />
+        <option value="$PROJECT_DIR$/html/test.html" />
+        <option value="$PROJECT_DIR$/js/mine-free-question-detail.js" />
+        <option value="$PROJECT_DIR$/html/map.html" />
+        <option value="$PROJECT_DIR$/html/mechanism-list.html" />
+        <option value="$PROJECT_DIR$/html/index-csq.html" />
+        <option value="$PROJECT_DIR$/html/expert-home-page.html" />
+        <option value="$PROJECT_DIR$/html/index-mine.html" />
+        <option value="$PROJECT_DIR$/html/index-wk.html" />
+        <option value="$PROJECT_DIR$/css/free-question.css" />
+        <option value="$PROJECT_DIR$/html/watch-search.html" />
+        <option value="$PROJECT_DIR$/js/watch-search.js" />
+        <option value="$PROJECT_DIR$/js/index-msg.js" />
+        <option value="$PROJECT_DIR$/html/index.html" />
+        <option value="$PROJECT_DIR$/share_app/js/index.js" />
+        <option value="$PROJECT_DIR$/share_app/html/dkft-video.html" />
+        <option value="$PROJECT_DIR$/share_app/html/gyjt.html" />
+        <option value="$PROJECT_DIR$/share_app/html/gyjt-succ.html" />
+        <option value="$PROJECT_DIR$/share_app/html/hanxinzt.html" />
+        <option value="$PROJECT_DIR$/share_app/html/invite-friend.html" />
+        <option value="$PROJECT_DIR$/share_app/html/play-earn.html" />
+        <option value="$PROJECT_DIR$/share_app/js/gyjt.js" />
+        <option value="$PROJECT_DIR$/share_app/html/six_deduction.html" />
+        <option value="$PROJECT_DIR$/share_app/js/ajax.js" />
+        <option value="$PROJECT_DIR$/share_app/html/100_ques.html" />
+        <option value="$USER_HOME$/Desktop/正式环境项目/jsb_weixin/share_app/js/ajax.js" />
+        <option value="$PROJECT_DIR$/css/index.css" />
+        <option value="$PROJECT_DIR$/js/index-mine.js" />
+        <option value="$PROJECT_DIR$/js/ajax.js" />
+        <option value="$PROJECT_DIR$/js/watch-anwser.js" />
+        <option value="$PROJECT_DIR$/js/index.js" />
+        <option value="$PROJECT_DIR$/js/free-question.js" />
+        <option value="$PROJECT_DIR$/html/cafe-interview.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1260" />
+    <option name="height" value="760" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="jsb_weixin_cs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsb_weixin_cs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jsb_weixin_cs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsb_weixin_cs" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jsb_weixin_cs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsb_weixin_cs" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jsb_weixin_cs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jsb_weixin_cs" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="D:/hangxinbanshuibao_pc" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\jsb_weixin\html" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\jsb_weixin_cs\share_app\img" />
+      <recent name="D:\jsb_weixin_cs\share_app\html" />
+      <recent name="D:\jsb_weixin_cs\img" />
+      <recent name="D:\jsb_weixin_cs\share_app" />
+      <recent name="D:\jsb_weixin_cs\html" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eca9a6e4-b1ff-41ee-a296-0445d2ccdb31" name="Default" comment="" />
+      <created>1534328604780</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1534328604780</updated>
+      <workItem from="1534328606757" duration="3529000" />
+      <workItem from="1534380366175" duration="33255000" />
+      <workItem from="1534466842833" duration="26368000" />
+      <workItem from="1534553444065" duration="24608000" />
+      <workItem from="1534726416815" duration="22312000" />
+      <workItem from="1534812195161" duration="30218000" />
+      <workItem from="1534899705720" duration="11322000" />
+      <workItem from="1534985665985" duration="1796000" />
+      <workItem from="1535072201717" duration="11651000" />
+      <workItem from="1535161795922" duration="7855000" />
+      <workItem from="1535331099618" duration="4002000" />
+      <workItem from="1535417331465" duration="13733000" />
+      <workItem from="1535504084791" duration="11133000" />
+      <workItem from="1535590225381" duration="14441000" />
+      <workItem from="1535676754105" duration="10148000" />
+      <workItem from="1535936204089" duration="1504000" />
+      <workItem from="1536022467703" duration="4957000" />
+      <workItem from="1536109106927" duration="15151000" />
+      <workItem from="1536195005840" duration="11182000" />
+      <workItem from="1536281456338" duration="25847000" />
+      <workItem from="1536368401256" duration="22788000" />
+      <workItem from="1536541867314" duration="48302000" />
+      <workItem from="1536713944519" duration="34650000" />
+      <workItem from="1536820724385" duration="11247000" />
+      <workItem from="1536886135597" duration="1965000" />
+      <workItem from="1536889432965" duration="50919000" />
+      <workItem from="1537146294268" duration="30923000" />
+      <workItem from="1539998942443" duration="14955000" />
+      <workItem from="1540170845950" duration="13578000" />
+      <workItem from="1540256568537" duration="10338000" />
+      <workItem from="1540342406134" duration="3840000" />
+      <workItem from="1540538845218" duration="2018000" />
+      <workItem from="1540865905242" duration="22154000" />
+      <workItem from="1540948527571" duration="737000" />
+      <workItem from="1542179644987" duration="1272000" />
+      <workItem from="1542183678288" duration="10981000" />
+      <workItem from="1542245890921" duration="21877000" />
+      <workItem from="1542331962614" duration="15507000" />
+      <workItem from="1542590735969" duration="21664000" />
+      <workItem from="1542676262158" duration="23547000" />
+      <workItem from="1542712993086" duration="4127000" />
+      <workItem from="1542763217295" duration="11251000" />
+      <workItem from="1542853677533" duration="14713000" />
+      <workItem from="1542935804091" duration="15992000" />
+      <workItem from="1543194021036" duration="19407000" />
+      <workItem from="1543280893936" duration="21776000" />
+      <workItem from="1543368841961" duration="2285000" />
+      <workItem from="1543372250040" duration="4050000" />
+      <workItem from="1543453704434" duration="21747000" />
+      <workItem from="1543799753145" duration="2453000" />
+      <workItem from="1543894119370" duration="553000" />
+      <workItem from="1543988193589" duration="4541000" />
+      <workItem from="1544058160869" duration="10344000" />
+      <workItem from="1544087540742" duration="1026000" />
+      <workItem from="1544144224448" duration="5840000" />
+      <workItem from="1544403772696" duration="2403000" />
+      <workItem from="1544490231088" duration="12278000" />
+      <workItem from="1544577327673" duration="2060000" />
+      <workItem from="1544662582715" duration="7977000" />
+      <workItem from="1544714106939" duration="7401000" />
+      <workItem from="1544855010893" duration="596000" />
+      <workItem from="1544860247686" duration="1225000" />
+      <workItem from="1545008782661" duration="10654000" />
+      <workItem from="1545095671460" duration="2945000" />
+      <workItem from="1545181903662" duration="12016000" />
+      <workItem from="1545267660357" duration="6721000" />
+      <workItem from="1545308797573" duration="273000" />
+      <workItem from="1545309276992" duration="2449000" />
+      <workItem from="1545353554872" duration="9272000" />
+      <workItem from="1545441311314" duration="3967000" />
+      <workItem from="1545551508928" duration="1581000" />
+      <workItem from="1545613015159" duration="1844000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="874041000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20985691" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.50317967" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32763976" sideWeight="0.49682036" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="13" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/share_app/html/artical-up.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/bsb-privacy-agreement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/cskt-video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="62" column="7" lean-forward="true" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/csq_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1637">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/cwatch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/dkft-video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="46" column="7" lean-forward="true" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/dkft-video-next.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1539">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/download-app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/get-code.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-206">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/get-openid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/gyjt.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-476">
+          <caret line="63" column="51" lean-forward="false" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/gyjt-succ.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="41" column="52" lean-forward="false" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/hanxinzt.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="40" column="54" lean-forward="true" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/invitation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-840">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/invite-friend.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="41" column="52" lean-forward="false" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/mine-answer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-476">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/mine-question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-476">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/mine-set-what-jsb.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-341">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/play-earn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="41" column="52" lean-forward="false" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/privacy-agreement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3419">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/user-register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-962">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/user-register-next.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-908">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/fastclick.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-810">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/gyjt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/public.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/what_jsb.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/user-register-next.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/csq_detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/cwatch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/user-register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/jquery-2.1.4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1701">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/invitation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2622">
+          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/js/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/six_deduction.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/正式环境项目/jsb_weixin/share_app/js/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/share_app/html/100_ques.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/index-mine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48195">
+          <caret line="1785" column="0" lean-forward="false" selection-start-line="1785" selection-start-column="2" selection-end-line="1787" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="50" lean-forward="false" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/index-mine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1431">
+          <caret line="53" column="32" lean-forward="false" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/cafe-interview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/watch-pay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="47" column="12" lean-forward="false" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/watch-anwser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3402">
+          <caret line="126" column="57" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="57" />
+          <folding>
+            <element signature="e#5510#6830#0" expanded="false" />
+            <element signature="e#7033#8193#0" expanded="false" />
+            <marker date="1545312624962" expanded="true" signature="1535:2930" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="1572:2206" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="1813:2187" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="1857:2096" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="1978:2069" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="2242:2301" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="2341:2388" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="2447:2915" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="2490:2643" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="2696:2896" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="3469:4324" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="3506:4216" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="3744:4197" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="3788:4091" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="3905:4064" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="4252:4309" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="4355:4736" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="4372:4521" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="4538:4722" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="4638:4704" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="4861:5087" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="4879:5020" ph="..." />
+            <marker date="1545312624962" expanded="true" signature="4944:5001" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/watch-pay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/index-msg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="78" column="22" lean-forward="false" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
+          <folding>
+            <element signature="e#528#1142#0" expanded="false" />
+            <element signature="e#1268#2066#0" expanded="false" />
+            <element signature="e#1705#2052#0" expanded="false" />
+            <element signature="e#5002#5387#0" expanded="false" />
+            <element signature="e#5509#7799#0" expanded="false" />
+            <element signature="e#7970#8382#0" expanded="false" />
+            <element signature="e#8430#10643#0" expanded="false" />
+            <element signature="e#10844#11326#0" expanded="false" />
+            <element signature="e#11368#13584#0" expanded="false" />
+            <element signature="e#13705#16001#0" expanded="false" />
+            <element signature="e#17045#17640#0" expanded="false" />
+            <element signature="e#17796#17922#0" expanded="false" />
+            <element signature="e#17965#18573#0" expanded="false" />
+            <element signature="e#18730#19014#0" expanded="false" />
+            <marker date="1545191686971" expanded="true" signature="3396:4604" ph="..." />
+            <marker date="1545191686971" expanded="true" signature="3441:4128" ph="..." />
+            <marker date="1545191686971" expanded="true" signature="3679:4001" ph="..." />
+            <marker date="1545191686971" expanded="true" signature="3731:3818" ph="..." />
+            <marker date="1545191686971" expanded="true" signature="3871:3970" ph="..." />
+            <marker date="1545191686971" expanded="true" signature="4172:4233" ph="..." />
+            <marker date="1545191686971" expanded="true" signature="4278:4581" ph="..." />
+            <marker date="1545191686971" expanded="true" signature="4356:4554" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/get-openid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2160">
+          <caret line="80" column="70" lean-forward="false" selection-start-line="80" selection-start-column="70" selection-end-line="80" selection-end-column="70" />
+          <folding>
+            <element signature="n#div#1;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mine-personal-data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="69" column="75" lean-forward="false" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/free-question.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="766">
+          <caret line="132" column="45" lean-forward="false" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="115" column="46" lean-forward="false" selection-start-line="115" selection-start-column="46" selection-end-line="115" selection-end-column="46" />
+          <folding>
+            <element signature="e#328#842#0" expanded="false" />
+            <element signature="e#884#950#0" expanded="false" />
+            <element signature="e#992#1050#0" expanded="false" />
+            <element signature="e#1235#1280#0" expanded="false" />
+            <element signature="e#1340#1526#0" expanded="false" />
+            <element signature="n#!!block;n#format#0" expanded="false" />
+            <element signature="n#!!block;n#reload_msg#0" expanded="false" />
+            <element signature="n#!!block;n#get_score#0" expanded="false" />
+            <element signature="n#!!block;n#back_login#0" expanded="false" />
+            <element signature="e#5452#5914#0" expanded="false" />
+            <element signature="n#!!block;n#get_name#0" expanded="false" />
+            <element signature="e#6927#7419#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

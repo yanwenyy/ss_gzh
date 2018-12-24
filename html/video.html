@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,
+minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/cafe-interview.css">
+    <script src="../js/jquery-2.1.4.js"></script>
+    <title>视频播放</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<!--<video  width="100%" height="100%" poster="../img/ceshi.jpg" controls src="http://wqs.jd.com/promote/superfestival/superfestival.mp4">-->
+    <!--您的浏览器不支持 HTML5 video 标签。-->
+<!--</video>-->
+<div class="wrapper course_container">
+    <script src="https://p.bokecc.com/player?vid=&siteid=A0123BC413D6FBAE&autoStart=false&width=100%&height=auto&playerid=7E2195B034B0277B&playertype=1"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+        function getUrlParms(name){
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if(r!=null)
+                return unescape(r[2]);
+            return null;
+        }
+        var vid= getUrlParms("vid");
+        // $.ajax({
+        //     type:"POST",
+        //     url:"https://api.jieshuibao.com/video/vid",
+        //     dataType: "json",
+        //     headers: {
+        //         "Accept": "application/json",
+        //         "Content-Type": "application/json;charset=utf-8",
+        //         "cookieId":sessionStorage.getItem("cookieId")
+        //     },
+        //     data:JSON.stringify({"id":spid}),
+        //     success:function(data){
+        //
+        //         vid=data.data.vid;
+        //         console.log(data);
+        //         if(data.code==1){
+        //             alert(data.des);
+                    if (vid) {
+                        console.log(vid);
+                        var wrapper = document.getElementsByClassName('wrapper course_container')[0];
+                        wrapper.innerHTML = '<script src="https://p.bokecc.com/player?vid='+vid+'&siteid=A0123BC413D6FBAE&autoStart=false&width=100%&height=auto&playerid=7E2195B034B0277B&playertype=1" type="text/javascript"><\/script>'
+                    }
+        //         }else{
+        //             alert(data.des);
+        //         }
+        //     },
+        //     error:function(){
+        //         alert("程序出错,请重试");
+        //     }
+        // });
+
+    </script>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<!--<script src="../js/video.js"></script>-->
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+        // var bodyHeight = document.documentElement.clientHeight;
+        // $("#Flash1").height(bodyHeight + "px");
+        // $("body").height(bodyHeight + "px");
+        var videoId=getUrlParms("spid"),msg=getUrlParms("msg"),share_msg='',share_url="";
+
+        if(msg=="dkft"){
+            share_msg="聚焦当下财税热点，洞悉税制改革发展趋势，大咖老师给您带来前沿财税视频解读。\n"
+            share_url="dkft-video.html?videoId="+videoId;
+        }else{
+            share_msg="精挑细选的财税课程，细致入微的专业讲解，快来一起进步吧";
+            share_url="cskt-video.html?videoId="+videoId;
+        }
+        var path_url=encodeURIComponent(location.href.split('#')[0]);
+        $.ajax({
+            type:"POST",
+            url:http_url.url+"/wx/createJsapiSignature?url="+path_url,
+            success:function(data){
+                console.log(data.datum);
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: data.datum.appid, // 必填，公众号的唯一标识
+                    timestamp:data.datum.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: data.datum.noncestr, // 必填，生成签名的随机串
+                    signature: data.datum.signature,// 必填，签名
+                    jsApiList: [
+                        'onMenuShareTimeline',       // 分享到朋友圈接口
+                        'onMenuShareAppMessage',  //  分享到朋友接口
+                        'onMenuShareQQ',         // 分享到QQ接口
+                        'onMenuShareQZone']   // 分享到qq空间] // 必填，需要使用的JS接口列表
+                });
+                wx.ready(function () {
+                    var shareData = {
+                        title: "航信办税宝",
+                        desc: share_msg, //这里请特别注意是要去除html
+                        link: total_share_url.url+"jsb_weixin/share_app/html/"+share_url,
+                        imgUrl: total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",
+                        trigger: function (res) {
+                            console.log('用户点击发送给朋友');
+                        },
+                        success: function (res) {
+                            console.log('已分享');
+                        },
+                        cancel: function (res) {
+                            console.log('已取消');
+                        },
+                        fail: function (res) {
+                            console.log(JSON.stringify(res));
+                            console.log(shareData.link)
+                        }
+                    };
+                    wx.onMenuShareQQ(shareData);
+                    wx.onMenuShareQZone(shareData);
+                    wx.onMenuShareAppMessage(shareData);
+                    wx.onMenuShareTimeline(shareData);
+                });
+                wx.error(function(res){
+                    console.log(res)
+                    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                });
+            },
+            error:function(){
+                alert("程序出错,请重试")
+            }
+        });
+    });
+</script>
+</html>

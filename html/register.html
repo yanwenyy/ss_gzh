@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>绑卡</title>
+</head>
+<body>
+<div class="jsb_header">
+    绑卡
+</div>
+<div class="register-page">
+    <div class="register-user-msg box-sizing">
+        <img src="../img/icon-exchange-card.png" alt="">
+        <input type="text" placeholder="请输入财税问答卡卡号" class="csk-code">
+    </div>
+    <div class="register-user-msg box-sizing">
+        <img src="../img/icon-exchange-passage.png" alt="">
+        <input type="text" placeholder="请输入兑换密码" class="csk-password">
+    </div>
+    <div class="rigster-down-btn bangka">完成</div>
+    <div class="rigster-pass-btn">跳过</div>
+    <div class="rigster-pass-needkonwn">提示：有财税问答卡请务必填写，后期无法补填。填 写后点完成，没有点跳过。</div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        // 绑卡按钮
+        $(".bangka").click(function(){
+            var csk_code=$(".csk-code").val(),csk_pass=$(".csk-password").val();
+            if(csk_code==''||csk_pass==''){
+                alert("请完善信息");
+            }else{
+                $.ajax({
+                    url:http_url.url+"/wx/binding/card",
+                    type:"post",
+                    dataType: "json",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json;charset=utf-8",
+                        "cookieId":sessionStorage.getItem("cookieId")
+                    },
+                    data:JSON.stringify({
+                        "id":csk_code,
+                        "securityCode":csk_pass
+                    }),
+                    success:function(e){
+                        console.log(e);
+                        if(e.code == "1"){
+                            alert("绑卡成功");
+                            window.location.href="../html/index.html?newuser=yes";
+                        }else{
+                            alert(e.des);
+                        }
+                    },
+                    error:function(e){
+                        console.log(e);
+                    }
+                })
+            }
+        });
+        //跳过绑卡
+        $(".rigster-pass-btn").click(function(){
+            window.location.href="../html/index.html?newuser=yes";
+        });
+    });
+</script>
+</html>

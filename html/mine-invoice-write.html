@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>发票信息</title>
+    <style>
+        .version-information>input{
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back">
+    发票信息
+    <div class="release inline-block">提交</div>
+</div>
+<div class="mine-per-data">
+    <div class="mine-msg-list">
+        <div class="weui-cells mine-per-data-list">
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>发票类型 :</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" value="增值税电子普通发票" readonly id="invoice-class">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>公司抬头：</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text"  id="company-headup-invoice">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>公司税号：</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text"  id="company-tax-number-invoice">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>开票人手机号：</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="number"  id="phonenumber-invioce">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>邮箱：</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="email"  id="email-invioce">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access">
+                    <div class="weui-cell__bd">
+                        <p>开户银行：</p>
+                    </div>
+                    <div class="weui-cell__ft version-information">
+                        <input type="text"  id="opening-bank-invioce">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access">
+                    <div class="weui-cell__bd">
+                        <p>银行账号：</p>
+                    </div>
+                    <div class="weui-cell__ft version-information">
+                        <input type="number"  id="bankcard-invioce">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access">
+                    <div class="weui-cell__bd">
+                        <p>公司电话：</p>
+                    </div>
+                    <div class="weui-cell__ft version-information">
+                        <input type="text"  id="company-phone-invioce">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access">
+                    <div class="weui-cell__bd">
+                        <p>公司地址：</p>
+                    </div>
+                    <div class="weui-cell__ft version-information">
+                        <input type="text"  id="company-address-invioce">
+                    </div>
+                </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>收件人：</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text"  id="addressee-invoice">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>邮寄地址：</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text"  id="detail-address-invioce">
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/city-picker.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/mine-invoice-write.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

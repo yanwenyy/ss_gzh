@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>登录</title>
+</head>
+<body>
+<div class="jsb_header">
+    登录
+</div>
+<div class="register-page login-page">
+    <div class="register-user-msg box-sizing">
+        <img src="../img/icon-login-me.png" alt="">
+        <input type="text" placeholder="请输入手机号">
+    </div>
+    <div class="register-user-msg box-sizing">
+        <img src="../img/icon-exchange-passage.png" alt="">
+        <input type="password" placeholder="请输入密码">
+    </div>
+    <div class="register-password-group red">
+        <div class="want-register inline-block">我要注册</div>
+        <div class="find-password inline-block">找回密码</div>
+    </div>
+    <div class="rigster-pass-btn login-btn-main">登录</div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+    $(".want-register").click(function(){
+        window.location.href="register.html"
+    });
+    $(".find-password").click(function(){
+        window.location.href="find-password.html"
+    });
+    // $(function(){
+    //     window.location.href="register.html"
+    // })
+</script>
+</html>

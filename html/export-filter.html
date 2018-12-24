@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/cafe-interview.css">
+    <link rel="stylesheet" href="../css/free-question.css">
+    <title>专家列表</title>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back" data-url="1">
+    筛选
+</div>
+<div class="filter-body">
+    <div class="filter-total">
+        <ul>
+            <li class="total-li-act" data-act="filter-city">省市</li>
+            <li data-act="filter-class" data-type="1">专题</li>
+            <li data-act="filter-class" data-type="2">税种</li>
+            <li data-act="filter-class" data-type="3">行业</li>
+        </ul>
+    </div>
+    <div class="filter-city box-sizing">
+        <div class="filter-city-city inline-block box-sizing">
+            <ul>
+                <!--<li class="pro_blue">全部</li>-->
+                <!--<li>北京</li>-->
+                <!--<li>河北</li>-->
+            </ul>
+        </div>
+        <div class="filter-city-area out inline-block box-sizing">
+            <ul>
+                <!--<li class="blue">全部</li>-->
+                <!--<li>承德市</li>-->
+                <!--<li>邯郸市</li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="filter-class box-sizing out">
+        <ul>
+            <!--<li class="class-li-act">全部</li>-->
+            <!--<li>会计处理</li>-->
+            <!--<li>税务筹划</li>-->
+        </ul>
+    </div>
+</div>
+<div class="filter-btn">
+    <div class="inline-block filter-reset">重置</div>
+    <div class="inline-block filter-sub">确认</div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/self_city.js"></script>
+<script src="../js/expert-filter.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

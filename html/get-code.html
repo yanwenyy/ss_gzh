@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>航信办税宝</title>
+</head>
+<body>
+<input type="text" style="width:100%;height:100px;" class="input">
+<button style="width:100px;height:100px;font-size: 28px">点击</button>
+</body>
+<script src="../js/jquery-2.1.4.js"></script>
+<script>
+    function getUrlParms(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)
+            return unescape(r[2]);
+        return null;
+    }
+    $(function(){
+        $("button").click(function(){
+            var data=$(".input").val().replace(/\+/g,'%2B');
+            window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57543e0ae2e282e9&redirect_uri=http%3a%2f%2ftest.jieshuibao.com%2fjsb_weixin%2fhtml%2fget-openid.html%3fdata%3d"+data+"%26source%3daisinobsb&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+        });
+    })
+</script>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/free-question.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>选择擅长领域</title>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back">
+    选择擅长领域
+    <div class="release inline-block">完成</div>
+</div>
+<div class="ques-input sqzxs-scly">
+    <div class="scly-title"><span>请选择擅长领域：</span><span class="red">（提示：每项只能选三个）</span></div>
+    <div class="tax-category consultant-class-group">
+        <div>专题</div>
+        <div class="consultant-list-sel zt">
+            <div class="inline-block">会计处理</div>
+            <div class="inline-block">并购重组</div>
+            <div class="inline-block">高新技术</div>
+            <div class="inline-block">出口退税</div>
+            <div class="inline-block">合集准则</div>
+            <div class="inline-block">跨境业务</div>
+        </div>
+    </div>
+    <div class="tax-category consultant-class-group">
+        <div>税种</div>
+        <div  class="consultant-list-sel sz">
+            <div class="inline-block">房产税</div>
+            <div class="inline-block">印花税</div>
+            <div class="inline-block">进出口税收</div>
+            <div class="inline-block">城镇土地使用税</div>
+            <div class="inline-block">会计处理</div>
+            <div class="inline-block">会计处理</div>
+        </div>
+    </div>
+    <div class="tax-category consultant-class-group">
+        <div>行业</div>
+        <div class="consultant-list-sel hy">
+            <div class="inline-block">金融保险</div>
+            <div class="inline-block">消费税</div>
+            <div class="inline-block">营业税</div>
+            <div class="inline-block">个人所得税</div>
+            <div class="inline-block">企业所得税</div>
+            <div class="inline-block">资源税</div>
+            <div class="inline-block">城镇土地使用税</div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        //sessionStorage.removeItem("goodat");
+        var goodat_list=sessionStorage.getItem("goodat");
+        console.log(goodat_list);
+        function get_list(data){
+            console.log(data);
+            var categorys=data.categorys,zt_html='',sz_html='',hy_html='';
+            for(var i=0;i<categorys[0].children.length;i++){
+                var goodat_act='';
+               if(goodat_list&&goodat_list.indexOf(categorys[0].children[i].uuid)!=-1){
+                   goodat_act="consultant-goodat-act"
+               }
+                zt_html+=`
+                    <div class="inline-block ${goodat_act}" data-id="${categorys[0].children[i].uuid}">${categorys[0].children[i].name}</div>
+                `;
+
+            }
+            for(var k=0;k<categorys[1].children.length;k++){
+                var goodat_act='';
+                if(goodat_list&&goodat_list.indexOf(categorys[1].children[k].uuid)!=-1){
+                    goodat_act="consultant-goodat-act"
+                }
+                 sz_html+=`
+                    <div class="inline-block ${goodat_act}" data-id="${categorys[1].children[k].uuid}">${categorys[1].children[k].name}</div>
+                `
+            }
+            for(var j=0;j<categorys[2].children.length;j++){
+                var goodat_act='';
+                if(goodat_list&&goodat_list.indexOf(categorys[2].children[j].uuid)!=-1){
+                    goodat_act="consultant-goodat-act"
+                }
+                 hy_html+=`
+                    <div class="inline-block ${goodat_act}" data-id="${categorys[2].children[j].uuid}">${categorys[2].children[j].name}</div>
+                `
+            }
+            $(".zt").html(zt_html);
+            $(".sz").html(sz_html);
+            $(".hy").html(hy_html);
+        }
+        ajax_nodata(http_url.url+"/category/tree",get_list);
+        var goodat=[];
+        $("body").on("click",".consultant-list-sel>div",function(){
+            if($(this).hasClass("consultant-goodat-act")){
+                $(this).removeClass("consultant-goodat-act");
+            }else{
+                if($(this).parent().find(".consultant-goodat-act").size()>=3){
+                    alert("每个领域只能选择3项");
+                    return false;
+                }else{
+                    $(this).addClass("consultant-goodat-act");
+                }
+            }
+        });
+        $(".release").click(function(){
+            $(".consultant-goodat-act").each(function(){
+                goodat.push($(this).attr("data-id"));
+            });
+            sessionStorage.setItem("goodat",goodat);
+            window.history.go(-1);
+        })
+    });
+</script>
+</html>

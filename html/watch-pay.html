@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <title>购买服务</title>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back">
+    购买服务
+</div>
+<div class="quik-ans index-card">
+    <div class="watch-pay">
+        <div class="pay_name">金额支付：</div>
+        <div><span class="pay_money-num">1.00</span> 元</div>
+    </div>
+    <div class="pay-method">支付方式:</div>
+    <div class="weui-cells">
+        <a class="weui-cell weui-cell_access "  data-type="weixin">
+            <div class="weui-cell__hd"><img src="../img/icon-onlookers-wechat.png"></div>
+            <div class="weui-cell__bd">
+                <p>微信支付</p>
+            </div>
+            <img src="../img/wacth-pay-chage.png" alt="" class="more-img zf-select"   data-type="weixin">
+        </a>
+        <a class="weui-cell weui-cell_access  balance_pay"  data-type="balance">
+            <div class="weui-cell__hd"><img src="../img/icon-onlookers-wallet.png"></div>
+            <div class="weui-cell__bd">
+                <p>我的钱包支付</p>
+            </div>
+            <div class="yue-msg">余额: <span class="qb"></span></div>
+            <img src="../img/wacth-pay-nochage.png" alt="" class="more-img"  data-type="balance">
+        </a>
+        <a class="weui-cell weui-cell_access  VipBalance_pay"  data-type="VipBalance">
+            <div class="weui-cell__hd"><img src="../img/icon-onlookers-card.png"></div>
+            <div class="weui-cell__bd">
+                <p>学习顾问卡支付</p>
+            </div>
+            <div class="yue-msg">余额: <span class="xxgwk"></span></div>
+            <img src="../img/wacth-pay-nochage.png" alt="" class="more-img"  data-type="VipBalance">
+        </a>
+        <a class="weui-cell weui-cell_access QACardBalance_pay" style="display: none"  data-type="QACardBalance">
+            <div class="weui-cell__hd"><img src="../img/icon-My-answer1.png"></div>
+            <div class="weui-cell__bd">
+                <p>财税问答卡支付</p>
+            </div>
+            <div class="yue-msg">余额: <span class="cswdk"></span></div>
+            <img src="../img/wacth-pay-nochage.png" alt="" class="more-img"  data-type="QACardBalance">
+        </a>
+    </div>
+</div>
+<div class="pay_btn">确认支付</div>
+<div class="zf_model">
+    <div class="zf_body">
+        <div>确定支付:<span class="zf_money">15</span>元吗?</div>
+        <div>
+            <div class="cancel-btn inline-block">取消</div>
+            <div class="ok-btn inline-block">确定</div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/watch-pay.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/cafe-interview.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>财税问答卡</title>
+</head>
+<body>
+<div class="jsb_header cswdk-header">
+    <img src="../img/back.png" alt="" class="back" data-url="4">
+    财税问答卡
+    <div class="release inline-block">交易记录</div>
+</div>
+<div class="cswdk-page">
+    <img src="../img/icon-ask card-bg.png" alt="">
+    <div>
+        <div class="cswdk-money box-sizing">
+            <div>问答卡余额</div>
+            <div>¥<span class="csk-money"></span></div>
+        </div>
+        <div class="yqdhb-btn">邀请得红包</div>
+        <div class="cswd-rule">
+            <div>财税问答红包规则</div>
+            <div>
+                <span class="inline-block hb-line"></span>
+            </div>
+            <ul>
+                <li>1、问答卡只限于支付提问。</li>
+                <li>2、分享文章奖励问答红包5元。</li>
+                <li>3、分享购买的围观奖励问答红包5元。</li>
+                <li>4、分享被采纳的提问奖励问答红包5元。</li>
+                <li>5、补全个人材料奖励问答红包5元。</li>
+                <li>6、邀请好友注册得问答红包15元。</li>
+                <li>7、每人每天只奖励3次(邀请注册红包除外),奖励金额存到问答卡。邀请记录请在邀请有奖--邀请记录查看。</li>
+                <li>8、活动中如果发现通过作弊手段获得奖励的,将取消奖励,如设备号一致、手机、账号一致等行为。</li>
+            </ul>
+            <div>本活动解释权归本公司所有</div>
+        </div>
+    </div>
+</div>
+<div class="shadow">
+    <img src="../img/share.png" alt="" class="share_img">
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        var path_url=encodeURIComponent(location.href.split('#')[0]);
+        function get_money(data){
+            console.log(data);
+            $(".csk-money").html(parseFloat(data.qacardBlance).toFixed(2)||"0.0");
+            var phone=data.phoneNumber;
+            $.ajax({
+                type:"POST",
+                url:http_url.url+"/wx/createJsapiSignature?url="+path_url,
+                success:function(data){
+                    console.log(data.datum);
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: data.datum.appid, // 必填，公众号的唯一标识
+                        timestamp:data.datum.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: data.datum.noncestr, // 必填，生成签名的随机串
+                        signature: data.datum.signature,// 必填，签名
+                        jsApiList: [
+                            'onMenuShareTimeline',       // 分享到朋友圈接口
+                            'onMenuShareAppMessage',  //  分享到朋友接口
+                            'onMenuShareQQ',         // 分享到QQ接口
+                            'onMenuShareQZone']   // 分享到qq空间] // 必填，需要使用的JS接口列表
+                    });
+                    wx.ready(function () {
+                        var shareData = {
+                            title: "[航信办税宝]50元红包等你领取。",
+                            desc: "发现一个不错的财税咨询平台，我帮你申请了50元问答红包，快来领取吧", //这里请特别注意是要去除html
+                            link: total_share_url.url+"jsb_weixin/share_app/html/user-register.html?inviteUserId="+phone,
+                            imgUrl:total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",
+                            trigger: function (res) {
+                                console.log('用户点击发送给朋友');
+                            },
+                            success: function (res) {
+                                console.log('已分享');
+                            },
+                            cancel: function (res) {
+                                console.log('已取消');
+                            },
+                            fail: function (res) {
+                                console.log(JSON.stringify(res));
+                                console.log(shareData.link)
+                            }
+                        };
+                        wx.onMenuShareQQ(shareData);
+                        wx.onMenuShareQZone(shareData);
+                        wx.onMenuShareAppMessage(shareData);
+                        wx.onMenuShareTimeline(shareData);
+                    });
+                    wx.error(function(res){
+                        console.log(res)
+                        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                    });
+                },
+                error:function(){
+                    alert("程序出错,请重试")
+                }
+            });
+        }
+        ajax_nodata(http_url.url+"/user/message",get_money);
+        //分享链接按钮点击
+        $(".yqdhb-btn").click(function(){
+            $(".shadow").show();
+            $(".shadow").click(function(){
+                $(".shadow").hide();
+            })
+        });
+        $(".release").click(function(){
+            window.location.href="mine-wallet-transaction-record.html?payType=qaCard"
+        })
+    });
+</script>
+</html>

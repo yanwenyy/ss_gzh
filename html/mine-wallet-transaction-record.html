@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/cafe-interview.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>交易记录</title>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back">
+    <div class="csq-header-change inline-block transaction_record">
+        <div class="inline-block csq-header-change-act" data-name="all">全部</div>
+        <div class="inline-block" data-name="income">收入</div>
+        <div class="inline-block" data-name="outlay">支出</div>
+    </div>
+</div>
+<div class="weui-tab index-page-body">
+    <div class="transaction_record_body">
+        <div class="record-money">
+            <div class="inline-block">收入:¥ <span class="record-sr"></span></div>
+            <div class="inline-block">支出:¥ <span class="record-zc"></span></div>
+        </div>
+        <ul>
+            <!--<li class="box-sizing">-->
+                <!--<div class="inline-block transaction_list_name">-->
+                    <!--<div>-->
+                        <!--抢答分成-->
+                        <!--<img src="../img/expert list-top.png" alt="">-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--2018-05-26 11:48:24-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="inline-block transaction_list_money red">-->
+                    <!--+9.25元-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+        <div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/mine-wallet-transaction-record.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+        var payType=getUrlParms("payType");
+        $(window).scroll(function(){
+            var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+            var scrollHeight = $(document).height();   //当前页面的总高度
+            var clientHeight = $(this).height();    //当前可视的页面高度
+            //console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+            if(scrollTop + clientHeight >= scrollHeight-1){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
+                //滚动条到达底部
+                //alert(3);
+                var csq_url="";
+                // console.log(csq_url);
+                if(scroll_status==true){
+                    $(".msg-loading").show();
+                }
+                setTimeout(function(){
+                    num+=1;
+                    count_start=((num-1)*10)+1;
+                    count_end=num*10;
+                    var articleType=$(".csq-header-change-act").attr("data-name");
+                    ajax(http_url.url+"/flow/sumRecording",{"sinceId":count_start, "maxId":count_end, "articleType":articleType,"payType":payType},get_all_more);
+                }, 2000)
+            }else if(scrollTop<=0){
+                //滚动条到达顶部
+                // alert(4)
+                //滚动条距离顶部的高度小于等于0
+
+            }
+        });
+    });
+</script>
+</html>

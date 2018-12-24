@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>航信办税宝</title>
+</head>
+<body>
+
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    function getUrlParms(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)
+            return unescape(r[2]);
+        return null;
+    }
+    var icode = getUrlParms("icode");
+        //页面加载后获取code
+    var code=getUrlParms("code");
+    var cookieId;
+    if(code!=null){
+        sessionStorage.setItem("code",code);
+        $.ajax({
+            type:"POST",
+            url:http_url.url+'/wx/getOpenid/'+code,
+            dataType: "json",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json;charset=utf-8"
+            },
+            success:function(data){
+                cookieId=data.data;
+                sessionStorage.setItem("cookieId",cookieId);
+               var  html_url='';
+                if(icode==1){
+                    html_url="index.html"
+                }else if(icode==2){
+                    html_url="index-csq.html"
+                }else if(icode==4){
+                    html_url="index-mine.html"
+                }
+                window.location.href=html_url
+            },
+            error:function(){
+                alert("程序出错,请重试");
+            }
+        });
+    }
+</script>
+</body>
+</html>

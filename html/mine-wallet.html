@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>我的钱包</title>
+</head>
+<body>
+<div class="jsb_header mine-wallet-header">
+    <img src="../img/back.png" alt="" class="back" data-url="4">
+    我的钱包
+</div>
+<div class="mine-wallet">
+    <div class="mine-wallet-msg">
+        <div>钱包余额</div>
+        <div>¥ <span class="balance"></span></div>
+    </div>
+    <div>
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access" href="mine-wallet-put-forward.html">
+                <div class="weui-cell__hd"><img src="../img/icon-My-bag-bag.png"></div>
+                <div class="weui-cell__bd">
+                    <p>提现到微信余额</p>
+                </div>
+            </a>
+        </div>
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access" href="mine-wallet-transaction-record.html?payType=wallet">
+                <div class="weui-cell__hd"><img src="../img/icon-My-trade.png"></div>
+                <div class="weui-cell__bd">
+                    <p>交易记录</p>
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="mine-wallet-put-forward-list.html">
+                <div class="weui-cell__hd"><img src="../img/icon-My-casah.png"></div>
+                <div class="weui-cell__bd">
+                    <p>提现记录</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        function get_money(data){
+            console.log(data);
+            $(".balance").html(parseFloat(data.balance).toFixed(2)||"0.0");
+        }
+        ajax_nodata(http_url.url+"/user/sectionMessage",get_money);
+    });
+</script>
+</html>

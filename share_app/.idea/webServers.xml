@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5001361a-0fcb-4245-aeea-71218bf922f2" name="app-invite" url="http://192.168.1.136:8081\share_app">
+        <fileTransfer port="0" mountedRoot="D:\share_app" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

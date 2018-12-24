@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/free-question.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>开具发票</title>
+    <style>
+        body{
+            background: #fff;
+        }
+        .none-msg{
+            top:11rem;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back" data-url="4">
+    开具发票
+    <div class="release inline-block">编辑</div>
+</div>
+<div class="box-sizing invoice-page">
+    <div class="invoice-title">
+        发票记录(消费额达到100元可以申请开发票)
+    </div>
+    <div class="invoice-list-body">
+        <div class="box-sizing invoice-list">
+            <div><span>学习顾问卡</span><span style="margin-right: 3.2rem">24.6元</span></div>
+            <div class="inline-block"></div>
+            <div>2018-08-08 14:00:00</div>
+            <div class="open-invoice-btn open-invoice-btn_blue">开发票</div>
+        </div>
+    </div>
+
+</div>
+<div class="none-msg">您还没有发票记录</div>
+<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/mine-invoice.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

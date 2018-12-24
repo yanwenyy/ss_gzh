@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/cafe-interview.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>二维码邀请</title>
+    <style>
+        .code-logo{
+            position: absolute;
+            width:20%;
+            height:18%;
+            left:40%;
+            top:47%;
+        }
+        .code-msg{
+            font-size: 3.2rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back">
+    二维码邀请
+</div>
+<div class="mine-invite-code box-sizing">
+    <div class="box-sizing" style="position: relative">
+        <div class="m-i-code-title">
+            <div>扫描或点击</div>
+            <div>保存二维码进行邀请</div>
+        </div>
+        <div class="m-i-code-img box-sizing" id="qrcode">
+            <!--<img src="../img/1535075825.png" alt="" >-->
+        </div>
+        <div class="code-msg">财税问题 就问航信办税宝</div>
+        <img src="../img/code-logo.png" alt="" class="code-logo">
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/qrcode.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        function get_phone(data){
+            console.log(data);
+            var phone=data.phoneNumber;
+            // 设置参数方式
+            var qrcode = new QRCode('qrcode', {
+                text: 'your content',
+                width: 256,
+                height: 256,
+                colorDark : '#000000',
+                colorLight : '#ffffff',
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+// 使用 API
+            qrcode.clear();
+            qrcode.makeCode('http://test.jieshuibao.com/share_app/html/user-register.html?inviteUserId='+phone);
+        }
+        ajax_nodata(http_url.url+"/user/message",get_phone);
+    });
+</script>
+</html>

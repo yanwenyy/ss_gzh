@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/free-question.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>学习顾问卡</title>
+</head>
+<body>
+<div class="jsb_header xxgwk-head">
+    <img src="../img/back.png" alt="" class="back">
+    学习顾问卡
+    <div class="release inline-block">交易记录</div>
+</div>
+<div class="minr-xxgwk box-sizing">
+    <div class="xxgwk-ye box-sizing">
+        <div>顾问卡余额</div>
+        <div>¥<span class="balance"></span></div>
+    </div>
+    <ul class="vip-card-list">
+        <li class="box-sizing">
+            <img src="../img/icon-learning card-99.png" alt="">
+            <div class="inline-block">
+                <div class="xxgwk-money">金额：<span class="red">¥99</span></div>
+                <div class="xxgwk-fp"><img src="../img/icon-index-ask-anonymous unchecked.png" alt="">需要发票</div>
+                <div class="xxgwk-buy">购买</div>
+            </div>
+        </li>
+        <li class="box-sizing">
+            <img src="../img/icon-learning card-199.png" alt="">
+            <div class="inline-block">
+                <div class="xxgwk-money">金额：<span class="red">¥199</span></div>
+                <div class="xxgwk-fp"><img src="../img/icon-index-ask-anonymous unchecked.png" alt="">需要发票</div>
+                <div class="xxgwk-buy">购买</div>
+            </div>
+        </li>
+        <li class="box-sizing">
+            <img src="../img/icon-learning card-299.png" alt="">
+            <div class="inline-block">
+                <div class="xxgwk-money">金额：<span class="red">¥299</span></div>
+                <div class="xxgwk-fp"><img src="../img/icon-index-ask-anonymous unchecked.png" alt="">需要发票</div>
+                <div class="xxgwk-buy">购买</div>
+            </div>
+        </li>
+        <li class="box-sizing">
+            <img src="../img/icon-learning card-399.png" alt="">
+            <div class="inline-block">
+                <div class="xxgwk-money">金额：<span class="red">¥399</span></div>
+                <div class="xxgwk-fp"><img src="../img/icon-index-ask-anonymous unchecked.png" alt="">需要发票</div>
+                <div class="xxgwk-buy">购买</div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/mine-learning-consultant-card.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        $(".release").click(function(){
+            window.location.href="mine-wallet-transaction-record.html?payType=studyCard"
+        })
+    });
+</script>
+</html>

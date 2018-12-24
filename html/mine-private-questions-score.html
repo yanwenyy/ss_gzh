@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/cafe-interview.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>评分</title>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back">
+    评分
+    <div class="release inline-block">提交</div>
+</div>
+<div class="mine-attention">
+    <div class="box-sizing zj-msg">
+        <img src="../img/ceshi.jpg" alt="">
+        <div class="inline-block attention-export-msg">
+            <div>
+                <span>王专家</span>
+                <img src="../img/icon-expert icon.png" alt="">
+                <span> 资深咨询师</span>
+            </div>
+            <div>会计师 咨询师 税务师 律师</div>
+        </div>
+    </div>
+    <div class="smw-pf-input">
+        <div class="smw-pf-score">
+            <span>回答质量</span>
+            <span class="pf-img">
+                <img src="../img/-icon-star.png" alt="" data-code="1" data-html="差">
+                <img src="../img/icon-star_an.png" alt="" data-code="2" data-html="较差">
+                <img src="../img/icon-star_an.png" alt="" data-code="3" data-html="一般">
+                <img src="../img/icon-star_an.png" alt="" data-code="4" data-html="较好">
+                <img src="../img/icon-star_an.png" alt="" data-code="5" data-html="极好">
+            </span>
+            <span>差</span>
+        </div>
+        <textarea name="" id="" class="smw-pf-text box-sizing" placeholder="写下您对咨询师的评价吧（30字内）"></textarea>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        var id=getUrlParms("id"),score=1,phone=getUrlParms("phone");
+        //专家信息
+        function get_detail(data){
+            console.log(data);
+            $(".zj-msg").html(`
+                <img src="${head_src+data.users.headImage}" alt="" onerror=src="../img/user.png">
+                <div class="inline-block attention-export-msg">
+                    <div>
+                        <span>${data.users.realName||""}</span>
+                        <img src="../img/icon-expert icon.png" alt="">
+                        <span> ${data.users.levelName||""}</span>
+                    </div>
+                    <div>${data.users.counselorDuty||""}</div>
+                </div>
+            `);
+        }
+        ajax(http_url.url+"/personal/home",{"phone":phone},get_detail);
+        function sub_score(data){
+            if(data.code==1){
+                alert(data.des);
+                window.location.href="../html/mine-free-question-list.html"
+            }else{
+                alert(data.des);
+            }
+        }
+        $(".release").click(function(){
+            var appraisal=$(".smw-pf-text").val();
+            ajax(http_url.url+"/answer/score",{
+                "score":score,
+                "uuid":id,
+                "appraisal":appraisal
+            },sub_score);
+        });
+        $(".pf-img>img").click(function(){
+            score=$(this).attr("data-code");
+            $(this).attr("src","../img/-icon-star.png").prevAll("img").attr("src","../img/-icon-star.png");
+            $(this).nextAll("img").attr("src","../img/icon-star_an.png");
+            $(this).parent().next("span").html($(this).attr("data-html"));
+        })
+    });
+</script>
+</html>

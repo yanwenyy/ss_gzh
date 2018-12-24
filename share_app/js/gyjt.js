@@ -1,0 +1,34 @@
+$(function(){
+    //重置按钮点击
+    $(".gykt-reset").click(function(){
+        $(".gyjt-name").val("");
+        $(".gyjt-compony").val("");
+        $(".gyjt-phone").val("");
+        $(".gyjt-duty").val("");
+    });
+    //提交按钮点击
+    $(".gykt-sub").click(function(){
+        var name=$(".gyjt-name").val(),
+            position=$(".gyjt-duty").val(),
+            company=$(".gyjt-compony").val(),
+            contact=$(".gyjt-phone").val();
+        if(name==""||company==""||contact==""||position==""){
+            alert("请完善信息");
+        }else{
+            function sub(data){
+                console.log(data);
+                if(data.code==1){
+                    alert("提交成功")
+                }else{
+                    alert(data.des);
+                }
+            }
+            ajax(http_url.url+"/jsb_webserver/jsb/user/promotion",{
+                "name":name,
+                "position":position,
+                "company":company,
+                "contact":contact
+            },sub);
+        }
+    });
+});

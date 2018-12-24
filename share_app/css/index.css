@@ -1,0 +1,311 @@
+body{
+    width:100%;
+}
+.jsb_header {
+    width: 100%;
+    height: 8.8rem;
+    line-height: 8.8rem;
+    text-align: center;
+    z-index: 10000;
+    font-family: PingFang-SC-Medium;
+    background: #fff;
+    font-size: 3.6rem;
+    color:#333;
+    position: fixed;
+    top: 0;
+}
+.back {
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    bottom: 2.65rem;
+    left: 3rem;
+}
+.invitation-page{
+    min-height: 100%;
+    padding-bottom: 3rem;
+    height:auto;
+}
+.invitation-page>img{
+    width:100%;
+    height:50.3rem;
+}
+.invitation-page>div{
+    margin:4.3rem 2% 2% 2%;
+    /*position: absolute;*/
+    /*top:26.3rem;*/
+    /*width:100%;*/
+    /*height:auto;*/
+}
+/*邀请页面*/
+.invitation-body{
+    background: #FDE8D6;
+    border-radius:0.6rem;
+}
+.invitation-body>div{
+    text-align: center;
+}
+.invitation-body:before{
+    display: table;
+    content: '';
+}
+.invitation-body:after{
+    display: table;
+    content: '';
+}
+.hb-line {
+    width: 7rem;
+    height: 0.1rem;
+    background: #DC3B1B;
+    vertical-align: middle;
+}
+.invitation-title{
+    font-size: 3.8rem;
+    color:#DC3B1B;
+    margin: 5.3rem 0 3.9rem 0;
+}
+.invitation-logo>img{
+    width:33.5rem;
+    height:15.6rem;
+    margin-bottom: 3.3rem;
+}
+.invitation-msg{
+    background: url("../img/icon-invite-quan.png") no-repeat;
+    background-size: 100%;
+    width:67.8rem;
+    height:21.1rem;
+    margin: 0 auto;
+    font-size: 3.6rem;
+    color:#333;
+    font-weight: bold;
+    line-height:5.1rem;
+    padding-top: 6.2rem;
+}
+.accept-invitation-btn{
+    width:67.8rem;
+    height:11rem;
+    line-height: 11rem;
+    margin: 2.6rem auto;
+    color:#fff;
+    font-size: 3.4rem;
+    font-weight: bold;
+    background:rgba(248,53,53,1);
+    border-radius:0.4rem;
+    box-shadow:0.2rem 0 0.6rem rgba(0,0,0,0.19);
+}
+/*会员注册页面*/
+.user-register-body>div{
+    width:96%;
+    height:10.3rem;
+    margin: 0 2% 4.2rem 2%;
+    border-radius: 1rem;
+}
+.user-rg-input-group{
+    border:1px solid #E5E5E5;
+    font-size: 3rem;
+    color:#BC614C;
+    position: relative;
+}
+textarea::-webkit-input-placeholder,input::-webkit-input-placeholder{
+    color:#999;
+}
+.user-rg-input-group>input{
+    width:100%;
+    height:100%;
+    border:none;
+    outline: none;
+    padding-left: 3.7rem;
+    background: #F8F8F8;
+    font-size: 3rem;
+    color:#333;
+    border-radius: 1rem;
+}
+.user-register-code{
+    width:23rem;
+    height:10.3rem;
+    line-height: 10.3rem;
+    position: absolute;
+    top:0;
+    right:0;
+    background: #EEEEEE;
+    color:#DE2F48;
+    font-size: 3rem;
+    text-align: center;
+    font-weight:500;
+    border-bottom-right-radius:1rem ;
+    border-top-right-radius:1rem ;
+}
+.user-register-code>img{
+    display: none;
+}
+.user-register-code>img,.user-register-code>span{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border-bottom-right-radius:1rem ;
+    border-top-right-radius:1rem ;
+}
+.user-rig-next-btn{
+    background:#DE2F48;
+    box-shadow:2px 0px 6px rgba(0,0,0,0.19);
+    font-size: 3.4rem;
+    color:#fff;
+    line-height: 11rem;
+    text-align: center;
+    font-weight: bold;
+}
+.user-register-logo-msg{
+    text-align: center;
+    color:rgba(255,255,255,.5);
+    font-size: 3rem;
+}
+.user-register-logo-msg>div>div{
+    margin-top: 1.3rem;
+}
+.user-register-logo-msg .hb-line{
+    background:rgba(255,255,255,.5);
+    width: 11.2rem;
+    margin-top: -6rem;
+}
+/*下载app页面 */
+.download-app-page{
+    /*background: #fff;*/
+    position: relative;
+    border-radius:0.6rem;
+}
+.new-head-msg{
+    font-size: 2.8rem;
+    color:#999;
+    position: absolute;
+    text-align: center;
+    top:13.6rem;
+    width: 100%;
+}
+.new-head-money{
+    position: absolute;
+    top:23rem;
+    left:15rem;
+    color:#C98B19;
+    font-size: 4rem;
+}
+.new-head-money>.amount{
+    font-size: 6.3rem;
+}
+.download-app-page:before{
+    display: table;
+    content: '';
+}
+.download-app-page:after{
+    display: table;
+    content: '';
+}
+.download-app-page>div{
+    text-align: center;
+}
+.down-app-head{
+    width: 100%;
+    position: absolute;
+    top:-8.8rem;
+}
+.down-app-head>img{
+    width:39.1rem;
+    height:10.9rem;
+}
+.down-app-main{
+    width:61.4rem;
+    height:38.2rem;
+    position: relative;
+    margin: 0 auto;
+}
+.down-app-main>img{
+    width:100%;
+    height:100%;
+}
+
+.yellow{
+    color:#FBFE05!important;
+}
+.download-rightnow{
+    width:61.4rem;
+    height:9.8rem;
+    line-height: 9.8rem;
+    margin: 3.3rem auto;
+    background:#DE2F48;
+    border-radius:0.4rem;
+    box-shadow:0.2rem 0 0.6rem rgba(0,0,0,0.19);
+    font-size: 3.4rem;
+    color:rgba(248,248,248,1);
+    text-align: center;
+}
+.gz-code{
+    width:20.8rem;
+    height:20.5rem;
+    margin:3.3rem auto;
+}
+.gz-msg{
+    font-size: 3.1rem;
+    color:#333;
+}
+.lbt-bg{
+    width:100%;
+    height:auto;
+}
+/*公益讲堂*/
+.sjxy-gykt{
+    background: #fff;
+    margin-top: -1rem;
+    padding-bottom:5rem;
+}
+.sjxy-gykt>div{
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+}
+.sjxy-gykt>div>span{
+    display: inline-block;
+    width: 14rem;
+    text-align: right;
+}
+.sjxy-gykt>div>input{
+    width:39rem;
+    height:5.5rem;
+    outline: none;
+    vertical-align: middle;
+    margin-left: 3rem;
+    font-size: 2.8rem;
+}
+.gykt-bz{
+    color:#999;
+    font-size: 2.6rem;
+}
+.gykt-bz>span{
+    display: inline!important;
+}
+.gykt-reset,.gykt-sub{
+    width:24rem;
+    height:8.6rem;
+    line-height: 8.6rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 3rem;
+}
+.gykt-btn{
+    text-align: center;
+    background: #fff;
+    margin-top: -0.1rem;
+    padding-bottom: 3rem;
+}
+.gykt-reset{
+    background: #CDCDCD;
+    margin-right: 3rem;
+}
+.gykt-sub{
+    background: #0068B7;
+    color:#fff;
+}
+.gykt-footer{
+    margin-top: -0.2rem;
+    width:100%;
+}

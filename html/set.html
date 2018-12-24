@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <title>设置</title>
+</head>
+<body>
+    <div class="jsb_header">
+        <img src="../img/back.png" alt="" class="back" data-url="4">
+        设置
+    </div>
+    <div class="mine-set">
+        <div class="mine-msg-list">
+            <div class="weui-cells">
+                <!--<a class="weui-cell weui-cell_access" href="mine-set-edit-password.html">-->
+                    <!--<div class="weui-cell__hd"><img src="../img/icon-My-password.png"></div>-->
+                    <!--<div class="weui-cell__bd">-->
+                        <!--<p>修改密码</p>-->
+                    <!--</div>-->
+                    <!--<img src="../img/more.png" alt="" class="more-img">-->
+                <!--</a>-->
+                <!--<a class="weui-cell weui-cell_access" href="">-->
+                    <!--<div class="weui-cell__hd"><img src="../img/icon-My-clear.png"></div>-->
+                    <!--<div class="weui-cell__bd">-->
+                        <!--<p>清理缓存</p>-->
+                    <!--</div>-->
+                    <!--<img src="../img/more.png" alt="" class="more-img">-->
+                <!--</a>-->
+                <!--<a class="weui-cell weui-cell_access" href="">-->
+                    <!--<div class="weui-cell__hd"><img src="../img/icon-My-up.png"></div>-->
+                    <!--<div class="weui-cell__bd">-->
+                        <!--<p>版本更新</p>-->
+                    <!--</div>-->
+                    <!--<div class="weui-cell__ft version-information">V2.0.01</div>-->
+                    <!--<img src="../img/more.png" alt="" class="more-img">-->
+                <!--</a>-->
+                <a class="weui-cell weui-cell_access" href="mine-set-about-us.html">
+                    <div class="weui-cell__hd"><img src="../img/icon-My-about us.png"></div>
+                    <div class="weui-cell__bd">
+                        <p>关于我们</p>
+                    </div>
+                    <img src="../img/more.png" alt="" class="more-img">
+                </a>
+                <a class="weui-cell weui-cell_access" href="mine-set-help.html">
+                    <div class="weui-cell__hd"><img src="../img/icon-My-help.png"></div>
+                    <div class="weui-cell__bd">
+                        <p>帮助</p>
+                    </div>
+                    <img src="../img/more.png" alt="" class="more-img">
+                </a>
+                <a class="weui-cell weui-cell_access" href="mine-set-feedback.html">
+                    <div class="weui-cell__hd"><img src="../img/icon-My-idear.png"></div>
+                    <div class="weui-cell__bd">
+                        <p>意见反馈</p>
+                    </div>
+                    <img src="../img/more.png" alt="" class="more-img">
+                </a>
+                <!--<a class="weui-cell weui-cell_access" >-->
+                    <!--<div class="weui-cell__hd"><img src="../img/icon-My-message.png"></div>-->
+                    <!--<div class="weui-cell__bd">-->
+                        <!--<p>消息推送</p>-->
+                    <!--</div>-->
+                    <!--<div class="weui-cell__ft ">-->
+                        <!--<label for="switchCP" class="weui-switch-cp">-->
+                            <!--<input id="switchCP" class="weui-switch-cp__input" type="checkbox" checked="checked">-->
+                            <!--<div class="weui-switch-cp__box ts-btn"></div>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</a>-->
+            </div>
+        </div>
+    </div>
+    <!--<div class="exit-logon">退出登录</div>-->
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+    $("#switchCP").click(function(){
+        if($(this).is(':checked')){
+            // alert(1)
+        }
+    })
+</script>
+</html>

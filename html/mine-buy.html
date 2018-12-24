@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>我的购买</title>
+    <style>
+        .csq-header-change>div{
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back">
+    <div class="csq-header-change inline-block">
+        <div data-code="2" class="mine_w inline-block csq-header-change-act" onclick="head_change(2)">我的围观</div>
+        <div data-code="1" class="mine_v inline-block " onclick="head_change(1)">已购视频</div>
+    </div>
+</div>
+<div class="mine-tab-buy">
+    <div class="mine-buy-video"  style="display: none">
+        <div class="dkft-model box-sizing">
+            <!--<div class="inline-block dkft_list">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<div>PPP项目之BT与BOT业务的税务处理</div>-->
+            <!--</div>-->
+            <!--<div class="inline-block dkft_list">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<div>PPP项目之BT与BOT业务的税务处理</div>-->
+            <!--</div>-->
+            <!--<div class="inline-block dkft_list">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<div>PPP项目之BT与BOT业务的税务处理</div>-->
+            <!--</div>-->
+            <!--<div class="inline-block dkft_list">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<div>PPP项目之BT与BOT业务的税务处理</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="mine-buy-wg">
+        <div class="card-list">
+            <!--<div class="box-sizing">-->
+                <!--<div class="clist-head">-->
+                    <!--<img src="../img/ceshi.jpg" alt="">-->
+                    <!--<div class="inline-block">-->
+                        <!--<div class="user-name">-->
+                            <!--用户王嘉创-->
+                        <!--</div>-->
+                        <!--<div class="user-grade">-->
+                            <!--<img src="../img/icon-index-gold member.png" alt="">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="clist-msg">-->
+                    <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
+                <!--</div>-->
+                <!--<div class="clist-foot">-->
+                    <!--<div>2018-09-09 12:00:01</div>-->
+                    <!--<div>-->
+                        <!--<div class="inline-block">点赞 22</div>-->
+                        <!--<div class="inline-block">围观 186</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="box-sizing">-->
+                <!--<div class="clist-head">-->
+                    <!--<img src="../img/ceshi.jpg" alt="">-->
+                    <!--<div class="inline-block">-->
+                        <!--<div class="user-name">-->
+                            <!--用户王嘉创-->
+                        <!--</div>-->
+                        <!--<div class="user-grade">-->
+                            <!--<img src="../img/icon-index-gold member.png" alt="">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="clist-msg">-->
+                    <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
+                <!--</div>-->
+                <!--<div class="clist-foot">-->
+                    <!--<div>2018-09-09 12:00:01</div>-->
+                    <!--<div>-->
+                        <!--<div class="inline-block">点赞 22</div>-->
+                        <!--<div class="inline-block">围观 186</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="none-msg">暂无任何记录</div>
+    <div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/mine-buy.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+    function head_change(e){
+        if(e==1){
+            $(".mine-buy-video").show();
+            $(".mine-buy-wg").hide();
+        }else{
+            $(".mine-buy-video").hide();
+            $(".mine-buy-wg").show();
+        }
+    }
+</script>
+</html>
