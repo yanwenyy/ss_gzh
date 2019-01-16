@@ -30,7 +30,7 @@ $(function(){
                     hangxin_img="../img/hangxin_vip_dateout.png";
                     hangxin_date="航信会员过期";
                 }
-                $(".hangxin_vip_card .mine-user-name").html(`${data.userName||"匿名用户"}
+                $(".hangxin_vip_card .mine-user-name").html(`${data.realName||"匿名用户"}
                     <div style="height: 3.6rem"><img src="${hangxin_img}" alt="" class="user-grade" ></div>
                     <div class="hangxin-date">
                         ${hangxin_date}

@@ -1,5 +1,5 @@
 $(function(){
-    var id=getUrlParms("id"),status=getUrlParms("status");
+    var id=getUrlParms("id"),status=getUrlParms("status"),answer_id='';
     $(".back").click(function(){
         window.location.href="mine-free-question-list.html";
     });
@@ -7,6 +7,9 @@ $(function(){
         // console.log(data);
         //我的提问
         var questionUserOwnMsg=data.question;
+        if(questionUserOwnMsg.quType==1){
+            window.location.href="mine-free-question-release.html?id="+id;
+        }
         //用户等级
         var score_img=get_score(questionUserOwnMsg.integralScore,questionUserOwnMsg.aision,questionUserOwnMsg.vip);
         $(".m-q-f-detail .free-user_imgage").attr("src",head_src+questionUserOwnMsg.headImage).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
@@ -37,34 +40,43 @@ $(function(){
     }
     ajax(http_url.url+"/question/acceptAnswer",{
         "status":status, "questionUuid":id},get_detail);
+    if(status==3||status==4){
+        $(".error-correction-btn").show();
+    }
     //回答列表
     function get_answer(data){
         console.log(data);
-        var answerUsers=data.answerUsers,answer_html='';
+        var answerUsers=data.answerUsers,answer_html='',jc_title_html='';
         for(var i=0;i<answerUsers.length;i++){
             var adopt_act,adopt_html='',jb_html='',jb_class="";
             if(answerUsers[i].status==1){
                 adopt_html="采纳";
                 adopt_act="adopt_act";
-                jb_html="举报";
-            }else if(answerUsers[i].status==2){
-                adopt_html="";
+                jb_html="不满意";
+            }else if(answerUsers[i].status==2||answerUsers[i].checkStatus==2){
+                adopt_html="<img src='../img/best-answer.png'>";
                 adopt_act="";
                 jb_html="";
+                answer_id=answerUsers[i].uuid;
             }else if(answerUsers[i].status==3){
                 adopt_html="采纳";
                 adopt_act="adopt_act_jb";
                 jb_class="red";
-                jb_html="已举报";
+                // jb_html="已举报";
             }else if(answerUsers[i].status==4){
                 adopt_html="采纳";
                 adopt_act="adopt_act_jb";
                 jb_class="red";
-                jb_html="举报通过";
+                // jb_html="举报通过";
             }else if(answerUsers[i].status==5){
                 adopt_html="采纳";
                 adopt_act="adopt_act";
-                jb_html="举报";
+                // jb_html="举报";
+            }else if(answerUsers[i].status==6){
+                adopt_html="<img src='../img/error-answer.png'>";
+                adopt_act="";
+                // jb_html="举报";
+                jc_title_html=`<div class="huida box-sizing">答案纠错</div>`;
             }
             var score_answer=answerUsers[i].score,score_html="",pj_show="";
             for(var p=0;p<5;p++){
@@ -84,6 +96,7 @@ $(function(){
             }
             var realName=get_name(answerUsers[i]);
             answer_html+=`
+                ${jc_title_html}
                 <div class="card-list zx-list m-q-f-d-msg">
                     <div class="box-sizing watch-answer-expert">
                         <div class="clist-head">
@@ -134,6 +147,53 @@ $(function(){
             `
         }
         $('.watch-answer-msg').html(answer_html);
+        //我的纠错显示
+        var changerAnswer=data.changerAnswer,jc_html='';
+        if(changerAnswer!=''&&changerAnswer!=null){
+            ajax_nodata(http_url.url+"/user/message",function(data){
+                if(data.code==1){
+                    var all_usermsg=data;
+                    console.log(all_usermsg);
+                    $(".mine-jc-show").show();
+                    for(var j=0;j<changerAnswer.length;j++){
+                        jc_html+=`
+                    <div class="card-list zx-list m-q-f-d-msg">
+                            <div class="box-sizing watch-answer-expert">
+                                <div class="clist-head">
+                                <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
+                                <div class="inline-block">
+                                <div class="user-name">
+                                ${get_name(all_usermsg)}
+                                <div class="inline-block zxs-grade">
+                                <img src="${get_score(all_usermsg.integralScore,all_usermsg.aision,all_usermsg.vip)}" alt="">
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="clist-msg">
+                                ${changerAnswer[j].content}
+                                </div>
+                            </div>
+                            <ul class="zxs-range">
+                                <li>
+                                <span class="inline-block">所属专题：</span>
+                                <span class="inline-block">${changerAnswer[j].topic||""}</span>
+                                </li>
+                                <li>
+                                <span class="inline-block">所属专题：</span>
+                                <span class="inline-block">
+                                ${changerAnswer[j].tax||""}
+                                </span>
+                                </li>
+                            </ul>
+                            <div class="m-q-f-date box-sizing">${format(changerAnswer[j].date)}</div>
+                        </div>
+                `;
+                    }
+                    $(".mine-jc-list").html(jc_html);
+                }
+            });
+        }
         if(status==1||status==2){
             $(".evaluation-score").hide();
         }
@@ -146,7 +206,7 @@ $(function(){
             if(answerUsers[i].status==1){
                 adopt_html="采纳";
                 adopt_act="adopt_act";
-                jb_html="举报";
+                jb_html="不满意";
             }else if(answerUsers[i].status==2){
                 adopt_html="";
                 adopt_act="";
@@ -209,8 +269,8 @@ $(function(){
     ajax(http_url.url+"/question/acceptAnswer",{
         "status":status, "questionUuid":id,"sinceId":count_start, "maxId":count_end},get_answer);
     if(status!=3&&status!=4){
-        scroll_more(http_url.url+"/question/acceptAnswer",{
-            "status":status, "questionUuid":id,"sinceId":count_start, "maxId":count_end},get_answer_more);
+        // scroll_more(http_url.url+"/question/acceptAnswer",{
+        //     "status":status, "questionUuid":id,"sinceId":count_start, "maxId":count_end},get_answer_more);
     }
     //采纳点击
     $("body").on("click",".adopt",function(){
@@ -232,9 +292,11 @@ $(function(){
         var id=$(this).attr("data-id"),that=$(this);
         function jb(data){
             if(data.code==1){
-                alert("已举报");
-                that.html("已举报");
-                window.location.href="../html/mine-free-question-list.html"
+                alert(data.des);
+                // alert("已举报");
+                // that.html("已举报");
+                // window.location.href="../html/mine-free-question-list.html"
+                window.location.reload();
             }else{
                 alert(data.des);
             }
@@ -316,4 +378,12 @@ $(function(){
             })
         });
     }
+    //我要纠错
+    $(".error-correction-btn").click(function(){
+       window.location.href="mine-ques-errorCorrection.html?id="+answer_id;
+    });
+    //查看详情点击
+    $(".look-ques-press").click(function(){
+        window.location.href="mine-ques-progress.html?id="+id;
+    });
 });

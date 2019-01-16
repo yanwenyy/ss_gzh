@@ -23,9 +23,10 @@
         <img src="../img/icon-exchange-passage.png" alt="">
         <input type="text" placeholder="请输入兑换密码" class="csk-password">
     </div>
+    <div class="rigster-pass-needkonwn">提示：有财税问答卡请务必填写，后期无法补填。填写 后点完成，没有点跳过。</div>
     <div class="rigster-down-btn bangka">完成</div>
     <div class="rigster-pass-btn">跳过</div>
-    <div class="rigster-pass-needkonwn">提示：有财税问答卡请务必填写，后期无法补填。填 写后点完成，没有点跳过。</div>
+
 </div>
 </body>
 <script src="../js/rem-reset.js"></script>
@@ -44,32 +45,43 @@
             if(csk_code==''||csk_pass==''){
                 alert("请完善信息");
             }else{
-                $.ajax({
-                    url:http_url.url+"/wx/binding/card",
-                    type:"post",
-                    dataType: "json",
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json;charset=utf-8",
-                        "cookieId":sessionStorage.getItem("cookieId")
-                    },
-                    data:JSON.stringify({
-                        "id":csk_code,
-                        "securityCode":csk_pass
-                    }),
-                    success:function(e){
-                        console.log(e);
-                        if(e.code == "1"){
-                            alert("绑卡成功");
-                            window.location.href="../html/index.html?newuser=yes";
-                        }else{
-                            alert(e.des);
-                        }
-                    },
-                    error:function(e){
-                        console.log(e);
+                // $.ajax({
+                //     url:http_url.url+"/wx/binding/card",
+                //     type:"post",
+                //     dataType: "json",
+                //     headers: {
+                //         "Accept": "application/json",
+                //         "Content-Type": "application/json;charset=utf-8",
+                //         "cookieId":sessionStorage.getItem("cookieId")
+                //     },
+                //     data:JSON.stringify({
+                //         "id":csk_code,
+                //         "securityCode":csk_pass
+                //     }),
+                //     success:function(e){
+                //         console.log(e);
+                //         if(e.code == "1"){
+                //             alert("绑卡成功");
+                //             window.location.href="../html/index.html?newuser=yes";
+                //         }else{
+                //             alert(e.des);
+                //         }
+                //     },
+                //     error:function(e){
+                //         console.log(e);
+                //     }
+                // })
+                function bk(data){
+                    if(data.code == "1"){
+                        alert("绑卡成功");
+                        window.location.href="../html/index.html?newuser=yes";
+                    }else{
+                        alert(data.des);
                     }
-                })
+                }
+                ajax(http_url.url+"/wx/binding/card",{
+                    "id":csk_code,
+                    "securityCode":csk_pass},bk);
             }
         });
         //跳过绑卡

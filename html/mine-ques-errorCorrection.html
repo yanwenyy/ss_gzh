@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/free-question.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>我要纠错</title>
+    <style>
+        body{
+            background: #fff;
+        }
+        .weui-select-modal .weui-cells{
+            min-height: 44.8rem;
+        }
+        .ques-text{
+            height:37.3rem;
+        }
+        .ques-input{
+            margin-bottom: 0;
+            height:auto;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header">
+    <img src="../img/back.png" alt="" class="back" data-url="1">
+    我要纠错
+    <div class="release inline-block">提交</div>
+</div>
+<div class="ques-input">
+    <textarea name="" id="" class="ques-text box-sizing" placeholder="写下您的见解，一经采纳有机会得到现金红包奖励。"></textarea>
+</div>
+<div class="weui-cells">
+    <a class="weui-cell weui-cell_access" > <!--href="ques-city.html"-->
+        <div class="weui-cell__bd">
+            <p>所属专题(单选)</p>
+        </div>
+        <div class="weui-cell__ft version-information">
+            <input type="text" placeholder="请选择" readonly="" id="hy">
+        </div>
+        <img src="../img/more.png" alt="" class="more-img">
+    </a>
+</div>
+<div class="tax-category consultant-class-group">
+    <div>所属税种(多选)：</div>
+    <div  class="consultant-list-sel sz">
+        <div class="inline-block">房产税</div>
+        <div class="inline-block">印花税</div>
+        <div class="inline-block">进出口税收</div>
+        <div class="inline-block">城镇土地使用税</div>
+        <div class="inline-block">会计处理</div>
+        <div class="inline-block">会计处理</div>
+    </div>
+</div>
+<div class="qsw-money-rule box-sizing">
+    <div>提示：</div>
+    <ul>
+        <li>1、纠错答案采纳后将公开显示供其他用户参考。</li>
+        <li>2、如果填写的答案与他人的重复则按提交先后判定。</li>
+    </ul>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/mine-ques-errorCorrection.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

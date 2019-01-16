@@ -1,7 +1,7 @@
 $(function(){
     var watch_id=getUrlParms("cwatch_id");
     function get_cwatch(data){
-        console.log(data);
+        // console.log(data);
         var questionUser=data.questionUser,
             questionUser_createDate=format(questionUser.date);
         //用户等级
@@ -43,13 +43,55 @@ $(function(){
                     <span>围观<span class="wg-num">${questionUser.lookNum}</span></span>
                 </div>
             </div>
-            <div class="answer-btn box-sizing">立即支付</div>`);
+            `);
 
     }
     ajax_nodata(http_url.url+"/onlook/wx/onlookAuthorized?uuid="+watch_id,get_cwatch);
+    //围观人员列表
+    function get_wg(data){
+        // console.log(data);
+        var OnLookCountDetail=data.OnLookCountDetail,html='';
+        for(var i=0;i<8;i++){
+            var v_html='';
+            if(OnLookCountDetail[i]){
+                v_html=`
+                <img src="${head_src+OnLookCountDetail[i].headImage}" alt="">`;
+            }else{
+                v_html='<img src="../img/user.png" alt="">'
+            }
+            html+=v_html;
+        }
+        $(".look-peo-img").html(html);
+        $('.look-number').html(data.OnLookCount);
+    }
+    ajax(http_url.url+"/onlook/onlookCountDetailList",{
+        "sinceId":"1",
+        "MaxId":"8",
+        "questionUuid":watch_id},get_wg);
     //支付按钮点击
     $("body").on("click",".answer-btn",function(){
         // window.location.href="watch-pay.html?price=1&&watch_id="+watch_id;
         window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?"+wx_hd_url.url+"%2fjsb_weixin%2fhtml%2fwatch-pay.html%3fwatch_id%3d"+watch_id+"%26%26price%3d1&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
     });
+    //围观详情点击
+    $(".wacth-people-deatial").click(function(){
+        window.location.href="wacth-people-list.html?uuid="+watch_id;
+    });
+    //回答者信息
+    function get_answer(data){
+        console.log(data);
+        var html=`<img src="${head_src+data.userMsg.headImage}" onerror=src="../img/user.png" alt="">
+                <div class="inline-block">
+                    <div class="user-name">
+                    ${data.userMsg.realName}
+                        <div class="inline-block zxs-grade">
+                        <img src="../img/icon-expert icon.png" alt="">
+                        ${data.userMsg.levelName}
+                        </div>
+                    </div>
+                    <div class="zx-detail-date">${data.userMsg.counselorDuty}</div>
+                </div>`;
+        $(".cwath-anser-body .clist-head").html(html);
+    }
+    ajax(http_url.url+"/user/someUserMsg",{"questionUuid":watch_id},get_answer);
 });

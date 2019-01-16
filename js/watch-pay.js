@@ -8,7 +8,7 @@ $(function(){
     $(".zf_money").html(price);
     //余额显示
     function show_ye(data){
-        console.log(data);
+        // console.log(data);
         $(".qb").html(parseFloat(data.balance).toFixed(2));
         $(".xxgwk").html(parseFloat(data.vipBalance).toFixed(2));
         $(".cswdk").html(parseFloat(data.qacardBlance).toFixed(2));
@@ -185,7 +185,69 @@ $(function(){
         });
         var ques=sessionStorage.getItem("ques");
         ques=JSON.parse(ques);
-        console.log(ques);
+        // console.log(ques);
+        //类似问题
+        ajax(http_url.url+"/onlook/serarch",{
+            "sinceId":count_start,
+            "maxId":count_end,
+            "content":ques.content
+        },function(data){
+            console.log(data);
+            if(data.data!=""){
+                $(".similar_answer").show();
+                var articles=data.data,html='';
+                for(var i=0;i<articles.length;i++){
+                    var atc_title;
+                    if(articles[i].content.length>40){
+                        atc_title=articles[i].content.substr(0,40)+"..."
+                    }else{
+                        atc_title=articles[i].content;
+                    }
+                    html+=`
+                    <li  data-id='${articles[i].uuid}' data-status="${articles[i].status}">
+                        ${atc_title}
+                        <div class="watch-search-footer">
+                            <div class="inline-block">${format(articles[i].date)}</div>
+                            <div class="inline-block"><span>点赞: ${articles[i].approveNum}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>围观: ${articles[i].lookNum}</span></div>
+                        </div>
+                    </li>
+                    `
+                }
+                $(".wacth-search-list>ul").html(html);
+            }
+        });
+        scroll_more(http_url.url+"/onlook/serarch",{
+            "sinceId":count_start,
+            "maxId":count_end,
+            "content":ques.content
+        },function(data){
+            console.log(data);
+            if(data.data!=""&&data.data!=null){
+                $(".similar_answer").show();
+                var articles=data.data,html='';
+                for(var i=0;i<articles.length;i++){
+                    var atc_title;
+                    if(articles[i].content.length>40){
+                        atc_title=articles[i].content.substr(0,40)+"..."
+                    }else{
+                        atc_title=articles[i].content;
+                    }
+                    html+=`
+                    <li  data-id='${articles[i].uuid}' data-status="${articles[i].status}">
+                        ${atc_title}
+                        <div class="watch-search-footer">
+                            <div class="inline-block">${format(articles[i].date)}</div>
+                            <div class="inline-block"><span>点赞: ${articles[i].approveNum}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>围观: ${articles[i].lookNum}</span></div>
+                        </div>
+                    </li>
+                    `
+                }
+                $(".wacth-search-list>ul").append(html);
+            }else{
+                scroll_status=false;
+                $(".msg-loading").hide();
+            }
+        });
         $(".QACardBalance_pay").show();
         $(".pay_name").html("快速问金额支付");
         //微信支付

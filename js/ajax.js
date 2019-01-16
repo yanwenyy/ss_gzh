@@ -43,7 +43,8 @@ function ajax(url,data,succ){
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json;charset=utf-8",
-            "cookieId":sessionStorage.getItem("cookieId")
+            "cookieId":sessionStorage.getItem("cookieId"),
+            "version":"1"
         },
         data:JSON.stringify(data),
         success:function(data){
@@ -68,7 +69,8 @@ function ajax_nodata(url,succ){
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json;charset=utf-8",
-            "cookieId":sessionStorage.getItem("cookieId")
+            "cookieId":sessionStorage.getItem("cookieId"),
+            "version":"1"
         },
         success:function(data){
             if(data.code=="2"){

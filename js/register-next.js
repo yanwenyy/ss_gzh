@@ -74,13 +74,14 @@ $(function(){
                 dataType: "json",
                 headers: {
                     "Accept": "application/json",
-                    "Content-Type": "application/json;charset=utf-8"
+                    "Content-Type": "application/json;charset=utf-8",
+                    "version":"1"
                 },
                 data:JSON.stringify({
                     "phoneNum":phonenum,
                     "codeType":"wxbd",
                     "imgCode":imgnum,
-                    "codeMessage":sessionStorage.getItem("codeinfos")
+                    "codeMessage":sessionStorage.getItem("codeinfos"),
                 }),
                 success:function(e){
                     console.log(e);
@@ -120,7 +121,8 @@ $(function(){
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json;charset=utf-8",
-                    "cookieId":sessionStorage.getItem("cookieId")
+                    "cookieId":sessionStorage.getItem("cookieId"),
+                    "version":"1"
                 },
                 data:JSON.stringify({
                     "phoneNumber":phonenum,

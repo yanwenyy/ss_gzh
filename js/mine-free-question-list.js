@@ -1,4 +1,7 @@
 $(function(){
+    $(".back").click(function(){
+        window.location.href="index-mine.html";
+    });
     //获取列表
     function get_list(data){
         console.log(data);
@@ -18,13 +21,15 @@ $(function(){
             }else if(questions[i].status==4){
                 status="已采纳";
             }else if(questions[i].status==5){
-                status="未采纳";
+                status="已过期";
             }else if(questions[i].status==6){
                 status="已退款";
             }else if(questions[i].status==7){
                 status="退款异常";
             }else if(questions[i].status==8){
                 status="退款异常";
+            }else if(questions[i].status==9){
+                status="已纠错";
             }
             var content=questions[i].content;
             if(questions[i].content.length>40){
@@ -74,13 +79,15 @@ $(function(){
                 }else if(questions[i].status==4){
                     status="已采纳";
                 }else if(questions[i].status==5){
-                    status="未采纳";
+                    status="已过期";
                 }else if(questions[i].status==6){
                     status="已退款";
                 }else if(questions[i].status==7){
                     status="退款异常";
                 }else if(questions[i].status==8){
                     status="退款异常";
+                }else if(questions[i].status==9){
+                    status="已纠错";
                 }
                 var content=questions[i].content;
                 if(questions[i].content.length>40){

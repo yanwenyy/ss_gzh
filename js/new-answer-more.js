@@ -115,4 +115,18 @@ $(function(){
     }
     ajax(http_url.url+"/onlook/look/list",{"sinceId":count_start, "maxId":count_end, "type":"new"},new_watch);
     scroll_more(http_url.url+"/onlook/look/list",{"sinceId":count_start, "maxId":count_end, "type":"new"},new_watch_more)
+    //1元围观
+    $("body").on("click",".one_wg",function(){
+        var cwatch_id=$(this).attr("data-id");
+        //微信授权
+        function cwatch_jurisdiction(data){
+            console.log(data);
+            if(data.isBuy==1){//未购买
+                window.location.href="../html/cwatch.html?cwatch_id="+cwatch_id;
+            }else if(data.isBuy==0){//已围观
+                window.location.href="../html/watch-anwser.html?cwatch_id="+cwatch_id;
+            }
+        }
+        ajax_nodata(http_url.url+"/onlook/wx/onlookAuthorized?uuid="+cwatch_id,cwatch_jurisdiction);
+    });
 });

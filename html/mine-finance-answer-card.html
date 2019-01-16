@@ -27,6 +27,10 @@
             <div>¥<span class="csk-money"></span></div>
         </div>
         <div class="yqdhb-btn">邀请得红包</div>
+        <div class="bdcswdk">
+            <div>绑定问答卡</div>
+            <span>提示:注册24小时之内可以再次绑卡</span>
+        </div>
         <div class="cswd-rule">
             <div>财税问答红包规则</div>
             <div>
@@ -48,6 +52,19 @@
 </div>
 <div class="shadow">
     <img src="../img/share.png" alt="" class="share_img">
+</div>
+<div class="bangka-shadow">
+    <div class="bk-model box-sizing">
+        <div class="bk-model-header">
+            绑定问答卡
+            <div class="inline-block close-ba-model">X</div>
+        </div>
+        <div class="bk-model-body box-sizing">
+            <input type="number" placeholder="请输入实体卡" class="box-sizing wdk-num">
+            <input type="number" placeholder="请输入实体卡密码"  class="box-sizing wdk-password">
+            <div>绑定</div>
+        </div>
+    </div>
 </div>
 </body>
 <script src="../js/rem-reset.js"></script>
@@ -119,6 +136,13 @@
             });
         }
         ajax_nodata(http_url.url+"/user/message",get_money);
+        //是否可以绑定问答卡
+        function if_bk(data){
+            if(data.code==1){
+                $(".bdcswdk").show();
+            }
+        }
+        ajax_nodata(http_url.url+'/registIsOvertime',if_bk);
         //分享链接按钮点击
         $(".yqdhb-btn").click(function(){
             $(".shadow").show();
@@ -128,6 +152,33 @@
         });
         $(".release").click(function(){
             window.location.href="mine-wallet-transaction-record.html?payType=qaCard"
+        });
+        //绑卡按钮点击
+        $(".bdcswdk >div").click(function(){
+            $(".bangka-shadow").show();
+        });
+        //关闭绑卡弹窗
+        $(".close-ba-model").click(function(){
+            $(".bangka-shadow").hide();
+        });
+        //绑卡提交
+        $(".bk-model-body>div").click(function(){
+            var csk_code=$(".wdk-num").val(),csk_pass=$(".wdk-password").val();
+            if(csk_code==''||csk_pass==''){
+                alert("请完善信息");
+            }else{
+                function bk(data){
+                    if(data.code == "1"){
+                        alert("绑卡成功");
+                        $(".bdcswdk").hide();
+                    }else{
+                        alert(data.des);
+                    }
+                }
+                ajax(http_url.url+"/wx/binding/card",{
+                    "id":csk_code,
+                    "securityCode":csk_pass},bk);
+            }
         })
     });
 </script>

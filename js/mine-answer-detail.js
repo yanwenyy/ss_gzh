@@ -1,5 +1,8 @@
 $(function(){
-    var id=getUrlParms("id");
+    var id=getUrlParms("id"),status=getUrlParms("status"),answer_id='';
+    if(status==2){
+        $(".error-correction-btn").show();
+    }
     function get_detail(data){
         //我的提问
         console.log(data);
@@ -44,48 +47,58 @@ $(function(){
             $(".answer-answer .zx-detail-img").html(html);
         }
         var answerUsers=data.answerUsers,answer_html='';
-        var answer_score="";
-        for(var k=0;k<answerUsers[0].score;k++){
-            answer_score+=` <img src="../img/-icon-star.png" alt="">`;
-        }
-        var on='on';
-        if(answerUsers[0].status!==2){
-            on="out";
-        }
-        var realName=get_name(answerUsers[0]);
-        $(".watch-answer-msg").html(`
-             <div class="card-list zx-list">
+        for(var m=0;m<answerUsers.length;m++){
+            var answer_score="",adopt_html='',jc_title_html='';
+            for(var k=0;k<answerUsers[m].score;k++){
+                answer_score+=` <img src="../img/-icon-star.png" alt="">`;
+            }
+            var on='on';
+            if(answerUsers[m].status!==2){
+                on="out";
+            }
+            if(answerUsers[m].status==2||answerUsers[m].checkStatus==2){
+                adopt_html="<img src='../img/best-answer.png'>";
+                answer_id=answerUsers[m].uuid;
+            }else if(answerUsers[m].status==6){
+                adopt_html="<img src='../img/error-answer.png'>";
+                jc_title_html=`<div class="huida box-sizing">答案纠错</div>`;
+            }
+            var realName=get_name(answerUsers[m]);
+            answer_html+=`
+                ${jc_title_html}
+               <div class="card-list zx-list">
                 <div class="box-sizing watch-answer-expert">
                     <div class="clist-head">
-                        <img class="look-hp-image" data-role="${answerUsers[0].role}" data-phone="${answerUsers[0].phoneNumber}" src="${head_src+answerUsers[0].headImage}" alt="" onerror=src="../img/user.png">
+                        <img class="look-hp-image" data-role="${answerUsers[m].role}" data-phone="${answerUsers[m].phoneNumber}" src="${head_src+answerUsers[m].headImage}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||""}
                                 <div class="inline-block zxs-grade">
                                     <img src="../img/icon-expert icon.png" alt="">
-                                    ${answerUsers[0].levelName}
+                                    ${answerUsers[m].levelName}
                                 </div>
                             </div>
-                            <div class="zx-detail-date">${answerUsers[0].counselorDuty}</div>
+                            <div class="zx-detail-date">${answerUsers[m].counselorDuty}</div>
                         </div>
+                        <div class="adopt">${adopt_html}</div>
                     </div>
                     <div class="clist-msg">
-                        ${answerUsers[0].content}
+                        ${answerUsers[m].content}
                     </div>
                 </div>
                 <ul class="zxs-range">
                     <li>
                             <span class="inline-block">所属专题：</span>
-                            <span class="inline-block">${answerUsers[0].topic||""}</span>
+                            <span class="inline-block">${answerUsers[m].topic||""}</span>
                         </li>
                         <li>
                             <span class="inline-block">所属税种：</span>
                             <span class="inline-block">
-                           ${answerUsers[0].tax||""}
+                           ${answerUsers[m].tax||""}
                         </span>
                         </li>
                 </ul>
-                <div class="m-q-f-date box-sizing">${format(answerUsers[0].date)}</div>
+                <div class="m-q-f-date box-sizing">${format(answerUsers[m].date)}</div>
                 <div class="evaluation-score box-sizing ${on}">
                     <div>
                         评价得分：
@@ -93,12 +106,64 @@ $(function(){
                             ${answer_score}
                         </div>
                     </div>
-                    <div>${answerUsers[0].appraisal||""}</div>
+                    <div>${answerUsers[m].appraisal||""}</div>
                 </div>
-            </div>
-        `)
+            </div>`
+        }
+        $(".watch-answer-msg").html(answer_html);
+        //我的纠错显示
+        var changerAnswer=data.changerAnswer,jc_html='';
+        if(changerAnswer!=''&&changerAnswer!=null){
+            ajax_nodata(http_url.url+"/user/message",function(data){
+                if(data.code==1){
+                    var all_usermsg=data;
+                    console.log(all_usermsg);
+                    $(".mine-jc-show").show();
+                    for(var j=0;j<changerAnswer.length;j++){
+                        jc_html+=`
+                    <div class="card-list zx-list m-q-f-d-msg">
+                            <div class="box-sizing watch-answer-expert">
+                                <div class="clist-head">
+                                <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
+                                <div class="inline-block">
+                                <div class="user-name">
+                                ${get_name(all_usermsg)}
+                                <div class="inline-block zxs-grade">
+                                <img src="${get_score(all_usermsg.integralScore,all_usermsg.aision,all_usermsg.vip)}" alt="">
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="clist-msg">
+                                ${changerAnswer[j].content}
+                                </div>
+                            </div>
+                            <ul class="zxs-range">
+                                <li>
+                                <span class="inline-block">所属专题：</span>
+                                <span class="inline-block">${changerAnswer[j].topic||""}</span>
+                                </li>
+                                <li>
+                                <span class="inline-block">所属专题：</span>
+                                <span class="inline-block">
+                                ${changerAnswer[j].tax||""}
+                                </span>
+                                </li>
+                            </ul>
+                            <div class="m-q-f-date box-sizing">${format(changerAnswer[j].date)}</div>
+                        </div>
+                `;
+                    }
+                    $(".mine-jc-list").html(jc_html);
+                }
+            });
+        }
     }
     ajax(http_url.url+"/question/otherQuestion",{"questionUuid":id},get_detail);
+    //我要纠错
+    $(".error-correction-btn").click(function(){
+        window.location.href="mine-ques-errorCorrection.html?id="+answer_id;
+    });
     //微信分享
     function wx_share(){
         //配置微信信息

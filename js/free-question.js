@@ -115,7 +115,7 @@ $(function(){
                     "images":images
                 },hangxin_send)
             }else{
-                // window.location.href="../html/watch-pay.html?price=15&&qeus=ques";
+                // window.location.href="../html/watch-pay.html?price=15&&qeus="+ques;
                 window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?"+wx_hd_url.url+"%2fjsb_weixin%2fhtml%2fwatch-pay.html%3fqeus%3dqeus%26%26price%3d15&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
             }
         }
