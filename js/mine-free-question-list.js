@@ -36,7 +36,7 @@ $(function(){
                 content=questions[i].content.substr(0,40)+"...";
             }
             html+=`
-            <div class="mine-f-q-list box-sizing"  data-id="${questions[i].uuid}" data-status="${questions[i].status}">
+            <div class="mine-f-q-list box-sizing"  data-id="${questions[i].uuid}" data-status="${questions[i].status}"  data-quType="${questions[i].quType}">
                 <div>
                     <div class="inline-block">${format(questions[i].date)}</div>
                     <div class="inline-block red time-msg" data-time="${status_time}">${status}</div>
@@ -94,7 +94,7 @@ $(function(){
                     content=questions[i].content.substr(0,40)+"...";
                 }
                 html+=`
-            <div class="mine-f-q-list box-sizing"  data-id="${questions[i].uuid}"  data-status="${questions[i].status}">
+            <div class="mine-f-q-list box-sizing"  data-id="${questions[i].uuid}"  data-status="${questions[i].status}" data-quType="${questions[i].quType}">
                 <div>
                     <div class="inline-block">${format(questions[i].date)}</div>
                     <div class="inline-block red">${status}</div>
@@ -129,7 +129,7 @@ $(function(){
     scroll_more(http_url.url+"/question/admireList",{"sinceId":count_start,"maxId":count_end},get_list_more);
     $("body").on("click",".mine-f-q-list",function(){
         var id=$(this).attr("data-id");
-        window.location.href="mine-free-question-detail.html?id="+id+"&&status="+$(this).attr("data-status");
+        window.location.href="mine-free-question-detail.html?id="+id+"&&status="+$(this).attr("data-status")+"&&quType="+$(this).attr("data-quType");
     })
 });
 function get_djs(endTime){

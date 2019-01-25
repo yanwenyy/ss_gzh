@@ -72,7 +72,7 @@
 
 // 使用 API
             qrcode.clear();
-            qrcode.makeCode('http://test.jieshuibao.com/share_app/html/user-register.html?inviteUserId='+phone);
+            qrcode.makeCode(total_share_url.url+'share_app/html/user-register.html?inviteUserId='+phone);
         }
         ajax_nodata(http_url.url+"/user/message",get_phone);
     });

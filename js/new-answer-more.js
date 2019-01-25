@@ -17,7 +17,7 @@ $(function(){
                 if_buy="已围观";
                 cwatch_buy="cwatch_buy";
             }else{
-                if_buy="1元 围观"
+                if_buy="围观"
             }
             var realName=get_name(list[i]);
             var look_img="";
@@ -72,7 +72,7 @@ $(function(){
                     if_buy="已围观";
                     cwatch_buy="cwatch_buy";
                 }else{
-                    if_buy="1元 围观"
+                    if_buy="围观"
                 }
                 var realName=get_name(list[i]);
                 var look_img="";

@@ -11,6 +11,8 @@ $(function(){
         // console.log(data);
         if(data.aision==0){
             $(".mfw>img").attr("src","../img/hangxin-ask.png");
+        }else if(data.aision==2){
+            $(".mfw>img").attr("src","../img/gshy-ask.png");
         }
     }
     ajax_nodata(http_url.url+"/user/sectionMessage",if_hangxin);
@@ -37,7 +39,7 @@ $(function(){
         for(var i=0;i<data.length;i++){
             html+=`<li class="notice-li">
                         <img src="${head_src+data[i].headImage}" alt="" onerror=src="../img/user.png">
-                        <div class="inline-block">${data[i].peepName}围观了一个问题</div>
+                        <div class="inline-block">用户${data[i].peepName}围观了一个问题</div>
                     </li>`
         }
         $(".notice-ul").html(html);
@@ -77,7 +79,7 @@ $(function(){
                     if_buy="已围观";
                     cwatch_buy="cwatch_buy";
                 }else{
-                    if_buy="1元 围观"
+                    if_buy=" 围观"
                 }
                 var realName=get_name(list[i]);
                 var look_img="";
@@ -155,7 +157,7 @@ $(function(){
                 if_buy="已围观";
                 cwatch_buy="cwatch_buy";
             }else{
-                if_buy="1元 围观"
+                if_buy="围观"
             }
             var realName=get_name(list[i]);
             var look_img="";
@@ -222,7 +224,7 @@ $(function(){
                 if_buy="已围观";
                 cwatch_buy="cwatch_buy";
             }else{
-                if_buy="1元 围观"
+                if_buy="围观"
             }
             var realName=get_name(list[i]);
             var look_img="";
@@ -288,7 +290,7 @@ $(function(){
                 if_buy="已围观";
                 cwatch_buy="cwatch_buy";
             }else{
-                if_buy="1元 围观"
+                if_buy="围观"
             }
             var realName=get_name(list[i]);
             var look_img="";
@@ -343,7 +345,7 @@ $(function(){
                     if_buy="已围观";
                     cwatch_buy="cwatch_buy";
                 }else{
-                    if_buy="1元 围观"
+                    if_buy="围观"
                 }
                 var realName=get_name(list[i]);
                 var look_img="";
@@ -512,7 +514,7 @@ $(function(){
 
     });
     //围观搜索
-    $(".zrwg-sear").click(function(){
+    $(".index-serach").click(function(){
         window.location.href="../html/watch-search.html";
     });
     //顶部tab栏点击

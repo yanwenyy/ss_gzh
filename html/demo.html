@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        video{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<!--<video id="media" controls="controls" preload="auto" poster="" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline="true" x5-playsinline>  -->
+
+    <!-- <source src="https://cm15-c110-2.play.bokecc.com/flvs/ca/Qxn3q/uOitmhLVuJ-10.mp4?t=1548240220&key=7A4161E032767FC02B33539DA7775AA2&tpl=10&tpt=231" type="video/mp4" />-->
+
+    <!-- </video>-->
+<video id="media" src="https://cm15-c110-2.play.bokecc.com/flvs/ca/Qxn3q/uOitmhLVuJ-10.mp4?t=1548299696&key=A757C4E03E6D99AB0FCFCF67DDD94BE8&tpl=10&tpt=231" controls ></video>
+<script src="../js/jquery-2.1.4.js"></script>
+</body>
+<script>
+    $(function(){
+        Media = document.getElementById("media");
+        var eventTester = function(e){
+            Media.addEventListener(e,function(){
+                console.log((new Date()).getTime(),e)
+            },false);
+        }
+        eventTester("play");
+        Media.addEventListener("click",function(){
+            console.log((new Date()).getTime())
+        },false);
+    })
+
+</script>
+</html>

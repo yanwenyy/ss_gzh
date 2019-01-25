@@ -40,9 +40,17 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 .out {
     display: none !important
 }
-
+.index-serach{
+    height:7.2rem;
+    width:90%;
+    margin: 0 auto;
+    background:rgba(255,255,255,.3);
+    border-radius:3.6rem;
+    position: relative;
+    text-align: left;
+}
 .index-page-body {
-    margin-top: 8.8rem
+    margin-top: 18rem
 }
 
 .weui-pull-to-refresh__layer {
@@ -145,7 +153,24 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     right: 3.4rem;
     bottom: 2.7rem
 }
-
+.search-index{
+    width:2.7rem;
+    height:2.7rem;
+    margin: 2.3rem 0 0 3.7rem;
+    vertical-align: top;
+}
+.index-serach>input{
+    width:70%;
+    background: none;
+    height:100%;
+    vertical-align: top;
+    border: none;
+    font-size: 2.8rem;
+    color:#fff;
+}
+.index-serach>input::-webkit-input-placeholder{
+    color:#fff;
+}
 .toditu {
     width: 3.4rem;
     height: 5.6rem;
@@ -1675,7 +1700,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     height: 3.4rem;
     position: absolute;
     left: 3.4rem;
-    bottom: 2.7rem
+    top: 2.7rem
 }
 
 .filter-reset {

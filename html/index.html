@@ -15,6 +15,9 @@
         body{
             background: #f2f2f2;
         }
+        .jsb_header{
+            height:18rem;
+        }
     </style>
     <script>
         //声明_czc对象:
@@ -25,8 +28,12 @@
 <div class="jsb_header">
     <img src="../img/down_app.png" alt="" class="down_app new-user-down-app">
     航信办税宝
-    <img src="../img/icon-searcrh.png" class="search zrwg-sear" alt="">
+    <div class="index-serach box-sizing">
+        <img src="../img/icon-searcrh.png" class="search-index zrwg-sear" alt="">
+        <input type="text" placeholder="请输入搜索的内容" readonly  class="box-sizing" >
+    </div>
 </div>
+
     <div class="weui-tab index-page-body">
         <div class="swiper-container s2">
             <div class="swiper-wrapper">
@@ -133,6 +140,22 @@
             <!--<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>-->
         </div>
         <div class="index-card">
+            <div class="card-head box-sizing">
+                <img src="../img/icon-index-expert.png" alt="">
+                <div class="inline-block">专家推荐</div>
+                <img src="../img/icon-index-more .png" class="zjtj-more ymmd-click" alt="" data-md-name="专家推荐-查看更多">
+            </div>
+            <div class="zjtj-model box-sizing">
+                <div class="export_list_main">
+                    <!--<div class="zjtj_list inline-block">-->
+                    <!--<div><img src="../img/ceshi.jpg" alt=""></div>-->
+                    <!--<div>朱红雨老师</div>-->
+                    <!--<div>税务师资格证/税务...</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+        <div class="index-card">
             <div class="card-head box-sizing zt_head">
                 <img src="../img/grsds-index.png" alt="">
                 <div class="inline-block ">本期热门专题：</div>
@@ -224,7 +247,7 @@
                 <!--</div>-->
             </div>
         </div>
-        <div class="index-card">
+        <div class="index-card"   style="margin-bottom: 8.8rem">
             <div class="card-head box-sizing">
                 <img src="../img/icon-index-interview.png" alt="">
                 <div class="inline-block">大咖访谈</div>
@@ -298,22 +321,7 @@
                 <!--&lt;!&ndash;</div>&ndash;&gt;-->
             <!--</div>-->
         <!--</div>-->
-        <div class="index-card"  style="margin-bottom: 8.8rem">
-            <div class="card-head box-sizing">
-                <img src="../img/icon-index-expert.png" alt="">
-                <div class="inline-block">专家推荐</div>
-                <img src="../img/icon-index-more .png" class="zjtj-more ymmd-click" alt="" data-md-name="专家推荐-查看更多">
-            </div>
-            <div class="zjtj-model box-sizing">
-                <div class="export_list_main">
-                    <!--<div class="zjtj_list inline-block">-->
-                        <!--<div><img src="../img/ceshi.jpg" alt=""></div>-->
-                        <!--<div>朱红雨老师</div>-->
-                        <!--<div>税务师资格证/税务...</div>-->
-                    <!--</div>-->
-                </div>
-            </div>
-        </div>
+
         <div class="suspension_model">
             <div class="mfw ymmd-click" data-md-name="首页快速问"><img src="../img/icon-index-ask.png" alt=""></div>
             <div class="kud ymmd-click" data-md-name="首页快速答"><img src="../img/icon-index-answer.png" alt=""></div>

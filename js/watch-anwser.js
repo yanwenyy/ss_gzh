@@ -70,8 +70,8 @@ $(function(){
         </div>
         `);
         //回答者集合
+        var answer_html='';
         for(var m=0;m<answewrUser.length;m++){
-
             if(answewrUser[m].status==2){
                 answerUuid=answewrUser[m].uuid;
                 $(".error-correction-btn").show();
@@ -79,12 +79,12 @@ $(function(){
             else{
                 $(".error-correction-btn").hide();
             }
-            var score_answer=answewrUser[m].score,score_html="",answer_html='',adopt_html='',jc_title_html='';
+            var user_role='',zxs_role='',score_answer=answewrUser[m].score,score_html="",adopt_html='',jc_title_html='',pj_out='out';
             if(answewrUser[m].status==2||answewrUser[m].checkStatus==2){
                 adopt_html="<img src='../img/best-answer.png'>";
             }else if(answewrUser[m].status==6){
                 adopt_html="<img src='../img/error-answer.png'>";
-                jc_title_html=`<div class="huida box-sizing">答案纠错</div>`;
+                jc_title_html=`<div class="huida box-sizing" style="height: auto">答案纠错</div>`;
             }
             if(answewrUser[m].praiseNum>0){
                 $(".zan-csq-detail").attr("src","../img/icon-onlooked-liked-select.png");
@@ -92,15 +92,29 @@ $(function(){
             if(answewrUser[m].treadNum>0){
                 $(".cai-csq-detail").attr("src","../img/icon-onlooked-unliked-select.png");
             }
-            for(var j=0;j<score_answer;j++){
-                score_html+=`<img src="../img/-icon-star.png" alt="">`;
+            for(var j=0;j<5;j++){
+                var s='';
+                if((j<answewrUser[m].score)){
+                    s+=`<img src="../img/-icon-star.png" alt="">`;
+                }else{
+                    s+=`<img src="../img/icon-star_an.png" alt="">`;
+                }
+                score_html+=s;
+            }
+            if(answewrUser[m].status==2||answewrUser[m].status==7){
+                pj_out="";
+            }
+            if(answewrUser[m].role==1){
+                zxs_role="out";
+            }else{
+                user_role="out"
             }
             answer_html+=`
                 ${jc_title_html}
                 <div class="box-sizing watch-answer-expert">
                     <div class="clist-head">
                         <img src="${head_src+answewrUser[m].headImage}" alt="" onerror=src="../img/user.png"   class="look-hp-image" data-role="${answewrUser[m].role}" data-phone="${answewrUser[m].phoneNumber}">
-                        <div class="inline-block">
+                        <div class="inline-block ${zxs_role}">
                             <div class="user-name">
                                 ${answewrUser[m].userName||"匿名用户"}
                                 <div class="inline-block zxs-grade">
@@ -110,7 +124,16 @@ $(function(){
                             </div>
                             <div class="zx-detail-date">${answewrUser[m].counselorDuty}</div>
                         </div>
+                        <div class="inline-block ${user_role}">
+                            <div class="user-name">
+                                ${answewrUser[m].realName||"匿名用户"}
+                                <div class="user-grade inline-block zx-detail-grade">
+                                    <img src="${get_score(answewrUser[m].integralScore,answewrUser[m].aision,answewrUser[m].vip)}" alt="">
+                                </div>
+                            </div>
+                        </div>
                         <div class="adopt">${adopt_html}</div>
+                        
                     </div>
                     <div class="clist-msg">
                        ${answewrUser[m].content}
@@ -141,7 +164,7 @@ $(function(){
                         </div>
                     </div>
                 </div>
-                <div class="evaluation-score box-sizing">
+                <div class="evaluation-score box-sizing ${pj_out}">
                     <div>
                         评价得分：
                         <div class="inline-block">
@@ -279,14 +302,14 @@ $(function(){
     $(".fb-commit").on('click',function(e) {
         // var keycode = e.keyCode;
         var comment_val = $(".comment-sub").val();
-        alert(comment_val);
+        // alert(comment_val);
         // if(keycode=='13') {
             e.preventDefault();
             if(comment_val==""){
                 alert("内容不能为空");
             }else{
-                //请求搜索接口
-                // ajax(http_url.url+"/discuss/edit",{"answerUuid":answerUuid,"discussContent":comment_val},sub_comment);
+                // 请求搜索接口
+                ajax(http_url.url+"/discuss/edit",{"answerUuid":answerUuid,"discussContent":comment_val},sub_comment);
             }
         // }
     });

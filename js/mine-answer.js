@@ -41,8 +41,10 @@ $(function(){
                        ${questions[i].content}
                     </div>
                     <div class="zx-detail-city mine-answer-date">
-                        <img src="../img/label.png" alt="">
-                        ${questions[i].area||""} ${questions[i].quTrade||""}
+                        <div class="inline-block">
+                             <img src="../img/label.png" alt="">
+                            ${questions[i].area||""} ${questions[i].quTrade||""}
+                        </div>
                         <div class="inline-block mine-ans-sj">
                             赏金: <span class="red">${parseFloat(questions[i].money).toFixed(2)||"0.00"}元</span>
                         </div>
@@ -95,8 +97,10 @@ $(function(){
                        ${questions[i].content}
                     </div>
                     <div class="zx-detail-city mine-answer-date">
-                        <img src="../img/label.png" alt="">
-                        ${questions[i].area||""} ${questions[i].quTrade||""}
+                         <div class="inline-block">
+                             <img src="../img/label.png" alt="">
+                            ${questions[i].area||""} ${questions[i].quTrade||""}
+                        </div>
                         <div class="inline-block mine-ans-sj">
                             赏金: <span class="red">${parseFloat(questions[i].money).toFixed(2)||"0.00"}元</span>
                         </div>

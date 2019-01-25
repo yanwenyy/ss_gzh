@@ -1,5 +1,5 @@
 $(function(){
-    var id=getUrlParms("id"),status=getUrlParms("status"),answer_id='';
+    var id=getUrlParms("id"),status=getUrlParms("status"),answer_id='',quType=getUrlParms("quType");
     $(".back").click(function(){
         window.location.href="mine-free-question-list.html";
     });
@@ -25,8 +25,13 @@ $(function(){
         $(".m-q-f-detail .zx-detail-date").html(format(questionUserOwnMsg.date));
         $(".m-q-f-detail .clist-msg").html(questionUserOwnMsg.content);
         $(".m-q-f-detail .zx-detail-city").html(`
-            <img src="../img/label.png" alt="">
+            <div class="inline-block">
+                <img src="../img/label.png" alt="">
                 ${questionUserOwnMsg.area||""} ${questionUserOwnMsg.quTrade||""}
+            </div>
+             <div class="wacth-num inline-block">
+                    <span>围观<span class="wg-num">${questionUserOwnMsg.lookNum}</span></span>
+             </div>
         `);
         var imgs=questionUserOwnMsg.images,html="";
         if(imgs!=null){
@@ -42,34 +47,38 @@ $(function(){
         "status":status, "questionUuid":id},get_detail);
     if(status==3||status==4){
         $(".error-correction-btn").show();
+        $(".look-ques-press").hide();
     }
     //回答列表
     function get_answer(data){
         console.log(data);
         var answerUsers=data.answerUsers,answer_html='',jc_title_html='';
         for(var i=0;i<answerUsers.length;i++){
-            var adopt_act,adopt_html='',jb_html='',jb_class="";
-            if(answerUsers[i].status==1){
+            var adopt_act,adopt_html='',jb_html='',jb_class="",pj_show="out";
+            if(answerUsers[i].status==1&&status==2&&quType!=2){
+                jb_html="不满意";
+            }
+            if(answerUsers[i].status==1&&status==2){
                 adopt_html="采纳";
                 adopt_act="adopt_act";
-                jb_html="不满意";
-            }else if(answerUsers[i].status==2||answerUsers[i].checkStatus==2){
+            }else if(answerUsers[i].status==2||answerUsers[i].checkStatus==2||answerUsers[i].status==7){
                 adopt_html="<img src='../img/best-answer.png'>";
                 adopt_act="";
                 jb_html="";
                 answer_id=answerUsers[i].uuid;
+                pj_show=""
             }else if(answerUsers[i].status==3){
-                adopt_html="采纳";
+                adopt_html="";
                 adopt_act="adopt_act_jb";
                 jb_class="red";
                 // jb_html="已举报";
             }else if(answerUsers[i].status==4){
-                adopt_html="采纳";
+                adopt_html="";
                 adopt_act="adopt_act_jb";
                 jb_class="red";
                 // jb_html="举报通过";
             }else if(answerUsers[i].status==5){
-                adopt_html="采纳";
+                adopt_html="";
                 adopt_act="adopt_act";
                 // jb_html="举报";
             }else if(answerUsers[i].status==6){
@@ -78,7 +87,7 @@ $(function(){
                 // jb_html="举报";
                 jc_title_html=`<div class="huida box-sizing">答案纠错</div>`;
             }
-            var score_answer=answerUsers[i].score,score_html="",pj_show="";
+            var score_answer=answerUsers[i].score,score_html="",pj_score_show="out";
             for(var p=0;p<5;p++){
                 var pj_html='';
                 if(p<score_answer){
@@ -91,8 +100,8 @@ $(function(){
             // for(var j=0;j<score_answer;j++){
             //     score_html+=`<img src="../img/-icon-star.png" alt="">`;
             // }
-            if(answerUsers[i].appraisal!=""&&answerUsers[i].appraisal!=null){
-                pj_show="out"
+            if(answerUsers[i].score==0){
+                pj_score_show=""
             }
             var realName=get_name(answerUsers[i]);
             answer_html+=`
@@ -130,13 +139,13 @@ $(function(){
                         </li>
                     </ul>
                     <div class="m-q-f-date box-sizing">${format(answerUsers[i].date)}<div class="inline-block m-q-f-report ${jb_class}" data-id="${answerUsers[i].uuid}">${jb_html}</div></div>
-                     <div class="evaluation-score box-sizing">
+                     <div class="evaluation-score box-sizing ${pj_show}">
                         <div>
                             评价得分：
                             <div class="inline-block">
                                 ${score_html}
                             </div>
-                            <div class="inline-block free-que-pj ${pj_show}">
+                            <div class="inline-block free-que-pj ${pj_score_show}"  data-phone="${answerUsers[i].phoneNumber}"  data-id="${answerUsers[i].uuid}">
                                 去评价
                                 <img src="../img/free-ques-pj.png" alt="">
                             </div>
@@ -242,7 +251,7 @@ $(function(){
                                 </div>
                                 <div class="zx-detail-date"> ${answerUsers[i].counselorDuty}</div>
                             </div>
-                            <div class="adopt ${adopt_act}" data-phone="${answerUsers[i].phoneNumber}" data-id="${answerUsers[i].uuid}">${adopt_html}</div>
+                           
                         </div>
                         <div class="clist-msg">
                             ${answerUsers[i].content}
@@ -292,7 +301,7 @@ $(function(){
         var id=$(this).attr("data-id"),that=$(this);
         function jb(data){
             if(data.code==1){
-                alert(data.des);
+                alert("操作成功");
                 // alert("已举报");
                 // that.html("已举报");
                 // window.location.href="../html/mine-free-question-list.html"
@@ -386,4 +395,8 @@ $(function(){
     $(".look-ques-press").click(function(){
         window.location.href="mine-ques-progress.html?id="+id;
     });
+    $("body").on("click",".free-que-pj",function(){
+        var id=$(this).attr("data-id"),that=$(this),phone=$(this).attr("data-phone");
+        window.location.href="../html/mine-private-questions-score.html?id="+id+"&&phone="+phone;
+    })
 });

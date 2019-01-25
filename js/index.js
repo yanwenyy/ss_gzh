@@ -132,6 +132,12 @@ function get_score(data,aision,vip){
         }else{
             score_img="../img/hangxin_vip_dateout.png"
         }
+    }else if(aision==2){
+        if(vip==0){
+            score_img="../img/gshy.png"
+        }else{
+            score_img="../img/gshy-dateout.png"
+        }
     }else{
         if(0<=data&&data<6){
             score_img="../img/icon-onlooked-member.png"
@@ -214,29 +220,28 @@ $(".new-user-down-app").click(function(){
    window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jieshuibao.jsb";
 });
 
-//页面加载后获取code
-var code=getUrlParms("code");
-var cookieId;
-if(code!=null){
-    sessionStorage.setItem("code",code);
-    $.ajax({
-        type:"POST",
-        url:http_url.url+'/wx/getOpenid/'+code,
-        dataType: "json",
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json;charset=utf-8"
-        },
-        success:function(data){
-            cookieId=data.data;
-            sessionStorage.setItem("cookieId",cookieId);
-        },
-        error:function(){
-            alert("程序出错,请重试");
-        }
-    });
-}else{
-    var cookieId="oPUdI0pZbHIYBCHUn_aQPCJAmRIU"; //晏雯
-
-    sessionStorage.setItem("cookieId",cookieId);
-}
+// //页面加载后获取code
+// var code=getUrlParms("code");
+// var cookieId;
+// if(code!=null){
+//     sessionStorage.setItem("code",code);
+//     $.ajax({
+//         type:"POST",
+//         url:http_url.url+'/wx/getOpenid/'+code,
+//         dataType: "json",
+//         headers: {
+//             "Accept": "application/json",
+//             "Content-Type": "application/json;charset=utf-8"
+//         },
+//         success:function(data){
+//             cookieId=data.data;
+//             sessionStorage.setItem("cookieId",cookieId);
+//         },
+//         error:function(){
+//             alert("程序出错,请重试");
+//         }
+//     });
+// }else{
+//     var cookieId="oPUdI0pZbHIYBCHUn_aQPCJAmRIU"; //晏雯
+//     sessionStorage.setItem("cookieId",cookieId);
+// }

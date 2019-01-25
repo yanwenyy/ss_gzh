@@ -5,6 +5,10 @@ $(function(){
             hangxin_data=true;
             $(".hangxin-money").removeClass("out");
             $(".other-money").addClass("out");
+        }else if(data.aision==2&&data.vip==0){
+            hangxin_data=true;
+            $(".hangxin-money").removeClass("out").children(".more-msg").html("个税会员免费");
+            $(".other-money").addClass("out");
         }
     }
     ajax_nodata(http_url.url+"/user/sectionMessage",if_hangxin);

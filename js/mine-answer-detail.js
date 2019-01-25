@@ -1,8 +1,8 @@
 $(function(){
     var id=getUrlParms("id"),status=getUrlParms("status"),answer_id='';
-    if(status==2){
-        $(".error-correction-btn").show();
-    }
+    // if(status==2){
+    //     $(".error-correction-btn").show();
+    // }
     function get_detail(data){
         //我的提问
         console.log(data);
@@ -48,6 +48,13 @@ $(function(){
         }
         var answerUsers=data.answerUsers,answer_html='';
         for(var m=0;m<answerUsers.length;m++){
+            if(answerUsers[m].status==2){
+                answerUuid=answewrUser[m].uuid;
+                $(".error-correction-btn").show();
+            }
+            else{
+                $(".error-correction-btn").hide();
+            }
             var answer_score="",adopt_html='',jc_title_html='';
             for(var k=0;k<answerUsers[m].score;k++){
                 answer_score+=` <img src="../img/-icon-star.png" alt="">`;

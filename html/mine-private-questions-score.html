@@ -35,7 +35,7 @@
         <div class="smw-pf-score">
             <span>回答质量</span>
             <span class="pf-img">
-                <img src="../img/-icon-star.png" alt="" data-code="1" data-html="差">
+                <img src="../img/icon-star_an.png" alt="" data-code="1" data-html="差">
                 <img src="../img/icon-star_an.png" alt="" data-code="2" data-html="较差">
                 <img src="../img/icon-star_an.png" alt="" data-code="3" data-html="一般">
                 <img src="../img/icon-star_an.png" alt="" data-code="4" data-html="较好">
@@ -57,7 +57,10 @@
 <script>
     $(function () {
         FastClick.attach(document.body);
-        var id=getUrlParms("id"),score=1,phone=getUrlParms("phone");
+        var id=getUrlParms("id"),score=0,phone=getUrlParms("phone");
+        $(".back").click(function(){
+            window.location.href="../html/mine-free-question-list.html"
+        });
         //专家信息
         function get_detail(data){
             console.log(data);
@@ -84,11 +87,15 @@
         }
         $(".release").click(function(){
             var appraisal=$(".smw-pf-text").val();
-            ajax(http_url.url+"/answer/score",{
-                "score":score,
-                "uuid":id,
-                "appraisal":appraisal
-            },sub_score);
+            if(appraisal==""||score==0){
+                alert("请完善评价信息")
+            }else{
+                ajax(http_url.url+"/answer/score",{
+                    "score":score,
+                    "uuid":id,
+                    "appraisal":appraisal
+                },sub_score);
+            }
         });
         $(".pf-img>img").click(function(){
             score=$(this).attr("data-code");
