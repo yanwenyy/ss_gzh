@@ -15,7 +15,7 @@ $(function(){
         console.log(data);
         role=data.role;
         //用户等级
-        var score_img=get_score(data.integralScore);
+        var score_img=get_score(data.integralScore,data.aision,data.vip);
         $(".other_card .user-grade").attr("src",score_img);
         if(data.role==1){
             $(".mine-tab-user").removeClass("out");
@@ -79,6 +79,7 @@ $(function(){
             }
             $(".expert_name").html(data.levelName);
         }
+        console.log(head_src+data.headImage)
         $(".user-head-img").attr("src",head_src+data.headImage).attr("data-role",data.role).attr("data-phone",data.phoneNumber);
 
     }

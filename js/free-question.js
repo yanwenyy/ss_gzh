@@ -5,7 +5,7 @@ $(function(){
             hangxin_data=true;
             $(".hangxin-money").removeClass("out");
             $(".other-money").addClass("out");
-        }else if(data.aision==2&&data.vip==0){
+        }else if(data.aision==2){
             hangxin_data=true;
             $(".hangxin-money").removeClass("out").children(".more-msg").html("个税会员免费");
             $(".other-money").addClass("out");

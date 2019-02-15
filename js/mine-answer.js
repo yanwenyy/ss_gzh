@@ -7,7 +7,7 @@ $(function(){
             var status="";
             if(questions[i].status==1){
                 status="未采纳";
-            }else if(questions[i].status==2){
+            }else if(questions[i].status==2||questions[i].status==7){
                 status="已采纳";
             }else if(questions[i].status==3){
                 status="未采纳";
@@ -63,7 +63,7 @@ $(function(){
                 var status="";
                 if(questions[i].status==1){
                     status="未采纳";
-                }else if(questions[i].status==2){
+                }else if(questions[i].status==2||questions[i].status==7){
                     status="已采纳";
                 }else if(questions[i].status==3){
                     status="未采纳";

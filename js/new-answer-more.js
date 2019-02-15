@@ -1,4 +1,11 @@
 $(function(){
+    $(".back").click(function(){
+        window.location.href="index.html";
+    });
+    //搜索按钮点击
+    $(".search").click(function(){
+        window.location.href="watch-search.html";
+    });
     function new_watch(data){
         //console.log(data);
         var list=data.data,html="";

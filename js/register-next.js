@@ -132,9 +132,9 @@ $(function(){
                 success:function(e){
                     console.log(e);
                     if(e.code == "1"){
-                        if(e.data==1){
+                        if(e.data==2){
                             window.location.href="../html/index.html?newuser=yes";
-                        }else if(e.data==2){
+                        }else if(e.data==1){
                             window.location.href="../html/register.html";
                         }
                     }else{

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="176fc189-5b52-45d7-a0a8-fdd726e66f2d" name="jsb_weixin" url="192.168.1.98:8888\project\hangxinbanshuibao_weixin">
+        <fileTransfer port="0" mountedRoot="D:\project\hangxinbanshuibao_weixin" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

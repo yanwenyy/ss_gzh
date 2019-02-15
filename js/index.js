@@ -133,11 +133,12 @@ function get_score(data,aision,vip){
             score_img="../img/hangxin_vip_dateout.png"
         }
     }else if(aision==2){
-        if(vip==0){
-            score_img="../img/gshy.png"
-        }else{
-            score_img="../img/gshy-dateout.png"
-        }
+        score_img="../img/gshy.png"
+        // if(vip==0){
+        //     score_img="../img/gshy.png"
+        // }else{
+        //     score_img="../img/gshy-dateout.png"
+        // }
     }else{
         if(0<=data&&data<6){
             score_img="../img/icon-onlooked-member.png"

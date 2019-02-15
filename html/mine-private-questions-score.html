@@ -87,8 +87,8 @@
         }
         $(".release").click(function(){
             var appraisal=$(".smw-pf-text").val();
-            if(appraisal==""||score==0){
-                alert("请完善评价信息")
+            if(score==0){
+                alert("请打分")
             }else{
                 ajax(http_url.url+"/answer/score",{
                     "score":score,

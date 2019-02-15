@@ -18,7 +18,7 @@
     <img src="../img/back.png" alt="" class="back">
     提现记录
 </div>
-<div class="weui-tab index-page-body">
+<div class="weui-tab">
     <div class="transaction_record_body">
         <ul>
             <!--<li class="box-sizing">-->
@@ -81,7 +81,7 @@
                                 -¥${withdraw[i].money}
                             </div>
                             <div>
-                                ${status}
+                                ${withdraw[i].reason}
                             </div>
                         </div>
                     </li>
@@ -117,7 +117,7 @@
                                 -¥${withdraw[i].money}
                             </div>
                             <div>
-                                ${status}
+                               ${withdraw[i].reason}
                             </div>
                         </div>
                     </li>

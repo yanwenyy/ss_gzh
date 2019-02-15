@@ -248,6 +248,20 @@ $(function(){
                 $(".msg-loading").hide();
             }
         });
+        //快速问推荐点击
+        $("body").on("click",".wacth-search-list li",function(){
+            var cwatch_id=$(this).attr("data-id");
+            //微信授权
+            function cwatch_jurisdiction(data){
+                console.log(data);
+                if(data.isBuy==1){//未购买
+                    window.location.href="../html/cwatch.html?cwatch_id="+cwatch_id;
+                }else if(data.isBuy==0){//已围观
+                    window.location.href="../html/watch-anwser.html?cwatch_id="+cwatch_id;
+                }
+            }
+            ajax_nodata(http_url.url+"/onlook/wx/onlookAuthorized?uuid="+cwatch_id,cwatch_jurisdiction);
+        });
         $(".QACardBalance_pay").show();
         $(".pay_name").html("快速问金额支付");
         //微信支付

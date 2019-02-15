@@ -1,8 +1,11 @@
 $(function(){
     var id=getUrlParms("id"),status=getUrlParms("status"),answer_id='';
-    // if(status==2){
-    //     $(".error-correction-btn").show();
-    // }
+    if(status==2){
+        $(".error-correction-btn").show();
+    }
+    if(status==6){
+        $(".normal_hida").hide();
+    }
     function get_detail(data){
         //我的提问
         console.log(data);
@@ -49,7 +52,7 @@ $(function(){
         var answerUsers=data.answerUsers,answer_html='';
         for(var m=0;m<answerUsers.length;m++){
             if(answerUsers[m].status==2){
-                answerUuid=answewrUser[m].uuid;
+                answerUuid=answerUsers[m].uuid;
                 $(".error-correction-btn").show();
             }
             else{

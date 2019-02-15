@@ -386,7 +386,7 @@ $(function(){
             $(".msg-loading").hide();
         }
     }
-    ajax(http_url.url+"/onlook/look/list",{"sinceId":1, "maxId":5, "type":"new"},new_watch);
+    ajax(http_url.url+"/onlook/look/list",{"sinceId":1, "maxId":10, "type":"new"},new_watch);
     // scroll_more(http_url.url+"/onlook/look/list",{"sinceId":count_start, "maxId":count_end, "type":"new"},new_watch_more)
     //最新问答查看更多
     $(".zxwd-more").click(function(){

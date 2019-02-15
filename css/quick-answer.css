@@ -43,9 +43,14 @@
 }
 
 .zx-detail-city {
+    width: 100%;
     font-size: 2.4rem;
     color: #999;
-    display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
     justify-content: space-between;
 }
 
@@ -90,7 +95,7 @@
 
 .answer-answer {
     margin-top: 8.8rem;
-    min-height: 45.6rem;
+    min-height: 25.6rem;
     height: auto;
     margin-bottom: 0;
     padding-bottom: 1rem

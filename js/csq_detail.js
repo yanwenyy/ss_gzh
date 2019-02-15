@@ -182,29 +182,52 @@ $(function(){
            alert(data.des);
        }
     }
-    $(".comment-sub").on('keypress',function(e) {
-        var keycode = e.keyCode;
-        var comment_val = $(this).val();
-        if(keycode=='13') {
-            e.preventDefault();
-            function get_user(data){
-                console.log(data);
-                if(comment_val==""){
-                    alert("内容不能为空")
-                }else{
-                    if(data.userName||data.companyName||data.province){
-                        //请求搜索接口
-                        ajax(http_url.url+"/discuss/editDiscuss",{"articleUuid":csq_id,"discussContent":comment_val},sub_comment);
-                    }else{
-                        alert("请完善您的个人信息");
-                        window.location.href="../html/mine-personal-data.html"
-                    }
-                }
-
-            }
-            ajax_nodata(http_url.url+"/user/message",get_user);
-        }
+    $(".comment-sub").on('focus',function(e){
+        $(".fb-commit").removeClass("out");
+        $(".zc-commit").addClass("out")
     });
+    $(".fb-commit").click(function(){
+        var comment_val = $(".comment-sub").val();
+                function get_user(data){
+                    console.log(data);
+                    if(comment_val==""){
+                        alert("内容不能为空")
+                    }else{
+                        if(data.userName||data.companyName||data.province){
+                            //请求搜索接口
+                            ajax(http_url.url+"/discuss/editDiscuss",{"articleUuid":csq_id,"discussContent":comment_val},sub_comment);
+                        }else{
+                            alert("请完善您的个人信息");
+                            window.location.href="../html/mine-personal-data.html"
+                        }
+                    }
+
+                }
+                ajax_nodata(http_url.url+"/user/message",get_user);
+    });
+    // $(".comment-sub").on('keypress',function(e) {
+    //     var keycode = e.keyCode;
+    //     var comment_val = $(this).val();
+    //     if(keycode=='13') {
+    //         e.preventDefault();
+    //         function get_user(data){
+    //             console.log(data);
+    //             if(comment_val==""){
+    //                 alert("内容不能为空")
+    //             }else{
+    //                 if(data.userName||data.companyName||data.province){
+    //                     //请求搜索接口
+    //                     ajax(http_url.url+"/discuss/editDiscuss",{"articleUuid":csq_id,"discussContent":comment_val},sub_comment);
+    //                 }else{
+    //                     alert("请完善您的个人信息");
+    //                     window.location.href="../html/mine-personal-data.html"
+    //                 }
+    //             }
+    //
+    //         }
+    //         ajax_nodata(http_url.url+"/user/message",get_user);
+    //     }
+    // });
     //踩
     function cai_csq(data){
         alert(data.des);

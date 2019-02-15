@@ -50,7 +50,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     text-align: left;
 }
 .index-page-body {
-    margin-top: 18rem
+    margin-top: 8.8rem
 }
 
 .weui-pull-to-refresh__layer {
@@ -378,14 +378,21 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     padding: 3rem 0 5.6rem 3rem;
     overflow: auto
 }
-
+.watch-answer-expert{
+    height: auto!important;
+    border: none!important;
+}
+.wg_jc{
+    float: right;
+    margin-top: 3.9rem;
+}
 .jgtj_main {
     width: auto;
     white-space: nowrap
 }
 
 .jg_img {
-    width: 60rem;
+    width: 45rem;
     height: 28.6rem;
     display: inline-block;
     margin-right: 3rem

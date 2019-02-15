@@ -12,36 +12,43 @@ $(function(){
         }
         //用户等级
         var score_img=get_score(questionUserOwnMsg.integralScore,questionUserOwnMsg.aision,questionUserOwnMsg.vip);
-        $(".m-q-f-detail .free-user_imgage").attr("src",head_src+questionUserOwnMsg.headImage).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
+        var user_answer_img=questionUserOwnMsg.images,ans_html="";
+        if(questionUserOwnMsg.images!=null){
+            for(var i=0;i<user_answer_img.length;i++){
+                ans_html+=`
+                 <img class="img_look" src="${question_src+user_answer_img[i]}" alt="">
+            `;
+            }
+        }
         var realName=get_name(questionUserOwnMsg);
-        $(".m-q-f-detail .user-name").html(`
-             <div class="user-name">
-                        ${realName||""}
+        $(".m-q-f-detail>div").html(`<div class="clist-head">
+                <img src="${head_src+questionUserOwnMsg.headImage}" alt="" onerror=src="../img/user.png">
+                <div class="inline-block">
+                    <div class="user-name">
+                        ${realName||"匿名用户"}
                         <div class="user-grade inline-block zx-detail-grade">
                             <img src="${score_img}" alt="">
                         </div>
-             </div>
-        `);
-        $(".m-q-f-detail .zx-detail-date").html(format(questionUserOwnMsg.date));
-        $(".m-q-f-detail .clist-msg").html(questionUserOwnMsg.content);
-        $(".m-q-f-detail .zx-detail-city").html(`
-            <div class="inline-block">
-                <img src="../img/label.png" alt="">
-                ${questionUserOwnMsg.area||""} ${questionUserOwnMsg.quTrade||""}
+                    </div>
+                    <div class="zx-detail-date">${format(questionUserOwnMsg.date)}</div>
+                </div>
             </div>
-             <div class="wacth-num inline-block">
+            <div class="clist-msg">
+                ${questionUserOwnMsg.content}
+            </div>
+            <div class="zx-detail-img">
+                ${ans_html}
+            </div>
+            <div class="zx-detail-city wacth-city">
+                <div class="inline-block">
+                    <img src="../img/label.png" alt="">
+                    ${questionUserOwnMsg.area||""} ${questionUserOwnMsg.quTrade||""}
+                </div>
+                <div class="wacth-num inline-block">
                     <span>围观<span class="wg-num">${questionUserOwnMsg.lookNum}</span></span>
-             </div>
-        `);
-        var imgs=questionUserOwnMsg.images,html="";
-        if(imgs!=null){
-            for(var i=0;i<imgs.length;i++){
-                html+=`
-               <img src="${question_src+imgs[i]}" alt="">
-            `;
-            }
-            $(".m-q-f-detail .zx-detail-img").html(html);
-        }
+                </div>
+            </div>
+            `);
     }
     ajax(http_url.url+"/question/acceptAnswer",{
         "status":status, "questionUuid":id},get_detail);
@@ -66,7 +73,9 @@ $(function(){
                 adopt_act="";
                 jb_html="";
                 answer_id=answerUsers[i].uuid;
-                pj_show=""
+                if(status!=9){
+                    pj_show=""
+                }
             }else if(answerUsers[i].status==3){
                 adopt_html="";
                 adopt_act="adopt_act_jb";
@@ -104,21 +113,35 @@ $(function(){
                 pj_score_show=""
             }
             var realName=get_name(answerUsers[i]);
+            var user_role='',zxs_role='';
+            if(answerUsers[i].role==1){
+                zxs_role="out";
+            }else{
+                user_role="out"
+            }
             answer_html+=`
                 ${jc_title_html}
                 <div class="card-list zx-list m-q-f-d-msg">
                     <div class="box-sizing watch-answer-expert">
                         <div class="clist-head">
                             <img class="look-hp-image" data-role="${answerUsers[i].role}" data-phone="${answerUsers[i].phoneNumber}" src="${head_src+answerUsers[i].headImage}" alt="" onerror=src="../img/user.png">
-                            <div class="inline-block">
+                                <div class="inline-block ${zxs_role}">
                                 <div class="user-name">
-                                    ${realName||""}
+                                    ${answerUsers[i].userName||"匿名用户"}
                                     <div class="inline-block zxs-grade">
                                         <img src="../img/icon-expert icon.png" alt="">
                                         ${answerUsers[i].levelName}
                                     </div>
                                 </div>
-                                <div class="zx-detail-date"> ${answerUsers[i].counselorDuty}</div>
+                                <div class="zx-detail-date">${answerUsers[i].counselorDuty}</div>
+                            </div>
+                            <div class="inline-block ${user_role}">
+                                <div class="user-name">
+                                    ${answerUsers[i].realName||"匿名用户"}
+                                    <div class="user-grade inline-block zx-detail-grade">
+                                        <img src="${get_score(answerUsers[i].integralScore,answerUsers[i].aision,answerUsers[i].vip)}" alt="">
+                                    </div>
+                                </div>
                             </div>
                             <div class="adopt ${adopt_act}" data-phone="${answerUsers[i].phoneNumber}"  data-id="${answerUsers[i].uuid}">${adopt_html}</div>
                         </div>

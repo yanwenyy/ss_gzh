@@ -18,9 +18,6 @@ $(function(){
             window.location.href="index.html";
         })
     }
-    $(".back").click(function(){
-       window.location.href="index.html";
-    });
     //回答详情
     function get_answer(data) {
         console.log(data);
@@ -156,11 +153,11 @@ $(function(){
                      <div class="inline-block answer-cz-btn">
                         <div class="inline-block">
                             <img src="../img/icon-onlooked-liked-unselect.png" alt="" class="zan-csq-detail" data-id="${answerUuid=answewrUser[m].uuid}">
-                            ${answewrUser[m].approveNum}
+                            <span>${answewrUser[m].approveNum}</span>
                         </div>
                         <div class="inline-block">
                             <img src="../img/icon-onlooked-unliked-unselect.png" alt=""  class="cai-csq-detail" data-id="${answerUuid=answewrUser[m].uuid}">
-                            ${answewrUser[m].opposeNum}
+                            <span>${answewrUser[m].opposeNum}</span>
                         </div>
                     </div>
                 </div>
@@ -293,7 +290,9 @@ $(function(){
         //console.log(data);
         if(data.code==1){
             alert(data.des);
-            location.reload();
+            // location.reload();
+            var url=window.location.href.replace(/\&newuser=yes/, "");
+            window.location.href = url;
         }else{
             alert(data.des);
         }
@@ -336,10 +335,19 @@ $(function(){
         }
     }
     $("body").on("click",".zan-csq-detail",function(){
+        var that=$(this);
         if($(this).attr("src")=="../img/icon-onlooked-liked-select.png"){
-            alert("您已经赞过该文章,不能再赞")
+            alert("您已经赞过,不能再赞")
         }else{
-            ajax(http_url.url + "/answer/proveAndpose", {"answerUuid": $(this).attr("data-id"), "status": 1}, zan_csq);
+            ajax(http_url.url + "/answer/proveAndpose", {"answerUuid": $(this).attr("data-id"), "status": 1}, function(data){
+                if(data.code==1){
+                    var num=Number(that.next("span").html())+1;
+                    alert("已赞");
+                    that.attr("src","../img/icon-onlooked-liked-select.png").next("span").html(num);
+                }else{
+                    alert(data.des);
+                }
+            });
             // if( $(".cai-csq-detail").attr("src")=="../img/icon-onlooked-unliked-select.png"){
             //     alert("您已经踩过该文章,不能再赞")
             // }else {
@@ -348,10 +356,19 @@ $(function(){
         }
     });
     $("body").on("click",".cai-csq-detail",function(){
+        var that=$(this);
         if($(this).attr("src")=="../img/icon-onlooked-unliked-select.png"){
-            alert("您已经踩过该文章,不能再踩")
+            alert("您已经踩过,不能再踩")
         }else{
-            ajax(http_url.url + "/answer/proveAndpose", {"answerUuid":  $(this).attr("data-id"), "status": 2}, cai_csq);
+            ajax(http_url.url + "/answer/proveAndpose", {"answerUuid":  $(this).attr("data-id"), "status": 2}, function(data){
+                if(data.code==1){
+                    var num=Number(that.next("span").html())+1;
+                    alert("已踩");
+                    that.attr("src","../img/icon-onlooked-unliked-select.png").next("span").html(num);
+                }else{
+                    alert(data.des);
+                }
+            });
             // if( $(".zan-csq-detail").attr("src")=="../img/icon-onlooked-liked-select.png"){
             //     alert("您已经赞过该文章,不能再踩")
             // }else {

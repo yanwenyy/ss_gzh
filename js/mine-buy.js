@@ -94,6 +94,10 @@ $(function(){
                 img_src=head_src+questions[i].headImage;
             }
             var realName=get_name(questions[i]);
+            var jc_show='out';
+            if(questions[i].status==9){
+                jc_show='';
+            }
             html+=`
                 <div class="box-sizing" data-id="${questions[i].uuid}">
                     <div class="clist-head">
@@ -106,6 +110,7 @@ $(function(){
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
+                        <div class="inline-block orange wg_jc ${jc_show}">已纠错</div>
                     </div>
                     <div class="clist-msg">
                        ${title}
@@ -140,6 +145,10 @@ $(function(){
                     img_src=head_src+questions[i].headImage;
                 }
                 var realName=get_name(questions[i]);
+                var jc_show='out';
+                if(questions[i].status==9){
+                    jc_show='';
+                }
                 html+=`
                 <div class="box-sizing" data-id="${questions[i].uuid}">
                     <div class="clist-head">
@@ -152,6 +161,7 @@ $(function(){
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
+                        <div class="inline-block orange wg_jc ${jc_show}">已纠错</div>
                     </div>
                     <div class="clist-msg">
                        ${title}

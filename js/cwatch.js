@@ -55,9 +55,9 @@ $(function(){
             var v_html='';
             if(OnLookCountDetail[i]){
                 v_html=`
-                <img src="${head_src+OnLookCountDetail[i].headImage}" alt="">`;
+                <img src="${head_src+OnLookCountDetail[i].headImage}" alt="" onerror=src="../img/user.png" >`;
             }else{
-                v_html='<img src="../img/user.png" alt="">'
+                v_html='<img src="../img/csq-moren.png" alt="">'
             }
             html+=v_html;
         }
