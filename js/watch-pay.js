@@ -102,7 +102,7 @@ $(function(){
                     success: function (res) {
                         // 支付成功后的回调函数
                         alert("支付成功");
-                        window.location.href="../html/watch-anwser.html?newuser=yes&&cwatch_id="+watch_id;
+                        window.location.href="../html/watch-anwser.html?cwatch_id="+watch_id+"&newuser=yes";
                     }
                 });
             }else{
@@ -114,7 +114,7 @@ $(function(){
             console.log(data);
             if(data.code==1){
                 alert("支付成功");
-                window.location.href="../html/watch-anwser.html?newuser=yes&&cwatch_id="+watch_id;
+                window.location.href="../html/watch-anwser.html?cwatch_id="+watch_id+"&newuser=yes";
             }else{
                 alert(data.des);
             }

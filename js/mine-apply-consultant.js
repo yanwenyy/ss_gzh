@@ -114,7 +114,7 @@ $(function(){
         }
         $(".user_realname").val(data.userName||sessionStorage.getItem("userName")||"");
         $('#sex').val(data.gender);
-        var province='',address='',birthday;
+        var province='',address='',birthday='';
         if(data.province!=null){
             province=data.province;
         }else{
@@ -123,11 +123,13 @@ $(function(){
         if(data.address!=null){
             address=data.address;
         }
-        if(data.birthday!=null){
+        if(data.birthday!=null&&birthday!=""){
             birthday=format(data.birthday);
+            $("#datetime-picker").val(birthday.split(" ")[0]||"");
+        }else{
+            $("#datetime-picker").val("");
         }
         $("#city-picker").val(province+" "+address);
-        $("#datetime-picker").val(birthday.split(" ")[0]||"");
         $("#hy").val(data.trade||"");
         $("#mine-duty").val(data.position||"");
         $("#componey-name").val(data.companyName||"");

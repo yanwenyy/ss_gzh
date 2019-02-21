@@ -3,9 +3,9 @@ $(function(){
     if(status==2){
         $(".error-correction-btn").show();
     }
-    if(status==6){
-        $(".normal_hida").hide();
-    }
+    // if(status==6){
+    //     $(".normal_hida").hide();
+    // }
     function get_detail(data){
         //我的提问
         console.log(data);
@@ -53,20 +53,26 @@ $(function(){
         for(var m=0;m<answerUsers.length;m++){
             if(answerUsers[m].status==2){
                 answerUuid=answerUsers[m].uuid;
-                $(".error-correction-btn").show();
+                // $(".error-correction-btn").show();
             }
             else{
-                $(".error-correction-btn").hide();
+                // $(".error-correction-btn").hide();
+
+            }
+            if(status==1||answerUsers[m].status==2||answerUsers[m].checkStatus=="2"||answerUsers[m].status==7){
+                $(".normal_hida").show();
             }
             var answer_score="",adopt_html='',jc_title_html='';
             for(var k=0;k<answerUsers[m].score;k++){
                 answer_score+=` <img src="../img/-icon-star.png" alt="">`;
             }
-            var on='on';
-            if(answerUsers[m].status!==2){
+            var on='';
+            if(answerUsers[m].status==2||answerUsers[m].status==7){
+                on="on";
+            }else{
                 on="out";
             }
-            if(answerUsers[m].status==2||answerUsers[m].checkStatus==2){
+            if(answerUsers[m].status==2||answerUsers[m].checkStatus==2||answerUsers[m].status==7){
                 adopt_html="<img src='../img/best-answer.png'>";
                 answer_id=answerUsers[m].uuid;
             }else if(answerUsers[m].status==6){
@@ -116,7 +122,7 @@ $(function(){
                             ${answer_score}
                         </div>
                     </div>
-                    <div>${answerUsers[m].appraisal||""}</div>
+                    <div>${answerUsers[m].appraisal||"暂无评价内容"}</div>
                 </div>
             </div>`
         }
@@ -129,26 +135,42 @@ $(function(){
                     var all_usermsg=data;
                     console.log(all_usermsg);
                     $(".mine-jc-show").show();
+                    var zxs_role,user_role;
+                    if(data.role==1){
+                        zxs_role="out";
+                    }else{
+                        user_role="out"
+                    }
                     for(var j=0;j<changerAnswer.length;j++){
                         jc_html+=`
                     <div class="card-list zx-list m-q-f-d-msg">
                             <div class="box-sizing watch-answer-expert">
                                 <div class="clist-head">
-                                <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
-                                <div class="inline-block">
-                                <div class="user-name">
-                                ${get_name(all_usermsg)}
-                                <div class="inline-block zxs-grade">
-                                <img src="${get_score(all_usermsg.integralScore,all_usermsg.aision,all_usermsg.vip)}" alt="">
-                                </div>
-                                </div>
-                                </div>
-                                </div>
+                                   <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
+                                   <div class="inline-block ${zxs_role}">
+                                        <div class="user-name">
+                                            ${data.userName||"匿名用户"}
+                                            <div class="inline-block zxs-grade">
+                                                <img src="../img/icon-expert icon.png" alt="">
+                                                ${data.levelName}
+                                            </div>
+                                        </div>
+                                        <div class="zx-detail-date">${data.counselorDuty}</div>
+                                    </div>
+                                   <div class="inline-block ${user_role}">
+                                            <div class="user-name">
+                                                ${data.realName||"匿名用户"}
+                                                <div class="user-grade inline-block zx-detail-grade">
+                                                    <img src="${get_score(data.integralScore,data.aision,data.vip)}" alt="">
+                                                </div>
+                                            </div>
+                                     </div>
+                                 </div>
                                 <div class="clist-msg">
                                 ${changerAnswer[j].content}
                                 </div>
                             </div>
-                            <ul class="zxs-range">
+                            <ul class="zxs-range"  style="padding:3rem;">
                                 <li>
                                 <span class="inline-block">所属专题：</span>
                                 <span class="inline-block">${changerAnswer[j].topic||""}</span>

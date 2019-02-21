@@ -69,15 +69,18 @@ $(function(){
         //回答者集合
         var answer_html='';
         for(var m=0;m<answewrUser.length;m++){
-            if(answewrUser[m].status==2){
+            if(answewrUser[m].status==2||answewrUser[m].checkStatus==2||answewrUser[m].status==7){
                 answerUuid=answewrUser[m].uuid;
-                $(".error-correction-btn").show();
+                // $(".error-correction-btn").show();
             }
             else{
+                // $(".error-correction-btn").hide();
+            }
+            if(answewrUser[m].status==7||answewrUser[m].checkStatus==2){
                 $(".error-correction-btn").hide();
             }
             var user_role='',zxs_role='',score_answer=answewrUser[m].score,score_html="",adopt_html='',jc_title_html='',pj_out='out';
-            if(answewrUser[m].status==2||answewrUser[m].checkStatus==2){
+            if(answewrUser[m].status==2||answewrUser[m].checkStatus==2||answewrUser[m].status==7){
                 adopt_html="<img src='../img/best-answer.png'>";
             }else if(answewrUser[m].status==6){
                 adopt_html="<img src='../img/error-answer.png'>";
@@ -152,11 +155,11 @@ $(function(){
                     ${format(answewrUser[m].date)}
                      <div class="inline-block answer-cz-btn">
                         <div class="inline-block">
-                            <img src="../img/icon-onlooked-liked-unselect.png" alt="" class="zan-csq-detail" data-id="${answerUuid=answewrUser[m].uuid}">
+                            <img src="../img/icon-onlooked-liked-unselect.png" alt="" class="zan-csq-detail" data-id="${answewrUser[m].uuid}">
                             <span>${answewrUser[m].approveNum}</span>
                         </div>
                         <div class="inline-block">
-                            <img src="../img/icon-onlooked-unliked-unselect.png" alt=""  class="cai-csq-detail" data-id="${answerUuid=answewrUser[m].uuid}">
+                            <img src="../img/icon-onlooked-unliked-unselect.png" alt=""  class="cai-csq-detail" data-id="${answewrUser[m].uuid}">
                             <span>${answewrUser[m].opposeNum}</span>
                         </div>
                     </div>
@@ -168,7 +171,7 @@ $(function(){
                             ${score_html}
                         </div>
                     </div>
-                    <div>${answewrUser[m].appraisal||""}</div>
+                    <div>${answewrUser[m].appraisal||"暂无评价内容"}</div>
                 </div>`;
         }
         $(".answer-msg_detail").html(answer_html);
@@ -180,34 +183,50 @@ $(function(){
                     var all_usermsg=data;
                     console.log(all_usermsg);
                     $(".mine-jc-show").show();
+                    var zxs_role,user_role;
+                    if(data.role==1){
+                        zxs_role="out";
+                    }else{
+                        user_role="out"
+                    }
                     for(var j=0;j<changerAnswer.length;j++){
                         jc_html+=`
                     <div class="card-list zx-list m-q-f-d-msg">
                             <div class="box-sizing watch-answer-expert">
                                 <div class="clist-head">
-                                <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
-                                <div class="inline-block">
-                                <div class="user-name">
-                                ${get_name(all_usermsg)}
-                                <div class="inline-block zxs-grade">
-                                <img src="${get_score(all_usermsg.integralScore,all_usermsg.aision,all_usermsg.vip)}" alt="">
-                                </div>
-                                </div>
-                                </div>
-                                </div>
+                                    <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
+                                    <div class="inline-block ${zxs_role}">
+                                        <div class="user-name">
+                                            ${data.userName||"匿名用户"}
+                                            <div class="inline-block zxs-grade">
+                                                <img src="../img/icon-expert icon.png" alt="">
+                                                ${data.levelName}
+                                            </div>
+                                        </div>
+                                        <div class="zx-detail-date">${data.counselorDuty}</div>
+                                    </div>
+                                    <div class="inline-block ${user_role}">
+                                            <div class="user-name">
+                                                ${data.realName||"匿名用户"}
+                                                <div class="user-grade inline-block zx-detail-grade">
+                                                    <img src="${get_score(data.integralScore,data.aision,data.vip)}" alt="">
+                                                </div>
+                                            </div>
+                                     </div>
+                                 </div>
                                 <div class="clist-msg">
                                 ${changerAnswer[j].content}
                                 </div>
                             </div>
-                            <ul class="zxs-range">
+                            <ul class="zxs-range" style="padding:3rem;">
                                 <li>
                                 <span class="inline-block">所属专题：</span>
                                 <span class="inline-block">${changerAnswer[j].topic||""}</span>
                                 </li>
                                 <li>
-                                <span class="inline-block">所属专题：</span>
+                                <span class="inline-block">所属税种：</span>
                                 <span class="inline-block">
-                                ${changerAnswer[j].tax||""}
+                                    ${changerAnswer[j].tax||""}
                                 </span>
                                 </li>
                             </ul>

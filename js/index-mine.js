@@ -86,7 +86,11 @@ $(function(){
     ajax_nodata(http_url.url+"/user/message",get_user);
 //我的会员等级
     $("body").on("click",".mine-hydj",function(){
-        window.location.href="../html/mine-membership-grade.html"
+        if($(this).attr("src")=="../img/gshy.png"||$(this).attr("src")=="../img/gshy-dateout.png"){
+            return false;
+        }else{
+            window.location.href="../html/mine-membership-grade.html";
+        }
     });
     //普通用户申请咨询师
     $(".zxs-status").click(function(){
