@@ -78,7 +78,7 @@
                         </div>
                         <div class="inline-block transaction_list_name" style="text-align: right">
                             <div class="green">
-                                -¥${withdraw[i].money}
+                                -${parseFloat(withdraw[i].money).toFixed(2)}元
                             </div>
                             <div>
                                 ${withdraw[i].reason}
@@ -114,7 +114,7 @@
                         </div>
                         <div class="inline-block transaction_list_name" style="text-align: right">
                             <div class="green">
-                                -¥${withdraw[i].money}
+                                -${parseFloat(withdraw[i].money).toFixed(2)}元
                             </div>
                             <div>
                                ${withdraw[i].reason}
