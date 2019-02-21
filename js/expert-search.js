@@ -41,7 +41,7 @@ $(function(){
     }
     function recommend_export_more(data){
         var export_list=data.data,html='';
-        if(export_list){
+        if(export_list!=''){
             for(var i=0;i<export_list.length;i++){
                 var counselorDuty=export_list[i].counselorDuty.split(" ");
                 counselorDuty=counselorDuty.join(" | ");
