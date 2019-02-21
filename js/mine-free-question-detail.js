@@ -62,6 +62,9 @@ $(function(){
         var answerUsers=data.answerUsers,answer_html='',jc_title_html='';
         for(var i=0;i<answerUsers.length;i++){
             var adopt_act,adopt_html='',jb_html='',jb_class="",pj_show="out";
+            if(answerUsers[i].status==7||answerUsers[i].checkStatus==2){
+                $(".error-correction-btn").hide();
+            }
             if(answerUsers[i].status==1&&status==2&&quType!=2){
                 jb_html="不满意";
             }
@@ -187,26 +190,42 @@ $(function(){
                     var all_usermsg=data;
                     console.log(all_usermsg);
                     $(".mine-jc-show").show();
+                    var zxs_role,user_role;
+                    if(data.role==1){
+                        zxs_role="out";
+                    }else{
+                        user_role="out"
+                    }
                     for(var j=0;j<changerAnswer.length;j++){
                         jc_html+=`
                     <div class="card-list zx-list m-q-f-d-msg">
                             <div class="box-sizing watch-answer-expert">
                                 <div class="clist-head">
-                                <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
-                                <div class="inline-block">
-                                <div class="user-name">
-                                ${get_name(all_usermsg)}
-                                <div class="inline-block zxs-grade">
-                                <img src="${get_score(all_usermsg.integralScore,all_usermsg.aision,all_usermsg.vip)}" alt="">
-                                </div>
-                                </div>
-                                </div>
-                                </div>
+                                    <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
+                                    <div class="inline-block ${zxs_role}">
+                                        <div class="user-name">
+                                            ${data.userName||"匿名用户"}
+                                            <div class="inline-block zxs-grade">
+                                                <img src="../img/icon-expert icon.png" alt="">
+                                                ${data.levelName}
+                                            </div>
+                                        </div>
+                                        <div class="zx-detail-date">${data.counselorDuty}</div>
+                                    </div>
+                                    <div class="inline-block ${user_role}">
+                                            <div class="user-name">
+                                                ${data.realName||"匿名用户"}
+                                                <div class="user-grade inline-block zx-detail-grade">
+                                                    <img src="${get_score(data.integralScore,data.aision,data.vip)}" alt="">
+                                                </div>
+                                            </div>
+                                     </div>
+                                 </div>
                                 <div class="clist-msg">
                                 ${changerAnswer[j].content}
                                 </div>
                             </div>
-                            <ul class="zxs-range">
+                            <ul class="zxs-range"  style="padding:3rem;">
                                 <li>
                                 <span class="inline-block">所属专题：</span>
                                 <span class="inline-block">${changerAnswer[j].topic||""}</span>

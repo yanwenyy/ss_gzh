@@ -27,7 +27,7 @@ function get_all(data){
     var records=data.records,html="";
     for(var i=0;i<records.length;i++){
         var record_date=format(records[i].paySucTime),tradetype,red,trade_img="",trade_opacity='';
-        if(records[i].payType==0){
+        if(records[i].payType==0||records[i].payType==4){
             trade_img="../img/icon-buy-money.png"
         }else if(records[i].payType==1){
             trade_img="../img/icon-buy-vip.png"
@@ -74,7 +74,7 @@ function get_all_more(data){
     if(records!=""){
         for(var i=0;i<records.length;i++){
             var record_date=format(records[i].paySucTime),tradetype,red,trade_img="",trade_opacity='';
-            if(records[i].payType==0){
+            if(records[i].payType==0||records[i].payType==4){
                 trade_img="../img/icon-buy-money.png"
             }else if(records[i].payType==1){
                 trade_img="../img/icon-buy-vip.png"

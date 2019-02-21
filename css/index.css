@@ -254,7 +254,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 
 .card-list > div {
     width: 100%;
-    height: 29.5rem;
+    height: auto;
     padding: 0 3rem
 }
 
