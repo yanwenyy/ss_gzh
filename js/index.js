@@ -220,29 +220,3 @@ $(".down-app-model").click(function(){
 $(".new-user-down-app").click(function(){
    window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jieshuibao.jsb";
 });
-
-// //页面加载后获取code
-// var code=getUrlParms("code");
-// var cookieId;
-// if(code!=null){
-//     sessionStorage.setItem("code",code);
-//     $.ajax({
-//         type:"POST",
-//         url:http_url.url+'/wx/getOpenid/'+code,
-//         dataType: "json",
-//         headers: {
-//             "Accept": "application/json",
-//             "Content-Type": "application/json;charset=utf-8"
-//         },
-//         success:function(data){
-//             cookieId=data.data;
-//             sessionStorage.setItem("cookieId",cookieId);
-//         },
-//         error:function(){
-//             alert("程序出错,请重试");
-//         }
-//     });
-// }else{
-//     var cookieId="oPUdI0pZbHIYBCHUn_aQPCJAmRIU"; //晏雯
-//     sessionStorage.setItem("cookieId",cookieId);
-// }

@@ -4,25 +4,25 @@ var count_start=1,count_end=10,num=1,scroll_status=true;
 const http_url={
     formal_url:"https://api.jieshuibao.com/",//正式
     test_url:"http://test.jieshuibao.com/jsb_webserver/",//测试
-    url:"http://test.jieshuibao.com/jsb_webserver/"
+    url:"https://api.jieshuibao.com/"
 };
 //微信回调公共变量
 const wx_hd_url={
     formal_url:"appid=wx64eaa52e2ff9ec97&redirect_uri=https%3a%2f%2fapi.jieshuibao.com",
     test_url:"appid=wx57543e0ae2e282e9&redirect_uri=http%3a%2f%2ftest.jieshuibao.com",
-    url:"appid=wx57543e0ae2e282e9&redirect_uri=http%3a%2f%2ftest.jieshuibao.com"
+    url:"appid=wx64eaa52e2ff9ec97&redirect_uri=https%3a%2f%2fapi.jieshuibao.com"
 };
 //微信分享公共变量
 const total_share_url={
     formal_url:"https://api.jieshuibao.com/",
     test_url:"http://test.jieshuibao.com/",
-    url:"http://test.jieshuibao.com/"
+    url:"https://api.jieshuibao.com/"
 };
 //友盟埋点公共变量
 const ym_md={
     formal_url:"cnzz_stat_icon_1275564682",
     test_url:"cnzz_stat_icon_1275561782",
-    url:"cnzz_stat_icon_1275561782"
+    url:"cnzz_stat_icon_1275564682"
 };
 //头像路径
 var head_src=http_url.url+"showImg/head/";
