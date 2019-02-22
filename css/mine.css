@@ -1433,7 +1433,7 @@
     background: #fff;
     width:100%;
     min-height:100vh;
-    margin-bottom: 9.8rem;
+    padding-bottom: 11.8rem;
 }
 .mine-365-header{
     min-height:19.1rem;
@@ -1478,7 +1478,7 @@
     background: url(../img/365_My_vipcard.png) no-repeat;
     background-size: 100% 100%;
 }
-.card-365-date{
+.card-365-date,.card-365-open{
    float: right;
     line-height: 12.8rem;
     height:12.8rem;
@@ -1487,12 +1487,12 @@
     text-align: right;
     margin-right: 6.1rem;
 }
-.card-365-date>div{
+.card-365-date>div,.card-365-open>div{
     font-size: 2.6rem;
     color:#754A06;
     margin-left: 1.9rem;
 }
-.card-365-date>div>img{
+.card-365-date>div>img,.card-365-open>div>img{
     vertical-align: middle;
     width:1rem;
     height:1.9rem;
@@ -1502,7 +1502,7 @@
     /*padding:2.6rem;*/
 }
 .mine-365-model{
-    width: 100%;
+    /*width: 100%;*/
     min-height:23.6rem;
     height:auto;
     padding:2.6rem 3rem;
@@ -1543,4 +1543,108 @@
 }
 .workbench-normal>img{
     width:100%;
+}
+.card-365-title{
+    color:#444;
+    background: #FCEAC4;
+}
+.card-365-show{
+    width:100%;
+    height:39.8rem;
+    background: url("../img/365_card_vip.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top:0;
+}
+.mine-365-card-body{
+    min-height: 100vh;
+    height:auto;
+    background: #fff;
+
+}
+.mine-365-card-body-one{
+    position: relative;
+    height:39.8rem;
+    top:8.8rem;
+}
+.mine-365-card-body-one>img{
+    position: absolute;
+    top:0;
+    width:100%;
+}
+.card-365-show-date,.card-365-show-open{
+    position: absolute;
+    bottom:8rem;
+    right:9rem;
+    color:#fff;
+    font-size: 2.2rem;
+}
+.card-365-renew{
+    width:16.1rem;
+    height:5.5rem;
+    line-height: 5.5rem;
+    text-align: center;
+    font-size: 2.4rem;
+    color:#93600E;
+    border:1px solid rgba(141,90,8,1);
+    border-radius:2.8rem;
+    margin-left: 2rem;
+}
+.vip-365-title{
+    font-size: 3.2rem;
+    color:#5F3008;
+    height:7.3rem;
+    line-height: 7.3rem;
+    text-align: center;
+    margin-top: 8rem;
+}
+.mine-365-hangxin>div{
+    margin-top: 6rem;
+}
+.equity-365{
+    height:16.2rem;
+    background: url("../img/equity.png") no-repeat;
+    background-size: 100% 100%;
+    padding:3.8rem 5rem;
+    font-size: 2.4rem;
+    color:#999;
+}
+.equity-365>img{
+     /*vertical-align: middle;*/
+    width:9.3rem;
+    height:8.6rem;
+    margin-right: 3rem;
+ }
+.equity-365-title{
+    font-size: 2.8rem;
+    color:#666;
+}
+.card-365-footer{
+    position: absolute;
+    bottom:8rem;
+    text-align: center;
+    width: 100%;
+}
+.card-365-footer-one{
+    font-size: 2.4rem;
+    color:#5F3008;
+}
+.card-365-footer-one>span{
+    padding: 0 2rem;
+}
+.card-365-footer-one>span:first-child{
+    border-right:1px solid #5F3008;
+}
+.card-365-footer-two{
+    width:67.8rem;
+    height:9.8rem;
+    line-height: 9.8rem;
+    color:#5F3008;
+    font-size: 2.6rem;
+    margin: 3rem auto;
+    background: #DFC287;
+}
+.card-365-footer-two>span{
+    font-size: 3.2rem;
+    font-weight: bold;
 }

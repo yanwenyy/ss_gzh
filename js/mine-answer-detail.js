@@ -59,7 +59,7 @@ $(function(){
                 // $(".error-correction-btn").hide();
 
             }
-            if(status==1||answerUsers[m].status==2||answerUsers[m].checkStatus=="2"||answerUsers[m].status==7){
+            if(status==1||answerUsers[m].status==2||answerUsers[m].status==3||answerUsers[m].checkStatus=="2"||answerUsers[m].status==7){
                 $(".normal_hida").show();
             }
             var answer_score="",adopt_html='',jc_title_html='';
