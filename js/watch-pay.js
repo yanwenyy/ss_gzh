@@ -4,7 +4,8 @@ $(function(){
         watch_id=getUrlParms("watch_id"),
         vip_id=getUrlParms("vip_id"),
         qeus=getUrlParms("qeus"),
-        code=getUrlParms("code");
+        code=getUrlParms("code"),
+        card_365=getUrlParms("card_365");
     $(".zf_money").html(price);
     //余额显示
     function show_ye(data){
@@ -303,6 +304,13 @@ $(function(){
                         ajax(http_url.url+"/question/releaseQuestion",{"content":ques.content,"source":1, "payType":payType,"originalPrice":originalPrice,  "money":price,"trade":ques.trade,"isAnon":ques.isAnon,"images":ques.images,"code":sessionStorage.getItem("code")},pay_card);
                 }
         })
+    };
+    //365卡购买
+    if(card_365!=''&&card_365!=null&&card_365!=undefined){
+        $(".pay_name").html("365会员卡支付");
+        $(".balance_pay").hide();
+        $(".VipBalance_pay").hide();
+        $(".QACardBalance_pay").hide();
     }
     //支付选择点击
     $(".more-img").click(function(){
