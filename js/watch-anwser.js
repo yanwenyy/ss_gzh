@@ -2,9 +2,9 @@ $(function(){
     var watch_id=getUrlParms("cwatch_id"),answerUuid,status=getUrlParms("status"),msg=getUrlParms("msg");
     var newuser=getUrlParms("newuser");
     //是否新用户
-    if(newuser){
-        $(".down-app-model").show();
-    }
+    // if(newuser){
+    //     $(".down-app-model").show();
+    // }
     if(status!=null){
         $(".back").click(function(){
             window.location.href="../html/mine-buy.html?status=1"
