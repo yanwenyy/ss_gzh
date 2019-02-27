@@ -535,7 +535,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 
 .suspension_model {
     position: fixed;
-    top: 67%;
+    top: 65%;
     right: 1.5rem
 }
 
@@ -2275,4 +2275,23 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 .error_sz_act{
     color:#fff!important;
     background: #2D86FD!important;
+}
+.kt-365-watch{
+    font-size: 2.6rem;
+    color:#DBA74C;
+    text-align: center;
+    margin-bottom: 4.2rem;
+}
+.mine-365-mb-list{
+    position: relative;
+}
+.red_dot-365{
+    width:1rem;
+    height:1rem;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top:0;
+    right: 5rem;
+    display: none;
 }

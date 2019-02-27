@@ -1,5 +1,5 @@
 $(function(){
-    var status=getUrlParms("status");
+    var status=getUrlParms("status"),type=getUrlParms("type");
     if(status!=null){
         ajax(http_url.url+"/user/secretly",{"sinceId":count_start,
             "maxId":count_end},get_wg);
@@ -7,13 +7,32 @@ $(function(){
             "maxId":count_end},get_wg_more);
         $(".mine_w").addClass("csq-header-change-act");
         $(".mine_v").removeClass("csq-header-change-act");
+        $(".mine-buy-header").html("我的围观");
         $(".mine-buy-wg").show();
         $('.mine-buy-video').hide();
     }else{
-        ajax(http_url.url+"/user/secretly",{"sinceId":count_start,
-            "maxId":count_end},get_wg);
-        scroll_more(http_url.url+"/user/secretly",{"sinceId":count_start,
-            "maxId":count_end},get_wg_more);
+        if(type=="wg"){
+            ajax(http_url.url+"/user/secretly",{"sinceId":count_start,
+                "maxId":count_end},get_wg);
+            scroll_more(http_url.url+"/user/secretly",{"sinceId":count_start,
+                "maxId":count_end},get_wg_more);
+            $(".mine_w").addClass("csq-header-change-act");
+            $(".mine_v").removeClass("csq-header-change-act");
+            $(".mine-buy-header").html("我的围观");
+            $(".mine-buy-wg").show();
+            $('.mine-buy-video').hide();
+        }else{
+            ajax(http_url.url+"/video/buylist",{"sinceId":count_start,
+                "maxId":count_end},buy_video);
+            scroll_more(http_url.url+"/video/buylist",{"sinceId":count_start,
+                "maxId":count_end},buy_video_more);
+            $(".mine_v").addClass("csq-header-change-act");
+            $(".mine_w").removeClass("csq-header-change-act");
+            $(".mine-buy-header").html("已购视频");
+            $(".mine-buy-video").show();
+            $('.mine-buy-wg').hide();
+        }
+
     }
     $(".back").click(function(){
         window.location.href="../html/index-mine.html"

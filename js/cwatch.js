@@ -74,8 +74,21 @@ $(function(){
         window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?"+wx_hd_url.url+"%2fjsb_weixin%2fhtml%2fwatch-pay.html%3fwatch_id%3d"+watch_id+"%26%26price%3d1&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
     });
     //围观详情点击
-    $(".wacth-people-deatial").click(function(){
+    $("body").on("click",".wacth-people-deatial",function(){
         window.location.href="wacth-people-list.html?uuid="+watch_id;
+
+    });
+    //开通365点击
+    $(".kt-365-watch").click(function(){
+        ajax_nodata(http_url.url+"/user/message",function(data){
+            //是否是365会员
+            if(data.tsfTime!=null&&data.tsfTime!=''){
+                window.location.href="mine-365-card.html?time="+data.tsfTime;
+            }else{
+                window.location.href="mine-365-card.html?open=yes"
+            }
+        });
+
     });
     //回答者信息
     function get_answer(data){

@@ -1,6 +1,6 @@
 
 $(function(){
-    var icode = getUrlParms("icode"),newuser=getUrlParms("newuser");
+    var icode = getUrlParms("icode"),newuser=getUrlParms("newuser"),if_365=false;
     var hot_count_start=1,hot_count_end=5,recommend_count_start=1,recommend_count_end=5;
     //是否新用户
     if(newuser){
@@ -13,6 +13,12 @@ $(function(){
             $(".mfw>img").attr("src","../img/hangxin-ask.png");
         }else if(data.aision==2){
             $(".mfw>img").attr("src","../img/gshy-ask.png");
+        }
+        if(data.tsfTime!=null&&data.tsfTime!=''){
+            var tt=new Date().getTime();
+            if(tt<data.tsfTime){
+                if_365=true;
+            }
         }
     }
     ajax_nodata(http_url.url+"/user/sectionMessage",if_hangxin);
@@ -395,16 +401,20 @@ $(function(){
     //1元围观
     $("body").on("click",".one_wg",function(){
         var cwatch_id=$(this).attr("data-id");
-        //微信授权
-        function cwatch_jurisdiction(data){
-            console.log(data);
-            if(data.isBuy==1){//未购买
-                window.location.href="../html/cwatch.html?cwatch_id="+cwatch_id;
-            }else if(data.isBuy==0){//已围观
-                window.location.href="../html/watch-anwser.html?cwatch_id="+cwatch_id;
+        if(if_365==true){
+            window.location.href="../html/watch-anwser.html?cwatch_id="+cwatch_id;
+        }else{
+            //微信授权
+            function cwatch_jurisdiction(data){
+                console.log(data);
+                if(data.isBuy==1){//未购买
+                    window.location.href="../html/cwatch.html?cwatch_id="+cwatch_id;
+                }else if(data.isBuy==0){//已围观
+                    window.location.href="../html/watch-anwser.html?cwatch_id="+cwatch_id;
+                }
             }
+            ajax_nodata(http_url.url+"/onlook/wx/onlookAuthorized?uuid="+cwatch_id,cwatch_jurisdiction);
         }
-        ajax_nodata(http_url.url+"/onlook/wx/onlookAuthorized?uuid="+cwatch_id,cwatch_jurisdiction);
     });
     //专家推荐
     function recommend_export(data){
