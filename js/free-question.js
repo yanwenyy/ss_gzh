@@ -7,7 +7,12 @@ $(function(){
             $(".other-money").addClass("out");
         }else if(data.aision==2){
             hangxin_data=true;
-            $(".hangxin-money").removeClass("out").children(".more-msg").html("个税会员免费");
+            $(".hangxin-money").removeClass("out").children(".more-msg").html("会员免费");
+            $(".other-money").addClass("out");
+        }
+        if(data.tsfTime!=null&&data.tsfTime!=''){
+            hangxin_data=true;
+            $(".hangxin-money").removeClass("out").children(".more-msg").html("会员免费");
             $(".other-money").addClass("out");
         }
     }
