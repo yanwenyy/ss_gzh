@@ -20,9 +20,9 @@ const total_share_url={
 };
 //友盟埋点公共变量
 const ym_md={
-    formal_url:"cnzz_stat_icon_1275564682",
-    test_url:"cnzz_stat_icon_1275561782",
-    url:"cnzz_stat_icon_1275564682"
+    formal_url:"1275564682",
+    test_url:"1275561782",
+    url:"1275564682"
 };
 //头像路径
 var head_src=http_url.url+"showImg/head/";
