@@ -8,10 +8,13 @@ $(function(){
     function recommend_export(data){
         console.log(data);
         var export_list=data.data,html='';
-        for(var i=0;i<export_list.length;i++){
-            var counselorDuty=export_list[i].counselorDuty.split(" ");
-            counselorDuty=counselorDuty.join(" | ");
-            html+=`
+        if(export_list==""){
+            $(".expert-list").html("<span style='text-align: center;display:block' class='search-none'>暂无数据</span>");
+        }else{
+            for(var i=0;i<export_list.length;i++){
+                var counselorDuty=export_list[i].counselorDuty.split(" ");
+                counselorDuty=counselorDuty.join(" | ");
+                html+=`
                 <div class="box-sizing" data-phone="${export_list[i].phoneNumber}">
                     <div class="expert-msg">
                         <img  data-phone="${export_list[i].phoneNumber}" src="${head_src+export_list[i].headImage}" alt="" onerror=src="../img/user.png">
@@ -36,8 +39,10 @@ $(function(){
                     </div>
                 </div>
             `;
+            }
+            $(".expert-list").html(html);
         }
-        $(".expert-list").html(html);
+
     }
     function recommend_export_more(data){
         var export_list=data.data,html='';

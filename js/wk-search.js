@@ -3,17 +3,21 @@ $(function(){
     function get_search(data){
        console.log(data);
         var videos=data.videos,html="",csq_detail='',search=$(".wg-search-input").val();
-        for(var i=0;i<videos.length;i++){
-            var atc_title;
-            if(videos[i].title.length>40){
-                atc_title=videos[i].title.substr(0,40)+"..."
-            }else{
-                atc_title=videos[i].title;
+        if(videos==""){
+            $(".wacth-search-list ul").html('<li class="search-none">暂无内容</li>');
+        }else{
+            for(var i=0;i<videos.length;i++){
+                var atc_title;
+                if(videos[i].title.length>40){
+                    atc_title=videos[i].title.substr(0,40)+"..."
+                }else{
+                    atc_title=videos[i].title;
+                }
+                atc_title=atc_title.replace(search,`<span class="red">${search}</span>`);
+                html+="<li data-id='"+videos[i].id+"' data-price='"+videos[i].price+"'>"+atc_title+"</li>";
             }
-            atc_title=atc_title.replace(search,`<span class="red">${search}</span>`);
-            html+="<li data-id='"+videos[i].id+"' data-price='"+videos[i].price+"'>"+atc_title+"</li>";
+            $(".wacth-search-list ul").html(html);
         }
-        $(".wacth-search-list ul").html(html);
     }
     function get_search_more(data){
         // console.log(data);
