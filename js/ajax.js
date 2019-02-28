@@ -4,7 +4,7 @@ var count_start=1,count_end=10,num=1,scroll_status=true;
 const http_url={
     formal_url:"https://api.jieshuibao.com/",//正式
     test_url:"http://test.jieshuibao.com/jsb_webserver/",//测试
-    url:"https://api.jieshuibao.com/"
+    url:"http://test.jieshuibao.com/jsb_webserver/"
 };
 //微信回调公共变量
 const wx_hd_url={
