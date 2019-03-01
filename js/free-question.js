@@ -89,7 +89,7 @@ $(function(){
     }
     ajax_nodata(http_url.url+"/category/tree",get_select);
     //发布
-    $(".release").click(function(){
+    $(".release").one("click",function(){
         var content=$(".ques-text").val(),
             isAnon=$(".if_name").attr("data-code"),
             images=src_list,
