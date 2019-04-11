@@ -1507,7 +1507,7 @@
     height:auto;
     padding:2.6rem 3rem;
     border-radius:1.2rem;
-    box-shadow:0px 0px  10px 5px #eee;
+    box-shadow:0px 0px  16px 14px #f2f2f2;
     margin: 0 2.6rem 2rem 2.6rem;
 }
 .mine-365-model-title{
@@ -1515,6 +1515,7 @@
     color:#333;
     padding-bottom: 2.4rem;
     border-bottom: 1px solid #eee;
+    font-weight: bold;
 }
 .mine-365-model-title>span{
     font-size: 2.4rem;

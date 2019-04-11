@@ -1,4 +1,14 @@
-
+//屏蔽手机自带返回键
+$(document).ready(function() {
+    if (window.history && window.history.pushState) {
+        $(window).on('popstate', function () {
+            window.history.pushState('forward', null, '#');
+            window.history.forward(1);
+        });
+    }
+    window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+    window.history.forward(1);
+});
 $(function(){
     var icode = getUrlParms("icode"),newuser=getUrlParms("newuser"),if_365=false;
     var hot_count_start=1,hot_count_end=5,recommend_count_start=1,recommend_count_end=5;

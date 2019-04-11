@@ -141,17 +141,17 @@ function get_score(data,aision,vip){
         // }
     }else{
         if(0<=data&&data<6){
-            score_img="../img/icon-onlooked-member.png"
+            score_img="../img/icon-pthy.png"
         }else if(6<=data&&data<20){
-            score_img="../img/icon-onlooked-copper member.png"
+            score_img="../img/icon-tphy.png"
         }else if(20<=data&&data<50){
-            score_img="../img/icon-onlooked-silver member.png"
+            score_img="../img/icon-yphy.png"
         }else if(50<=data&&data<100){
-            score_img="../img/icon-onlooked-gold member.png"
+            score_img="../img/icon-jphy.png"
         }else if(100<=data&&data<500){
-            score_img="../img/icon-onlooked-platinum-member.png"
+            score_img="../img/icon-bjhy.png"
         }else if(500<=data){
-            score_img="../img/icon-onlooked-diamonds member.png"
+            score_img="../img/icon-zshy.png"
         }
     }
     return score_img;
