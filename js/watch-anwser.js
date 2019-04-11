@@ -1,3 +1,13 @@
+//屏蔽手机自带返回键
+$(document).ready(function() {
+    if (window.history && window.history.pushState) {
+        $(window).on('popstate', function () {
+            window.location.href="index.html";
+        });
+    }
+    window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+    window.history.forward(1);
+});
 $(function(){
     var watch_id=getUrlParms("cwatch_id"),answerUuid,status=getUrlParms("status"),msg=getUrlParms("msg");
     var newuser=getUrlParms("newuser");

@@ -1,16 +1,34 @@
 $(function(){
+    //会员过期不再提醒点击
+    $(".no-notice-vipDO>input").change(function(e){
+        // console.log(e.target.checked);
+        if(e.target.checked==true){
+            localStorage.setItem("no_vipDateout","yes");
+        }else{
+            localStorage.removeItem("no_vipDateout");
+        }
+    });
+    //会员过期我知道了点击
+    $(".know-vipDO").click(function(){
+        $(".vipDateOut").hide();
+    });
     var hangxin_data=false;
     function if_hangxin(data){
-        if(data.aision==0&&data.vip==0){
-            hangxin_data=true;
-            $(".hangxin-money").removeClass("out");
-            $(".other-money").addClass("out");
+        if(data.aision==0){
+            if(data.vip==0){
+                hangxin_data=true;
+                $(".hangxin-money").removeClass("out");
+                $(".other-money").addClass("out");
+            }else if(data.vip==1&&localStorage.getItem("no_vipDateout")!="yes"){
+                $(".vipDateOut").show();
+                $(".vipDO-hx").show();
+            }
         }else if(data.aision==2){
             hangxin_data=true;
             $(".hangxin-money").removeClass("out").children(".more-msg").html("会员免费");
             $(".other-money").addClass("out");
         }
-        if(data.tsfTime!=null&&data.tsfTime!=''){
+        if(data.tsfTime!=null&&data.tsfTime!=''&&data.tsfTime>new Date().getTime()){
             hangxin_data=true;
             $(".hangxin-money").removeClass("out").children(".more-msg").html("会员免费");
             $(".other-money").addClass("out");
