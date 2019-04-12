@@ -223,7 +223,7 @@ $(function(){
     });
     //视频点击
     $("body").on("click",".sp-img",function(){
-        window.location.href="../html/video.html?videoId="+$(this).attr("data-id");
+        window.location.href="../html/video.html?vid="+$(this).attr("data-id");
     });
     //围观列表点击
     $("body").on("click",".card-list>div",function(){
