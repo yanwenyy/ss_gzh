@@ -320,7 +320,9 @@ $(function(){
         if(data.code==1){
             alert(data.des);
             // location.reload();
-            var url=window.location.href.replace(/\&newuser=yes/, "");
+            // console.log(window.location);
+            var url=window.location.pathname+window.location.search.replace(/\&newuser=yes/, "");
+            // console.log(url);
             window.location.href = url;
         }else{
             alert(data.des);
