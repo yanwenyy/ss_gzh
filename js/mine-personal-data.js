@@ -81,6 +81,9 @@ $(function(){
             console.log(data);
             if(data.code==1){
                 alert(data.des);
+                ajax(http_url.url+"/pay/companyEnveloeps",{"redType":"personalInfo"},function(data){
+                    console.log(data);
+                });
                 window.location.href="index-mine.html"
             }else{
                 alert(data.des);

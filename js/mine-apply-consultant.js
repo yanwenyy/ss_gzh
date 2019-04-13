@@ -402,6 +402,9 @@ $(function(){
                 sessionStorage.removeItem("goodat");
                 sessionStorage.removeItem("person_msg");
                 sessionStorage.removeItem("case_msg");
+                ajax(http_url.url+"/pay/companyEnveloeps",{"redType":"personalInfo"},function(data){
+                    console.log(data);
+                });
                 window.location.href="index-mine.html";
             }else{
                 alert(data.des);
