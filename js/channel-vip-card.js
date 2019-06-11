@@ -1,0 +1,11 @@
+$(function(){
+    //取消页面点击
+    $(".cancel-vip").click(function(){
+        window.location.href="channel.html"
+    });
+    //会员卡列表点击
+    $("body").on("click",".channel-card-list",function(){
+        $(".channel-card-list").removeClass("channel-card-list-act");
+        $(this).addClass("channel-card-list-act");
+    })
+});

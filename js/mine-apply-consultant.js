@@ -209,7 +209,7 @@ $(function(){
                 </div>
             `
             }
-            $(".kjs_list").html(html);
+            $(".sws_list").html(html);
         }
         if(data.lawyers){
             var html='';
@@ -230,7 +230,7 @@ $(function(){
                 </div>
             `
             }
-            $(".kjs_list").html(html);
+            $(".ls_list").html(html);
         }
     }
     ajax_nodata(http_url.url+"/user/message",get_user);
@@ -301,15 +301,15 @@ $(function(){
         };
     });
     //证书添加图片点击
-    $(".certificate-upload-input").change(function(){
+    $("body").on("change",".certificate-upload-input",function(){
+    // $(".certificate-upload-input").change(function(){
         var that=$(this);
         var code=that.attr("data-code");
         var file = that.get(0).files[0];
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload=function(e){
-
-            //console.log(e.target.result);
+            // console.log(e.target.result);
             that.prev().prev("img").attr("src",e.target.result).attr("data-src",e.target.result.split(",")[1]);
             that.prev().prev("img").addClass("certificate-img-show");
             that.next(".del-certificate-img").show();
@@ -337,7 +337,7 @@ $(function(){
         };
     });
 //删除证书图片
-    $(".del-certificate-img").click(function(){
+    $("body").on("click",".del-certificate-img",function(){
         var code=$(this).attr("data-code");
         $(this).parent().children("img:first-child").attr("src","").removeClass("certificate-img-show");
         $(this).hide();

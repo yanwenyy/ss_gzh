@@ -535,10 +535,10 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 
 .suspension_model {
     position: fixed;
-    top: 68%;
+    /*top: 68%;*/
+    bottom:10%;
     right: 1.5rem
 }
-
 .suspension_model img {
     width: 16rem;
     height: 16rem
@@ -2350,4 +2350,90 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 .no-notice-vipDO>input{
     width:2.5rem;
     height:2.5rem;
+}
+.office-rz{
+    padding-left: 3rem;
+}
+.office-rz>div{
+    height:4.2rem;
+    line-height: 4.2rem;
+    font-size: 2.2rem;
+    text-align: center;
+    padding:0 1.4rem;
+    margin-right: 1.4rem;
+}
+.office-rz>div>img{
+    width:1.7rem;
+    height:2.1rem;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+}
+.office-rz-qy{
+    background: #F0F5FE;
+    color:#3B85FA;
+}
+.office-rz-fws{
+    background: #FDF3EF;
+    color:#F56A32;
+}
+.office-rz-sws{
+    background: #FBF7EC;
+    color:#5F3600;
+}
+.office-goodats{
+    height:14rem;
+    overflow: hidden;
+}
+.office-goodats>div{
+    height:6rem;
+    line-height: 6rem;
+    text-align: center;
+    padding: 0 2.4rem;
+    background:rgba(246,246,246,1);
+    border-radius:3rem;
+    margin: 0 1.4rem 1.8rem 0;
+    font-size: 2.6rem;
+    color:#333;
+}
+.office-expert-more{
+    font-size: 2.8rem;
+    color:#999;
+    vertical-align: top;
+}
+.office-expert-list{
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+.office-expert-list-li{
+    background: url(../img/office-expert-list-bg.png) no-repeat;
+    background-size: 100% 100%;
+    width:31.7rem;
+    height:41.6rem;
+    text-align: center;
+    font-size: 2.4rem;
+    color: #999;
+}
+.office-expert-list-li>img{
+    width:93%;
+    height:27.4rem;
+}
+.office-expert-list-li-name{
+    font-size: 3.2rem;
+    color:#333;
+    margin: 1rem 0 1rem 0;
+}
+.office-company-intro{
+    font-size: 3rem!important;
+    color:#333;
+}
+.lx-company{
+    height:12.2rem;
+    background: #fff;
+    margin-top: -1.6rem;
+    box-shadow:0px 1px 3px 0px rgba(221, 221, 221, 0.35);
+    padding-top: 1.6rem;
+}
+.lx-company>div{
+    height:8.8rem;
+    line-height: 8.8rem;
 }

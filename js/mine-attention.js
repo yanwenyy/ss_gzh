@@ -64,7 +64,7 @@ $(function(){
                 that.parent().remove();
             }
         }
-        ajax(http_url.url+"/attention/user",{"phoneNum":phoneNum, "isAttention":0},cancel_attention)
+            ajax(http_url.url+"/attention/user",{"phoneNum":phoneNum, "isAttention":0},cancel_attention)
     });
     //关注列表点击
     $("body").on("click",".mine-attention>div>.attention-export-msg",function(){
