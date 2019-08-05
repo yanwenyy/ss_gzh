@@ -110,7 +110,7 @@ $(function(){
             var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
             var img_src="";
             if(questions[i].isAnon!=0){
-                img_src=head_src+questions[i].headImage;
+                img_src=headimage(questions[i].headImage);
             }
             var realName=get_name(questions[i]);
             var jc_show='out';
@@ -161,7 +161,7 @@ $(function(){
                 var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
                 var img_src="";
                 if(questions[i].isAnon!=0){
-                    img_src=head_src+questions[i].headImage;
+                    img_src=headimage(questions[i].headImage);
                 }
                 var realName=get_name(questions[i]);
                 var jc_show='out';

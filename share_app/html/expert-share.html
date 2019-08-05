@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>咨询师注册</title>
+    <meta content="user-scalable=0;" name="viewport" />
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        .main-bg{
+            background: #369798!important;
+        }
+        .main-color{
+            color:#369798!important;
+        }
+        .main-border{
+            border:1px solid #369798;
+        }
+        .expert-body{
+            color:#333;
+        }
+        .expert-body>img{
+            width:100%;
+            margin-top: -0.1rem;
+        }
+        .regist-div{
+            background: url("../img/expert6.png") no-repeat;
+            background-size: 100% 100%;
+            padding:3.2rem 6.8rem;
+            margin-top: -0.1rem;
+        }
+        .regist-title{
+            text-align: center;
+            font-weight: bold;
+            font-size: 3rem;
+        }
+        .regist-li{
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+        }
+        .regist-li input[type=text],.regist-li input[type=number]{
+            width:100%;
+            border-radius: 0.4rem;
+            margin-top: 1rem;
+            font-size: 2.4rem;
+            padding:1.5rem 1rem;
+            vertical-align: middle;
+            border: none;
+        }
+        .regist-li>div{
+            font-size: 2.6rem;
+        }
+        .regist-li>span{
+            vertical-align: middle;
+            margin-left: 1rem;
+        }
+        .input-span{
+            font-size: 2.6rem;
+        }
+        .regist-li input[type=date]{
+            width:30%;
+            padding:1rem;
+            font-size: 2.4rem;
+            vertical-align: middle;
+            border: none;
+            background: #fff;
+        }
+        .regist-li input[type=radio],.regist-li input[type=checkbox]{
+            width:2rem;
+            height:2rem;
+            background: #fff;
+        }
+        .zxs-class{
+            width: 100%;
+            margin: 1rem 0 0.5rem 0;
+        }
+        .zxs-list{
+            margin-bottom: 1rem;
+        }
+        .tree-title{
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        .tree-body>div{
+            padding: 0 1.9rem;
+            height: 5rem;
+            line-height: 5rem;
+            box-sizing: border-box;
+            color: #666;
+            text-align: center;
+            background: #fff;
+            border-radius: .2rem;
+            margin-right: 1.8rem;
+            margin-bottom: 2rem;
+            font-size: 2.2rem!important;
+        }
+        .tree-act{
+            background:  #369798!important;
+            color: #fff!important;
+        }
+        .sub-msg{
+            height:6rem;
+            line-height: 6rem;
+            text-align: center;
+            font-size: 2.8rem;
+            border-radius: 0.4rem;
+            color:#fff;
+            margin-top: 2rem;
+        }
+        .title-1{
+            background: url("../img/expert6.png") no-repeat;
+            background-size: 100% 100%;
+            padding:1.5rem 6.8rem;
+            margin-top: -0.1rem;
+            font-size: 2.8rem!important;
+        }
+        .dot{
+            width:1rem;
+            height:1rem;
+            background: #AAAAAA;
+            border-radius: 50%;
+            margin-left: 0.7rem;
+            vertical-align: top;
+            margin-top: 1rem;
+        }
+        .green{
+            color:#369798!important;
+        }
+        .lb-list{
+            font-size: 2.6rem;
+            margin: 2.2rem 0;
+        }
+        .lb-list>div{
+            width:94%;
+        }
+        .cursor{
+            cursor: pointer;
+        }
+        .one-title{
+            font-weight: bold;
+        }
+        .out{
+            display: none;
+        }
+        .send-msg>span{
+            background: #369798;
+            color:#fff;
+            text-align: center;
+            border-radius: 0.4rem;
+            padding: 1rem;
+            vertical-align: middle;
+            margin-top: 1rem;
+        }
+        .down-app{
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .down-app>img{
+            width:30%;
+            margin: 1rem 0;
+        }
+        .zxs-list span{
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="expert-body">
+    <img src="../img/expert1.png" alt="">
+    <div class="title-1 box-sizing">
+        <div style="margin-bottom: 1rem">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;刷刷邀请您分享智慧、共享资源、让全国财务人员找到您！  </div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;刷刷是北京解税宝科技有限公司与航天信息股份有限公司合作开发的财税咨询问答平台。</div>
+    </div>
+    <img src="../img/expert2.png" alt="">
+    <div class="title-1 box-sizing">
+        <div class="one-title">1.赠送税务师专属执业工具大礼包</div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">不管在企业做财务工作还是在事务所做执业咨询，工作中的日常财税问题，可以在平台咨询求助，获得专业人士的快速专业解答。</div>
+        </div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class=" inline-block">特约咨询师注册，可以获得价值300元的财税问答金。</div>
+        </div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">价值8800元的专题微课，特约咨询师免费循环听。</div>
+        </div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">赠送价值6800元的“卓越税务师五项能力训练”视频课程。</div>
+        </div>
+        <div class="one-title">2.共享刷刷平台资源</div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">100+合作伙伴、500+大咖老师、10000+企业会员、100万+用户流量与您共同分享变现。</div>
+        </div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">咨询师利用碎片化时间有偿提供咨询服务，一对多咨询：15元/1个问题；一对一咨询，咨询师自己定价，30元—200元/个问题</div>
+        </div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">可以随时录制长短财税专业视频，利用平台流量挣钱。</div>
+        </div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">与百万用户互动，打造个人品牌、积累粉丝团队、引流线下业务。</div>
+        </div>
+        <div class="one-title">3.链接平台、提升定位、拉伸价值</div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">税务师根据自己的喜好、习惯、职业发展路径，可以成立个人工作室，凭借平台，利用专业技能，在家办公，实现人身、财务自由。</div>
+        </div>
+        <div class="lb-list">
+            <span class="inline-block dot"></span>
+            <div class="inline-block">有志成为事务所合伙人的税务师，经过申请，符合条件的，可以成为解税宝税务师事务所的合伙人股东。</div>
+        </div>
+    </div>
+    <img src="../img/expert3.png" alt="">
+    <div class="regist-div box-sizing">
+        <!--<div class="regist-title">刷刷咨询师申请表 </div>-->
+        <ul>
+            <li class="regist-li">
+                <div>姓      名（必填） </div>
+                <input id="name" type="text" class="box-sizing" placeholder="请填写您的真实姓名">
+            </li>
+            <li class="regist-li">
+                <div>性    别</div>
+                <input type="radio" name="sex" value="1"><span class="input-span">男</span>
+                <input type="radio" name="sex" value="2"><span class="input-span">女</span>
+            </li>
+            <li class="regist-li">
+                <div >目前所在地（必填） </div>
+                <input id="province" style="width:60%" type="text" class="box-sizing main-border" placeholder=""><span class="input-span">省/直辖市</span>
+                <input id="city" style="width:60%" type="text" class="box-sizing main-border" placeholder=""><span class="input-span">市/区</span>
+            </li>
+            <li class="regist-li">
+                <div>手机号</div>
+                <input id="phone" type="number" oninput="if(value.length>11)value=value.slice(0,11)" class="box-sizing" placeholder="">
+            </li>
+            <li class="regist-li">
+                <div>手机验证码（必填）</div>
+                <input id="phone-message" style="width: 60%" type="text" maxlength="4" class="box-sizing" placeholder="">
+                <div class="inline-block send-msg">
+                    <span class="send-btn inline-block">发送验证码</span>
+                    <span class="send-time inline-block out">重新发送60s</span>
+                </div>
+            </li>
+            <li class="regist-li">
+                <div>企业全称（必填）</div>
+                <input id="company" type="text" class="box-sizing" placeholder="">
+            </li>
+            <li class="regist-li">
+                <div>咨询师证书（必填） </div>
+                <div class="zxs-list">
+                    <div class="zxs-class"><input class="zxs" value="3" type="checkbox">注册会计师</div>
+                    <span>证书签发日期:</span><input  id="zxs" type="number" style="width:30%"  oninput="if(value.length>4)value=value.slice(0,4)"><span >年</span>
+                </div>
+                <div class="zxs-list">
+                    <div class="zxs-class"><input class="sws" value="2" type="checkbox">税务师</div>
+                    <span>证书签发日期:</span><input  id="sws" type="number" style="width:30%" oninput="if(value.length>4)value=value.slice(0,4)"><span >年</span>
+                </div>
+                <div class="zxs-list">
+                    <div  class="zxs-class"><input class="ls" value="1" type="checkbox">律师</div>
+                    <span>证书签发日期:</span><input id="ls" type="number" style="width:30%" oninput="if(value.length>4)value=value.slice(0,4)"><span >年</span>
+                </div>
+            </li>
+            <li class="regist-li">
+                <div>本人擅长领域（必填,提示：每项最多选三个 ）</div>
+                <div>
+                    <div>
+                        <div class="tree-title">
+                            专题
+                        </div>
+                        <div class="tree-body zt">
+
+                        </div>
+                    </div>
+                    <div>
+                    <div class="tree-title">
+                        税种
+                    </div>
+                    <div class="tree-body sz">
+
+                    </div>
+                    </div>
+                    <div>
+                        <div class="tree-title">
+                            行业
+                        </div>
+                        <div class="tree-body hy">
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="sub-msg main-bg">提交</div>
+        <div class="down-app">
+            <div>免费下载刷刷app</div>
+            <img src="../img/zxs-app.png" alt="">
+            <div>工作人员帮您注册以后即可直接使用</div>
+        </div>
+    </div>
+    <img style="width: 100.1%;margin-left: 0.3rem" src="../img/expert5.png" alt="">
+</div>
+</body>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../../js/ajax.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    $(function(){
+        var createBy=getUrlParms("createBy");//邀请人
+        ajax_nodata(http_url.url+"/category/tree",function(data){
+           // console.log(data);
+           var categorys=data.categorys;
+           for(var i=0;i<categorys.length;i++){
+               if(categorys[i].name=="行业"){
+                   var html='';
+                   for(var h=0;h<categorys[i].children.length;h++){
+                       html+=`<div class="inline-block cursor" data-code="hy">${categorys[i].children[h].name}</div>`;
+                   }
+                   $(".hy").html(html);
+               }else if(categorys[i].name=="税种"){
+                   var html='';
+                   for(var s=0;s<categorys[i].children.length;s++){
+                       html+=`<div class="inline-block cursor" data-code="sz">${categorys[i].children[s].name}</div>`;
+                   }
+                   $(".sz").html(html);
+               }else if(categorys[i].name=="专题"){
+                   var html='';
+                   for(var z=0;z<categorys[i].children.length;z++){
+                       html+=`<div class="inline-block cursor" data-code="zt">${categorys[i].children[z].name}</div>`;
+                   }
+                   $(".zt").html(html);
+               }
+           }
+        });
+        //删除数组内某项的构造函数
+        Array.prototype.indexOf = function(val) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == val) return i;
+            }
+            return -1;
+        };
+        Array.prototype.remove = function(val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
+        };
+        var sex='0',//性别
+            zs_list=[],//证书数组
+            zt=[],//专题
+            sz=[],//税种
+            hy=[];//行业
+        //提交用户信息
+        $(".sub-msg").click(function () {
+            var zxs='',//咨询师证件日期
+                sws='',//税务师证件日期
+                ls='',//律师证件日期
+                name=$("#name").val(),//姓名
+                province=$("#province").val(),//省
+                city=$("#city").val(),//市
+                phone=$("#phone").val(),//联系方式
+                company=$("#company").val(),//企业名称
+                smsCode=$("#phone-message").val();//短信验证码
+            if(zs_list.indexOf("3")!=-1){
+                zxs=$("#zxs").val()
+            }
+            if(zs_list.indexOf("2")!=-1){
+                sws=$("#sws").val()
+            }
+            if(zs_list.indexOf("1")!=-1){
+                ls=$("#ls").val()
+            }
+           if(name==''){
+               alert("姓名不能为空")
+           }else if(province==''||city==''){
+               alert("请填写完整所在地")
+           }else if(smsCode==''){
+               alert("短信验证码不能为空")
+           }else if(company==''){
+               alert("企业名称不能为空")
+           }else if(zs_list==''){
+               alert("请至少选择一个证书");
+           }else if(zs_list.indexOf("3")!=-1&&zxs==''){
+                alert("咨询师证件日期不能为空")
+           }else if(zs_list.indexOf("2")!=-1&&sws==''){
+                alert("税务师证件日期不能为空")
+           }else if(zs_list.indexOf("1")!=-1&&ls==''){
+                alert("律师证件日期不能为空")
+            }else if(zt==''&&sz==''&&hy==''){
+               alert("擅长领域不能为空")
+           }else{
+               ajax(http_url.url+"/jsb/addcoumsg/promotion",{
+                   "sex":sex,
+                   "taxTime":sws,
+                   "accontantTime":zxs,
+                   "layerTime":ls,
+                   "smsCode":smsCode,
+                   "name":name,
+                   "smsMessageSid":smsMessageSid,
+                   "certificate":zs_list.join(","),
+                   "phone":phone,
+                   "province": province,
+                   "city": city,
+                   "companyName": company,
+                   "adept": zt.concat(sz).concat(hy).join(","),
+                   "createBy": createBy
+               },function(data){
+                   if(data.code==1){
+                       alert("提交成功")
+                   }else{
+                       alert(data.des)
+                   }
+               });
+           }
+        });
+        $("input[name=sex]").click(function(e){
+            if(e.target.checked){
+                sex=e.target.value;
+            }
+        });
+        $(".zxs-class>input").click(function(e){
+            var name=$(this).attr("data-name");
+            if(e.target.checked==true){
+                zs_list.push(e.target.value)
+            }else{
+                zs_list.remove(e.target.value)
+            }
+        });
+        $("body").on("click",".tree-body>div",function(){
+            var html=$(this).html(),code=$(this).attr("data-code");
+            if($(this).hasClass("tree-act")){
+                $(this).removeClass("tree-act");
+                switch (code){
+                    case 'zt':
+                        zt.remove(html);
+                        break;
+                    case 'sz':
+                        sz.remove(html);
+                        break;
+                    case 'hy':
+                        hy.remove(html);
+                        break;
+                    default:return;
+                }
+
+            }else{
+                if($(this).parent().find(".tree-act").size()>2){
+                    alert("每个领域最多能选择3个");
+                    return false;
+                }else{
+                    $(this).addClass("tree-act");
+                    switch (code){
+                        case 'zt':
+                            zt.push(html);
+                            break;
+                        case 'sz':
+                            sz.push(html);
+                            break;
+                        case 'hy':
+                            hy.push(html);
+                            break;
+                        default:return;
+                    }
+                }
+            }
+        });
+        var nums = 61,clock,smsMessageSid='';
+        function doLoop() {
+            nums--;
+            if(nums > 0){
+                $(".send-time").removeClass('out').html('重新发送('+nums+')');
+                $(".send-btn").addClass("out");
+            }else{
+                clearInterval(clock); //清除js定时器
+                $(".send-btn").removeClass("out");
+                $(".send-time").addClass("out");
+                nums = 61; //重置时间
+            }
+        };
+        $(".send-btn").click(function(){
+            var phonenum=$("#phone").val();
+            if(phonenum==''){
+                alert("请输入手机号")
+            }else{
+                ajax(http_url.url+"/api/sendSms",{"phoneNum":phonenum,"codeType":"conmsg"},function(data){
+                    console.log(data);
+                    if(data.code==1){
+                        alert("短信已发送");
+                        smsMessageSid=data.smsMessageSid;
+                        clock = setInterval(doLoop,1000);
+                    }else{
+                        alert(data.des);
+                    }
+                })
+            }
+        });
+    });
+</script>
+</html>

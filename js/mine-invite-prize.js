@@ -22,7 +22,7 @@ $(function(){
                 });
                 wx.ready(function () {
                     var shareData = {
-                        title: "[航信办税宝]50元红包等你领取。",
+                        title: "[刷刷]50元红包等你领取。",
                         desc: "发现一个不错的财税咨询平台，我帮你申请了50元问答红包，快来领取吧", //这里请特别注意是要去除html
                         link: total_share_url.url+"jsb_weixin/share_app/html/user-register.html?inviteUserId="+phone,
                         imgUrl: total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",

@@ -5,7 +5,7 @@ $(function(){
         console.log(data);
         if(data.code==1){
             var createData=format(data.createDate);
-            $(".csq-detail-body-msg .csq-user-img").attr("src",head_src+data.headImage);
+            $(".csq-detail-body-msg .csq-user-img").attr("src",headimage(data.headImage));
             $(".csq-detail-body-msg .user-name").html(`${data.realName||"" }
                                 <div class="inline-block zxs-grade">
                                     <img src="../img/icon-expert icon.png" alt="">

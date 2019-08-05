@@ -34,7 +34,7 @@ $(function(){
             html+=`
                 <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
                     <div class="clist-head">
-                        <img src="${head_src+list[i].headImage}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -89,7 +89,7 @@ $(function(){
                 html+=`
                 <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
                     <div class="clist-head">
-                        <img src="${head_src+list[i].headImage}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}

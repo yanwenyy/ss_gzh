@@ -21,7 +21,7 @@ $(function(){
         })
     }else if(msg!=null){
         $(".back").click(function(){
-            window.location.href="expert-home-page.html?phone="+msg+"&&code=1";
+            window.location.href="personal-new.html.html?phone="+msg+"&&code=1";
         });
     }else{
         $(".back").click(function(){
@@ -47,7 +47,7 @@ $(function(){
         $(".user-msg-detail").html(`
             <div class="box-sizing">
             <div class="clist-head">
-                <img src="${head_src+questionUser.headImage}" alt="" onerror=src="../img/user.png"  class="look-hp-image"  data-role="${questionUser.role}" data-phone="${questionUser.phoneNumber}">
+                <img src="${headimage(questionUser.headImage)}" alt="" onerror=src="../img/user.png"  class="look-hp-image"  data-role="${questionUser.role}" data-phone="${questionUser.phoneNumber}">
                 <div class="inline-block">
                     <div class="user-name">
                        ${realName||"匿名用户"}
@@ -58,7 +58,7 @@ $(function(){
                     <div class="zx-detail-date">${createDate}</div>
                 </div>
             </div>
-            <div class="clist-msg">
+            <div class="clist-msg-q clist-msg">
                 ${questionUser.content}
             </div>
             <div class="zx-detail-img">
@@ -123,7 +123,7 @@ $(function(){
                 ${jc_title_html}
                 <div class="box-sizing watch-answer-expert">
                     <div class="clist-head">
-                        <img src="${head_src+answewrUser[m].headImage}" alt="" onerror=src="../img/user.png"   class="look-hp-image" data-role="${answewrUser[m].role}" data-phone="${answewrUser[m].phoneNumber}">
+                        <img src="${headimage(answewrUser[m].headImage)}" alt="" onerror=src="../img/user.png"   class="look-hp-image" data-role="${answewrUser[m].role}" data-phone="${answewrUser[m].phoneNumber}">
                         <div class="inline-block ${zxs_role}">
                             <div class="user-name">
                                 ${answewrUser[m].userName||"匿名用户"}
@@ -204,7 +204,7 @@ $(function(){
                     <div class="card-list zx-list m-q-f-d-msg">
                             <div class="box-sizing watch-answer-expert">
                                 <div class="clist-head">
-                                    <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
+                                    <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${headimage(all_usermsg.headImage)}" alt="" onerror=src="../img/user.png">
                                     <div class="inline-block ${zxs_role}">
                                         <div class="user-name">
                                             ${data.userName||"匿名用户"}
@@ -264,7 +264,7 @@ $(function(){
                 var realName=get_name(discussUsers[k]);
                 dis_html+=`<div class="box-sizing">
                 <div class="clist-head">
-                    <img src="${head_src+discussUsers[k].headImage}" alt="" onerror=src="../img/user.png" class="look-hp-image" data-role="${discussUsers[k].role}" data-phone="${discussUsers[k].userUuid}">
+                    <img src="${headimage(discussUsers[k].headImage)}" alt="" onerror=src="../img/user.png" class="look-hp-image" data-role="${discussUsers[k].role}" data-phone="${discussUsers[k].userUuid}">
                     <div class="inline-block">
                         <div class="user-name">
                             ${realName||"匿名用户"}
@@ -293,7 +293,7 @@ $(function(){
                 var realName=get_name(discussUsers[k]);
                 dis_html+=`<div class="box-sizing">
                 <div class="clist-head">
-                    <img src="${head_src+discussUsers[k].headImage}" alt="" onerror=src="../img/user.png" class="look-hp-image"   data-role="${discussUsers[k].role}" data-phone="${discussUsers[k].userUuid}">
+                    <img src="${headimage(discussUsers[k].headImage)}" alt="" onerror=src="../img/user.png" class="look-hp-image"   data-role="${discussUsers[k].role}" data-phone="${discussUsers[k].userUuid}">
                     <div class="inline-block">
                         <div class="user-name">
                             ${realName||"匿名用户"}
@@ -430,8 +430,8 @@ $(function(){
                 });
                 wx.ready(function () {
                     var shareData = {
-                        title: "我在航信办税宝围观了一个问题",
-                        desc: $(".clist-msg").html(), //这里请特别注意是要去除html
+                        title: "专家详解：你该了解的财税知识",
+                        desc: $.trim($(".clist-msg-q").html()), //这里请特别注意是要去除html
                         link: total_share_url.url+"jsb_weixin/share_app/html/cwatch.html?cwatch_id="+watch_id,
                         imgUrl: total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",
                         trigger: function (res) {

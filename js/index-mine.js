@@ -79,8 +79,8 @@ $(function(){
             }
             $(".expert_name").html(data.levelName);
         }
-        console.log(head_src+data.headImage)
-        $(".user-head-img").attr("src",head_src+data.headImage).attr("data-role",data.role).attr("data-phone",data.phoneNumber);
+        console.log(headimage(data.headImage))
+        $(".user-head-img").attr("src",headimage(data.headImage)).attr("data-role",data.role).attr("data-phone",data.phoneNumber);
 
     }
     ajax_nodata(http_url.url+"/user/message",get_user);

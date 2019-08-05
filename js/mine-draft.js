@@ -1,0 +1,25 @@
+$(function(){
+    var sel_list=[];
+    //删除按钮点击
+    $(".release").click(function(){
+        if($(this).html()==="选择"){
+            $(this).html("删除");
+            $(".mine-draft-select").show();
+        }else{
+            $(this).html("选择");
+            $(".mine-draft-select").hide();
+            sel_list=[];
+            console.log(sel_list)
+        }
+    });
+    //选择按钮点击
+    $("body").on("click",".mine-draft-select",function(){
+        if($(this).children("img").attr("src")==="../img/mine-draft-select-no.png"){
+            $(this).children("img").attr("src","../img/mine-draft-select.png");
+            sel_list.push($(this).attr("data-code"));
+        }else{
+            $(this).children("img").attr("src","../img/mine-draft-select-no.png");
+            sel_list.remove($(this).attr("data-code"))
+        }
+    })
+});

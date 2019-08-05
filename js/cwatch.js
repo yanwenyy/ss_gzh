@@ -16,7 +16,7 @@ $(function(){
         }
         var realName=get_name(questionUser);
         $(".cwatch_msg-body").html(`<div class="clist-head">
-                <img src="${head_src+questionUser.headImage}" alt="" onerror=src="../img/user.png">
+                <img src="${headimage(questionUser.headImage)}" alt="" onerror=src="../img/user.png">
                 <div class="inline-block">
                     <div class="user-name">
                         ${realName||"匿名用户"}
@@ -55,7 +55,7 @@ $(function(){
             var v_html='';
             if(OnLookCountDetail[i]){
                 v_html=`
-                <img src="${head_src+OnLookCountDetail[i].headImage}" alt="" onerror=src="../img/user.png" >`;
+                <img src="${headimage(OnLookCountDetail[i].headImage)}" alt="" onerror=src="../img/user.png" >`;
             }else{
                 v_html='<img src="../img/csq-moren.png" alt="">'
             }
@@ -95,7 +95,7 @@ $(function(){
         //console.log(data);
         var html="";
         if(data.userMsg.role==1){
-            html=`<img src="${head_src+data.userMsg.headImage}" onerror=src="../img/user.png" alt="">
+            html=`<img src="${headimage(data.userMsg.headImage)}" onerror=src="../img/user.png" alt="">
                 <div class="inline-block">
                     <div class="user-name">
                         ${data.userMsg.realName||"匿名用户"}
@@ -105,7 +105,7 @@ $(function(){
                     </div>
                 </div>`;
         }else{
-            html=`<img src="${head_src+data.userMsg.headImage}" onerror=src="../img/user.png" alt="">
+            html=`<img src="${headimage(data.userMsg.headImage)}" onerror=src="../img/user.png" alt="">
                 <div class="inline-block">
                     <div class="user-name">
                     ${data.userMsg.userName}

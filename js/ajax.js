@@ -34,6 +34,8 @@ var showImg_src=http_url.url+"showImg/card/";
 var cover_src=http_url.url+"showImg/cover/";
 //证件图片
 var cert_src=http_url.url+"showImg/cert/";
+//轮播图路径
+var rotation_src=http_url.url+"showImg/rotation/";
 function ajax(url,data,succ){
     // console.log(url);
     $.ajax({
@@ -47,6 +49,32 @@ function ajax(url,data,succ){
             "version":"1",
         },
         data:JSON.stringify(data),
+        success:function(data){
+            if(data.code=="2"){
+                // alert(data.des);
+                window.location.href="../html/register-next.html"
+            }else{
+                succ(data);
+            }
+
+        },
+        error:function(){
+            console.log("程序出错,请重试");
+        }
+    })
+}
+function ajax_get(url,succ){
+    // console.log(url);
+    $.ajax({
+        type:"GET",
+        url:url,
+        dataType: "json",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json;charset=utf-8",
+            "cookieId":sessionStorage.getItem("cookieId"),
+            "version":"1",
+        },
         success:function(data){
             if(data.code=="2"){
                 // alert(data.des);

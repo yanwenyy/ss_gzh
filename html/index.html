@@ -10,16 +10,41 @@
     <link rel="stylesheet" href="../css/quick-answer.css">
     <link rel="stylesheet" href="../css/cafe-interview.css">
     <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
     <title>首页</title>
     <style>
         body{
             background: #f2f2f2;
         }
-        .jsb_header{
-            height:18rem;
+        .index-card{
+            margin-top: 1.6rem;
+            margin-bottom: 0;
         }
-        .index-page-body {
-            margin-top: 18rem
+        .index-card:after{
+            display: table;
+            content: '';
+        }
+        .card-head div {
+            margin-left: 6rem;
+        }
+        .card-head{
+            margin-left: 3rem;
+        }
+        .zjtj-model,.jgtj-model{
+            padding: 3rem 0 5.6rem 3rem;
+        }
+        .index-new-brush{
+            margin-bottom: 10rem;
+        }
+        .index-new-brush-list{
+            padding:3rem;
+        }
+        .index-new-brush-list>div{
+            width: 32%;
+        }
+        .jg_img > img{
+            height:100%;
+            min-height: 28.6rem;
         }
     </style>
     <script>
@@ -28,24 +53,23 @@
     </script>
 </head>
 <body>
-<div class="jsb_header">
+<div class="jsb_header channel-header">
     <img src="../img/down_app.png" alt="" class="down_app new-user-down-app">
-    航信办税宝
-    <div class="index-serach box-sizing">
-        <img src="../img/icon-searcrh.png" class="search-index zrwg-sear" alt="">
-        <input type="text" placeholder="请输入搜索的内容" readonly  class="box-sizing" >
-    </div>
+    刷刷
 </div>
 
-    <div class="weui-tab index-page-body">
+<div class="weui-tab index-page-body">
+    <div class="index-new-card">
+        <div class="index-serach box-sizing">
+            <img src="../img/ss-search.png" class="search-index zrwg-sear" alt="">
+            <input type="text" placeholder="请输入您要搜索的问答" readonly  class="box-sizing" >
+        </div>
         <div class="swiper-container s2">
             <div class="swiper-wrapper">
                 <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
                 <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
                 <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
             </div>
-            <!--<div class="swiper-button-prev swiper-button-prev2"></div>&lt;!&ndash;左箭头&ndash;&gt;-->
-            <!--<div class="swiper-button-next swiper-button-next2"></div>&lt;!&ndash;右箭头&ndash;&gt;-->
         </div>
         <div class="tab-class box-sizing">
             <div class="inline-block box-sizing tab-class-list ymmd-click"  data-md-name="首页机构" data-url="map.html">
@@ -70,292 +94,234 @@
             <div class="inline-block">
                 <ul class="notice-ul">`
                     <!--<li class="notice-li">-->
-                        <!--<img src="../img/user.png" alt="">-->
-                        <!--<div class="inline-block">王小雪围观了一个问题</div>-->
+                    <!--<img src="../img/user.png" alt="">-->
+                    <!--<div class="inline-block">王小雪围观了一个问题</div>-->
                     <!--</li>-->
                     <!--<li class="notice-li">-->
-                        <!--<img src="../img/user.png" alt="">-->
-                        <!--<div class="inline-block">李雷围观了一个问题</div>-->
+                    <!--<img src="../img/user.png" alt="">-->
+                    <!--<div class="inline-block">李雷围观了一个问题</div>-->
                     <!--</li>-->
                     <!--<li class="notice-li">-->
-                        <!--<img src="../img/user.png" alt="">-->
-                        <!--<div class="inline-block">韩梅梅围观了一个问题</div>-->
+                    <!--<img src="../img/user.png" alt="">-->
+                    <!--<div class="inline-block">韩梅梅围观了一个问题</div>-->
                     <!--</li>-->
                 </ul>
             </div>
         </div>
-        <div class="index-card">
-            <div class="card-head box-sizing">
-                <img src="../img/icon-index-interlocution.png" alt="">
-                <div class="inline-block">最新问答</div>
-                <img src="../img/icon-index-more .png" class="zxwd-more" alt="">
-            </div>
-            <div class="card-list new-list-msg">
-                <!--<div class="box-sizing">-->
-                <!--<div class="clist-head">-->
-                <!--<img src="../img/ceshi.jpg" alt="">-->
-                <!--<div class="inline-block">-->
-                <!--<div class="user-name">-->
-                <!--用户王嘉创-->
-                <!--</div>-->
-                <!--<div class="user-grade">-->
-                <!--<img src="../img/icon-index-gold member.png" alt="">-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="cwatch">1元 围观</div>-->
-                <!--</div>-->
-                <!--<div class="clist-msg">-->
-                <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
-                <!--</div>-->
-                <!--<div class="clist-foot">-->
-                <!--<div>2018-09-09 12:00:01</div>-->
-                <!--<div>-->
-                <!--<div class="inline-block">点赞 22</div>-->
-                <!--<div class="inline-block">围观 186</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="box-sizing">-->
-                <!--<div class="clist-head">-->
-                <!--<img src="../img/ceshi.jpg" alt="">-->
-                <!--<div class="inline-block">-->
-                <!--<div class="user-name">-->
-                <!--用户王嘉创-->
-                <!--</div>-->
-                <!--<div class="user-grade">-->
-                <!--<img src="../img/icon-index-gold member.png" alt="">-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="cwatch">1元 围观</div>-->
-                <!--</div>-->
-                <!--<div class="clist-msg">-->
-                <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
-                <!--</div>-->
-                <!--<div class="clist-foot">-->
-                <!--<div>2018-09-09 12:00:01</div>-->
-                <!--<div>-->
-                <!--<div class="inline-block">点赞 22</div>-->
-                <!--<div class="inline-block">围观 186</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-            </div>
-            <!--<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>-->
+    </div>
+    <div class="index-card">
+        <div class="card-head box-sizing">
+            <img src="../img/icon-index-interlocution.png" alt="">
+            <div class="inline-block">最新问答</div>
+            <img src="../img/icon-index-more .png" class="zxwd-more" alt="">
         </div>
-        <div class="index-card">
-            <div class="card-head box-sizing">
-                <img src="../img/icon-index-expert.png" alt="">
-                <div class="inline-block">专家推荐</div>
-                <img src="../img/icon-index-more .png" class="zjtj-more ymmd-click" alt="" data-md-name="专家推荐-查看更多">
-            </div>
-            <div class="zjtj-model box-sizing">
-                <div class="export_list_main">
-                    <!--<div class="zjtj_list inline-block">-->
-                    <!--<div><img src="../img/ceshi.jpg" alt=""></div>-->
-                    <!--<div>朱红雨老师</div>-->
-                    <!--<div>税务师资格证/税务...</div>-->
-                    <!--</div>-->
-                </div>
-            </div>
-        </div>
-        <div class="index-card">
-            <div class="card-head box-sizing zt_head">
-                <img src="../img/grsds-index.png" alt="">
-                <div class="inline-block ">本期热门专题：</div>
-                <div class="zt_head_title">
-                    <div class="inline-block grsds_name"></div>
-                    <img src="../img/icon-index-more .png" alt="" class="grsds_more ymmd-click" data-md-name="本期热门专题-查看更多">
-                </div>
-            </div>
-            <div class="card-list grsds-list-msg">
-
-            </div>
-        </div>
-        <div class="index-card">
-            <div class="card-head box-sizing">
-                <img src="../img/jgtj-index.png" alt="">
-                <div class="inline-block">机构推荐</div>
-                <img src="../img/icon-index-more .png" class="jgtj-more ymmd-click" data-md-name="机构推荐-查看更多" alt="">
-            </div>
-            <div class="jgtj-model box-sizing">
-                <div class="jgtj_main">
-                    <!--<div class="jg_img">-->
-                        <!--<img src="../img/ceshi.jpg" alt="">-->
-                    <!--</div>-->
-                    <!--<div class="jg_img">-->
-                        <!--<img src="../img/ceshi.jpg" alt="">-->
-                    <!--</div>-->
-                    <!--<div class="jg_img">-->
-                        <!--<img src="../img/ceshi.jpg" alt="">-->
-                    <!--</div>-->
-                </div>
-            </div>
-        </div>
-        <div class="index-card">
-            <div class="card-head box-sizing">
-                <img src="../img/icon-index-0-hot.png" alt="">
-                <div class="inline-block">最热围观</div>
-                <img src="../img/icon-index-refresh.png" alt="" class="hot_change ymmd-click" data-md-name="最热围观-换一批">
-            </div>
-            <div class="card-list hot-list-msg">
-                <!--<div class="box-sizing">-->
-                    <!--<div class="clist-head">-->
-                        <!--<img src="../img/ceshi.jpg" alt="">-->
-                        <!--<div class="inline-block">-->
-                            <!--<div class="user-name">-->
-                                <!--用户王嘉创-->
-                                <!--<img src="../img/icon-index-hot.png" alt="">-->
-                            <!--</div>-->
-                            <!--<div class="user-grade">-->
-                                <!--<img src="../img/icon-index-gold member.png" alt="">-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="cwatch">1元 围观</div>-->
-                    <!--</div>-->
-                    <!--<div class="clist-msg">-->
-                        <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
-                    <!--</div>-->
-                    <!--<div class="clist-foot">-->
-                        <!--<div>2018-09-09 12:00:01</div>-->
-                        <!--<div>-->
-                            <!--<div class="inline-block">点赞 22</div>-->
-                            <!--<div class="inline-block">围观 186</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="box-sizing">-->
-                    <!--<div class="clist-head">-->
-                        <!--<img src="../img/ceshi.jpg" alt="">-->
-                        <!--<div class="inline-block">-->
-                            <!--<div class="user-name">-->
-                                <!--用户王嘉创-->
-                                <!--<img src="../img/icon-index-hot.png" alt="">-->
-                            <!--</div>-->
-                            <!--<div class="user-grade">-->
-                                <!--<img src="../img/icon-index-gold member.png" alt="">-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="cwatch">1元 围观</div>-->
-                    <!--</div>-->
-                    <!--<div class="clist-msg">-->
-                        <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
-                    <!--</div>-->
-                    <!--<div class="clist-foot">-->
-                        <!--<div>2018-09-09 12:00:01</div>-->
-                        <!--<div>-->
-                            <!--<div class="inline-block">点赞 22</div>-->
-                            <!--<div class="inline-block">围观 186</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            </div>
-        </div>
-        <div class="index-card"   style="margin-bottom: 8.8rem">
-            <div class="card-head box-sizing">
-                <img src="../img/icon-index-interview.png" alt="">
-                <div class="inline-block">大咖访谈</div>
-                <img src="../img/icon-index-more .png" class="dkft-more ymmd-click" data-md-name="大咖访谈-查看更多" alt="">
-            </div>
-            <div class="dkft-model box-sizing">
-                <!--<div class="inline-block dkft_list">-->
-                    <!--<img src="../img/ceshi.jpg" alt="">-->
-                    <!--<div>PPP项目之BT与BOT业务的税务处理</div>-->
-                <!--</div>-->
-                <!--<div class="inline-block dkft_list">-->
-                    <!--<img src="../img/ceshi.jpg" alt="">-->
-                    <!--<div>PPP项目之BT与BOT业务的税务处理</div>-->
-                <!--</div>-->
-            </div>
-        </div>
-        <!--<div class="index-card">-->
-            <!--<div class="card-head box-sizing">-->
-                <!--<img src="../img/icon-index-recommend.png" alt="">-->
-                <!--<div class="inline-block">今日推荐</div>-->
-                <!--<img src="../img/icon-index-refresh.png" alt="" class="change_recommend ymmd-click" data-md-name="今日推荐-换一批">-->
+        <div class="card-list new-list-msg">
+            <!--<div class="box-sizing">-->
+            <!--<div class="clist-head">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+            <!--<div class="user-name">-->
+            <!--用户王嘉创-->
             <!--</div>-->
-            <!--<div class="card-list recommend">-->
-                <!--&lt;!&ndash;<div class="box-sizing">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="clist-head">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<img src="../img/ceshi.jpg" alt="">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="inline-block">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="user-name">&ndash;&gt;-->
-                                <!--&lt;!&ndash;用户王嘉创&ndash;&gt;-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="user-grade">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<img src="../img/icon-index-gold member.png" alt="">&ndash;&gt;-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="cwatch">1元 围观</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="clist-msg">&ndash;&gt;-->
-                        <!--&lt;!&ndash;因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="clist-foot">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div>2018-09-09 12:00:01</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="inline-block">点赞 22</div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="inline-block">围观 186</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="box-sizing">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="clist-head">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<img src="../img/ceshi.jpg" alt="">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="inline-block">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="user-name">&ndash;&gt;-->
-                                <!--&lt;!&ndash;用户王嘉创&ndash;&gt;-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="user-grade">&ndash;&gt;-->
-                                <!--&lt;!&ndash;<img src="../img/icon-index-gold member.png" alt="">&ndash;&gt;-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="cwatch">1元 围观</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="clist-msg">&ndash;&gt;-->
-                        <!--&lt;!&ndash;因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="clist-foot">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div>2018-09-09 12:00:01</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="inline-block">点赞 22</div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="inline-block">围观 186</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<div class="user-grade">-->
+            <!--<img src="../img/icon-index-gold member.png" alt="">-->
             <!--</div>-->
-        <!--</div>-->
-
-        <div class="suspension_model">
-            <div class="mfw ymmd-click" data-md-name="首页快速问"><img src="../img/icon-index-ask.png" alt=""></div>
-            <div class="kud ymmd-click" data-md-name="首页快速答"><img src="../img/icon-index-answer.png" alt=""></div>
+            <!--</div>-->
+            <!--<div class="cwatch">1元 围观</div>-->
+            <!--</div>-->
+            <!--<div class="clist-msg">-->
+            <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
+            <!--</div>-->
+            <!--<div class="clist-foot">-->
+            <!--<div>2018-09-09 12:00:01</div>-->
+            <!--<div>-->
+            <!--<div class="inline-block">点赞 22</div>-->
+            <!--<div class="inline-block">围观 186</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="box-sizing">-->
+            <!--<div class="clist-head">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+            <!--<div class="user-name">-->
+            <!--用户王嘉创-->
+            <!--</div>-->
+            <!--<div class="user-grade">-->
+            <!--<img src="../img/icon-index-gold member.png" alt="">-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="cwatch">1元 围观</div>-->
+            <!--</div>-->
+            <!--<div class="clist-msg">-->
+            <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
+            <!--</div>-->
+            <!--<div class="clist-foot">-->
+            <!--<div>2018-09-09 12:00:01</div>-->
+            <!--<div>-->
+            <!--<div class="inline-block">点赞 22</div>-->
+            <!--<div class="inline-block">围观 186</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
         </div>
-        <div class="weui-tabbar index-tab-a">
-            <a  data-code="1"  href="" class="weui-tabbar__item  weui-bar__item--on">
-                <div class="weui-tabbar__icon">
-                    <img src="../img/icon-index-index.png" alt="" data-src="../img/icon-index-index line.png" data-act="../img/icon-index-index.png">
-                </div>
-                <p class="weui-tabbar__label">首页</p>
-            </a>
-            <a data-code="2"  href="index-csq.html" class="weui-tabbar__item ymmd-click" data-md-name="财税圈">
-                <div class="weui-tabbar__icon">
-                    <img src="../img/icon-index-text line.png" alt=""  data-src="../img/icon-index-text line.png" data-act="../img/icon-index-text.png">
-                </div>
-                <p class="weui-tabbar__label">财税圈</p>
-            </a>
-            <a data-code="3"  href="index-wk.html" class="weui-tabbar__item ymmd-click" data-md-name="微课">
-                <div class="weui-tabbar__icon">
-                    <img src="../img/icon-index-video line.png" alt="" data-src="../img/icon-index-video line.png" data-act="../img/icon-index-video.png">
-                </div>
-                <p class="weui-tabbar__label">微课</p>
-            </a>
-            <a data-code="4" href="index-mine.html" class="weui-tabbar__item ymmd-click" data-md-name="我的">
-                <div class="weui-tabbar__icon">
-                    <img src="../img/icon-index-my line.png" alt=""  data-src="" data-act="../img/icon-index-my.png">
-                </div>
-                <p class="weui-tabbar__label">我的</p>
-            </a>
+        <!--<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>-->
+    </div>
+    <div class="index-card">
+        <div class="card-head box-sizing">
+            <img src="../img/icon-index-expert.png" alt="">
+            <div class="inline-block">专家推荐</div>
+            <img src="../img/icon-index-more .png" class="zjtj-more ymmd-click" alt="" data-md-name="专家推荐-查看更多">
+        </div>
+        <div class="zjtj-model box-sizing">
+            <div class="export_list_main">
+                <!--<div class="zjtj_list inline-block">-->
+                <!--<div><img src="../img/ceshi.jpg" alt=""></div>-->
+                <!--<div>朱红雨老师</div>-->
+                <!--<div>税务师资格证/税务...</div>-->
+                <!--</div>-->
+            </div>
         </div>
     </div>
+    <div class="index-card">
+        <div class="card-head box-sizing zt_head">
+            <img src="../img/grsds-index.png" alt="">
+            <div class="inline-block ">本期热门专题：</div>
+            <div class="zt_head_title">
+                <div class="inline-block grsds_name"></div>
+                <img src="../img/icon-index-more .png" alt="" class="grsds_more ymmd-click" data-md-name="本期热门专题-查看更多">
+            </div>
+        </div>
+        <div class="card-list grsds-list-msg">
+
+        </div>
+    </div>
+    <div class="index-card">
+        <div class="card-head box-sizing">
+            <img src="../img/jgtj-index.png" alt="">
+            <div class="inline-block">机构推荐</div>
+            <img src="../img/icon-index-more .png" class="jgtj-more ymmd-click" data-md-name="机构推荐-查看更多" alt="">
+        </div>
+        <div class="jgtj-model box-sizing">
+            <div class="jgtj_main">
+                <!--<div class="jg_img">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div class="jg_img">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div class="jg_img">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="index-card">
+        <div class="card-head box-sizing">
+            <img src="../img/icon-index-0-hot.png" alt="">
+            <div class="inline-block">最热围观</div>
+            <img src="../img/icon-index-refresh.png" alt="" class="hot_change ymmd-click" data-md-name="最热围观-换一批">
+        </div>
+        <div class="card-list hot-list-msg">
+            <!--<div class="box-sizing">-->
+            <!--<div class="clist-head">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+            <!--<div class="user-name">-->
+            <!--用户王嘉创-->
+            <!--<img src="../img/icon-index-hot.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="user-grade">-->
+            <!--<img src="../img/icon-index-gold member.png" alt="">-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="cwatch">1元 围观</div>-->
+            <!--</div>-->
+            <!--<div class="clist-msg">-->
+            <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
+            <!--</div>-->
+            <!--<div class="clist-foot">-->
+            <!--<div>2018-09-09 12:00:01</div>-->
+            <!--<div>-->
+            <!--<div class="inline-block">点赞 22</div>-->
+            <!--<div class="inline-block">围观 186</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="box-sizing">-->
+            <!--<div class="clist-head">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+            <!--<div class="user-name">-->
+            <!--用户王嘉创-->
+            <!--<img src="../img/icon-index-hot.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="user-grade">-->
+            <!--<img src="../img/icon-index-gold member.png" alt="">-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="cwatch">1元 围观</div>-->
+            <!--</div>-->
+            <!--<div class="clist-msg">-->
+            <!--因机器检修暂时停产，停产期间发生的固定资产折旧 税前扣除吗？有木有专家解答一下。-->
+            <!--</div>-->
+            <!--<div class="clist-foot">-->
+            <!--<div>2018-09-09 12:00:01</div>-->
+            <!--<div>-->
+            <!--<div class="inline-block">点赞 22</div>-->
+            <!--<div class="inline-block">围观 186</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="index-card index-new-brush">
+        <div class="card-head box-sizing">
+            <img src="../img/icon-index-0-hot.png" alt="">
+            <div class="inline-block">刷刷推荐</div>
+            <img src="../img/icon-index-more .png" class="brush-more" data-url="brush.html" alt="">
+        </div>
+        <div class="index-new-brush-list box-sizing">
+            <!--<div class="inline-block">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div>个人所得税专项行办法解读</div>-->
+            <!--</div>-->
+        </div>
+        <div class="mine-yqhy m365-model-list-btn zxwd-more" data-url="mine-invite-prize.html">
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="suspension_model">
+        <div class="mfw ymmd-click" data-md-name="首页快速问"><img src="../img/icon-index-ask.png" alt=""></div>
+        <div class="kud ymmd-click" data-md-name="首页快速答"><img src="../img/icon-index-answer.png" alt=""></div>
+    </div>
+    <div class="weui-tabbar index-tab-a">
+        <a  data-code="1"  href="" class="weui-tabbar__item  weui-bar__item--on">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-index.png" alt="" data-src="../img/icon-index-index line.png" data-act="../img/icon-index-index.png">
+            </div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a data-code="2"  href="brush.html" class="weui-tabbar__item ymmd-click" data-md-name="刷刷">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-text line.png" alt=""  data-src="../img/icon-index-text line.png" data-act="../img/icon-index-text.png">
+            </div>
+            <p class="weui-tabbar__label">刷刷</p>
+        </a>
+        <a data-code="3"  href="channel.html" class="weui-tabbar__item ymmd-click" data-md-name="频道">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-video line.png" alt="" data-src="../img/icon-index-video line.png" data-act="../img/icon-index-video.png">
+            </div>
+            <p class="weui-tabbar__label">频道</p>
+        </a>
+        <a data-code="4" href="index-mine.html" class="weui-tabbar__item ymmd-click" data-md-name="我的">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-my line.png" alt=""  data-src="" data-act="../img/icon-index-my.png">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+</div>
 <div class="down-app-model">
     <img src="../img/Download Icon.png" alt="" class="down-app-index1 new-user-down-app">
     <img src="../img/text.png" alt=""  class="down-app-index2">

@@ -1436,28 +1436,26 @@
     padding-bottom: 11.8rem;
 }
 .mine-365-header{
-    min-height:19.1rem;
-    height:auto;
+    height:48.3rem;
     width: 100%;
     padding:0 3.2rem;
+    background: url(../img/mine-365-header-bg.png) no-repeat 100% 100%;
+    background-size: 100% 100%;
+    color:#fff;
+    position: relative;
 }
 .mine-365-header .mine-msg-name{
     width:100%;
 }
 .edit-365-msg{
     font-size: 2.6rem!important;
-    color:#999;
     float: right;
     margin-top: 9.6rem!important;
 }
 .edit-365-msg>span{
     font-size: 4rem!important;
 }
-.mine-365-header .mine-user-name{
-    color:#333!important;
-}
 .mine-365-header .zxs-grade{
-    color:#666!important;
     font-size: 2.4rem;
 }
 .mine-365-header .zxs-grade>img{
@@ -1477,6 +1475,9 @@
     height:12.8rem;
     background: url(../img/365_My_vipcard-pt.png) no-repeat;
     background-size: 100% 100%;
+    position: absolute;
+    bottom: 0;
+    left:0;
 }
 .card-365-date,.card-365-open{
    float: right;
@@ -1486,6 +1487,7 @@
     color:#AA7C39;
     text-align: right;
     margin-right: 6.1rem;
+    margin-top: 1rem;
 }
 .card-365-date>div,.card-365-open>div{
     font-size: 2.6rem;
@@ -1522,7 +1524,7 @@
     color:#999;
 }
 .mine-365-model-body>div{
-    width:24.5%;
+    width:19.5%;
     text-align: center;
     font-size: 2.4rem;
     margin-top:4.5rem;
@@ -1535,7 +1537,6 @@
     vertical-align: middle;
 }
 .hangxin-date-365{
-    color:#999;
     font-size: 2.6rem;
     margin-top: -1rem;
 }
@@ -1548,6 +1549,7 @@
 .card-365-title{
     color:#444;
     background: #FCEAC4;
+    box-shadow: none;
 }
 .card-365-show{
     width:100%;
@@ -1648,4 +1650,183 @@
 .card-365-footer-two>span{
     font-size: 3.2rem;
     font-weight: bold;
+}
+.mine-f-c-a{
+    font-size: 2.6rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 2.6rem 1.2rem 2.6rem;
+}
+.mine-f-c-a>div{
+    text-align: center;
+}
+.mine-f-c-a-num{
+    font-size: 3.2rem;
+}
+.mine-yqhy{
+    margin:0 2.6rem;
+}
+.mine-yqhy>img{
+    width: 100%;
+    margin-top: 1rem;
+}
+.workbench-consultant>.mine-365-model-body>div{
+    width:19.5%;
+}
+.new-cert-apply>div{
+    width: 49.7%;
+}
+.new-cert-apply>div>img{
+    width: 100%;
+}
+.authentication-head{
+    width:100%;
+    height:40rem;
+    background:url(../img/authentication-head.png) no-repeat 100% 100%;
+    background-size: 100% 100%;
+    color:#FEFDFF;
+    padding-top: 17rem;
+}
+.authentication-title{
+    margin-left: 5.2rem;
+    font-size: 2.6rem;
+    vertical-align: top;
+    width: 60%;
+}
+.rzsb-img{
+    width: 2.7rem;
+    height:2.7rem;
+    vertical-align: middle;
+    margin-right: 1.4rem;
+    margin-top: -0.5rem;
+}
+.authentication-title>div:not(:last-child){
+    font-size: 4rem;
+    font-weight: bold;
+}
+.brown{
+    color:#DABB8D!important;
+}
+.authentication-img{
+    /*margin-left: 16.5rem;*/
+    position: absolute;
+    right:7rem;
+}
+.authentication-img>img{
+    width:14.5rem;
+    height:15.8rem;
+}
+.rzxy{
+    font-size: 2.6rem;
+    color:#999999;
+    margin-top: 2.8rem;
+}
+.rzxy>input{
+    width:2.3rem;
+    height:2.4rem;
+    margin-top: -0.5rem;
+}
+.fans-dj{
+    margin-top: 1rem;
+    vertical-align: middle;
+}
+.fans-zw{
+    font-size: 2.4rem;
+    color:#999;
+}
+.fans-zw>div{
+    margin-right: 2.6rem;
+}
+.fans-zw img{
+    width:2.3rem;
+    height:2.3rem;
+    vertical-align: middle;
+    margin-right: 0.7rem;
+}
+.attention-fans{
+    width:11.9rem;
+    height:5.4rem;
+    line-height: 5.4rem;
+    text-align: center;
+    font-size: 2.4rem;
+    color:#fff;
+    border-radius: 2.7rem;
+    float: right;
+    background: #F56A32;
+}
+.attention-fans-already{
+    background: #EEEEEE;
+    color:#999999;
+}
+.fans-search{
+    width:68.8rem;
+    height:7rem;
+    background:rgba(243,243,243,1);
+    border-radius:6px;
+    margin: 3rem auto;
+}
+.fans-search>img{
+    width:3.2rem;
+    height:3.2rem;
+    vertical-align: middle;
+    margin: 0 0.9rem 0 1.9rem;
+}
+.fans-search>input{
+    height:100%;
+    width:68%;
+    font-size: 2.6rem;
+    color:#333;
+    border:none;
+    background: none;
+}
+.fans-search>select{
+    height:100%;
+    border:none;
+    font-size: 2.6rem;
+    color:#666;
+    outline: none;
+    background: none;
+    padding-left: 2.6rem;
+    vertical-align: middle;
+}
+.each-attention{
+    background: #EEEEEE!important;
+    color:#999!important;
+}
+.up-btn{
+    width:11rem;
+    height:11rem;
+    background: url("../img/icon_renzheng_cam.png") no-repeat 100% 100%;
+    background-size: 100% 100%;
+    position: absolute;
+    top:4.3rem;
+    left: 10rem;
+}
+.us-contract{
+    text-align: center;
+    font-size: 3.2rem;
+    margin-top: 6rem;
+}
+.us-adress{
+    text-align: center;
+    font-size: 2.6rem;
+    margin-top: 17rem;
+}
+.hg-fans{
+    width: 2rem!important;
+    height:1.9rem!important;
+    margin-top: 1.7rem;
+}
+.gray-line{
+    width:0.2rem;
+    height:2rem;
+    background: #E5E5E5;
+    vertical-align: middle;
+}
+.sex-radio{
+    width:2.8rem!important;
+    height:2.8rem!important;
+    margin:0 1.4rem 0 4.9rem;
+    vertical-align: middle;
+    color:#FA8449;
 }

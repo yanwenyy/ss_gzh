@@ -1,0 +1,22 @@
+$(function(){
+    $(".sub-sign").click(function(){
+        var name=$(".name").val(),
+            company=$(".compnoy").val(),
+            contact=$(".phone").val();
+        if(name==""||company==""||contact==""){
+            alert("请完善信息");
+        }else{
+            ajax("http://test.jieshuibao.com/jsb_webserver/jsb/user/promotion",{
+                "name":name,
+                "company":company,
+                "contact":contact
+            },function(data){
+                if(data.code==1){
+                    alert("提交成功")
+                }else{
+                    alert(data.des);
+                }
+            });
+        }
+    })
+});

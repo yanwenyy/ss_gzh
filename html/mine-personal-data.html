@@ -11,12 +11,17 @@
     <link rel="stylesheet" href="../css/quick-answer.css">
     <link rel="stylesheet" href="../css/mine.css">
     <title>个人资料</title>
+    <style>
+        input::placeholder{
+            color:#999!important;
+        }
+    </style>
 </head>
 <body>
 <div class="jsb_header">
     <img src="../img/back.png" alt="" class="back" data-url="4">
     编辑信息
-    <div class="release inline-block">保存</div>
+    <div class="release inline-block orange">保存</div>
 </div>
 <div class="mine-per-data">
     <div class="mine-msg-list">
@@ -33,7 +38,7 @@
                     <p><span class="red">*</span>昵称</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder=""  maxlength="5"  class="username edit-msg">
+                    <input type="text" placeholder="未填写"  maxlength="5"  class="username edit-msg">
                 </div>
             </a>
             <a class="weui-cell weui-cell_access name-edit"  data-type="personaelz-username">
@@ -41,7 +46,7 @@
                     <p>真实姓名</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder=""  class="user_realname edit-msg">
+                    <input type="text" placeholder="未填写"  class="user_realname edit-msg">
                 </div>
             </a>
             <a class="weui-cell weui-cell_access">
@@ -49,7 +54,18 @@
                     <p>性别</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder="" class="edit-msg" readonly id="sex">
+                    <div class="inline-block "><img src="../img/channel-card-select.png" class="sex-radio" data-msg="男" data-code="1" alt="">男</div>
+                    <div class="inline-block "><img src="../img/channel-card-select-no.png" class="sex-radio" data-msg="女" data-code="2" alt="">女</div>
+                    <!--<input type="text" placeholder="" class="edit-msg" readonly id="sex">-->
+                </div>
+                <!--<img src="../img/more.png" alt="" class="more-img">-->
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>出生日期</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" readonly id="datetime-picker" placeholder="未设置">
                 </div>
                 <img src="../img/more.png" alt="" class="more-img">
             </a>
@@ -58,25 +74,25 @@
                     <p><span class="red">*</span>所在地</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder="" class="edit-msg" readonly id="city-picker">
+                    <input type="text" placeholder="未设置" class="edit-msg" readonly id="city-picker">
                 </div>
                 <img src="../img/more.png" alt="" class="more-img">
             </a>
-            <a class="weui-cell weui-cell_access">
-                <div class="weui-cell__bd">
-                    <p>出生日期</p>
-                </div>
-                <div class="weui-cell__ft version-information">
-                    <input type="text" readonly id="datetime-picker">
-                </div>
-                <img src="../img/more.png" alt="" class="more-img">
-            </a>
+
             <a class="weui-cell weui-cell_access">
                 <div class="weui-cell__bd">
                     <p>企业名称</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder="" class="edit-msg"  id="mine-compney-name">
+                    <input type="text" placeholder="未填写" class="edit-msg"  id="mine-compney-name">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>所在行业</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未设置" class="edit-msg"  readonly id="componey-name">
                 </div>
             </a>
             <a class="weui-cell weui-cell_access" >
@@ -84,15 +100,7 @@
                     <p>职务</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text"  id="mine-duty">
-                </div>
-            </a>
-            <a class="weui-cell weui-cell_access">
-                <div class="weui-cell__bd">
-                    <p>公司所在行业</p>
-                </div>
-                <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder="" class="edit-msg"  readonly id="componey-name">
+                    <input type="text"  id="mine-duty" placeholder="未填写">
                 </div>
             </a>
         </div>

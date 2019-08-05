@@ -7,7 +7,7 @@ $(function(){
         var questionUserOwnMsg=data.data;
         //用户等级
         var score_img=get_score(questionUserOwnMsg.integralScore,questionUserOwnMsg.aision,questionUserOwnMsg.vip);
-        $(".look-hp-image").attr("src",head_src+questionUserOwnMsg.headImage).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
+        $(".look-hp-image").attr("src",headimage(questionUserOwnMsg.headImage)).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
         var realName=get_name(questionUserOwnMsg);
         $(".user-name").html(`
              <div class="user-name">

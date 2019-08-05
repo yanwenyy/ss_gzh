@@ -6,7 +6,7 @@ $(function(){
         var questionUserOwnMsg=data.question;
         //用户等级
         var score_img=get_score(questionUserOwnMsg.integralScore,questionUserOwnMsg.aision,questionUserOwnMsg.vip);
-        $(".m-q-f-detail .free-user_imgage").attr("src",head_src+questionUserOwnMsg.headImage).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
+        $(".m-q-f-detail .free-user_imgage").attr("src",headimage(questionUserOwnMsg.headImage)).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
         var realName=get_name(questionUserOwnMsg);
         $(".m-q-f-detail .user-name").html(`
              <div class="user-name">

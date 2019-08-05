@@ -85,10 +85,11 @@ $(function(){
             }else{
                 look_num=datas[i].views||0;
             }
+            var picture=datas[i].picture.split(",");
             html+=`
                 <div class="map-marker-msg box-sizing" data-id="${datas[i].id}">
                     <div>
-                        <img src="${cover_src+datas[i].videoCover}" data-id="${datas[i].id}" class="marker-msg-img jglb_click"  data-vid="${datas[i].videoId}" alt="">
+                        <img src="${datas[i].videoCover?cover_src+datas[i].videoCover:cover_src+picture[0]}" data-id="${datas[i].id}" class="marker-msg-img jglb_click"  data-vid="${datas[i].videoId}" alt="">
                         <div class="inline-block marker-msg-main">
                             <div class="marker-msg-title jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">${datas[i].name}</div>
                             <div class="marker-msg-distance jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">
@@ -113,7 +114,7 @@ $(function(){
                         </div>
                         <div class="inline-block daohang" data-lat="${datas[i].latitude}" data-lng="${datas[i].longitude}">
                              <img src="../img/icon-map-leading2.png"  style="margin-top: -0.3rem"  alt="">
-                             <span class="blue">导航</span>
+                             <!--<span class="orange">导航</span>-->
                         </div>
                     </div>
                 </div>
@@ -144,10 +145,11 @@ $(function(){
                 }else{
                     look_num=datas[i].views||0;
                 }
+                var picture=datas[i].picture.split(",");
                 html+=`
                 <div class="map-marker-msg box-sizing" data-id="${datas[i].id}">
                     <div>
-                        <img src="${cover_src+datas[i].videoCover}" data-id="${datas[i].id}" class="marker-msg-img jglb_click"  data-vid="${datas[i].videoId}" alt="">
+                        <img src="${datas[i].videoCover?cover_src+datas[i].videoCover:cover_src+picture[0]}" data-id="${datas[i].id}" class="marker-msg-img jglb_click"  data-vid="${datas[i].videoId}" alt="">
                         <div class="inline-block marker-msg-main">
                             <div class="marker-msg-title jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">${datas[i].name}</div>
                             <div class="marker-msg-distance jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">
@@ -188,14 +190,15 @@ $(function(){
     //机构列表点击
     $("body").on("click",".jglb_click",function(){
         var that=$(this);
+        window.location.href="office-detail.html?id="+$(this).attr("data-id");
         // function get_detail(data){
         //     console.log(data);
         //     window.location.href="merchanism-video.html?id="+that.attr("data-id")+"&&videoId="+data.obj.videoId;
         // }
         // ajax(http_url.url+"/agency/getAgencyById",{"id":$(this).attr("data-id")},get_detail);
-        if($(this).attr("data-vid")&&$(this).attr("data-vid")!=""){
-            window.location.href="merchanism-video.html?id="+$(this).attr("data-id")+"&&videoId="+$(this).attr("data-vid");
-        }
+        // if($(this).attr("data-vid")&&$(this).attr("data-vid")!=""){
+        //     window.location.href="merchanism-video.html?id="+$(this).attr("data-id")+"&&videoId="+$(this).attr("data-vid");
+        // }
     });
     //定位城市点击
     $("body").on("click",".city-name-m",function(){

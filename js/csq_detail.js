@@ -18,7 +18,7 @@ $(function(){
             $(".gz-btn-new").hide();
         }
         var createData=format(data.cretateDate);
-        $(".csq-detail-body-msg .csq-user-img").attr("src",head_src+data.userLevel.headImage).attr("data-role",data.userLevel.role).attr("data-phone",data.userLevel.phoneNumber);
+        $(".csq-detail-body-msg .csq-user-img").attr("src",headimage(data.userLevel.headImage)).attr("data-role",data.userLevel.role).attr("data-phone",data.userLevel.phoneNumber);
         var realName=get_name(data.userLevel);
         $(".csq-detail-body-msg .user-name").html(`${realName ||"匿名用户"}
                                 <div class="inline-block zxs-grade">
@@ -58,7 +58,7 @@ $(function(){
             $(".hb-user-msg>img").each(function(i){
                 for(var k=0;k<headImages.length;k++){
                     if(k==i){
-                        var hdimg=head_src+headImages[k];
+                        var hdimg=headimage(headImages[k]);
                         if(headImages[k]==null){
                             hdimg="../img/user.png";
                         }
@@ -80,7 +80,7 @@ $(function(){
             html+=`
                 <div class="box-sizing">
                     <div class="clist-head">
-                        <img src="${head_src+discussUsers[i].headImage}" alt="" onerror=src="../img/user.png"  class="look-hp-image" data-role="${discussUsers[i].role}" data-phone="${discussUsers[i].userUuid}">
+                        <img src="${headimage(discussUsers[i].headImage)}" alt="" onerror=src="../img/user.png"  class="look-hp-image" data-role="${discussUsers[i].role}" data-phone="${discussUsers[i].userUuid}">
                         <div class="inline-block">
                             <div class="user-name">
                                ${realName}
@@ -109,7 +109,7 @@ $(function(){
             html+=`
                 <div class="box-sizing">
                     <div class="clist-head">
-                        <img src="${head_src+discussUsers[i].headImage}" alt="" onerror=src="../img/user.png"   class="look-hp-image" data-role="${discussUsers[i].role}" data-phone="${discussUsers[i].userUuid}">
+                        <img src="${headimage(discussUsers[i].headImage)}" alt="" onerror=src="../img/user.png"   class="look-hp-image" data-role="${discussUsers[i].role}" data-phone="${discussUsers[i].userUuid}">
                         <div class="inline-block">
                             <div class="user-name">
                                ${realName}

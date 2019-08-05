@@ -255,6 +255,7 @@ $(function(){
         }
         //解析定位错误信息
         function onError(data) {
+            console.log(data);
             // alert('失败原因排查信息:'+data.message);
         }
     }
@@ -334,9 +335,10 @@ $(function(){
                         }else{
                             look_num=marker_data[k].views||0;
                         }
+                        var picture=marker_data[k].picture.split(",");
                         var html=`
                                         <div data-id="${marker_data[k].id}" data-vid="${marker_data[k].videoId}">
-                                            <img src="${cover_src+marker_data[k].videoCover}"  data-id="${marker_data[k].id}" data-vid="${marker_data[k].videoId}" class="marker-msg-img2 jglb_click" alt="">
+                                            <img src="${marker_data[k].videoCover?cover_src+marker_data[k].videoCover:cover_src+picture[0]}"  data-id="${marker_data[k].id}" data-vid="${marker_data[k].videoId}" class="marker-msg-img2 jglb_click" alt="">
                                             <div class="inline-block marker-msg-main">
                                                 <div class="marker-msg-title jglb_click"  data-id="${marker_data[k].id}"  data-vid="${marker_data[k].videoId}">${marker_data[k].name}</div>
                                                 <div class="marker-msg-distance jglb_click"  data-id="${marker_data[k].id}"  data-vid="${marker_data[k].videoId}">
@@ -360,8 +362,8 @@ $(function(){
                                                 <div class="inline-block footer_adress" style="line-height: 2.1rem;width: 80%;vertical-align: middle">${marker_data[k].address}</div>
                                             </div>
                                             <div class="inline-block daohang">
-                                                <img src="../img/icon-map-leading2.png" alt="">
-                                                <span class="blue">导航</span>
+                                                <img style="width:3.5rem;height:1.2rem" src="../img/icon-map-leading2.png" alt="">
+                                                <!--<span class="blue">导航</span>-->
                                             </div>
                                     </div>
                                     `;
@@ -399,8 +401,9 @@ $(function(){
     });
     //机构弹框点击
     $("body").on("click",".jglb_click",function(){
-        if($(this).attr("data-vid")&&$(this).attr("data-vid")!=""){
-            window.location.href="merchanism-video.html?id="+$(this).attr("data-id")+"&&videoId="+$(this).attr("data-vid");
-        }
+        window.location.href="office-detail.html?id="+$(this).attr("data-id");
+        // if($(this).attr("data-vid")&&$(this).attr("data-vid")!=""){
+        //     window.location.href="merchanism-video.html?id="+$(this).attr("data-id")+"&&videoId="+$(this).attr("data-vid");
+        // }
     })
 });

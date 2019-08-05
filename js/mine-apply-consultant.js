@@ -1,5 +1,6 @@
 $(function(){
-    var msg=getUrlParms("msg");
+    var msg=getUrlParms("msg"),grjl=getUrlParms("grjl");
+    ajax_nodata(http_url.url+"/user/message",get_user);
     if(msg!=null){
         $(".apply-name").html("申请咨询师")
     }else{
@@ -22,72 +23,6 @@ $(function(){
     if(sessionStorage.getItem("realName")!=null){
         $(".username").val(sessionStorage.getItem("realName"))
     }
-    if(sessionStorage.getItem("kjs_list")!=null){
-        var kjs_sess=sessionStorage.getItem("kjs_list").split(","),html='';
-        kjs_list=kjs_sess;
-        for(var i=0;i<3;i++){
-            var src='',del_show='display:none',plus_show='on',img_show="visibility:hidden";
-            if(kjs_sess[i]!=null){
-                src="data:image/jpeg;base64,"+kjs_sess[i];
-                del_show="display:block";
-                plus_show="out";
-                img_show="visibility: visible";
-            }
-            html+=`
-                <div  class="inline-block certificate-upload-total">
-                    <img src="${src}" alt="" style="${img_show}">
-                    <div class="certificate-upload-div ${plus_show}"></div>
-                    <input type="file"  class="certificate-upload-input"  data-code="2">
-                    <img style="${del_show}" src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img" data-code="2">
-                </div>
-            `
-        }
-        $(".kjs_list").html(html);
-    }
-    if(sessionStorage.getItem("sws_list")!=null){
-        var kjs_sess=sessionStorage.getItem("sws_list").split(","),html='';
-        sws_list=kjs_sess;
-        for(var i=0;i<3;i++){
-            var src='',del_show='display:none',plus_show='on',img_show="visibility:hidden";
-            if(kjs_sess[i]!=null){
-                src="data:image/jpeg;base64,"+kjs_sess[i];
-                del_show="display:block";
-                plus_show="out";
-                img_show="visibility: visible";
-            }
-            html+=`
-                <div  class="inline-block certificate-upload-total">
-                    <img src="${src}" alt="" style="${img_show}">
-                    <div class="certificate-upload-div ${plus_show}"></div>
-                    <input type="file"  class="certificate-upload-input"  data-code="3">
-                    <img style="${del_show}" src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img" data-code="2">
-                </div>
-            `
-        }
-        $(".sws_list").html(html);
-    }
-    if(sessionStorage.getItem("ls_list")!=null){
-        var kjs_sess=sessionStorage.getItem("ls_list").split(","),html='';
-        ls_list=kjs_sess;
-        for(var i=0;i<3;i++){
-            var src='',del_show='display:none',plus_show='on',img_show="visibility:hidden";
-            if(kjs_sess[i]!=null){
-                src="data:image/jpeg;base64,"+kjs_sess[i];
-                del_show="display:block";
-                plus_show="out";
-                img_show="visibility: visible";
-            }
-            html+=`
-                <div  class="inline-block certificate-upload-total">
-                    <img src="${src}" alt="" style="${img_show}">
-                    <div class="certificate-upload-div ${plus_show}"></div>
-                    <input type="file"  class="certificate-upload-input"  data-code="4">
-                    <img style="${del_show}" src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img" data-code="2">
-                </div>
-            `
-        }
-        $(".ls_list").html(html);
-    }
     $("#goodat_mine").attr("data-msg",sessionStorage.getItem("goodat"));
     $("#personal_msg").attr("data-msg",sessionStorage.getItem("person_msg"));
     $("#case_mine").attr("data-msg",sessionStorage.getItem("case_msg")).attr("data-img",sessionStorage.getItem("case_img"));
@@ -95,7 +30,7 @@ $(function(){
         console.log(data);
         var head_img='';
         if(data.headImage){
-            head_img=head_src+data.headImage
+            head_img=headimage(data.headImage);
         }else{
 
             if(sessionStorage.getItem("headImage")!=null){
@@ -106,14 +41,17 @@ $(function(){
             }
 
         }
-        $('.consultant-img').attr("src",head_img);
+        $('.userimg-look').attr("src",head_img);
+        // $('.consultant-img').attr("src",head_img);
         if(data.realName.length<5){
             $(".username").val(data.realName||sessionStorage.getItem("realName")||"");
         }else{
-            $(".username").val(sessionStorage.getItem("realName")||"");
+            $(".username").val(data.realName||sessionStorage.getItem("realName")||"");
         }
         $(".user_realname").val(data.userName||sessionStorage.getItem("userName")||"");
-        $('#sex').val(data.gender);
+        // $('#sex').val(data.gender);
+        $(".sex-radio").attr("src",'../img/channel-card-select-no.png');
+        $(".sex-radio[data-msg="+data.gender+"]").attr("src","../img/channel-card-select.png");
         var province='',address='',birthday='';
         if(data.province!=null){
             province=data.province;
@@ -123,13 +61,17 @@ $(function(){
         if(data.address!=null){
             address=data.address;
         }
-        if(data.birthday!=null&&birthday!=""){
+        if(data.birthday!=null&&data.birthday!=""){
             birthday=format(data.birthday);
             $("#datetime-picker").val(birthday.split(" ")[0]||"");
         }else{
-            $("#datetime-picker").val("");
+            $("#datetime-picker").val("未设置");
         }
-        $("#city-picker").val(province+" "+address);
+        var pa=province+" "+address;
+        if(province==''&&address==''){
+            pa=""
+        }
+        $("#city-picker").val(pa);
         $("#hy").val(data.trade||"");
         $("#mine-duty").val(data.position||"");
         $("#componey-name").val(data.companyName||"");
@@ -141,7 +83,7 @@ $(function(){
             $("#goodat_mine").attr("data-msg",adepts).val("已填");
             sessionStorage.setItem("goodat",adepts);
         }
-        if(data.experience){
+        if(data.experience&&grjl==null){
             $("#personal_msg").attr("data-msg",data.experience).val("已填");
             sessionStorage.setItem("person_msg",data.experience);
         }
@@ -233,7 +175,6 @@ $(function(){
             $(".ls_list").html(html);
         }
     }
-    ajax_nodata(http_url.url+"/user/message",get_user);
     //性别
     $("#sex").select({
         items: [
@@ -247,6 +188,10 @@ $(function(){
         onClose:function(){
             // alert(11)
         }
+    });
+    $(".sex-radio").click(function(){
+        $(".sex-radio").attr("src","../img/channel-card-select-no.png");
+        $(this).attr("src","../img/channel-card-select.png");
     });
 
     //税种,专题列表
@@ -298,84 +243,22 @@ $(function(){
             //console.log(e.target.result);
             $(".consultant-img").attr("src",e.target.result).attr("data-src",e.target.result.split(",")[1]);
             $(".img-sel-model").hide();
+            $(".img-sel-model").hide();
         };
-    });
-    //证书添加图片点击
-    $("body").on("change",".certificate-upload-input",function(){
-    // $(".certificate-upload-input").change(function(){
-        var that=$(this);
-        var code=that.attr("data-code");
-        var file = that.get(0).files[0];
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload=function(e){
-            // console.log(e.target.result);
-            that.prev().prev("img").attr("src",e.target.result).attr("data-src",e.target.result.split(",")[1]);
-            that.prev().prev("img").addClass("certificate-img-show");
-            that.next(".del-certificate-img").show();
-            that.next(".del-certificate-img2").show();
-            that.prev().hide().removeClass("on");
-            if(code==1){//身份证
-                sfz_list.push(e.target.result.split(",")[1]);
-                that.parent().attr("data-src",e.target.result.split(",")[1]);
-                if(that.hasClass("sfz_front")){
-                    sessionStorage.setItem("sfz_front",e.target.result)
-                }
-                if(that.hasClass("sfz_back")){
-                    sessionStorage.setItem("sfz_back",e.target.result)
-                }
-            }else if(code==2){//注册会计师
-                kjs_list.push(e.target.result.split(",")[1]);
-                sessionStorage.setItem("kjs_list",kjs_list);
-            }else if(code==3){//税务师
-                sws_list.push(e.target.result.split(",")[1]);
-                sessionStorage.setItem("sws_list",sws_list);
-            }else if(code==4){//律师
-                ls_list.push(e.target.result.split(",")[1]);
-                sessionStorage.setItem("ls_list",ls_list);
-            }
-        };
-    });
-//删除证书图片
-    $("body").on("click",".del-certificate-img",function(){
-        var code=$(this).attr("data-code");
-        $(this).parent().children("img:first-child").attr("src","").removeClass("certificate-img-show");
-        $(this).hide();
-        $(this).prev().prev("div").show().removeClass("out");
-        if(code==2){//注册会计师
-            kjs_list.remove($(this).parent().children("img:first-child").attr("data-src"));
-        }else if(code==3){//税务师
-            sws_list.remove($(this).parent().children("img:first-child").attr("data-src"));
-        }else if(code==4){//律师
-            ls_list.remove($(this).parent().children("img:first-child").attr("data-src"));
-        }
-        console.log(kjs_list);
-    });
-    $(".del-certificate-img2").click(function(){
-        $(this).parent().children("img:first-child").attr("src","").removeClass("certificate-img-show");
-        $(this).hide();
-        $(this).prev().prev("img").show();
-        sfz_list.remove($(this).parent().children("img:first-child").attr("data-src"));
-        $(this).parent().attr("data-src","");
     });
     //提交信息
-    $(".send-sqzxs-msg").click(function(){
+    $(".release").click(function(){
         var headImage=$(".consultant-img").attr("data-src"),
             companyName=$("#componey-name").val(),
             adep=$("#goodat_mine").attr("data-msg"),
             experience=$("#personal_msg").attr("data-msg"),
-            classicalCase=$("#case_mine").attr("data-msg"),
-            accountantImage=kjs_list,
-            taxImage=sws_list,
-            lawyerImage=ls_list,
             realName=$(".username").val(),
             userName=$(".user_realname").val(),
-            sex=$("#sex").attr("data-values"),
+            sex=$(".sex-radio[src='../img/channel-card-select.png']").attr("data-code"),
             birthdayDate=$("#datetime-picker").val(),
-            province=$("#city-picker").val().split(" ")[0],
-            idCard=$("#id_card").val(),
-            idCardFront=$("#id_front").attr("data-src"),
-            idCardBack=$("#id_back").attr("data-src");
+            trade=$("#hy").val(),
+            position=$("#mine-duty").val(),
+            province=$("#city-picker").val().split(" ")[0];
             if($("#case_mine").attr("data-img")){
                 var caseImages=$("#case_mine").attr("data-img").split(",");
             }
@@ -410,25 +293,19 @@ $(function(){
                 alert(data.des);
             }
         }
-        ajax(http_url.url+"/user/counselor",{
+        ajax(http_url.url+"/user/editUser",{
             "headImage":headImage,
-            "adep":adep,
+            "adept":adep,
             "companyName":companyName,
             "experience":experience,
-            "classicalCase":classicalCase,
-            "caseImages":caseImages,
-            "accountantImage":accountantImage,
-            "taxImage":taxImage,
-            "lawyerImage":lawyerImage,
             "userName":userName,
-            "realName":realName,
             "sex":sex,
             "birthdayDate":birthdayDate,
             "address":address,
             "province":province,
-            "idCard":idCard,
-            "idCardFront":idCardFront,
-            "idCardBack":idCardBack
+            "role":2,
+            "trade":trade,
+            "position":position
         },sub_list)
      });
     $("#sex").val(sessionStorage.getItem("sex"));

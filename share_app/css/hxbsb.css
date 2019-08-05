@@ -1,0 +1,73 @@
+.banner-title>img,.banner-description>img{
+    width:100%;
+    height:auto;
+}
+.banner-description{
+    position: relative;
+}
+
+.sign-up{
+    position: absolute;
+    top:380px;
+    text-align: center;
+    width: 100%;
+}
+@media screen and (min-width: 1300px){
+    .sign-up{
+       top:475px;
+    }
+}
+.sign-up>input{
+    width:230px;
+    height:35px;
+    font-size: 14px;
+    color:#fff;
+    background: rgba(255,255,255,0.2);
+    border:1px solid rgba(255,255,255,0.7);
+    border-radius:4px;
+    padding-left: 21px;
+    margin-bottom: 23px;
+}
+.sign-up>input::placeholder{
+    color:#fff;
+}
+.sign-up>div{
+    width:230px;
+    height:35px;
+    line-height: 35px;
+    color:#6C7AFF;
+    font-size: 18px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(110,119,255,1);
+    border-radius:4px;
+    text-align: center;
+}
+.banner-footer{
+    text-align: center;
+    font-size: 16px;
+    color:#666;
+}
+.banner-footer-list{
+    margin-right: 50px;
+    width:23%;
+    text-align: left;
+    vertical-align: top;
+}
+.banner-footer-list>div{
+    text-align: left;
+}
+.banner-footer-list>div:nth-child(3)>div{
+    margin-bottom: 6px;
+}
+.banner-footer-list>div:nth-child(3){
+    margin-left: 88px;
+    margin-top: 14px;
+}
+.banner-footer-list img{
+    transform: scale(.6);
+}
+.footer{
+    height:73px;
+    background: #333333;
+    margin-top: 30px;
+}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>航信办税宝</title>
+    <title>刷刷</title>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/index2.css">
 </head>
@@ -10,7 +10,7 @@
 <img src="../img/hanxinzt.png" alt="" class="lbt-bg">
 </body>
 <script src="../js/jquery-2.1.4.js"></script>
-<script src="../js/ajax.js"></script>
+<script src="../../js/ajax.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     //微信分享
@@ -38,8 +38,8 @@
                     var shareData = {
                         title: "变革是税务师行业的永恒的主题",
                         desc: "随着新一轮水质改革号角的吹响和个人所得税的改革,税务师行业又迎来了一个巨大的机会",
-                        link: total_share_url.url+"share_app/html/hanxinzt.html",
-                        imgUrl: total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",
+                        link: "http://api.jieshuibao.com/share_app/html/hanxinzt.html",
+                        imgUrl: "https://api.jieshuibao.com/jsb_weixin/share_app/img/share-logo.png",
                         trigger: function (res) {
                             console.log('用户点击发送给朋友');
                         },

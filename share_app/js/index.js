@@ -1,3 +1,4 @@
+//获取地址栏参数
 function getUrlParms(name){
     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
@@ -5,123 +6,31 @@ function getUrlParms(name){
         return unescape(r[2]);
     return null;
 }
-    // var cookieId="oPUdI0iHO5g5M0JkhgwexPAMmE_I";
-    // sessionStorage.setItem("cookieId",cookieId);
-    // function getUrlParms(name){
-    //     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    //     var r = window.location.search.substr(1).match(reg);
-    //     if(r!=null)
-    //         return unescape(r[2]);
-    //     return null;
-    // }
-    // var icode = getUrlParms("icode");
-    // var code=getUrlParms("code");
-    // var cookieId;
-    // $.ajax({
-    //     type:"POST",
-    //     url:http_url.url+'/wx/getOpenid/'+code,
-    //     dataType: "json",
-    //     headers: {
-    //         "Accept": "application/json",
-    //         "Content-Type": "application/json;charset=utf-8"
-    //     },
-    //     success:function(data){
-    //         cookieId=data.data;
-    //         ajax(http_url.url+'/rotation/display',{'cookieId':+cookieId},get_lunbo);
-    //     },
-    //     error:function(){
-    //         alert("程序出错,请重试");
-    //     }
-    // });
-    // if(icode==""||icode==undefined||icode==null){
-    //     $(".index-class-list>div").removeClass("weui-tab__bd-item--active");
-    //     $(".index-class-list>div[data-code=1]").addClass("weui-tab__bd-item--active");
-    //     $(".index-tab-a>a").removeClass("weui-bar__item--on");
-    //     $(".index-tab-a>a[data-code=1]").addClass("weui-bar__item--on");
-    //     var act= $(".index-tab-a>a[data-code=1]").children(".weui-tabbar__icon").children("img").attr("data-act");
-    //     $(".index-tab-a>a[data-code=1]").children(".weui-tabbar__icon").children("img").attr("src",act);
-    //     //ajax_nodata(http_url.url+'/rotation/display',get_lunbo);
-    // }else{
-    //     $(".index-class-list>div").removeClass("weui-tab__bd-item--active");
-    //     $(".index-class-list>div[data-code="+icode+"]").addClass("weui-tab__bd-item--active");
-    //     $(".index-tab-a>a").removeClass("weui-bar__item--on");
-    //     $(".index-tab-a>a[data-code="+icode+"]").addClass("weui-bar__item--on");
-    //     var act=  $(".index-tab-a>a[data-code="+icode+"]").children(".weui-tabbar__icon").children("img").attr("data-act");
-    //     $(".index-tab-a>a[data-code=1]").children(".weui-tabbar__icon").children("img").attr("src",$(".index-tab-a>a[data-code=1]").children(".weui-tabbar__icon").children("img").attr("data-src"));
-    //     $(".index-tab-a>a[data-code="+icode+"]").children(".weui-tabbar__icon").children("img").attr("src",act);
-    //     if(icode==1){
-    //         ajax_nodata(http_url.url+'/rotation/display',get_lunbo);
-    //     }else if(icode==2){
-    //         ajax_nodata(http_url.url+'/article/category',get_article);
-    //     }else if(icode==3){
-    //
-    //     }else{
-    //
-    //     }
-    // }
-    //返回按钮点击
-    $(".back").click(function(){
-        window.history.go(-1);
-    });
-    // //底部tab栏
-    // $(".weui-tabbar__item").each(function(){
-    //     if($(this).hasClass(".weui-bar__item--on")){
-    //         var act=$(this).children(".weui-tabbar__icon").children("img").attr("data-act");
-    //         $(this).children(".weui-tabbar__icon").children("img").attr("src",act);
-    //     }
-    // });
-    // $(".weui-tabbar__item").click(function(){
-    //     $(window).scrollTop(0);
-    //     $(".weui-tabbar__item").each(function(){
-    //         var src=$(this).children(".weui-tabbar__icon").children("img").attr("data-src");
-    //         $(this).children(".weui-tabbar__icon").children("img").attr("src",src);
-    //     });
-    //     var that=$(this);
-    //     var act=that.children(".weui-tabbar__icon").children("img").attr("data-act");
-    //     that.children(".weui-tabbar__icon").children("img").attr("src",act);
-    //     if(that.attr("data-code")==1){
-    //
-    //     }else if(that.attr("data-code")==2){
-    //         ajax_nodata(http_url.url+'/article/category',get_article);
-    //     }else if(that.attr("data-code")==3){
-    //
-    //     }else{
-    //
-    //     }
-    // });
-    //免费问
-    $(".mfw").click(function(){
-        window.location.href="../html/free-question.html";
-    });
-    //快速答
-    $(".kud").click(function(){
-        window.location.href="../html/quick-answer.html";
-    });
-    //围观搜索
-    $(".zrwg-sear").click(function(){
-        window.location.href="../html/watch-search.html"
-    });
-    //大咖访谈
-    $(".dkft-more").click(function(){
+//返回按钮点击
+$(".back").click(function(){
+    window.history.go(-1);
+});
+//大咖访谈
+$(".dkft-more").click(function(){
         window.location.href="../html/cafe-interview.html"
     });
-    //专家推荐
-    $(".zjtj-more").click(function(){
+//专家推荐
+$(".zjtj-more").click(function(){
         window.location.href="../html/expert.html"
     });
     //财税圈搜索按钮点击
-    $("body").on("click",".csq-search-btn",function(){
+$("body").on("click",".csq-search-btn2",function(){
         window.location.href="../html/csq-list-search.html"
     });
-    //我的会员等级
-    $("body").on("click",".mine-hydj",function(){
-        window.location.href="../html/mine-membership-grade.html"
+//所有私密问按钮点击
+$(".smw_btn_all").click(function(){
+        alert("请下载刷刷app进行私密问答操作");
     });
-    //编辑个人信息
-    $(".mine-msg-edit").click(function(){
-        window.location.href="../html/mine-personal-data.html"
+//用户头像点击
+$("body").on("click",".look-hp-image",function(){
+        var role=$(this).attr("data-role"),phone=$(this).attr("data-phone");
+        window.location.href="personal-new.html?phone="+phone;
     });
-
 //时间转换
 function add0(m){return m<10?'0'+m:m }
 function format(shijianchuo) {
@@ -134,8 +43,6 @@ function format(shijianchuo) {
     var s = time.getSeconds();
     return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
 }
-//下拉刷新
-//下拉刷新
 function reload_msg(ele,url_name,data,succ){
     ele.pullToRefresh({
         onRefresh: function () { /* 当下拉刷新触发的时候执行的回调 */
@@ -171,26 +78,70 @@ function reload_msg(ele,url_name,data,succ){
 //滚动加载
 function scroll_more(url_name,data,succ){
     $(window).scroll(function(){
-        var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
-        var scrollHeight = $(document).height();   //当前页面的总高度
-        var clientHeight = $(this).height();    //当前可视的页面高度
-        //console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
-        if(scrollTop + clientHeight >= scrollHeight-1){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
-            //滚动条到达底部
-            //alert(3);
-            num+=1;
-            count_start=((num-1)*10)+1;
-            count_end=num*10;
-            data.sinceId=count_start;
-            data.maxId=count_end;
-            ajax(url_name,data,succ);
-        }else if(scrollTop<=0){
-            //滚动条到达顶部
-            // alert(4)
-            //滚动条距离顶部的高度小于等于0
+            var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+            var scrollHeight = $(document).height();   //当前页面的总高度
+            var clientHeight = $(this).height();    //当前可视的页面高度
+            //console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+            if(scrollTop + clientHeight >= scrollHeight-1){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
+                //滚动条到达底部
+                //alert(3);
+                if(scroll_status==true){
+                    $(".msg-loading").show();
+                    num+=1;
+                    count_start=((num-1)*10)+1;
+                    count_end=num*10;
+                    data.sinceId=count_start;
+                    data.maxId=count_end;
+                    for(var i in data){
+                        if(typeof(data[i])=="string"&&data[i].indexOf("&&")!=-1){
+                            var new_data=data[i].split("&&");
+                            data[i]=$(new_data[0]).attr(new_data[1]);
+                        }
+                    }
+                    ajax(url_name,data,succ);
+                }
+                // console.log(scroll_status);
+                // $(".msg-loading").hide();
+            }else if(scrollTop<=0){
+                //滚动条到达顶部
+                // alert(4)
+                //滚动条距离顶部的高度小于等于0
 
+            }
+        });
+}
+//用户等级
+function get_score(data,aision,vip){
+    var score_img;
+    if(aision==0){
+        if(vip==0){
+            score_img="../img/hangxin_vip.png"
+        }else{
+            score_img="../img/hangxin_vip_dateout.png"
         }
-    });
+    }else if(aision==2){
+        score_img="../img/gshy.png"
+        // if(vip==0){
+        //     score_img="../img/gshy.png"
+        // }else{
+        //     score_img="../img/gshy-dateout.png"
+        // }
+    }else{
+        if(0<=data&&data<6){
+            score_img="../img/icon-pthy.png"
+        }else if(6<=data&&data<20){
+            score_img="../img/icon-tphy.png"
+        }else if(20<=data&&data<50){
+            score_img="../img/icon-yphy.png"
+        }else if(50<=data&&data<100){
+            score_img="../img/icon-jphy.png"
+        }else if(100<=data&&data<500){
+            score_img="../img/icon-bjhy.png"
+        }else if(500<=data){
+            score_img="../img/icon-zshy.png"
+        }
+    }
+    return score_img;
 }
 //返回登录
 function back_login(data){
@@ -198,5 +149,81 @@ function back_login(data){
         window.location.href="../html/register-next.html"
     }
 }
-
-
+//行业,税种,专题
+function get_category(data,key){
+    var categorys='';
+    for(var i=0;i<data.length;i++){
+        if(data[i].name==key){
+            categorys=data[i].children;
+        }
+    }
+    return categorys;
+}
+//图片预览
+$("body").on("click",".img_look",function(){
+    // $(".img_privew").show();
+    // $(".weui-gallery__img").attr("src",$(this).attr("src"));
+    var that=$(this),index_img;
+    var items=[];
+    var img=$(".img_look");
+    $(".img_look").each(function(index){
+        items.push($(this).attr("src"));
+        if(that.attr("src")==$(this).attr("src")){
+            index_img=index;
+        }
+    });
+    var pb1 = $.photoBrowser({
+        items: items,
+        initIndex:index_img
+    });
+    pb1.open();
+});
+//用户名显示
+function get_name(val){
+    var realName='';
+    if(val.isAnon==0){
+        realName="匿名用户"
+    }else{
+        if(val.role==2){
+            realName=val.userName;
+        }else{
+            realName=val.realName||"匿名用户";
+        }
+    }
+    return realName;
+}
+//删除数组内某项的构造函数
+Array.prototype.indexOf = function(val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) return i;
+    }
+    return -1;
+};
+Array.prototype.remove = function(val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+};
+//友盟埋点统计
+$("body").on("click",".ymmd-click",function(){
+    var md_msg=$(this).attr("data-md-name");
+    _czc.push(["_trackEvent",md_msg,"点击"]);
+});
+//新用户引导下载
+$(".down-app-model").click(function(){
+    $(".down-app-model").hide();
+});
+$(".new-user-down-app").click(function(){
+   window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jieshuibao.jsb";
+});
+//用户头像
+function headimage(val){
+    var src='';
+    if(val&&val!=''&&val.indexOf("http")!=-1){
+        src=val;
+    }else{
+        src=head_src+val
+    }
+    return src;
+}

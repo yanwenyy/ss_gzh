@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="../css/quick-answer.css">
     <link rel="stylesheet" href="../css/cafe-interview.css">
     <link rel="stylesheet" href="../css/mine.css">
+    <link rel="stylesheet" href="../css/channel.css">
     <title>关注</title>
 </head>
 <body>
-<div class="jsb_header">
-    <img src="../img/back.png" alt="" class="back" data-url="4">
-    我的关注
+<div class="jsb_header channel-header">
+    <img src="../img/channel-back.png" alt="" class="back" data-url="4">
+    <span class="title-name">我的关注</span>
+    <div class="release inline-block">添加好友</div>
 </div>
 <div class="weui-pull-to-refresh__layer">
     <div class='weui-pull-to-refresh__arrow'></div>
@@ -38,9 +40,42 @@
         <!--</div>-->
         <!--<div class="attention-btn">取消关注</div>-->
     <!--</div>-->
+    <ul class="mine-fans-list">
+        <!--<li class="box-sizing">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+                <!--<div class="inline-block fans-name">匿名用户</div>-->
+                <!--<div class="inline-block fans-dj-msg">资深咨询师</div>-->
+                <!--<div class="fans-zw">-->
+                    <!--<div class="inline-block"><img src="../img/fans-js.png" alt="">讲师</div>-->
+                    <!--<div class="inline-block"><img src="../img/fans-zxs.png" alt="">税务师、律师、注册会计师</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="inline-block attention-fans">+关注</div>-->
+        <!--</li>-->
+        <!--<li class="box-sizing">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+                <!--<div class="inline-block fans-name">匿名用户</div>-->
+                <!--<div class="inline-block fans-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+                <!--<div class="fans-zw">-->
+                    <!--<div class="inline-block"><img src="../img/fans-js.png" alt="">讲师</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+        <!--</li>-->
+        <!--<li class="box-sizing">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+                <!--<div class="inline-block fans-name">匿名用户</div>-->
+                <!--<div class="inline-block fans-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+            <!--</div>-->
+            <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+        <!--</li>-->
+    </ul>
 </div>
 <div class="none-msg">您还没有关注任何人,快去关注吧!</div>
-<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>
+<!--<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>-->
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
@@ -54,53 +89,5 @@
     $(function () {
         FastClick.attach(document.body);
     });
-    // //下拉刷新
-    // $(".mine-attention").pullToRefresh({
-    //     onRefresh: function () { /* 当下拉刷新触发的时候执行的回调 */
-    //         //alert(111);
-    //         $(".weui-pull-to-refresh__arrow").addClass("out");
-    //         $(".weui-pull-to-refresh__preloader").addClass("on");
-    //         $(".up").removeClass("on");
-    //         $(".refresh").addClass("on");
-    //         setTimeout(function(){
-    //             console.log("已完成");
-    //             $(".mine-attention").pullToRefreshDone().removeClass("mine-attention-pull");
-    //             $(".weui-pull-to-refresh__layer").hide();
-    //             $(".down").removeClass("out");
-    //             $(".weui-pull-to-refresh__arrow").removeClass("out").addClass("on");
-    //             $(".weui-pull-to-refresh__preloader").removeClass("out").removeClass("on");
-    //             $(".refresh").removeClass("out").removeClass("on");
-    //         },2000)
-    //     },
-    //     onPull: function (percent) { /* 用户下拉过程中会触发，接收一个百分比表示用户下拉的比例 */
-    //         console.log(percent);
-    //         if(percent>10){
-    //             $(".mine-attention").addClass("mine-attention-pull");
-    //             $(".weui-pull-to-refresh__layer").show();
-    //         }
-    //         if(percent>88){
-    //             $(".down").addClass("out");
-    //             $(".up").removeClass("out").addClass("on");
-    //         }
-    //     },
-    //     distance: 50 /* 下拉刷新的触发距离， 注意，如果你重新定义了这个值，那么你需要重载一部分CSS才可以，请参考下面的自定义样式部分 */
-    // });
-    // //滚动加载
-    // $(window).scroll(function(){
-    //     var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
-    //     var scrollHeight = $(document).height();   //当前页面的总高度
-    //     var clientHeight = $(this).height();    //当前可视的页面高度
-    //     //console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
-    //     if(scrollTop + clientHeight >= scrollHeight-1){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
-    //         //滚动条到达底部
-    //         //alert(3)
-    //     }else if(scrollTop<=0){
-    //         //滚动条到达顶部
-    //         // alert(4)
-    //         //滚动条距离顶部的高度小于等于0 TODO
-    //
-    //     }
-    // });
-
 </script>
 </html>

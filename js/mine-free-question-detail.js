@@ -22,7 +22,7 @@ $(function(){
         }
         var realName=get_name(questionUserOwnMsg);
         $(".m-q-f-detail>div").html(`<div class="clist-head">
-                <img src="${head_src+questionUserOwnMsg.headImage}" alt="" onerror=src="../img/user.png">
+                <img src="${headimage(questionUserOwnMsg.headImage)}" alt="" onerror=src="../img/user.png">
                 <div class="inline-block">
                     <div class="user-name">
                         ${realName||"匿名用户"}
@@ -33,7 +33,7 @@ $(function(){
                     <div class="zx-detail-date">${format(questionUserOwnMsg.date)}</div>
                 </div>
             </div>
-            <div class="clist-msg">
+            <div class="clist-msg clist-msg-q">
                 ${questionUserOwnMsg.content}
             </div>
             <div class="zx-detail-img">
@@ -127,7 +127,7 @@ $(function(){
                 <div class="card-list zx-list m-q-f-d-msg">
                     <div class="box-sizing watch-answer-expert">
                         <div class="clist-head">
-                            <img class="look-hp-image" data-role="${answerUsers[i].role}" data-phone="${answerUsers[i].phoneNumber}" src="${head_src+answerUsers[i].headImage}" alt="" onerror=src="../img/user.png">
+                            <img class="look-hp-image" data-role="${answerUsers[i].role}" data-phone="${answerUsers[i].phoneNumber}" src="${headimage(answerUsers[i].headImage)}" alt="" onerror=src="../img/user.png">
                                 <div class="inline-block ${zxs_role}">
                                 <div class="user-name">
                                     ${answerUsers[i].userName||"匿名用户"}
@@ -201,7 +201,7 @@ $(function(){
                     <div class="card-list zx-list m-q-f-d-msg">
                             <div class="box-sizing watch-answer-expert">
                                 <div class="clist-head">
-                                    <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${head_src+all_usermsg.headImage}" alt="" onerror=src="../img/user.png">
+                                    <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${headimage(all_usermsg.headImage)}" alt="" onerror=src="../img/user.png">
                                     <div class="inline-block ${zxs_role}">
                                         <div class="user-name">
                                             ${data.userName||"匿名用户"}
@@ -282,7 +282,7 @@ $(function(){
                 <div class="card-list zx-list m-q-f-d-msg">
                     <div class="box-sizing watch-answer-expert">
                         <div class="clist-head">
-                            <img class="look-hp-image" data-role="${answerUsers[i].role}" data-phone="${answerUsers[i].phoneNumber}" src="${head_src+answerUsers[i].headImage}" alt="" onerror=src="../img/user.png">
+                            <img class="look-hp-image" data-role="${answerUsers[i].role}" data-phone="${answerUsers[i].phoneNumber}" src="${headimage(answerUsers[i].headImage)}" alt="" onerror=src="../img/user.png">
                             <div class="inline-block">
                                 <div class="user-name">
                                     ${realName||""}
@@ -379,9 +379,9 @@ $(function(){
                     });
                     wx.ready(function () {
                         var shareData = {
-                            title: "我在航信办税宝提了一个问题，快来围观。",
-                            desc: $(".clist-msg").html(), //这里请特别注意是要去除html
-                            link: total_share_url.url+"jsb_weixin/share_app/html/mine-question.html",
+                            title: "专家详解：你该了解的财税知识",
+                            desc: $.trim($(".clist-msg-q").html()), //这里请特别注意是要去除html
+                            link: total_share_url.url+"jsb_weixin/share_app/html/cwatch.html?cwatch_id="+id,
                             imgUrl:total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",
                             trigger: function (res) {
                                 console.log('用户点击发送给朋友');

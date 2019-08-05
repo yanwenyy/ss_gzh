@@ -35,6 +35,9 @@ $(function(){
         }
     }
     ajax_nodata(http_url.url+"/user/sectionMessage",if_hangxin);
+    ajax_nodata(http_url.url+"/load/getconfig/message",function(data){
+        $(".money-show").html(data.questionMoney);
+    });
     // var hy=sessionStorage.getItem("hy-msg");
     // $("#hy").val(hy);
     $(".back").click(function(){
@@ -118,6 +121,7 @@ $(function(){
                 trade:trade,
                 images:images
             };
+        var money=$(".money-show").html();
         ques=JSON.stringify(ques);
         sessionStorage.setItem("ques",ques);
         if(content==""){
@@ -135,7 +139,7 @@ $(function(){
                 }
                 ajax(http_url.url+"/question/releaseQuestion",{
                     "content":content,
-                    "money":15,
+                    "money":money,
                     "payType":"free",
                     "trade":trade,
                     "isAnon":isAnon,
@@ -143,7 +147,7 @@ $(function(){
                 },hangxin_send)
             }else{
                 // window.location.href="../html/watch-pay.html?price=15&&qeus="+ques;
-                window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?"+wx_hd_url.url+"%2fjsb_weixin%2fhtml%2fwatch-pay.html%3fqeus%3dqeus%26%26price%3d15&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+                window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?"+wx_hd_url.url+"%2fjsb_weixin%2fhtml%2fwatch-pay.html%3fqeus%3dqeus%26%26price%3d"+money+"&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
             }
         }
         // window.location.href="free-question-payment.html"

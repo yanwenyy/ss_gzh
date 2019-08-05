@@ -6,20 +6,21 @@ $(function(){
     function get_list(data){
         console.log(data);
         var questions=data.questions,html="";
-        for(var i=0;i<questions.length;i++){
-            var content='';
-            if(questions[i].content.length>40){
-                content=questions[i].content.substr(0,40)+"..."
-            }else{
-                content=questions[i].content
-            }
-            var realName=get_name(questions[i]);
-            //用户等级
-            var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
-            html+=`
+        if(questions!=''){
+            for(var i=0;i<questions.length;i++){
+                var content='';
+                if(questions[i].content.length>40){
+                    content=questions[i].content.substr(0,40)+"..."
+                }else{
+                    content=questions[i].content
+                }
+                var realName=get_name(questions[i]);
+                //用户等级
+                var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
+                html+=`
                 <div class="box-sizing" data-id="${questions[i].uuid}">
                     <div class="clist-head">
-                        <img src="${head_src+questions[i].headImage}" alt="" onerror=src="../img/user.png">
+                        <img src="${headimage(questions[i].headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -38,8 +39,12 @@ $(function(){
                     </div>
                 </div>
             `;
+            }
+            $(".card-list").html(html);
+        }else{
+            $(".no-msg").show();
         }
-        $(".card-list").html(html);
+
     }
     function get_list_more(data){
         var questions=data.questions,html="";
@@ -56,7 +61,7 @@ $(function(){
             html+=`
                 <div class="box-sizing" data-id="${questions[i].uuid}">
                     <div class="clist-head">
-                        <img src="${head_src+questions[i].headImage}" alt="" onerror=src="../img/user.png">
+                        <img src="${headimage(questions[i].headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}

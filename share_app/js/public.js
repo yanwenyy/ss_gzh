@@ -1,7 +1,6 @@
 var hostName = {
-    formal_url:"https://api.jieshuibao.com/",//正式
-    test_url:"http://test.jieshuibao.com/jsb_webserver/",//测试
-    url:"http://test.jieshuibao.com/jsb_webserver/"
+	"url": "https://api.jieshuibao.com/",
+	"fileurl":"https://test.jieshuibao.com/jsb_bsb/"
 };
 
 //正式  https://bsb.jieshuibao.com/

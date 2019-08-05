@@ -23,7 +23,7 @@ $(function(){
                     alert(data.des);
                 }
             }
-            ajax(http_url.url+"/jsb_webserver/jsb/user/promotion",{
+            ajax("http://test.jieshuibao.com/jsb_webserver/jsb/user/promotion",{
                 "name":name,
                 "position":position,
                 "company":company,
