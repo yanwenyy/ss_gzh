@@ -12,7 +12,7 @@ $(function(){
         var html=`<div class="brush-video-column inline-block ${data.data[0].specialColumnName?'':'out'}">${data.data[0].specialColumnName||''}</div>
                     <div class="brush-video-user">${get_name(data.data[0])}</div>
                     <div class="brush-video-label">${data.data[0].title}</div>
-                    <div class="brush-video-title">#${data.data[0].labelName||''}</div>`;
+                    <div class="brush-video-title">${data.data[0].labelName?"#"+data.data[0].labelName:''}</div>`;
         $(".brush-video-msg").html(html);
         $(".brush-v-xh-num").html(data.data[0].praiseNum);
         $(".brush-v-gz>div").attr("data-id",data.data[0].userId);

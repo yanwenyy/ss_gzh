@@ -1,5 +1,8 @@
 $(function(){
     var id=getUrlParms("id");
+    ajax_nodata(http_url.url+"/load/getconfig/message",function(data){
+        $(".money-reword>span").html(data.questionMoney);
+    });
     //回答者信息
     function get_ques(data){
         

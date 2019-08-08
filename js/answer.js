@@ -24,8 +24,10 @@ $(function(){
         $(".zx-detail-date").html(format(questionUserOwnMsg.date));
         $(".clist-msg").html(questionUserOwnMsg.content);
         $(".zx-detail-city").html(`
-            <img src="../img/label.png" alt="">
+             <div class="inline-block"><img src="../img/label.png" alt="">
                 ${questionUserOwnMsg.area||""} ${questionUserOwnMsg.quTrade||""}
+             </div>
+            
         `);
         var imgs=questionUserOwnMsg.images,html="";
         if(imgs!=null){

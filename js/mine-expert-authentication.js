@@ -1,5 +1,5 @@
 $(function(){
-    var msg=getUrlParms("msg");
+    var msg=getUrlParms("msg"),from=getUrlParms("from");
     if(msg!=null){
         $(".apply-name").html("申请咨询师")
     }else{
@@ -105,7 +105,7 @@ $(function(){
                 $("#componey-name").val(expert_msg.componey_name);
             }
         }
-        if(data.adepts){
+        if(data.adepts&&from!="goodat"){
             var adepts=[];
             for(var k in data.adepts){
                 adepts.push(k);
@@ -116,7 +116,7 @@ $(function(){
                 $("#goodat_mine").val("已填").attr("data-msg",expert_msg.goodat_mine);
             }
         }
-        if(data.experience){
+        if(data.experience&&from!="grjl"){
             $("#personal_msg").attr("data-msg",data.experience).val("已填");
         }else{
             if(expert_msg.personal_msg!=null){

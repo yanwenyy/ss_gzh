@@ -4,10 +4,14 @@ $(function(){
         for(var i=0;i<list.length;i++){
             list_id.push(list[i].dataset.id);
         }
-        ajax(http_url.url+"/classify/attention/classify",{ids:list_id},function(data){
-            console.log(data);
+        if(list_id!=''){
+            ajax(http_url.url+"/classify/attention/classify",{ids:list_id},function(data){
+                console.log(data);
+                window.history.go(-1);
+            });
+        }else{
             window.history.go(-1);
-        });
+        }
     });
     //我的频道列表
     ajax_nodata(http_url.url+"/classify/attention/classifylist",function(data){
@@ -84,14 +88,17 @@ $(function(){
                     for(var i=0;i<list.length;i++){
                         list_id.push(list[i].dataset.id);
                     }
-                    ajax(http_url.url+"/classify/attention/classify",{ids:list_id},function(data){
-                        console.log(data);
-                        if(data.code==1){
+                    if(list_id!=''){
+                        ajax(http_url.url+"/classify/attention/classify",{ids:list_id},function(data){
+                            console.log(data);
+                            if(data.code==1){
 
-                        }else{
-                            alert(data.des);
-                        }
-                    });
+                            }else{
+                                alert(data.des);
+                            }
+                        });
+                    }
+
                     $(".channel-mine-del").hide();
                     $(".channel-mine-add").hide();
                 } } });
@@ -103,14 +110,16 @@ $(function(){
             for(var i=0;i<list.length;i++){
                 list_id.push(list[i].dataset.id);
             }
-            ajax(http_url.url+"/classify/attention/classify",{ids:list_id},function(data){
-                console.log(data);
-                if(data.code==1){
+            if(list_id!=''){
+                ajax(http_url.url+"/classify/attention/classify",{ids:list_id},function(data){
+                    console.log(data);
+                    if(data.code==1){
 
-                }else{
-                    alert(data.des);
-                }
-            });
+                    }else{
+                        alert(data.des);
+                    }
+                });
+            }
             $(".channel-mine-del").hide();
             $(".channel-mine-add").hide();
         }

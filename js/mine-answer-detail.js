@@ -252,7 +252,7 @@ $(function(){
             }
         });
     }
-    wx_share();
+    // wx_share();
     $(".release").click(function(){
         var share_name=$(this).attr("data-name");
         //alert("点击右上角进行分享");$(".shadow").show();

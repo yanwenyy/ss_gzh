@@ -27,7 +27,7 @@ $(function(){
                                     <div class="inline-block ${data.data[i].counselorDuty!=null&&data.data[i].role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ data.data[i].counselorDuty}</div>
                                 </div>
                             </div>
-                            <div class="inline-block attention-fans"  data-phone="${data.data[i].phoneNumber}">+关注</div>
+                            <div data-phone="${data.data[i].phoneNumber}" class="inline-block attention-fans ${data.data[i].follow==1?'each-attention':'gzfs'}"><img src="../img/hg.png" class="hg-fans ${Number(data.data[i].mutual)==1?'':'out'}" alt="">${data.data[i].follow==1?(data.data[i].mutual==1?'互关':'已关注'):'+关注'}</div>
                         </li>
                 `
             }
@@ -53,7 +53,7 @@ $(function(){
                                     <div class="inline-block ${data.data[i].counselorDuty!=null&&data.data[i].role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ data.data[i].counselorDuty}</div>
                                 </div>
                             </div>
-                            <div class="inline-block attention-fans"  data-phone="${data.data[i].phoneNumber}">+关注</div>
+                            <div data-phone="${data.data[i].phoneNumber}" class="inline-block attention-fans ${data.data[i].follow==1?'each-attention':'gzfs'}"><img src="../img/hg.png" class="hg-fans ${Number(data.data[i].mutual)==1?'':'out'}" alt="">${data.data[i].follow==1?(data.data[i].mutual==1?'互关':'已关注'):'+关注'}</div>
                         </li>
                 `
             }

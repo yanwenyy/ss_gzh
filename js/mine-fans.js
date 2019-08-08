@@ -2,6 +2,7 @@ $(function(){
     var phoneNum=getUrlParms("phoneNum");
     if(phoneNum){
         $(".title-name").html("他的粉丝");
+        $("title").html("他的粉丝");
         $(".release").hide();
     }
     function get_fans(data){

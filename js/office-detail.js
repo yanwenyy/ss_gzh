@@ -1,5 +1,10 @@
 $(function(){
-    var id=getUrlParms("id"),agency='';
+    var id=getUrlParms("id"),agency='',listMsg=getUrlParms("listMsg");
+    if(listMsg!=null&&listMsg!="null"){
+        $(".back").click(function(){
+            window.location.href="mechanism-list.html?listMsg="+encodeURIComponent(encodeURIComponent(listMsg));
+        });
+    }
     ajax(http_url.url+"/agency/agencyConselorsById",{"id":id},function(data){
         console.log(data);
         agency=data.data.agency;

@@ -1,5 +1,6 @@
 $(function(){
     var phone=getUrlParms("phone"),code=getUrlParms("code"),to=getUrlParms("to"),msg=getUrlParms("msg");
+    count_end=10;count_start=1;
     if(code==1){
         $(".back").click(function(){
             window.location.href="index.html";
@@ -45,6 +46,8 @@ $(function(){
         if(data.self==1){
             $(".attention-person").hide();
             $(".edit-personal-msg").show();
+            $(".personal-new-smw").hide();
+            $(".personal-new-smw-money").show();
         }
         if(data.isAttention==1){
             $(".attention-person").html("取消关注").addClass("attention-person-already");
@@ -97,6 +100,7 @@ $(function(){
                 "maxId": count_end,
                 "sinceId":count_start,
                 "specialcolumnId":$(".column-list-tab-act").attr("data-id"),
+                "userId": phone,
             },"column-list-main-zl");
         });
     });
@@ -174,18 +178,20 @@ $(function(){
             default:return
         }
     });
-    function list(jk,data,sel){
-        ajax(http_url.url+jk,data,function(data){
+    function list(jk,cc,sel){
+        cc.maxId=10;cc.sinceId=1;
+        ajax(http_url.url+jk,cc,function(data){
             var html='';
             if(data.data.length<3&&(sel=="p-ss"||sel=="column-list-main-zl"||sel=="p-xh")){
                 $(".column-list-main").css("column-count","1")
             }
             for(var i=0;i<data.data.length;i++){
+
                 if(sel=="p-ss"||sel=="column-list-main-zl"||sel=="p-xh"){
                     html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
                         <img src="${cover_src+data.data[i].image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title}</div>
+                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
                             <div class="column-list-name">
                                 <img src="${headimage(data.data[i].headImage)}" alt="">
                                 <div class="inline-block">${get_name(data.data[i])}</div>
@@ -214,7 +220,7 @@ $(function(){
                         if_buy="已围观";
                         cwatch_buy="cwatch_buy";
                     }else{
-                        if_buy="1元 围观"
+                        if_buy="围观"
                     }
                     html+=`
                     <div class="box-sizing one_wg"  data-id="${answer[i].uuid}">
@@ -247,83 +253,8 @@ $(function(){
             $("."+sel).html(html);
         })
     }
-    // function list_more(jk,data,sel){
-    //     scroll_more(http_url.url+jk,data,function(data){
-    //         var html='';
-    //         if(data.data!=''){
-    //             for(var i=0;i<data.data.length;i++){
-    //                 if(sel=="p-ss"||sel=="p-zl"||sel=="p-xh"){
-    //                     html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
-    //                     <img src="${cover_src+data.data[i].image}" alt="">
-    //                     <div class="box-sizing">
-    //                         <div class="column-list-title">${data.data[i].title}</div>
-    //                         <div class="column-list-name">
-    //                             <img src="../img/user.png" alt="">
-    //                             <div class="inline-block">${get_name(data.data[i])}</div>
-    //                         </div>
-    //                     </div>
-    //                 </div>`
-    //                 }else if(sel=="p-sp"){
-    //                     html+=`<div class="channel-relevant-list" data-charge="${data.data[i].charge}" data-classify_id="${data.data[i].classify_id}" data-id="${data.data[i].id}" data-ifClassifyVip="${data.data[i].ifClassifyVip}"  data-userId="${data.data[i].userId}">
-    //                         <img src="${cover_src+data.data[i].cover}" alt="">
-    //                         <div class="inline-block channel-relevant-list-msg">
-    //                             <div>${data.data[i].title}</div>
-    //                             <div>${get_name(data.data[i])}</div>
-    //                             <div class="orange ${data.data[i].charge==0?'':'out'}"">频道会员免费</div>
-    //                         </div>
-    //                     </div>`
-    //                 }else if(sel=="p-wd"){
-    //                     var answer=data.data;
-    //                     var content;
-    //                     if(answer[i].content.length>40){
-    //                         content=answer[i].content.substr(0,40)+"...";
-    //                     }else{
-    //                         content=answer[i].content;
-    //                     }
-    //                     var if_buy="",cwatch_buy='';
-    //                     if(answer[i].status=="1"){
-    //                         if_buy="已围观";
-    //                         cwatch_buy="cwatch_buy";
-    //                     }else{
-    //                         if_buy="1元 围观"
-    //                     }
-    //                     html+=`
-    //                 <div class="box-sizing one_wg"  data-id="${answer[i].uuid}">
-    //                         <div class="clist-head">
-    //                             <img src="${head_src+answer[i].headImage}" alt="" onerror=src="../img/user.png" data-role="${answer[i].role}" data-phone="${answer[i].phoneNumber}">
-    //                             <div class="inline-block">
-    //                                 <div class="user-name">
-    //                                     ${get_name(answer[i])}
-    //                                 </div>
-    //                                 <div class="user-grade">
-    //                                     <img src="${get_score(answer[i].integralScore,answer[i].aision,answer[i].vip)}" alt="">
-    //                                 </div>
-    //                             </div>
-    //                             <div class="cwatch ${cwatch_buy}"  data-id="${answer[i].uuid}">${if_buy}</div>
-    //                         </div>
-    //                         <div class="clist-msg">
-    //                             ${content}
-    //                         </div>
-    //                         <div class="clist-foot">
-    //                             <div>${format(answer[i].date)}</div>
-    //                             <div>
-    //                                 <div class="inline-block">点赞 ${answer[i].approveNum}</div>
-    //                                 <div class="inline-block">围观 ${answer[i].lookNum}</div>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 `;
-    //                 }
-    //             }
-    //             $("."+sel).append(html);
-    //         }else{
-    //             scroll_status=false;
-    //         }
-    //     })
-    // }
-    //个人简介和擅长领域点击
-    function list_more(jk,data,sel){
-        ajax(http_url.url+jk,data,function(data){
+    function list_more(jk,cc,sel){
+        ajax(http_url.url+jk,cc,function(data){
             var html='';
             if(data.data!=''){
                 for(var i=0;i<data.data.length;i++){
@@ -331,7 +262,7 @@ $(function(){
                         html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
                         <img src="${cover_src+data.data[i].image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title}</div>
+                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
                             <div class="column-list-name">
                                 <img src="${headimage(data.data[i].headImage)}" alt="">
                                 <div class="inline-block">${get_name(data.data[i])}</div>
@@ -360,7 +291,7 @@ $(function(){
                             if_buy="已围观";
                             cwatch_buy="cwatch_buy";
                         }else{
-                            if_buy="1元 围观"
+                            if_buy="围观"
                         }
                         html+=`
                     <div class="box-sizing one_wg"  data-id="${answer[i].uuid}">
@@ -450,6 +381,7 @@ $(function(){
             "maxId": count_end,
             "sinceId":count_start,
             "specialcolumnId":$(".column-list-tab-act").attr("data-id"),
+            "userId": phone,
         },"column-list-main-zl");
     });
     //1元围观
@@ -544,5 +476,39 @@ $(function(){
         }else if(users.role==2){
             window.location.href="../html/mine-apply-consultant.html";
         }
+    });
+    //修改价格点击
+    $(".personal-new-smw-money").click(function(){
+        $(".shadow").show();
+        function get_price(data){
+            console.log(data);
+            var list=data.data,html="";
+            for(var i=0;i<list.length;i++){
+                html+=`
+                    <li data-money="${list[i].money}">${list[i].name}: ${list[i].money}元/次</li>
+                `;
+            }
+            html+=`<div class="red" style="font-size:2.4rem;padding:1rem">注: 该资费标准是根据用户当前等级制度,等级越高咨询费用越高</div>`
+            $(".hp_price_list").html(html);
+        }
+        ajax_nodata(http_url.url+"/personal/level",get_price);
+    });
+    $(".colse-shadow").click(function(){
+        $(".shadow").hide();
+    });
+    //价格点击
+    $("body").on("click",".hp_price_list>li",function(){
+        var price=$(this).attr("data-money");
+        //修改价格
+        function edit_price(data){
+            if(data.code==1){
+                alert(data.des);
+                $(".shadow").hide();
+                $(".hp_smw_price").html(price+" 元/次");
+            }else{
+                alert(data.des);
+            }
+        }
+        ajax(http_url.url+"/personal/consultMoney",{"money":price},edit_price)
     });
 });

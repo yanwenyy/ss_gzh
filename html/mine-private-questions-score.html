@@ -68,7 +68,7 @@
                 <img src="${headimage(data.users.headImage)}" alt="" onerror=src="../img/user.png">
                 <div class="inline-block attention-export-msg">
                     <div>
-                        <span>${data.users.realName||""}</span>
+                        <span>${get_name(data.users)||""}</span>
                         <img src="../img/icon-expert icon.png" alt="">
                         <span> ${data.users.levelName||""}</span>
                     </div>

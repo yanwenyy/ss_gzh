@@ -109,8 +109,9 @@
                 goodat.push($(this).attr("data-id"));
             });
             expert_msg.goodat_mine=goodat;
+            console.log(expert_msg);
             sessionStorage.setItem("expert_msg",JSON.stringify(expert_msg));
-            window.history.go(-1);
+            window.location.href="mine-expert-authentication.html?from=goodat";
         })
     });
 </script>

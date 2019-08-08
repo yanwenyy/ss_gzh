@@ -541,7 +541,8 @@
     height: 100%;
     font-size: 2.8rem;
     text-align: right;
-    background: transparent
+    background: transparent;
+    color:#333;
 }
 
 .weui-picker-modal .picker-items {

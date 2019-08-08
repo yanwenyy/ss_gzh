@@ -34,7 +34,7 @@ $(function(){
                                     <div class="inline-block ${export_list[i].lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
                                     <div class="inline-block"><img src="../img/fans-zxs.png" alt="">${export_list[i].counselorDuty}</div>
                                 </div>
-                                <div class="office-e-adress">${export_list[i].address||''} ${export_list[i].companyName}</div>
+                                <div class="office-e-adress">${export_list[i].address||''}  <span class="gray-line inline-block ${export_list[i].address&&export_list[i].companyName?'':'out'}"></span>  ${export_list[i].companyName}</div>
                                 <div class="office-e-good">
                                     ${a_html}
                                 </div>
@@ -76,7 +76,7 @@ $(function(){
                                     <div class="inline-block ${export_list[i].lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
                                     <div class="inline-block"><img src="../img/fans-zxs.png" alt="">${export_list[i].counselorDuty}</div>
                                 </div>
-                                <div class="office-e-adress">${export_list[i].address||''} ${export_list[i].companyName}</div>
+                                <div class="office-e-adress">${export_list[i].address||''}  <span class="gray-line inline-block ${export_list[i].address&&export_list[i].companyName?'':'out'}"></span>  ${export_list[i].companyName}</div>
                                 <div class="office-e-good">
                                     ${a_html}
                                 </div>

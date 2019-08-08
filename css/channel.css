@@ -101,8 +101,9 @@
     bottom: 2rem;
 }
 .gray-line{
-    width:0.2rem;
-    height:2rem;
+    width:0.2rem!important;
+    height:2rem!important;
+    padding:0!important;
     background: #E5E5E5;
     vertical-align: middle;
 }

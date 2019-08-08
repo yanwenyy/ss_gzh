@@ -10,7 +10,7 @@ $(function(){
                     <img class="channel-card-sel" src="${i==0?'../img/channel-card-select.png':'../img/channel-card-select-no.png'}" alt="">
                     <div class="inline-block">
                         <div class="channel-card-name">${data.data[i].goods_name}</div>
-                        <div class="channel-card-msg">说明：${data.data[i].introduction}</div>
+                        <div class="channel-card-msg">${data.data[i].introduction}</div>
                         <div class="orange channel-card-money"><span style="font-size: 2.8rem">¥</span>${parseFloat(data.data[i].price).toFixed(2)}/<span style="font-size: 2.4rem">${data.data[i].unit==1?'年':data.data[i].unit==2?'季':data.data[i].unit==3?'月':'周'}</span></div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@ $(function(){
     });
     //取消页面点击
     $(".cancel-vip").click(function(){
-        window.location.href="channel.html"
+        window.history.go(-1);
     });
     //会员卡列表点击
     $("body").on("click",".channel-card-list",function(){

@@ -2451,6 +2451,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     color: #999;
     margin-top: 12.7rem;
     display: none;
+    box-sizing: border-box;
 }
 .card-list:before{
     display: table;

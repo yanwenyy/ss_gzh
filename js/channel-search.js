@@ -108,7 +108,7 @@ $(function(){
     //频道列表点击
     $("body").on("click",".channel-page-li",function(){
         var charge=$(this).attr("data-charge");
-        if(charge==0){
+        if(charge==0||vip=='yes'){
             window.location.href="channel-detail.html?classifyId="+$(this).attr("data-id")+"&vid="+$(this).attr("data-vid")+"&userid="+$(this).attr("data-userid");
         }else{
             if(confirm("您还不是频道会员！ 开通后可观看频道下全部视频～")==true){

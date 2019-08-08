@@ -113,7 +113,7 @@ $(function(){
                 html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
                         <img src="${cover_src+data.data[i].image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title}</div>
+                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
                             <div class="column-list-name">
                                 <img src="../img/user.png" alt="">
                                 <div class="inline-block">${get_name(data.data[i])}</div>
@@ -131,7 +131,7 @@ $(function(){
                 html+=`<div class="column-list-div inline-block" data-vid="${data.data[i].vid}">
                         <img src="${cover_src+data.data[i].image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title}</div>
+                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
                             <div class="column-list-name">
                                 <img src="../img/user.png" alt="">
                                 <div class="inline-block">${get_name(data.data[i])}</div>
