@@ -5915,7 +5915,6 @@ jQuery.extend({
 		opacity: {
 			get: function( elem, computed ) {
 				if ( computed ) {
-
 					// We should always get a number back from opacity
 					var ret = curCSS( elem, "opacity" );
 					return ret === "" ? "1" : ret;
@@ -7078,8 +7077,8 @@ var rfocusable = /^(?:input|select|textarea|button)$/i;
 
 jQuery.fn.extend({
 	prop: function( name, value ) {
-		return access( this, jQuery.prop, name, value, arguments.length > 1 );
-	},
+        return access( this, jQuery.prop, name, value, arguments.length > 1 );
+    },
 
 	removeProp: function( name ) {
 		return this.each(function() {

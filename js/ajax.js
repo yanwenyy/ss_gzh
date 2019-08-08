@@ -44,7 +44,7 @@ function ajax(url,data,succ){
             "Accept": "application/json",
             "Content-Type": "application/json;charset=utf-8",
             "cookieId":sessionStorage.getItem("cookieId"),
-            "version":"1"
+            "version":"1",
         },
         data:JSON.stringify(data),
         success:function(data){

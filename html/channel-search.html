@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <title>频道搜索</title>
+    <style>
+        .channel-search-input{
+            width:53.7rem;
+            height:5.8rem;
+            line-height: 5.8rem;
+        }
+        .channel-search-input>img{
+            vertical-align: middle;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="jsb_header channel-header">
+    <img src="../img/channel-back.png" alt="" class="back" data-url="1">
+    <div class="inline-block channel-search-input">
+        <img src="../img/channle-search.png" alt="">
+        <input type="text"  class="box-sizing channel-search-msg" placeholder="请输入搜索关键词">
+    </div>
+    <div class="release inline-block">搜索</div>
+</div>
+    <div class="channel-search-history out">
+        <div class="channel-search-history-title">
+            <div class="inline-block">搜索历史</div>
+            <div class="inline-block"><img class="remove-history" src="../img/channel-history-del.png" alt=""></div>
+        </div>
+        <ul class="channel-search-history-ul">
+            <!--<li>-->
+                <!--<div class="inline-block c-s-h-msg">-->
+                    <!--财税大咖访谈-->
+                <!--</div>-->
+                <!--<div class="inline-block c-s-h-del">x</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <div class="channel-search-body channel-page-ul">
+        <!--<div class="channel-page-li">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="channel-page-li-title">房地产行业税务关政策以及税收风险分析以及锁企业面临的问题</div>-->
+            <!--<div class="channel-page-li-user">-->
+                <!--<img src="../img/user.png" alt="">-->
+                <!--<div class="inline-block channel-page-li-username">贾老师</div>-->
+                <!--<div class="inline-block orange channel-page-li-userbtn">频道会员免费</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/channel-search.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

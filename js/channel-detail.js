@@ -1,0 +1,22 @@
+$(function(){
+    //课程介绍查看全部点击
+    $(".curriculum-more").click(function(){
+        if($(this).children("span").html()=="查看全部"){
+            $(".channel-course").css("height","auto");
+            $(this).children("span").html("收起");
+        }else{
+            $(".channel-course").css("height","51.3rem");
+            $(this).children("span").html("查看全部");
+        }
+    });
+    //相关推荐查看全部点击
+    $(".tj-more").click(function(){
+        if($(this).children("span").html()=="查看全部"){
+            $(".channel-relevant").css("height","auto");
+            $(this).children("span").html("收起");
+        }else{
+            $(".channel-relevant").css("height","75rem");
+            $(this).children("span").html("查看全部");
+        }
+    });
+});

@@ -1,0 +1,26 @@
+$(function(){
+    //返回按钮点击
+    $(".channel-back").click(function(){
+        window.location.href="index.html"
+    });
+    //我的行业点击
+    $("body").on("click",".channel-mine-hy>div",function(){
+        if($(this).hasClass("channel-list-act")){
+            $(this).removeClass('channel-list-act');
+        }else{
+            $(this).addClass('channel-list-act');
+        }
+    });
+    //频道推荐点击
+    $("body").on("click",".channel-tj-mr-no",function(){
+        if($(this).hasClass("channel-list-act")){
+            $(this).removeClass('channel-list-act');
+        }else{
+            $(this).addClass('channel-list-act');
+        }
+    });
+    //保存按钮点击
+    $(".sub-channel-c").click(function(){
+        window.location.href="channel.html";
+    })
+});
