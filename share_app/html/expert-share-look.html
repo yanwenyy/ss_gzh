@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>咨询师注册查询</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        .table-div{
+            padding:20px;
+        }
+        table{
+            width: 100%;
+            border: 1px solid #000;
+        }
+        table tr{
+            border-bottom: 1px solid #000;
+        }
+        table td,table th{
+            font-size: 16px;
+            text-align: center;
+            border-left:1px solid #000 ;
+            padding:10px 0;
+            line-height: 24px;
+        }
+        table th{
+            font-size: 18px;
+            background:#B9DADB;
+        }
+        .out{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box-sizing table-div">
+    <table class="box-sizing">
+        <thead>
+        <tr>
+            <th>邀请人</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>目前所在地</th>
+            <th>联系方式</th>
+            <th>企业全称</th>
+            <th>咨询师证书</th>
+            <th>本人擅长领域</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>张三</td>
+            <td>男</td>
+            <td>北京东城区</td>
+            <td>19898980089</td>
+            <td>北京解税宝</td>
+            <td>
+                <div>注册会计师 2013-12-12</div>
+                <div>税务师 2013-12-12</div>
+                <div>律师 2013-12-12</div>
+            </td>
+            <td>
+                出口税 出口税 出口税 出口税
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../../js/ajax.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    $(function(){
+        var createBy=getUrlParms("createBy");
+        ajax(http_url.url+"/jsb/listcoumsg/promotion",{ "createBy": createBy},function(data){
+            console.log(data);
+            var list=data.data;
+            var html='';
+            for(var i=0;i<list.length;i++){
+                html+=`
+               <tr>
+                    <td>${list[i].createBy}</td>
+                    <td>${list[i].name}</td>
+                    <td>${list[i].sex==1?'男':'女'}</td>
+                    <td>${list[i].province} ${list[i].city}</td>
+                    <td>${list[i].phone}</td>
+                    <td>${list[i].companyName}</td>
+                    <td>
+                        <div class="${list[i].accontantTime==''||list[i].accontantTime==null?'out':''}">注册会计师 ${list[i].accontantTime}年</div>
+                        <div class="${list[i].taxTime==''||list[i].taxTime==null?'out':''}">税务师 ${list[i].taxTime}年</div>
+                        <div class="${list[i].layerTime==''||list[i].layerTime==null?'out':''}">律师 ${list[i].layerTime}年</div>
+                    </td>
+                    <td>
+                        ${list[i].adept}
+                    </td>
+                </tr>
+            `;
+            }
+            $("tbody").html(html);
+        })
+    });
+</script>
+</html>

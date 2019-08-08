@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>咨询师认证</title>
+    <style>
+        .mine-per-data{
+            margin-top: 0;
+        }
+        .jsb_header{
+            background: transparent;
+            position: absolute;
+        }
+        .consultant-img{
+            width:10rem;
+            height:10rem;
+            vertical-align: middle;
+            margin: 0;
+        }
+        .rzsb,.rzcg{
+            display: none;
+        }
+        .release{
+            color:#fff;
+        }
+        input::placeholder{
+            color:#999!important;
+        }
+    </style>
+</head>
+<body>
+<input type="file" class="base64 out">
+<div class="jsb_header">
+    <img src="../img/expert-back.png" alt="" class="back" data-url="4">
+    <div class="release inline-block">重新认证</div>
+</div>
+<div class="authentication-head box-sizing wrz">
+    <div class="inline-block authentication-title">
+        <div class="brown">hi，</div>
+        <div class="brown">您还未认证咨询师</div>
+        <div class="know-tq">了解咨询师特权？</div>
+    </div>
+    <div class="inline-block authentication-img">
+        <img src="../img/expert-rz-no.png" alt="">
+    </div>
+</div>
+<div class="authentication-head box-sizing rzsb">
+    <div class="inline-block authentication-title">
+        <div class="red">您认证咨询师失败</div>
+        <div class="red" style="font-size: 2.6rem"><img class="rzsb-img" src="../img/rzsb-img.png" alt="">原因：<span class="rzsb-reson">证书不清晰</span></div>
+        <div class="know-tq">了解咨询师特权？</div>
+    </div>
+    <div class="inline-block authentication-img">
+        <img src="../img/expert-rz-sb.png" alt="">
+    </div>
+</div>
+<div class="authentication-head box-sizing rzcg">
+    <div class="inline-block authentication-title">
+        <div class="brown">hi，</div>
+        <div class="brown">您已成功认证咨询师</div>
+        <div class="know-tq">了解咨询师特权？</div>
+    </div>
+    <div class="inline-block authentication-img">
+        <img src="../img/expert-rz.png" alt="">
+    </div>
+</div>
+<div class="mine-per-data">
+    <div class="mine-msg-list">
+        <div class="weui-cells mine-per-data-list">
+            <a class="wrz-list weui-cell weui-cell_access name-edit" data-type="personael-realname" >
+                <div class="weui-cell__bd">
+                    <p>头像</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <img src="../img/user.png" alt="" class="consultant-img" onerror=src="../img/user.png">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access name-edit" data-type="personael-username" >
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>昵称</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未填写"  class="username edit-msg recertification">
+                </div>
+                <!--<img src="../img/more.png" alt="" class="more-img">-->
+            </a>
+            <a class="weui-cell weui-cell_access name-edit" data-type="personael-realname" >
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>真实姓名</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未填写"  class="user_realname edit-msg recertification">
+                </div>
+                <!--<img src="../img/more.png" alt="" class="more-img">-->
+            </a>
+
+            <a class="wrz-list weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>性别</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <div class="inline-block "><img src="../img/channel-card-select.png" class="sex-radio" data-msg="男" data-code="1" alt="">男</div>
+                    <div class="inline-block "><img src="../img/channel-card-select-no.png" class="sex-radio" data-msg="女" data-code="2" alt="">女</div>
+                </div>
+                <img src="../img/more.png" alt="" class="more-img">
+            </a>
+            <a class="wrz-list weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>所在地</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未设置" class="edit-msg" readonly id="city-picker">
+                </div>
+                <img src="../img/more.png" alt="" class="more-img">
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>身份证号</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text"  placeholder="未填写" class="edit-msg recertification"  id="id_card">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" style="border:none">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>身份证照片</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <p style="font-size:2.6rem">请务必上传清晰地照片</p>
+                </div>
+            </a>
+            <div class="sfz-img">
+                <div class="inline-block certificate-upload-total id_front" data-src="">
+                    <img  class="img_look" src="" alt=""  id="id_front">
+                    <!--<div class="certificate-upload-div sfz-img-div1"></div>-->
+                    <img src="../img/expert-applay-front.png" alt="" class="certificate-upload-div">
+                    <input type="file"  class="sfz_front certificate-upload-input recertification" data-code="1">
+                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img2 recertification-close">
+                </div>
+                <div class="inline-block certificate-upload-total id_back">
+                    <img class="img_look" src="" alt="" id="id_back">
+                    <!--<div class="certificate-upload-div sfz-img-div2"></div>-->
+                    <img src="../img/expert-applay-back.png" alt="" class="certificate-upload-div">
+                    <input type="file"  class="sfz_back certificate-upload-input recertification"  data-code="1">
+                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img2 recertification-close">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mine-msg-list wrz-list">
+        <div class="weui-cells mine-per-data-list">
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>企业名称</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未填写" class="edit-msg"  id="componey-name">
+                </div>
+                <!--<img src="../img/more.png" alt="" class="more-img">-->
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>所在行业</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未设置"  readonly id="hy">
+                </div>
+                <img src="../img/more.png" alt="" class="more-img">
+            </a>
+            <a class="weui-cell weui-cell_access" >
+                <div class="weui-cell__bd">
+                    <p>职务</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未填写" id="mine-duty">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access consultant_a" data-href="mine-apply-consultant-goodat.html">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>擅长领域</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未设置" class="edit-msg" readonly id="goodat_mine">
+                </div>
+                <img src="../img/more.png" alt="" class="more-img">
+            </a>
+            <a class="weui-cell weui-cell_access consultant_a" data-href="mine-apply-consultant-personal-msg.html">
+                <div class="weui-cell__bd">
+                    <p><span class="red">*</span>个人简介</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" placeholder="未填写" readonly id="personal_msg">
+                </div>
+                <img src="../img/more.png" alt="" class="more-img">
+            </a>
+        </div>
+    </div>
+    <div class="cxs-certificate-group">
+        <div class="certificate-name">
+            <span><span class="red">*</span>证书</span>
+            <span style="font-size:2.6rem">至少上传一种证书，若有多个证书，可多重认证</span>
+        </div>
+        <div class="certificate-upload-group">
+            <div>注册会计师</div>
+            <div class="kjs_list">
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"  data-code="2">
+                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img" data-code="2">
+                </div>
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"  data-code="2">
+                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img" data-code="2">
+                </div>
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"  data-code="2">
+                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img"  data-code="2">
+                </div>
+            </div>
+        </div>
+        <div class="certificate-upload-group">
+            <div>税务师</div>
+            <div class="sws_list">
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"  data-code="3">
+                    <img src="../img/icon-index-ask-close.png" alt=""  data-code="3" class="del-certificate-img">
+                </div>
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"  data-code="3">
+                    <img src="../img/icon-index-ask-close.png" alt=""  data-code="3" class="del-certificate-img">
+                </div>
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"   data-code="3">
+                    <img src="../img/icon-index-ask-close.png" alt=""   data-code="3" class="del-certificate-img">
+                </div>
+            </div>
+        </div>
+        <div class="certificate-upload-group">
+            <div>律师</div>
+            <div class="ls_list">
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"   data-code="4">
+                    <img src="../img/icon-index-ask-close.png" alt=""   data-code="4" class="del-certificate-img">
+                </div>
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"   data-code="4">
+                    <img src="../img/icon-index-ask-close.png" alt=""   data-code="4" class="del-certificate-img">
+                </div>
+                <div class="inline-block certificate-upload-total">
+                    <img class="img_look" src="" alt="">
+                    <div class="certificate-upload-div"></div>
+                    <input type="file"  class="certificate-upload-input"   data-code="4">
+                    <img src="../img/icon-index-ask-close.png" alt=""   data-code="4" class="del-certificate-img">
+                </div>
+            </div>
+        </div>
+        <div class="sqzxs-reminder">
+            <div class="red">温馨提示：</div>
+            <ul>
+                <li>1.开通咨询师须持有本人平台指定的有效证书：注册会计师证、税务师及律师证书；</li>
+                <li>2.证书照片可传1-3张，确保证书个人信息、发证日期及发证单位（印鉴）显示完整；</li>
+                <li>3.拍摄时确保证书边框完整，字体清晰，亮度均匀。</li>
+                <li>4.图片大小总计不超过3M</li>
+            </ul>
+        </div>
+        <div class="send-sqzxs-msg wrz-list sub_msg recertification-btn recertification-btn-sub">提交认证</div>
+        <div class="rzxy wrz-list recertification-btn">
+            <input type="checkbox" class="rzxy-aut">
+            <div class="inline-block">我已阅读并同意 <a class="orange" href="../share_app/html/expert-agreement.html?from=wx">《入驻协议》</a></div>
+        </div>
+    </div>
+</div>
+<div class="img-sel-model">
+    <div>
+        <div class="box-sizing" id="capture">
+            拍照
+            <input type="file" accept="image/*" capture="camera" class="mine-user-img-sel-btn">
+        </div>
+        <div class="box-sizing">
+            相册
+            <input type="file" class="mine-user-img-sel-btn2">
+        </div>
+        <div class="box-sizing img-sel-model-close">取消</div>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/city-picker.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/mine-expert-authentication.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/datePicker.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        //所在地
+        $("#city-picker").cityPicker({
+            // title: "请选择收货地址"
+        });
+        $(".consultant-img").click(function(){
+            $(".img-sel-model").show();
+        });
+    });
+
+
+</script>
+</html>

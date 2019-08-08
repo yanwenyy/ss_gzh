@@ -10,30 +10,66 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/quick-answer.css">
     <link rel="stylesheet" href="../css/mine.css">
+    <link rel="stylesheet" href="../css/channel.css">
     <title>我的粉丝</title>
     <style>
         .fans_score{
             width:12rem;
             height:3.6rem;
         }
+        .fans-dj-msg{
+            font-size: 2.4rem;
+            color:#666;
+            vertical-align: top;
+            margin-top: 0.5rem;
+        }
+        .fans-name{
+            font-size: 3.2rem;
+            color:#333;
+        }
     </style>
 </head>
 <body>
-<div class="jsb_header">
-    <img src="../img/back.png" alt="" class="back">
-    我的粉丝<span class="all_fans">(0)</span>
+<div class="jsb_header channel-header">
+    <img src="../img/channel-back.png" alt="" class="back" data-url="4">
+    <span class="title-name">我的粉丝</span>
+    <!--<span class="all_fans">(0)</span>-->
 </div>
 <div class="mine-tab-buy">
     <ul class="mine-fans-list">
         <!--<li class="box-sizing">-->
             <!--<img src="../img/ceshi.jpg" alt="">-->
             <!--<div class="inline-block">-->
-                <!--<div>匿名用户</div>-->
-                <!--<div><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+                <!--<div class="inline-block fans-name">匿名用户</div>-->
+                <!--<div class="inline-block fans-dj-msg">资深咨询师</div>-->
+                <!--<div class="fans-zw">-->
+                    <!--<div class="inline-block"><img src="../img/fans-js.png" alt="">讲师</div>-->
+                    <!--<div class="inline-block"><img src="../img/fans-zxs.png" alt="">税务师、律师、注册会计师</div>-->
+                <!--</div>-->
             <!--</div>-->
+            <!--<div class="inline-block attention-fans">+关注</div>-->
+        <!--</li>-->
+        <!--<li class="box-sizing">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+                <!--<div class="inline-block fans-name">匿名用户</div>-->
+                <!--<div class="inline-block fans-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+                <!--<div class="fans-zw">-->
+                    <!--<div class="inline-block"><img src="../img/fans-js.png" alt="">讲师</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+        <!--</li>-->
+        <!--<li class="box-sizing">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="inline-block">-->
+                <!--<div class="inline-block fans-name">匿名用户</div>-->
+                <!--<div class="inline-block fans-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+            <!--</div>-->
+            <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
         <!--</li>-->
     </ul>
-    <div class="none-msg">您还没有粉丝</div>
+    <div class="none-msg">暂无粉丝</div>
     <div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>
 </div>
 </body>

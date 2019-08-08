@@ -1,5 +1,8 @@
 $(function(){
     var id=getUrlParms("id");
+    ajax_nodata(http_url.url+"/load/getconfig/message",function(data){
+        $(".money-reword>span").html(data.questionMoney);
+    });
     //回答者信息
     function get_ques(data){
         
@@ -7,7 +10,7 @@ $(function(){
         var questionUserOwnMsg=data.data;
         //用户等级
         var score_img=get_score(questionUserOwnMsg.integralScore,questionUserOwnMsg.aision,questionUserOwnMsg.vip);
-        $(".look-hp-image").attr("src",head_src+questionUserOwnMsg.headImage).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
+        $(".look-hp-image").attr("src",headimage(questionUserOwnMsg.headImage)).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
         var realName=get_name(questionUserOwnMsg);
         $(".user-name").html(`
              <div class="user-name">

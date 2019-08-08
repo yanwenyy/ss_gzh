@@ -111,7 +111,7 @@ function get_article(data){
     for(var i=0;i<articles.length;i++){
         createDate=format(articles[i].createDate);
         if(articles[i].userLevel!=null){
-            user_img=head_src+articles[i].userLevel.headImage;
+            user_img=headimage(articles[i].userLevel.headImage);
             user_name=get_name(articles[i].userLevel);
             user_role=articles[i].userLevel.levelName;
             user_counselorDuty=articles[i].userLevel.counselorDuty;
@@ -194,7 +194,7 @@ function get_article_more(data){
             createDate=format(articles[i].createDate);
 
             if(articles[i].userLevel!=null){
-                user_img=head_src+articles[i].userLevel.headImage;
+                user_img=headimage(articles[i].userLevel.headImage);
                 user_name=get_name(articles[i].userLevel);
                 user_role=articles[i].userLevel.levelName;
                 user_counselorDuty=articles[i].userLevel.counselorDuty;

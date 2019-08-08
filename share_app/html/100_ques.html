@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>航信办税宝</title>
+    <title>刷刷</title>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/index2.css">
 </head>
@@ -10,7 +10,7 @@
 <img src="../img/100_ques.png" alt="" class="lbt-bg">
 </body>
 <script src="../js/jquery-2.1.4.js"></script>
-<script src="../js/ajax.js"></script>
+<script src="../../js/ajax.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     //微信分享
@@ -38,8 +38,8 @@
                     var shareData = {
                         title: "新个税实操问题100问",
                         desc: "随着个税法的修订,北京市注册税务师协会决定面向社会征求有关个税相关问题...",
-                        link: "http://api.jieshuibao.com/share_app/html/100_ques.html",
-                        imgUrl: "https://api.jieshuibao.com/jsb_weixin/share_app/img/share-logo.png",
+                        link: total_share_url.url+"jsb_weixin/share_app/html/100_ques.html",
+                        imgUrl: total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",
                         trigger: function (res) {
                             console.log('用户点击发送给朋友');
                         },

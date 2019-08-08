@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <title>个人中心</title>
+    <style>
+        .jsb_header{
+            background: transparent;
+            color:#fff;
+            border: none;
+            position: absolute;
+            box-shadow:none;
+        }
+        .p-zl,.p-xh,.p-wd,.p-sp{
+            display: none;
+        }
+        .personal-new-smw-money{
+            display: none;
+        }
+        /*.column-list-div{*/
+            /*width: 49.5%;*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div class="jsb_header channel-header">
+        <img src="../img/personal-back.png" alt="" class="back">
+        个人中心
+    </div>
+    <div class="personal-new-body expert-p">
+        <div class="personal-head">
+            <div class="personal-head-bg"></div>
+            <div class="personal-head-msg">
+                <img src="../img/user.png" alt="" class="personal-img-head" onerror=src="../img/user.png">
+                <div class="personal-head-msg-new">
+                    <div><span class="new-p-name">王家营</span> <span class="new-p-dj">资深咨询师</span></div>
+                    <div class="new-p-counselorDuty"><span class="inline-block new-p-js"><img src="../img/fans-js.png" alt="">讲师</span><span class="inline-block new-p-zxs orange"><img src="../img/fans-zxs.png" alt="">税务师、律师、注册会计师</span></div>
+                    <div class="new-p-address">北京 <span class="gray-line inline-block"></span> 北京致通振业税务师事务所有限公司</div>
+                    <div class="attention-person">+关注</div>
+                    <div class="edit-personal-msg">编辑资料</div>
+                </div>
+            </div>
+            <div class="personal-head-tab box-sizing">
+                <div class="inline-block personal-head-tab-list atten-click" data-url="mine-attention.html">
+                    <div class="new-p-gz">122</div>
+                    <div>关注</div>
+                </div>
+                <span class="gray-line inline-block"></span>
+                <div class="inline-block personal-head-tab-list atten-click" data-url="mine-fans.html">
+                    <div class="new-p-fs">122</div>
+                    <div>粉丝</div>
+                </div>
+                <span class="gray-line inline-block"></span>
+                <div class="inline-block personal-head-tab-list">
+                    <div class="new-p-cn">5.0</div>
+                    <div>采纳评分</div>
+                </div>
+                <span class="gray-line inline-block"></span>
+                <div class="inline-block personal-head-tab-list">
+                    <div class="new-p-zx">5.0</div>
+                    <div>咨询评分</div>
+                </div>
+            </div>
+            <div class="personal-new-smw">
+                <div class="inline-block orange hp_smw_price">30.00元 /次 </div>
+                <img src="../img/new-p-smw.png" alt="">
+            </div>
+            <div class="personal-new-smw personal-new-smw-money">
+                <div class="inline-block orange hp_smw_price">30.00元 /次 </div>
+                <img src="../img/new-p-smw-money.png" alt="">
+            </div>
+        </div>
+        <div class="personal-goodat">
+            <div>
+                <div class="p-g-title new-p-scly-title">
+                    擅长领域：
+                    <img data-title="擅长领域" data-html="111" src="../img/brush-more.png" alt="">
+                </div>
+                <div class="p-g-msg new-p-scly">
+
+                </div>
+            </div>
+            <div>
+                <div class="p-g-title new-p-grjs-title">
+                    个人简介：
+                    <img data-title="个人简介" data-html="222"  src="../img/brush-more.png" alt="">
+                </div>
+                <div class="p-g-msg new-p-grjs">
+
+                </div>
+            </div>
+        </div>
+        <div class="personal-main-msg" id="personal-new-title">
+            <div class="personal-main-tab">
+                <div class="inline-block personal-main-tab-act" data-html="p-ss">刷刷 <span class="new-p-ss-num">(0)</span></div>
+                <div class="inline-block p-zl-title" data-html="p-zl">专栏 <span class="new-p-zl-num">(0)</span></div>
+                <div class="inline-block" data-html="p-xh">喜欢 <span class="new-p-xh-num">(0)</span></div>
+                <div class="inline-block p-wd-title" data-html="p-wd">问答 <span class="new-p-wd-num">(0)</span></div>
+                <div class="inline-block p-sp-title" data-html="p-sp">视频 <span class="new-p-sp-num">(<span>0</span>)</span></div>
+            </div>
+            <div class="personal-main-detail">
+                <div class="column-list-main p-ss">
+                    <!--<div class="column-list-div inline-block">-->
+                        <!--<img src="../img/ceshi.jpg" alt="">-->
+                        <!--<div class="box-sizing">-->
+                            <!--<div class="column-list-title">刷刷</div>-->
+                            <!--<div class="column-list-name">-->
+                                <!--<img src="../img/user.png" alt="">-->
+                                <!--<div class="inline-block">董春辉</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="p-zl">
+                    <div class="column-list-tab">
+                        <!--<div class="inline-block column-list-tab-act">新闺蜜谁说 </div>-->
+                    </div>
+                    <div class="column-list-main column-list-main-zl">
+
+                    </div>
+                </div>
+                <div class="column-list-main p-xh">
+
+                </div>
+                <div class="p-wd">
+
+                </div>
+                <div class="p-sp">
+                    <!--<div class="channel-relevant-list">-->
+                        <!--<img src="../img/ceshi.jpg" alt="">-->
+                        <!--<div class="inline-block channel-relevant-list-msg">-->
+                            <!--<div>纳税人两种重要额程序性权企业风险案例合集</div>-->
+                            <!--<div>贾老师</div>-->
+                            <!--<div class="orange">频道会员免费</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="out personal-new-body user-p">
+        <div class="personal-head">
+            <div class="personal-head-bg"></div>
+            <div class="personal-head-msg">
+                <img src="../img/user.png" alt="" class="personal-img-head"  onerror=src="../img/user.png">
+                <div class="personal-head-msg-new">
+                    <div><span class="new-p-name">王家营</span> <span class="new-p-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></span></div>
+                    <div class="new-p-counselorDuty"><span class="inline-block new-p-js"><img src="../img/fans-js.png" alt="">讲师</span><span class="inline-block new-p-zxs orange"><img src="../img/fans-zxs.png" alt="">税务师、律师、注册会计师</span></div>
+                    <div class="new-p-address">北京 北京致通振业税务师事务所有限公司</div>
+                    <div class="attention-person">+关注</div>
+                    <div class="edit-personal-msg">编辑资料</div>
+                </div>
+            </div>
+            <div class="personal-head-tab box-sizing">
+                <div class="inline-block personal-head-tab-list atten-click" data-url="mine-attention.html">
+                    <div class="new-p-gz">122</div>
+                    <div>关注</div>
+                </div>
+                <span class="gray-line inline-block"></span>
+                <div class="inline-block personal-head-tab-list atten-click" data-url="mine-fans.html">
+                    <div class="new-p-fs">122</div>
+                    <div>粉丝</div>
+                </div>
+            </div>
+        </div>
+        <div class="personal-main-msg">
+            <div class="personal-main-tab">
+                <div class="inline-block personal-main-tab-act" data-html="p-ss">刷刷 <span class="new-p-ss-num">(0)</span></div>
+                <div class="inline-block p-zl-title" data-html="p-zl">专栏 <span class="new-p-zl-num">(0)</span></div>
+                <div class="inline-block" data-html="p-xh">喜欢 <span class="new-p-xh-num">(0)</span></div>
+                <div class="inline-block p-sp-title" data-html="p-sp">视频 <span class="new-p-sp-num">(<span>0</span>)</span></div>
+            </div>
+            <div class="personal-main-detail">
+                <div class="column-list-main p-ss">
+
+                </div>
+                <div class="p-xh">
+
+                </div>
+                <div class="p-zl">
+                    <div class="column-list-tab">
+                        <!--<div class="inline-block column-list-tab-act">新闺蜜谁说 </div>-->
+                    </div>
+                    <div class="column-list-main column-list-main-zl">
+
+                    </div>
+                </div>
+                <div class="p-sp">
+                    <!--<div class="channel-relevant-list">-->
+                    <!--<img src="../img/ceshi.jpg" alt="">-->
+                    <!--<div class="inline-block channel-relevant-list-msg">-->
+                    <!--<div>纳税人两种重要额程序性权企业风险案例合集</div>-->
+                    <!--<div>贾老师</div>-->
+                    <!--<div class="orange">频道会员免费</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-model">
+        <div class="detail-body">
+            <div class="detail-body-title">
+                <div class="inline-block">个人简介</div>
+                <img class="close-model-p" src="../img/close-p-detail.png" alt="">
+            </div>
+            <div class="detail-body-main">
+
+            </div>
+        </div>
+    </div>
+    <div class="shadow">
+        <div class="shadow-body">
+            <div class="price_title">咨询师价格表<div class="colse-shadow">X</div></div>
+            <ul class="hp_price_list">
+                <li>111</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/personal-new.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

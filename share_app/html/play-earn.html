@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>航信办税宝</title>
+    <title>刷刷</title>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/index2.css">
 </head>
@@ -10,7 +10,7 @@
 <img src="../img/play-earn.png" alt="" class="lbt-bg">
 </body>
 <script src="../js/jquery-2.1.4.js"></script>
-<script src="../js/ajax.js"></script>
+<script src="../../js/ajax.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     //微信分享
@@ -36,10 +36,10 @@
                 });
                 wx.ready(function () {
                     var shareData = {
-                        title: "教你玩'赚'航信办税宝",
-                        desc: "航信办税宝教你'赚',新手注册送50元问答金,热门或推荐直接送围观金额10%人民币",
-                        link: total_share_url.url+"share_app/html/play-earn.html",
-                        imgUrl: total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",
+                        title: "教你玩'赚'刷刷",
+                        desc: "刷刷教你'赚',新手注册送50元问答金,热门或推荐直接送围观金额10%人民币",
+                        link: "http://api.jieshuibao.com/share_app/html/play-earn.html",
+                        imgUrl: "https://api.jieshuibao.com/jsb_weixin/share_app/img/share-logo.png",
                         trigger: function (res) {
                             console.log('用户点击发送给朋友');
                         },

@@ -119,10 +119,10 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     box-sizing: border-box
 }
 
-.weui-tabbar__item:nth-child(3) img {
-    height: 80%;
-    margin-top: 10%
-}
+/*.weui-tabbar__item:nth-child(3) img {*/
+    /*height: 80%;*/
+    /*margin-top: 10%*/
+/*}*/
 
 .weui-tabbar__label {
     font-size: 2rem
@@ -139,11 +139,13 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     text-align: center;
     z-index: 10000;
     font-family: PingFang-SC-Medium;
-    background: linear-gradient(90deg, #2b95e9, #26a0f0, #20affa);
+    /*background: linear-gradient(90deg, #2b95e9, #26a0f0, #20affa);*/
+    background: #fff;
     font-size: 3.6rem;
-    color: rgba(255, 255, 255, 1);
+    color: #333;
     position: fixed;
-    top: 0
+    top: 0;
+    box-shadow: 0px 1px 3px 0px rgba(41,36,52,0.1);
 }
 
 .search {
@@ -160,7 +162,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     vertical-align: top;
 }
 .index-serach>input{
-    width:70%;
+    width:45%;
     background: none;
     height:100%;
     vertical-align: top;
@@ -393,7 +395,8 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 
 .jg_img {
     width: 45rem;
-    height: 28.6rem;
+    min-height: 28.6rem;
+    height:auto;
     display: inline-block;
     margin-right: 3rem
 }
@@ -582,7 +585,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     width: 33rem;
     height: 6.6rem;
     line-height: 6.6rem;
-    color: #fff;
+    color: #999;
     border: 1px solid #fff;
     border-radius: 3.3rem;
     font-size: 3.3rem;
@@ -590,44 +593,44 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 }
 
 .csq-header-change > div {
-    width: 15.93rem;
+    /*width: 15.93rem;*/
     height: 100%;
     text-align: center
 }
 
 @media (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) {
     body:nth-of-type(1) .csq-header-change > div {
-        width: 15.7rem
+        /*width: 12.7rem*/
     }
 }
 
 @media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
     body:nth-of-type(1) .csq-header-change > div {
-        width: 15.7rem
+        /*width: 12.7rem*/
     }
 }
 
 @media (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2) {
     body:nth-of-type(1) .csq-header-change > div {
-        width: 15.7rem
+        /*width: 12.7rem*/
     }
 }
 
 @media (device-height: 736px) and (-webkit-min-device-pixel-ratio: 2) {
     body:nth-of-type(1) .csq-header-change > div {
-        width: 15.7rem
+        /*width: 12.7rem*/
     }
 }
 
 @media (device-height: 812px) and (-webkit-min-device-pixel-ratio: 2) {
     body:nth-of-type(1) .csq-header-change > div {
-        width: 15.7rem
+        /*width: 12.7rem*/
     }
 }
 
 @media (device-height: 896px) and (-webkit-min-device-pixel-ratio: 2) {
     body:nth-of-type(1) .csq-header-change > div {
-        width: 15.7rem
+        /*width: 12.7rem*/
     }
 }
 
@@ -650,17 +653,18 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 }
 
 .transaction_record {
-    width: 49.7rem
+    width: 80%;
 }
 
 .transaction_record > div {
-    width: 15.7rem
+    /*width: 15.7rem*/
+    margin: 0 3rem;
 }
 
 .csq-header-change-act {
     background: #fff;
-    border-radius: 3.3rem;
-    color: rgba(43, 149, 233, 1)
+    color: #333;
+    border-bottom: 0.4rem solid #F56A32;
 }
 
 .csq-tab-list > div {
@@ -2380,15 +2384,17 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     background: #FBF7EC;
     color:#5F3600;
 }
-.office-goodats{
+.office-goodats {
     height:14rem;
     overflow: hidden;
+    font-size: 2.6rem;
+    color: #333;
 }
 .office-goodats>div{
     height:6rem;
     line-height: 6rem;
     text-align: center;
-    padding: 0 2.4rem;
+    padding: 0 2rem;
     background:rgba(246,246,246,1);
     border-radius:3rem;
     margin: 0 1.4rem 1.8rem 0;
@@ -2403,6 +2409,8 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 .office-expert-list{
     overflow-x: scroll;
     white-space: nowrap;
+    font-size: 2.6rem;
+    color:#333;
 }
 .office-expert-list-li{
     background: url(../img/office-expert-list-bg.png) no-repeat;
@@ -2436,4 +2444,16 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 .lx-company>div{
     height:8.8rem;
     line-height: 8.8rem;
+}
+.no-msg{
+    text-align: center;
+    font-size: 3rem;
+    color: #999;
+    margin-top: 12.7rem;
+    display: none;
+    box-sizing: border-box;
+}
+.card-list:before{
+    display: table;
+    content: '';
 }

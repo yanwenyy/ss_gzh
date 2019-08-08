@@ -9,7 +9,7 @@ $(function(){
         var score_img=get_score(questionUserOwnMsg.integralScore,questionUserOwnMsg.aision,questionUserOwnMsg.vip);
         var realName=get_name(questionUserOwnMsg),img_src="";
         if(questionUserOwnMsg.isAnon!=0){
-            img_src=head_src+questionUserOwnMsg.headImage;
+            img_src=headimage(questionUserOwnMsg.headImage);
         }
         console.log(img_src);
         $(".look-hp-image").attr("src",img_src).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
@@ -24,8 +24,10 @@ $(function(){
         $(".zx-detail-date").html(format(questionUserOwnMsg.date));
         $(".clist-msg").html(questionUserOwnMsg.content);
         $(".zx-detail-city").html(`
-            <img src="../img/label.png" alt="">
+             <div class="inline-block"><img src="../img/label.png" alt="">
                 ${questionUserOwnMsg.area||""} ${questionUserOwnMsg.quTrade||""}
+             </div>
+            
         `);
         var imgs=questionUserOwnMsg.images,html="";
         if(imgs!=null){

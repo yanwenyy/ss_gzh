@@ -25,7 +25,7 @@ $(function(){
             <div class="card-list mine-answer-list" data-id="${questions[i].uuid}" data-status="${questions[i].status}">
                 <div class="box-sizing">
                     <div class="clist-head">
-                        <img src="${head_src+questions[i].headImage}" alt="" onerror=src="../img/user.png">
+                        <img src="${headimage(questions[i].headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -81,7 +81,7 @@ $(function(){
             <div class="card-list mine-answer-list" data-id="${questions[i].uuid}" data-status="${questions[i].status}">
                 <div class="box-sizing">
                     <div class="clist-head">
-                        <img src="${head_src+questions[i].headImage}" alt="" onerror=src="../img/user.png">
+                        <img src="${headimage(questions[i].headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}

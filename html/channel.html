@@ -9,44 +9,47 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/channel.css">
     <title>频道</title>
+    <style>
+        .channel-tax-sel-model{
+            top:19rem;
+        }
+        .channel-c-main-list>div{
+            width:30%;
+            height:9.7rem;
+            line-height: 9.7rem;
+            text-align: center;
+            font-size: 2.8rem;
+            background: #F3F3F3;
+            color:#333;
+            margin-right: 1.5rem;
+            margin-bottom: 2.6rem;
+        }
+        .channel-header{
+            position: fixed;
+            top:0;
+            z-index: 99999999;
+            width: 100%;
+        }
+        .channel-page{
+            margin-top: 20rem;
+        }
+    </style>
 </head>
 <body>
 <div class="channel-header">
-    <div class="inline-block channel-tab box-sizing">
-        <div class="inline-block channel-tab-act">
-            房地产
-            <div class="channel-tab-line"></div>
+    <div>
+        <div class="inline-block channel-tab box-sizing">
+            <!--<div class="inline-block channel-tab-act">-->
+            <!--房地产-->
+            <!--<div class="channel-tab-line"></div>-->
+            <!--</div>-->
+            <!--<div class="inline-block">-->
+            <!--建筑业-->
+            <!--<div class="channel-tab-line out"></div>-->
+            <!--</div>-->
         </div>
-        <div class="inline-block">
-            建筑业
-            <div class="channel-tab-line out"></div>
-        </div>
-        <div class="inline-block">
-            金融业
-            <div class="channel-tab-line out"></div>
-        </div>
-        <div class="inline-block">
-            科技服务
-            <div class="channel-tab-line out"></div>
-        </div>
-        <div class="inline-block">
-            房地产
-            <div class="channel-tab-line out"></div>
-        </div>
-        <div class="inline-block">
-            房地产
-            <div class="channel-tab-line out"></div>
-        </div>
-        <div class="inline-block">
-            房地产
-            <div class="channel-tab-line out"></div>
-        </div>
-        <div class="inline-block">
-            房地产
-            <div class="channel-tab-line out"></div>
-        </div>
+        <div class="inline-block channel-mine-btn box-sizing"><img src="../img/channel-mine-btn.png" alt=""></div>
     </div>
-    <div class="inline-block channel-mine-btn box-sizing"><img src="../img/channel-mine-btn.png" alt=""></div>
     <div class="channel-tab-search">
         <div class="inline-block channel-search-input">
             <img src="../img/channle-search.png" alt="">
@@ -62,12 +65,8 @@
         <div class="channel-tax-sel-body box-sizing">
             <div class="channel-c-main">
                 <div class="channel-c-main-list">
-                    <div class="inline-block channel-list-act">全部</div>
-                    <div class="inline-block">新技术产业</div>
-                    <div class="inline-block">高新技业</div>
-                    <div class="inline-block">服务业</div>
-                    <div class="inline-block">农林牧渔</div>
-                    <div class="inline-block">服务业</div>
+                    <!--<div class="inline-block channel-list-act">全部</div>-->
+                    <!--<div class="inline-block">新技术产业</div>-->
                 </div>
             </div>
         </div>
@@ -78,8 +77,8 @@
         <img src="" alt="" class="channel-vip-icon">
         <div class="channel-vip-msg">
             <div class="channel-vip-title">房地产行业房地产行业</div>
-            <div class="channel-vip-date">会员频道 <span>2019-10-10 过期</span></div>
-            <div class="channel-vip-money">¥999.00-9999.00元/年 <img src="../img/channel-vip-rule.png" class="channel-vip-rule" alt=""></div>
+            <div class="channel-vip-date">会员频道 <span>2019-10-10 </span>过期</div>
+            <div class="channel-vip-money">¥<span class="min-money">999.00</span>-<span class="max-money">9999.00</span>元/年 <img src="../img/channel-vip-rule.png" class="channel-vip-rule" alt=""></div>
         </div>
         <div class="inline-block kt-channelvip-btn"></div>
     </div>
@@ -88,7 +87,7 @@
         <div class="channel-vip-msg">
             <div class="channel-vip-title">房地产行业房地产行业</div>
             <div class="channel-vip-date">会员频道</div>
-            <div class="channel-vip-money">¥999.00-9999.00元/年 <img src="../img/channel-vip-rule.png" class="channel-vip-rule" alt=""></div>
+            <div class="channel-vip-money">¥<span class="min-money">999.00</span>-<span class="max-money">9999.00</span>元/年 <img src="../img/channel-vip-rule.png" class="channel-vip-rule" alt=""></div>
         </div>
         <div class="inline-block kt-channelvip-btn"></div>
     </div>
@@ -96,8 +95,8 @@
         <img src="" alt="" class="channel-vip-icon">
         <div class="channel-vip-msg">
             <div class="channel-vip-title">房地产行业房地产行业</div>
-            <div class="channel-vip-date">会员频道 <span>2019-10-10 过期</span></div>
-            <div class="channel-vip-money">¥999.00-9999.00元/年 <img src="../img/channel-vip-rule.png" class="channel-vip-rule" alt=""></div>
+            <div class="channel-vip-date">会员频道 <span>2019-10-10 </span>过期</div>
+            <div class="channel-vip-money">¥<span class="min-money">999.00</span>-<span class="max-money">9999.00</span>元/年 <img src="../img/channel-vip-rule.png" class="channel-vip-rule" alt=""></div>
         </div>
         <div class="inline-block kt-channelvip-btn"></div>
     </div>
@@ -105,34 +104,72 @@
         <img src="" alt="" class="channel-vip-icon">
         <div class="channel-vip-msg">
             <div class="channel-vip-title">房地产行业房地产行业</div>
-            <div class="channel-vip-date">会员频道 <img src="../img/channel-vip-rule.png" class="channel-vip-rule" alt=""></div>
+            <div class="channel-vip-date">免费频道 <img src="../img/channel-vip-rule.png" class="channel-vip-rule" alt=""></div>
         </div>
-        <div class="inline-block kt-channelvip-btn"></div>
     </div>
     <div class="channel-page-ul">
-        <div class="channel-page-li">
-            <img src="../img/ceshi.jpg" alt="">
-            <div class="channel-page-li-title">房地产行业税务关政策以及税收风险分析以及锁企业面临的问题</div>
-            <div class="channel-page-li-user">
-                <img src="../img/user.png" alt="">
-                <div class="inline-block channel-page-li-username">贾老师</div>
-                <div class="inline-block orange channel-page-li-userbtn">频道会员免费</div>
-            </div>
-        </div>
-        <div class="channel-page-ad">
-            <div class="inline-block channel-page-ad-msg">
-                <img src="../img/ceshi.jpg" alt="">
-                <div class="box-sizing">
-                    <div class="channel-page-ad-name">机构推荐</div>
-                    <div class="channel-page-ad-line"></div>
-                    <div class="channel-page-ad-company">北京致通振业税务师事务所有限公司</div>
+        <!--<div class="channel-page-li">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="channel-page-li-title">房地产行业税务关政策以及税收风险分析以及锁企业面临的问题</div>-->
+            <!--<div class="channel-page-li-user">-->
+                <!--<img src="../img/user.png" alt="">-->
+                <!--<div class="inline-block channel-page-li-username">贾老师</div>-->
+                <!--<div class="inline-block orange channel-page-li-userbtn">频道会员免费</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="channel-page-ad">-->
+            <!--<div class="inline-block channel-page-ad-msg">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<div class="box-sizing">-->
+                    <!--<div class="channel-page-ad-name">机构推荐</div>-->
+                    <!--<div class="channel-page-ad-line"></div>-->
+                    <!--<div class="channel-page-ad-company">北京致通振业税务师事务所有限公司</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+        <!--</div>-->
+    </div>
+    <div class="channel-rule-model">
+        <div class="channel-rule-bdoy">
+            <div class="channel-rule-title">
+                <div class="inline-block">
+                    <span>xxx</span>频道规则
                 </div>
+                <img src="../img/close-p-detail.png" alt="">
             </div>
-            <img src="../img/ceshi.jpg" alt="">
+            <div class="channel-rule-msg"></div>
+            <div class="channel-rule-footer">以上规则最终解释权归北京解税宝科技有限公司所有</div>
         </div>
+    </div>
+    <div class="weui-tabbar index-tab-a">
+        <a  data-code="1"  href="index.html" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-index line.png" alt="" data-src="../img/icon-index-index line.png" data-act="../img/icon-index-index.png">
+            </div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a data-code="2"  href="brush.html" class="weui-tabbar__item ymmd-click" data-md-name="刷刷">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-text line.png" alt=""  data-src="../img/icon-index-text line.png" data-act="../img/icon-index-text.png">
+            </div>
+            <p class="weui-tabbar__label">刷刷</p>
+        </a>
+        <a data-code="3"  href="" class="weui-tabbar__item  weui-bar__item--on ymmd-click" data-md-name="频道">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-video.png" alt="" data-src="../img/icon-index-video line.png" data-act="../img/icon-index-video.png">
+            </div>
+            <p class="weui-tabbar__label">频道</p>
+        </a>
+        <a data-code="4" href="index-mine.html" class="weui-tabbar__item ymmd-click" data-md-name="我的">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-my line.png" alt=""  data-src="" data-act="../img/icon-index-my.png">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
     </div>
 </div>
 </body>
+<script src="../js/ajax.js"></script>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
 <script src="../js/jquery-weui.js"></script>

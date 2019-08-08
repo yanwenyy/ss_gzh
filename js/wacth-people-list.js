@@ -19,7 +19,7 @@ $(function(){
             }
             html+=`
             <div class="box-sizing">
-        <img src="${head_src+redEnvelopesArticleUser[i].headImage}" alt="" onerror=src="../img/user.png">
+        <img src="${headimage(redEnvelopesArticleUser[i].headImage)}" alt="" onerror=src="../img/user.png">
         <div class="inline-block attention-export-msg">
             <div>
                 <span>${realName||"匿名用户"}</span>
@@ -57,7 +57,7 @@ $(function(){
                 }
                 html+=`
             <div class="box-sizing">
-        <img src="${head_src+redEnvelopesArticleUser[i].headImage}" alt="" onerror=src="../img/user.png">
+        <img src="${headimage(redEnvelopesArticleUser[i].headImage)}" alt="" onerror=src="../img/user.png">
         <div class="inline-block attention-export-msg">
             <div>
                 <span>${realName||"匿名用户"}</span>

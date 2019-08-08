@@ -42,7 +42,7 @@ $(function(){
         var rotations=data.rotations,rotationImageUrl=data.rotationImageUrl;
         var html='';
         for(var i=0;i<rotations.length;i++){
-            html+='<div class="swiper-slide ymmd-click" data-md-name="'+rotations[i].image+'"><a href="'+rotations[i].imageLink+'"><img src="'+http_url.url+rotationImageUrl+rotations[i].image+'" data-id="'+rotations[i].uuid+'" data-name="'+rotations[i].image+' alt=""></a></div>'
+            html+=`<div class="swiper-slide ymmd-click" data-md-name="${rotations[i].image}" data-imageLink="${rotations[i].imageLink}"  data-nativeLink="${rotations[i].nativeLink}"  data-isNative="${rotations[i].isNative}"><img src="${http_url.url+rotationImageUrl+rotations[i].image}" data-id="${rotations[i].uuid}" data-name="${rotations[i].image}' alt=""></div>`
         }
         $(".s2>.swiper-wrapper").html(html);
     }
@@ -50,12 +50,12 @@ $(function(){
     //通告消息
     var scroll=0,num=0;
     function get_notice(data){
-        console.log(data);
+        // console.log(data);
         var data=data.datas,html='';
         for(var i=0;i<data.length;i++){
             html+=`<li class="notice-li">
-                        <img src="${head_src+data[i].headImage}" alt="" onerror=src="../img/user.png">
-                        <div class="inline-block">用户${data[i].peepName}围观了一个问题</div>
+                        <img src="${headimage(data[i].headImage)}" alt="" onerror=src="../img/user.png">
+                        <div class="inline-block">用户${data[i].peepName.length>8?data[i].peepName.slice(0,8)+"..":data[i].peepName}围观了一个问题</div>
                     </li>`
         }
         $(".notice-ul").html(html);
@@ -105,7 +105,7 @@ $(function(){
                 html+=`
                 <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
                     <div class="clist-head">
-                        <img src="${head_src+list[i].headImage}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -145,9 +145,10 @@ $(function(){
         // console.log(data);
         var datas=data.datas,html='';
         for(var i=0;i<datas.length;i++){
+            var picture=datas[i].picture.split(",");
             html+=`
                 <div class="jg_img" data-id="${datas[i].id}" data-vid="${datas[i].videoId}">
-                    <img src="${cover_src+datas[i].videoCover}" alt="">
+                    <img src="${datas[i].videoCover?cover_src+datas[i].videoCover:cover_src+picture[0]}" alt="">
                 </div>
             `;
         }
@@ -183,7 +184,7 @@ $(function(){
             html+=`
                 <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
                     <div class="clist-head">
-                        <img src="${head_src+list[i].headImage}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -211,6 +212,22 @@ $(function(){
         $(".hot-list-msg").html(html)
     }
     ajax(http_url.url+"/onlook/look/list",{"sinceId":hot_count_start, "maxId":hot_count_end, "type":"hot"},hot_watch);
+    //刷刷推荐
+    ajax(http_url.url+"/brush/brushVideoHome",{
+        "sinceId":1,
+        "maxId":6
+    },function(data){
+        // console.log(data);
+        var html='';
+        for(var i=0;i<data.data.length;i++){
+            html+=`
+            <div class="inline-block" data-vid="${data.data[i].vid}"  data-id="${data.data[i].id}">
+                <img src="${cover_src+data.data[i].image}" alt="">
+                <div>${data.data[i].title.length>12?data.data[i].title.slice(0,12)+"...":data.data[i].title}</div>
+            </div>`
+        }
+        $(".index-new-brush-list").html(html);
+    });
     //最热围观换一批
     $(".hot_change").click(function(){
         if(hot_count_end==10){
@@ -219,72 +236,6 @@ $(function(){
         }else{
             hot_count_start=6,hot_count_end=10;
             ajax(http_url.url+"/onlook/look/list",{"sinceId":hot_count_start, "maxId":hot_count_end, "type":"hot"},hot_watch);
-        }
-    });
-    //今日推荐
-    function recommend_watch(data){
-        //console.log(data);
-        var list=data.data,html="";
-        for(var i=0;i<list.length;i++){
-            var content="",
-                creatdate=format(list[i].date);
-            //用户等级
-            var score_img=get_score(list[i].integralScore,list[i].aision,list[i].vip);
-            if(list[i].content.length>40){
-                content=list[i].content.substr(0,40)+"...";
-            }else{
-                content=list[i].content;
-            }
-            var if_buy="",cwatch_buy='';
-            if(list[i].status=="1"){
-                if_buy="已围观";
-                cwatch_buy="cwatch_buy";
-            }else{
-                if_buy="围观"
-            }
-            var realName=get_name(list[i]);
-            var look_img="";
-            if(list[i].isAnon!=0){
-                look_img="look-hp-image";
-            }
-            html+=`
-               <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
-                    <div class="clist-head">
-                        <img src="${head_src+list[i].headImage}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
-                        <div class="inline-block">
-                            <div class="user-name">
-                                ${realName||"匿名用户"}
-                            </div>
-                            <div class="user-grade">
-                                <img src="${score_img}" alt="">
-                            </div>
-                        </div>
-                        <div class="cwatch ${cwatch_buy}"  data-id="${list[i].uuid}">${if_buy}</div>
-                    </div>
-                    <div class="clist-msg">
-                       ${content}
-                    </div>
-                    <div class="clist-foot">
-                        <div>${creatdate}</div>
-                        <div>
-                            <div class="inline-block">点赞 ${list[i].approveNum}</div>
-                            <div class="inline-block">围观 ${list[i].lookNum}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        $(".recommend").html(html);
-    };
-    // ajax(http_url.url+"/onlook/look/list",{"sinceId":recommend_count_start, "maxId":recommend_count_end, "type":"recom"},recommend_watch);
-    //今日推荐换一批
-    $(".change_recommend").click(function(){
-        if(recommend_count_end==10){
-            recommend_count_start=1,recommend_count_end=5;
-            ajax(http_url.url+"/onlook/look/list",{"sinceId":recommend_count_start, "maxId":recommend_count_end, "type":"recom"},recommend_watch);
-        }else{
-            recommend_count_start=6,recommend_count_end=10;
-            ajax(http_url.url+"/onlook/look/list",{"sinceId":recommend_count_start, "maxId":recommend_count_end, "type":"recom"},recommend_watch);
         }
     });
     //最新问答
@@ -316,7 +267,7 @@ $(function(){
             html+=`
                 <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
                     <div class="clist-head">
-                        <img src="${head_src+list[i].headImage}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -342,68 +293,7 @@ $(function(){
         }
         $(".new-list-msg").html(html)
     }
-    function new_watch_more(data){
-        //console.log(data);
-        var list=data.data,html="";
-        if(list!=""){
-            for(var i=0;i<list.length;i++){
-                var content="",
-                    creatdate=format(list[i].date);
-                //用户等级
-                var score_img=get_score(list[i].integralScore,list[i].aision,list[i].vip);
-                if(list[i].content.length>40){
-                    content=list[i].content.substr(0,40)+"...";
-                }else{
-                    content=list[i].content;
-                }
-                var if_buy="",cwatch_buy='';
-                if(list[i].status=="1"){
-                    if_buy="已围观";
-                    cwatch_buy="cwatch_buy";
-                }else{
-                    if_buy="围观"
-                }
-                var realName=get_name(list[i]);
-                var look_img="";
-                if(list[i].isAnon!=0){
-                    look_img="look-hp-image";
-                }
-                html+=`
-                <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
-                    <div class="clist-head">
-                        <img src="${head_src+list[i].headImage}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
-                        <div class="inline-block">
-                            <div class="user-name">
-                                ${realName||"匿名用户"}
-                            </div>
-                            <div class="user-grade">
-                                <img src="${score_img}" alt="">
-                            </div>
-                        </div>
-                        <div class="cwatch ${cwatch_buy}"  data-id="${list[i].uuid}">${if_buy}</div>
-                    </div>
-                    <div class="clist-msg">
-                       ${content}
-                    </div>
-                    <div class="clist-foot">
-                        <div>${creatdate}</div>
-                        <div>
-                            <div class="inline-block">点赞 ${list[i].approveNum}</div>
-                            <div class="inline-block">围观 ${list[i].lookNum}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            }
-            $(".msg-loading").hide();
-            $(".new-list-msg").append(html);
-        }else{
-            scroll_status=false;
-            $(".msg-loading").hide();
-        }
-    }
     ajax(http_url.url+"/onlook/look/list",{"sinceId":1, "maxId":10, "type":"new"},new_watch);
-    // scroll_more(http_url.url+"/onlook/look/list",{"sinceId":count_start, "maxId":count_end, "type":"new"},new_watch_more)
     //最新问答查看更多
     $(".zxwd-more").click(function(){
         window.location.href="new-answer-more.html"
@@ -433,7 +323,7 @@ $(function(){
         for(var i=0;i<export_list.length;i++){
             html+=`
                 <div class="zjtj_list inline-block" data-phone="${export_list[i].phoneNumber}">
-                        <div><img src="${head_src+export_list[i].headImage}" alt="" onerror=src="../img/user.png"></div>
+                        <div><img src="${headimage(export_list[i].headImage)}" alt="" onerror=src="../img/user.png"></div>
                         <div>${export_list[i].userName||"匿名用户"}</div>
                         <div>${export_list[i].counselorDuty}</div>
                     </div>
@@ -445,37 +335,7 @@ $(function(){
     //专家推荐list点击
     $("body").on("click",".zjtj_list",function(){
        var phone=$(this).attr("data-phone");
-       window.location.href="../html/expert-home-page.html?phone="+phone;
-    });
-    //大咖访谈
-    function cafe_inter(data){
-        //console.log(data);
-        var videos=data.videos,html="";
-        for(var i=0;i<videos.length;i++){
-            var title="";
-            if(videos[i].title.length>20){
-                title=videos[i].title.substr(0,20)+"..."
-            }else{
-                title=videos[i].title
-            }
-            html+=`
-                <div class="inline-block dkft_list"  data-id="${videos[i].id}">
-                    <img src="${cover_src+videos[i].image}" alt="">
-                    <div>${title}</div>
-                </div>
-            `;
-        }
-        $(".dkft-model").html(html);
-    }
-    ajax(http_url.url+"/video/search",{"sinceId":1, "maxId":2, "type":"3"},cafe_inter);
-    //大咖访谈视频点击
-    $("body").on("click",".dkft-model>div",function(){
-        var videoId=$(this).attr("data-id");
-        function get_vid(data){
-            vid=data.data.vid;
-            window.location.href="../html/video.html?vid="+vid+"&&spid="+videoId+"&&msg=dkft";
-        }
-        ajax(http_url.url+"/video/vid",{"id":videoId},get_vid);
+       window.location.href="../html/personal-new.html?phone="+phone;
     });
     //免费问
     $(".mfw").click(function(){
@@ -511,7 +371,7 @@ $(function(){
                     alert("咨询师正在审核中,请耐心等待");
                 }else{
                     alert("你不是咨询师,请申请咨询师");
-                    window.location.href="../html/mine-apply-consultant.html?msg=apply"
+                    window.location.href="mine-expert-authentication.html?msg=apply"
                 }
 
             }else if(data.role==2){
@@ -552,8 +412,34 @@ $(function(){
     //机构推荐列表点击
     $("body").on("click",".jg_img",function(){
         var id=$(this).attr("data-id"),vid=$(this).attr("data-vid");
-        if(vid&&vid!=""){
-            window.location.href="merchanism-video.html?id="+id+"&&videoId="+vid;
-        }
+        window.location.href="office-detail.html?id="+$(this).attr("data-id");
+        // if(vid&&vid!=""){
+        //     window.location.href="merchanism-video.html?id="+id+"&&videoId="+vid;
+        // }
+    });
+    //刷刷推荐查看更多
+    $(".brush-more").click(function(){
+        window.location.href="brush.html"
     })
+    //刷刷视频列表点击
+    $("body").on("click",".index-new-brush-list>div",function(){
+        window.location.href="brush-video.html?vid="+$(this).attr("data-vid")+"&id="+$(this).attr("data-id");
+    });
+    //轮播图点击
+    $("body").on("click",".swiper-slide",function(){
+        var isNative=$(this).attr("data-isNative"),
+            nativeLink=$(this).attr("data-nativeLink"),
+            imageLink=$(this).attr("data-imageLink");
+        if(isNative==0){
+            window.location.href=imageLink;
+        }else if(isNative==2){
+            window.location.href="special-column-detail.html?type="+nativeLink+"&&msg="+encodeURIComponent(encodeURIComponent(imageLink))
+        }else if(isNative==3){
+            window.location.href="office-detail.html?id="+imageLink;
+        }else if(isNative==4){
+            window.location.href="brush.html?msg="+imageLink;
+        }else if(isNative==5){
+            window.location.href="brush-video.html?id="+imageLink;
+        }
+    });
 });

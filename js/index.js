@@ -41,14 +41,12 @@ $("body").on("click",".csq-search-btn2",function(){
     });
 //所有私密问按钮点击
 $(".smw_btn_all").click(function(){
-        alert("请下载航信办税宝app进行私密问答操作");
+        alert("请下载刷刷app进行私密问答操作");
     });
 //用户头像点击
 $("body").on("click",".look-hp-image",function(){
         var role=$(this).attr("data-role"),phone=$(this).attr("data-phone");
-        if(role==2){
-            window.location.href="expert-home-page.html?phone="+phone;
-        }
+        window.location.href="personal-new.html?phone="+phone;
     });
 //时间转换
 function add0(m){return m<10?'0'+m:m }
@@ -111,6 +109,12 @@ function scroll_more(url_name,data,succ){
                     count_end=num*10;
                     data.sinceId=count_start;
                     data.maxId=count_end;
+                    for(var i in data){
+                        if(typeof(data[i])=="string"&&data[i].indexOf("&&")!=-1){
+                            var new_data=data[i].split("&&");
+                            data[i]=$(new_data[0]).attr(new_data[1]);
+                        }
+                    }
                     ajax(url_name,data,succ);
                 }
                 // console.log(scroll_status);
@@ -162,6 +166,16 @@ function back_login(data){
         window.location.href="../html/register-next.html"
     }
 }
+//行业,税种,专题
+function get_category(data,key){
+    var categorys='';
+    for(var i=0;i<data.length;i++){
+        if(data[i].name==key){
+            categorys=data[i].children;
+        }
+    }
+    return categorys;
+}
 //图片预览
 $("body").on("click",".img_look",function(){
     // $(".img_privew").show();
@@ -208,6 +222,16 @@ Array.prototype.remove = function(val) {
         this.splice(index, 1);
     }
 };
+//用户头像
+function headimage(val){
+    var src='';
+    if(val&&val!=''&&val.indexOf("http")!=-1){
+        src=val;
+    }else{
+        src=head_src+val
+    }
+    return src;
+}
 //友盟埋点统计
 $("body").on("click",".ymmd-click",function(){
     var md_msg=$(this).attr("data-md-name");

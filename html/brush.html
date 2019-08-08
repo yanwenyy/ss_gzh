@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>刷刷</title>
+    <style>
+        .channel-tab{
+            width: 85%;
+        }
+        .release>img{
+            width:4.8rem;
+            height:4.8rem;
+            vertical-align: middle;
+        }
+        .channel-search-input{
+            width:53.7rem;
+            height:5.8rem;
+            line-height: 5.8rem;
+        }
+        .channel-search-input>img{
+            vertical-align: middle;
+            margin: 0;
+        }
+        .brush-input{
+            display: none;
+        }
+        .column-list-body{
+            padding:3rem;
+        }
+        .zjtj_list{
+            height:35rem;
+        }
+        .zjtj_list>img{
+            width:12rem;
+            height:12rem;
+            border-radius: 50%;
+            margin-top: 3.3rem;
+        }
+        .column-list-body{
+            margin-bottom: 10rem;
+        }
+        .swiper-container{
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="jsb_header channel-header brush-title">
+        <!--<div class="inline-block">-->
+            <!--<div class="inline-block brush-title-tab ">刷刷</div>-->
+            <!--<span class="inline-block brush-title-line"></span>-->
+            <!--<div class="inline-block brush-title-tab brush-title-tab-act">推荐</div>-->
+        <!--</div>-->
+        刷刷
+        <!--<div class="release inline-block"><img src="../img/ss-search.png" alt=""></div>-->
+    </div>
+    <div class="jsb_header channel-header brush-input">
+        <img src="../img/channel-back.png" alt="" class="back" data-url="3">
+        <div class="inline-block channel-search-input">
+            <img src="../img/channle-search.png" alt="">
+            <input type="text" readonly  class="box-sizing channel-search-msg" placeholder="请输入要搜索的视频">
+        </div>
+        <div class="release inline-block go-top"><img src="../img/ss-top.png" alt=""></div>
+    </div>
+    <div class="column-list-body box-sizing">
+        <div class="brush-banner">
+            <div class="swiper-container s3">
+                <div class="swiper-wrapper">
+                    <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
+                    <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
+                    <!--<div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>-->
+                </div>
+                <!--<div class="swiper-button-prev swiper-button-prev2"></div>&lt;!&ndash;左箭头&ndash;&gt;-->
+                <!--<div class="swiper-button-next swiper-button-next2"></div>&lt;!&ndash;右箭头&ndash;&gt;-->
+            </div>
+        </div>
+        <!--<div class="brush-body-title">-->
+            <!--<div class="inline-block">你可能会喜欢的人</div>-->
+        <!--</div>-->
+        <!--<div class="may-like">-->
+            <!--<div class="zjtj-model box-sizing">-->
+                <!--<div class="export_list_main">-->
+                    <!--<div class="zjtj_list inline-block">-->
+                        <!--<img src="../img/user.png" alt="">-->
+                        <!--<div>闺蜜说税</div>-->
+                        <!--<div>陈嘉佳</div>-->
+                        <!--<div class="follow-may-like orange">+关注</div>-->
+                    <!--</div>-->
+                    <!--<div class="zjtj_list inline-block">-->
+                        <!--<img src="../img/user.png" alt="">-->
+                        <!--<div>闺蜜说税</div>-->
+                        <!--<div>陈嘉佳</div>-->
+                        <!--<div class="follow-may-like orange">+关注</div>-->
+                    <!--</div>-->
+                    <!--<div class="zjtj_list inline-block">-->
+                        <!--<img src="../img/user.png" alt="">-->
+                        <!--<div>闺蜜说税</div>-->
+                        <!--<div>陈嘉佳</div>-->
+                        <!--<div class="follow-may-like orange">+关注</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="fans-search box-sizing">
+            <img src="../img/ss-search.png" alt="">
+            <input type="text" placeholder="请输入您要搜索的内容">
+        </div>
+        <div>
+            <div class="inline-block channel-tab box-sizing" style="min-width: 85%">
+                <!--<div class="inline-block channel-tab-act">-->
+                <!--#房地产-->
+                <!--<div class="channel-tab-line"></div>-->
+                <!--</div>-->
+                <!--<div class="inline-block">-->
+                <!--#建筑业-->
+                <!--<div class="channel-tab-line out"></div>-->
+                <!--</div>-->
+            </div>
+            <div class="inline-block channel-mine-btn box-sizing"><img src="../img/channel-mine-btn.png" alt=""></div>
+        </div>
+
+        <!--<div class="brush-body-title">-->
+            <!--<div class="inline-block">热门标签</div>-->
+            <!--<div class="inline-block brush-title-more">-->
+                <!--<div class="inline-block">全部热门</div>-->
+                <!--<img src="../img/brush-more.png" class="zxwd-more" alt="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="hot-label">
+            <!--<div class="hot-label-class">-->
+                <!--<div class="inline-block orange"># 金融行业</div>-->
+                <!--<div class="inline-block "># 金融行业</div>-->
+                <!--<div class="inline-block "># 金融行业</div>-->
+                <!--<div class="inline-block "># 金融行业</div>-->
+                <!--<div class="inline-block "># 替他</div>-->
+                <!--<div class="inline-block "># 金融行业</div>-->
+                <!--<div class="inline-block "># 金融行业</div>-->
+            <!--</div>-->
+            <div class="hot-label-body">
+                <div class="column-list-main">
+                    <!--<div class="column-list-div inline-block">-->
+                        <!--<img src="../img/ceshi.jpg" alt="">-->
+                        <!--<div class="box-sizing">-->
+                            <!--<div class="column-list-title">个人所得税专项附-加扣 暂行办法解读个人所得税专项附-加扣 暂行办法解读</div>-->
+                            <!--<div class="column-list-name">-->
+                                <!--<img src="../img/user.png" alt="">-->
+                                <!--<div class="inline-block">董春辉</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-tabbar index-tab-a">
+        <a  data-code="1"  href="index.html" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-index line.png" alt="" data-src="../img/icon-index-index line.png" data-act="../img/icon-index-index.png">
+            </div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a data-code="2"  href="" class="weui-tabbar__item  weui-bar__item--on ymmd-click" data-md-name="刷刷">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-text.png" alt=""  data-src="../img/icon-index-text line.png" data-act="../img/icon-index-text.png">
+            </div>
+            <p class="weui-tabbar__label">刷刷</p>
+        </a>
+        <a data-code="3"  href="channel.html" class="weui-tabbar__item ymmd-click" data-md-name="频道">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-video line.png" alt="" data-src="../img/icon-index-video line.png" data-act="../img/icon-index-video.png">
+            </div>
+            <p class="weui-tabbar__label">频道</p>
+        </a>
+        <a data-code="4" href="index-mine.html" class="weui-tabbar__item ymmd-click" data-md-name="我的">
+            <div class="weui-tabbar__icon">
+                <img src="../img/icon-index-my line.png" alt=""  data-src="" data-act="../img/icon-index-my.png">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+</body>
+<script src="../js/ajax.js"></script>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/brush.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

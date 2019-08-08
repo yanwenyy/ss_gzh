@@ -3,9 +3,12 @@ $(function(){
     //用户信息
     function get_user(data){
         console.log(data);
-        $(".userimg-look").attr("src",head_src+data.headImage);
+        $(".userimg-look").attr("src",headimage(data.headImage));
         if($(".userimg-look").attr("src")==""){
             $(".userimg-look").attr("style","opacity:0;")
+        }
+        if(data.status==1){
+            $(".user_realname").attr("readonly","readonly");
         }
         // if(realname==""||realname==null){
         //     $(".username").val(data.realName);
@@ -19,7 +22,9 @@ $(function(){
         // }
         $(".username").val(data.realName);
         $(".user_realname").val(data.userName);
-        $("#sex").val(data.gender);
+        // $("#sex").val(data.gender);
+        $(".sex-radio").attr("src",'../img/channel-card-select-no.png');
+        $(".sex-radio[data-msg="+data.gender+"]").attr("src","../img/channel-card-select.png");
         var province,address;
         if(data.province!=null){
             province=data.province
@@ -31,11 +36,15 @@ $(function(){
         }else{
             address=""
         }
-        $("#city-picker").val(province+" "+address);
-        $("#datetime-picker").val(data.birthday);
-        $("#mine-compney-name").val(data.companyName);
-        $("#mine-duty").val(data.position);
-        $("#componey-name").val(data.trade)
+        var pa=province+" "+address;
+        if(province==''&&address==''){
+            pa=""
+        }
+        $("#city-picker").val(pa);
+        $("#datetime-picker").val(data.birthday||"");
+        $("#mine-compney-name").val(data.companyName||"");
+        $("#mine-duty").val(data.position||"");
+        $("#componey-name").val(data.trade||"")
     }
     ajax_nodata(http_url.url+"/user/message",get_user);
     //公司行业
@@ -60,23 +69,23 @@ $(function(){
         var headImage=$(".userimg-look").attr("data-src"),
             realName=$(".username").val(),
             userName=$(".user_realname").val(),
-            sex=$("#sex").val(),
+            sex=$(".sex-radio[src='../img/channel-card-select.png']").attr("data-code"),
             province=$("#city-picker").val().split(" ")[0],
             birthdayDate=$("#datetime-picker").val(),
             companyName=$("#mine-compney-name").val(),
             position=$("#mine-duty").val(),
             trade=$("#componey-name").val();
-        console.log(headImage);
+        // console.log(headImage);
         if(province=="北京"||province=="上海"||province=="天津"||province=="重庆"){
            var address=$("#city-picker").val().split(" ")[2];
         }else{
             var address=$("#city-picker").val().split(" ")[1];
         }
-        if(sex=="男"){
-            sex=1;
-        }else if(sex=="女"){
-            sex=2;
-        }
+        // if(sex=="男"){
+        //     sex=1;
+        // }else if(sex=="女"){
+        //     sex=2;
+        // }
         function edit_user_msg(data){
             console.log(data);
             if(data.code==1){
@@ -99,7 +108,8 @@ $(function(){
             "address":address,
             "companyName":companyName,
             "birthdayDate":birthdayDate,
-            "position":position
+            "position":position,
+            "role":1
         },edit_user_msg)
     });
     //性别
@@ -108,6 +118,10 @@ $(function(){
         onClose:function(){
             // alert(11)
         }
+    });
+    $(".sex-radio").click(function(){
+        $(".sex-radio").attr("src","../img/channel-card-select-no.png");
+        $(this).attr("src","../img/channel-card-select.png");
     });
     //所在地
     $("#city-picker").cityPicker({
@@ -144,6 +158,12 @@ $(function(){
             $(".img-sel-model").hide();
         };
     });
+    //审核中真实姓名点击
+    $(".user_realname").click(function(){
+        if($(this).attr("readonly")=="readonly"){
+            alert("您正在进行咨询师身份审核， 真实姓名暂时不可编辑。")
+        }
+    })
 });
 // //修改昵称和姓名
 // $(".name-edit").click(function(){

@@ -1,6 +1,6 @@
 $(function(){
-    var price=getUrlParms("price");
-    $(".zf_money").html(price);
+    var price=getUrlParms("price"),id=getUrlParms("id"),code=getUrlParms("code");
+    $(".pay_money-num").html(price);
     //微信接口配置
     var path_url=encodeURIComponent(location.href.split('#')[0]);
     $.ajax({
@@ -34,18 +34,18 @@ $(function(){
                 success: function (res) {
                     // 支付成功后的回调函数
                     alert("支付成功");
-                    window.location.href="../html/watch-anwser.html?cwatch_id="+watch_id+"&newuser=yes";
+                    window.location.href="channel.html";
                 }
             });
         }else{
             alert(data.des)
         }
     };
-    $(".ok-btn").on("click",function(e){
+    $(".pay_btn").on("click",function(e){
         e.preventDefault();
         var payType=$(".zf-select").attr("data-type");
         if(payType=="weixin"){
-            ajax(http_url.url+"/pay/buyCard",{"uuid":uuid,"source":1,"payType":payType,"originalPrice":originalPrice, "currentPrice":currentPrice,"invoiceStatus":0,"cardStyle":cardStyle,"code":code},pay_wx);
+            ajax(http_url.url+"/goods/goods/buy",{"code":code,"money":price,"payType":payType,"source":1,"uuid":id},pay_wx);
         }
     })
 });

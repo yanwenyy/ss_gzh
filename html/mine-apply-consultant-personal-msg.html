@@ -20,8 +20,8 @@
     <div class="release inline-block">完成</div>
 </div>
 <div class="mine-attention">
-    <div class="wsgrjl">
-        <textarea name="" id="" class="smw-pf-text box-sizing" placeholder="请介绍您的经历"></textarea>
+    <div class="wsgrjl box-sizing">
+        <textarea name="" id="" class="smw-pf-text box-sizing" placeholder="快来介绍下自己吧，比如：参加的项目、经典案例、职业经历等。"></textarea>
     </div>
 </div>
 </body>
@@ -35,11 +35,14 @@
 <script>
     $(function () {
         FastClick.attach(document.body);
-        $(".smw-pf-text").val(sessionStorage.getItem("person_msg"));
+        var expert_msg=JSON.parse(sessionStorage.getItem("expert_msg"));
+        $(".smw-pf-text").val(expert_msg.personal_msg);
         $(".release").click(function(){
             var msg=$(".smw-pf-text").val();
-            sessionStorage.setItem("person_msg",msg);
-            window.history.go(-1);
+            expert_msg.personal_msg=msg;
+            sessionStorage.setItem("expert_msg",JSON.stringify(expert_msg));
+            // console.log(sessionStorage.getItem("person_msg"))
+            window.location.href="mine-expert-authentication.html?from=grjl";
         })
     });
 </script>

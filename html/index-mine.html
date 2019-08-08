@@ -14,6 +14,15 @@
         //声明_czc对象:
         var _czc = _czc || [];
     </script>
+    <style>
+        .e-yrz,.e-shz,.s-yrz,.s-shz,.s-shsb{
+            display: none;
+        }
+        .mine-cf{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 <body>
 <div class="weui-tab">
@@ -67,23 +76,41 @@
             <div class="mine-365-set m365-model-list-btn" data-url="set.html">
                 <img src="../img/365-set.png" alt="">
             </div>
-        </div>
-        <div class="mine-365-card">
-            <div class="card-365-open inline-block" data-open="yes">
-                <div class="inline-block">立即开通 <img src="../img/365_my_jixu.png" alt=""></div>
+            <div class="mine-f-c-a box-sizing">
+                <div class="inline-block m365-model-list-btn" data-url="mine-fans.html">
+                    <div class="mine-f-c-a-num mine-fs-num">0</div>
+                    <div>粉丝</div>
+                </div>
+                <div class="inline-block m365-model-list-btn" data-url="mine-attention.html">
+                    <div class="mine-f-c-a-num mine-gz-num">0</div>
+                    <div>关注</div>
+                </div>
+                <div class="inline-block m365-model-list-btn" data-url="mine-collection.html">
+                    <div class="mine-f-c-a-num mine-gz-sc">0</div>
+                    <div>收藏</div>
+                </div>
             </div>
-            <div class="card-365-date out inline-block">
-                <span>2019-10-10过期</span>
-                <div class="inline-block">立即续费 <img src="../img/365_my_jixu.png" alt=""></div>
+            <div class="mine-365-card">
+                <div class="card-365-open inline-block" data-open="yes">
+                    <div class="inline-block">立即开通 <img src="../img/365_my_jixu.png" alt=""></div>
+                </div>
+                <div class="card-365-date out inline-block">
+                    <span>2019-10-10过期</span>
+                    <div class="inline-block">立即续费 <img src="../img/365_my_jixu.png" alt=""></div>
+                </div>
             </div>
         </div>
+
         <div class="mine-365-main box-sizing ">
+            <div class="mine-yqhy m365-model-list-btn" data-url="mine-invite-prize.html">
+                <img src="../img/mine-yqhy.png" alt="">
+            </div>
             <div class="mine-365-model box-sizing">
                 <div class="mine-365-model-title box-sizing">
                     我的财富
                     <span>・点击资金查看交易记录</span>
                 </div>
-                <div class="mine-365-model-body box-sizing">
+                <div class="mine-365-model-body box-sizing mine-cf">
                     <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-wallet.html">
                         <div class="mine-mb-list-one bag-money">2.00</div>
                         <div>钱包</div>
@@ -102,75 +129,156 @@
                     </div>
                 </div>
             </div>
-            <div class="workbench-normal">
-                <img src="../img/365_My_expert.png" alt="">
+            <div class="mine-365-model box-sizing">
+                <div class="mine-365-model-title box-sizing">
+                    我的刷刷
+                </div>
+                <div class="mine-365-model-body box-sizing">
+                    <!--<div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-wallet.html">-->
+                        <!--<div class="mine-mb-list-one orange">2.00</div>-->
+                        <!--<div>草稿</div>-->
+                    <!--</div>-->
+                    <div class="inline-block mine-365-mb-list mine-center" data-url="personal-new.html?to=personal-new-title&&msg=p-ss">
+                        <div class="mine-mb-list-one orange mine-brush">0</div>
+                        <div>作品</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list mine-center" data-url="personal-new.html?to=personal-new-title&&msg=p-xh">
+                        <div class="mine-mb-list-one orange mine-like">0</div>
+                        <div>喜欢</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn zl-mine" data-url="mine-column.html">
+                        <div class="mine-mb-list-one"><img src="../img/365_My_zl.png" alt=""></div>
+                        <div>专栏</div>
+                    </div>
+                </div>
             </div>
-            <div class="out mine-365-model workbench-consultant box-sizing">
+            <!--<div class="workbench-normal">-->
+                <!--<img src="../img/365_My_expert.png" alt="">-->
+            <!--</div>-->
+            <div class="mine-365-model workbench-consultant box-sizing">
                 <div class="mine-365-model-title box-sizing">
                     我的工作台
                 </div>
-                <div class="mine-365-model-body box-sizing">
+                <div class="out mine-365-model-body box-sizing new-bench-user">
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-free-question-list.html">
+                        <div class="mine-mb-list-one blue"><img src="../img/new-mine-ques.png" alt=""></div>
+                        <div>我的提问</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-buy.html?type=wg">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-look.png" alt=""></div>
+                        <div>我的围观</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-dowapp">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-ask.png" alt=""></div>
+                        <div>私密问</div>
+                    </div>
+                </div>
+                <div class="out mine-365-model-body box-sizing  new-bench-expert">
                     <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="quick-answer.html">
                         <div class="mine-mb-list-one blue need-ask-num">0</div>
                         <div>待抢答</div>
                         <div class="inline-block red_dot-365"></div>
                     </div>
-                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="csq-release-article.html">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_write.png" alt=""></div>
-                        <div>发布文章</div>
-                    </div>
+                    <!--<div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="csq-release-article.html">-->
+                    <!--<div class="mine-mb-list-one"><img src="../img/365_My_write.png" alt=""></div>-->
+                    <!--<div>发布文章</div>-->
+                    <!--</div>-->
                     <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-answer.html">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_answer.png" alt=""></div>
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-answer.png" alt=""></div>
                         <div>我的回答</div>
                     </div>
-                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-fans.html">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_fans.png" alt=""></div>
-                        <div>我的粉丝</div>
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-free-question-list.html">
+                        <div class="mine-mb-list-one blue"><img src="../img/new-mine-ques.png" alt=""></div>
+                        <div>我的提问</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-buy.html?type=wg">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-look.png" alt=""></div>
+                        <div>我的围观</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-dowapp">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-ask.png" alt=""></div>
+                        <div>私密问</div>
+                    </div>
+                </div>
+                <div class="out mine-365-model-body box-sizing new-bench-expert-apply">
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-answer.html">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-answer.png" alt=""></div>
+                        <div>我的回答</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-free-question-list.html">
+                        <div class="mine-mb-list-one blue"><img src="../img/new-mine-ques.png" alt=""></div>
+                        <div>我的提问</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-buy.html?type=wg">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-look.png" alt=""></div>
+                        <div>我的围观</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-dowapp">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-ask.png" alt=""></div>
+                        <div>私密问</div>
                     </div>
                 </div>
             </div>
             <div class="mine-365-model box-sizing">
                 <div class="mine-365-model-title box-sizing">
-                    其他功能
+                    资料认证
                 </div>
-                <div class="mine-365-model-body box-sizing">
-                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-free-question-list.html">
-                        <div class="mine-mb-list-one blue"><img src="../img/365_My_list.png" alt=""></div>
-                        <div>我的提问</div>
+                <div class="mine-365-model-body box-sizing new-cert-apply">
+                    <div class="inline-block">
+                        <img class="e e-wrz" data-html="mine-expert-authentication.html" src="../img/new-expert-no.png" alt="">
+                        <img class="e e-yrz" data-html="mine-expert-authentication.html"  src="../img/new-expert-yes.png" alt="">
+                        <img class="e e-shz" data-status="1"  src="../img/new-expert-ing.png" alt="">
                     </div>
-                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-buy.html?type=wg">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_ilook.png" alt=""></div>
-                        <div>我的围观</div>
-                    </div>
-                    <div class="inline-block mine-365-mb-list m365-dowapp">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_ask.png" alt=""></div>
-                        <div>私密问</div>
-                    </div>
-                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-buy.html?type=video">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_buy.png" alt=""></div>
-                        <div>已购视频</div>
-                    </div>
-                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-collection.html">
-                        <div class="mine-mb-list-one blue"><img src="../img/365_My_Collection.png" alt=""></div>
-                        <div>收藏</div>
-                    </div>
-                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-attention.html">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_follow.png" alt=""></div>
-                        <div>关注</div>
-                    </div>
-                    <div class="inline-block mine-365-mb-list m365-dowapp">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_news.png" alt=""></div>
-                        <div>消息</div>
-                    </div>
-                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-invite-prize.html">
-                        <div class="mine-mb-list-one"><img src="../img/365_My_gift.png" alt=""></div>
-                        <div>
-                            邀请有奖
-                            <div class="red" style="font-size: 2rem">领15元问答金</div>
-                        </div>
+                    <div class="inline-block">
+                        <img class="s s-wrz" data-html="mine-student-authentication.html" src="../img/new-student-no.png" alt="">
+                        <img class="s s-yrz" data-html="mine-student-authentication.html?already=1" src="../img/new-student-yes.png" alt="">
+                        <img class="s s-shz" data-status="1" src="../img/new-student-ing.png" alt="">
+                        <img class="s s-shsb" data-html="mine-student-authentication.html?" src="../img/new-student-fail.png" alt="">
                     </div>
                 </div>
             </div>
+            <!--<div class="mine-365-model box-sizing">-->
+                <!--<div class="mine-365-model-title box-sizing">-->
+                    <!--其他功能-->
+                <!--</div>-->
+                <!--<div class="mine-365-model-body box-sizing">-->
+                    <!--<div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-free-question-list.html">-->
+                        <!--<div class="mine-mb-list-one blue"><img src="../img/365_My_list.png" alt=""></div>-->
+                        <!--<div>我的提问</div>-->
+                    <!--</div>-->
+                    <!--<div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-buy.html?type=wg">-->
+                        <!--<div class="mine-mb-list-one"><img src="../img/365_My_ilook.png" alt=""></div>-->
+                        <!--<div>我的围观</div>-->
+                    <!--</div>-->
+                    <!--<div class="inline-block mine-365-mb-list m365-dowapp">-->
+                        <!--<div class="mine-mb-list-one"><img src="../img/365_My_ask.png" alt=""></div>-->
+                        <!--<div>私密问</div>-->
+                    <!--</div>-->
+                    <!--<div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-buy.html?type=video">-->
+                        <!--<div class="mine-mb-list-one"><img src="../img/365_My_buy.png" alt=""></div>-->
+                        <!--<div>已购视频</div>-->
+                    <!--</div>-->
+                    <!--<div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-collection.html">-->
+                        <!--<div class="mine-mb-list-one blue"><img src="../img/365_My_Collection.png" alt=""></div>-->
+                        <!--<div>收藏</div>-->
+                    <!--</div>-->
+                    <!--<div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-attention.html">-->
+                        <!--<div class="mine-mb-list-one"><img src="../img/365_My_follow.png" alt=""></div>-->
+                        <!--<div>关注</div>-->
+                    <!--</div>-->
+                    <!--<div class="inline-block mine-365-mb-list m365-dowapp">-->
+                        <!--<div class="mine-mb-list-one"><img src="../img/365_My_news.png" alt=""></div>-->
+                        <!--<div>消息</div>-->
+                    <!--</div>-->
+                    <!--<div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-invite-prize.html">-->
+                        <!--<div class="mine-mb-list-one"><img src="../img/365_My_gift.png" alt=""></div>-->
+                        <!--<div>-->
+                            <!--邀请有奖-->
+                            <!--<div class="red" style="font-size: 2rem">领15元问答金</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
     <div class="weui-tabbar index-tab-a">
@@ -180,17 +288,17 @@
             </div>
             <p class="weui-tabbar__label">首页</p>
         </a>
-        <a data-code="2"  href="index-csq.html" class="weui-tabbar__item ymmd-click" data-md-name="财税圈">
+        <a data-code="2"  href="brush.html" class="weui-tabbar__item ymmd-click" data-md-name="刷刷">
             <div class="weui-tabbar__icon">
                 <img src="../img/icon-index-text line.png" alt=""  data-src="../img/icon-index-text line.png" data-act="../img/icon-index-text.png">
             </div>
-            <p class="weui-tabbar__label">财税圈</p>
+            <p class="weui-tabbar__label">刷刷</p>
         </a>
-        <a data-code="3"  href="index-wk.html" class="weui-tabbar__item ymmd-click" data-md-name="微课">
+        <a data-code="3"  href="channel.html" class="weui-tabbar__item ymmd-click" data-md-name="频道">
             <div class="weui-tabbar__icon">
                 <img src="../img/icon-index-video line.png" alt="" data-src="../img/icon-index-video line.png" data-act="../img/icon-index-video.png">
             </div>
-            <p class="weui-tabbar__label">微课</p>
+            <p class="weui-tabbar__label">频道</p>
         </a>
         <a  data-code="4"  href="" class="weui-tabbar__item weui-bar__item--on ymmd-click" data-md-name="我的">
             <div class="weui-tabbar__icon">

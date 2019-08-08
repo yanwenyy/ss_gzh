@@ -10,44 +10,69 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/quick-answer.css">
     <link rel="stylesheet" href="../css/mine.css">
+    <link rel="stylesheet" href="../css/channel.css">
     <title>申请咨询师</title>
+    <style>
+        input::placeholder{
+            color:#999!important;
+        }
+    </style>
 </head>
 <body>
-<div class="jsb_header">
-    <img src="../img/back.png" alt="" class="back" data-url="4">
+<div class="jsb_header channel-header">
+    <img src="../img/channel-back.png" alt="" class="back" data-url="4">
     <span class="apply-name">申请咨询师</span>
+    <div class="release inline-block orange">保存</div>
 </div>
 <div class="mine-per-data">
     <div class="mine-msg-list">
         <div class="weui-cells mine-per-data-list">
-            <div class="consultant-img-group">
-                    <img src="../img/user.png" alt="" class="consultant-img" onerror=src="../img/user.png">
-                    <div class="consultant-upload-btn" id="userimg-sel-btn">上传真实头像</div>
-            </div>
+            <!--<div class="consultant-img-group">-->
+                    <!--<img src="../img/user.png" alt="" class="consultant-img" onerror=src="../img/user.png">-->
+                    <!--<div class="consultant-upload-btn" id="userimg-sel-btn">上传真实头像</div>-->
+            <!--</div>-->
+            <a class="weui-cell weui-cell_access" id="userimg-sel-btn">
+                <div class="weui-cell__bd">
+                    <p>头像</p>
+                </div>
+                <div class="weui-cell__ft mine-per-data-img"><img class="userimg-look" src="../img/user.png" alt="" onerror=src="../img/user.png"></div>
+                <img src="../img/more.png" alt="" class="more-img">
+            </a>
             <a class="weui-cell weui-cell_access name-edit" data-type="personael-realname" >
                 <div class="weui-cell__bd">
                     <p><span class="red">*</span>昵称</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder=""  maxlength="5"   class="username edit-msg">
+                    <input type="text" placeholder="未填写"  maxlength="5"   class="username edit-msg">
                 </div>
                 <!--<img src="../img/more.png" alt="" class="more-img">-->
             </a>
-            <a class="weui-cell weui-cell_access name-edit" data-type="personael-realname" >
-                <div class="weui-cell__bd">
-                    <p><span class="red">*</span>真实姓名</p>
-                </div>
-                <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder=""  class="user_realname edit-msg">
-                </div>
-                <!--<img src="../img/more.png" alt="" class="more-img">-->
-            </a>
+            <!--<a class="weui-cell weui-cell_access name-edit" data-type="personael-realname" >-->
+                <!--<div class="weui-cell__bd">-->
+                    <!--<p><span class="red">*</span>真实姓名</p>-->
+                <!--</div>-->
+                <!--<div class="weui-cell__ft version-information">-->
+                    <!--<input type="text" placeholder=""  class="user_realname edit-msg">-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<img src="../img/more.png" alt="" class="more-img">&ndash;&gt;-->
+            <!--</a>-->
             <a class="weui-cell weui-cell_access">
                 <div class="weui-cell__bd">
                     <p>性别</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder="" class="edit-msg" readonly id="sex">
+                    <div class="inline-block "><img src="../img/channel-card-select.png" class="sex-radio" data-msg="男" data-code="1" alt="">男</div>
+                    <div class="inline-block "><img src="../img/channel-card-select-no.png" class="sex-radio" data-msg="女" data-code="2" alt="">女</div>
+                    <!--<input type="text" placeholder="" class="edit-msg" readonly id="sex">-->
+                </div>
+                <!--<img src="../img/more.png" alt="" class="more-img">-->
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>出生日期</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text" readonly placeholder="未设置"  class="edit-msg" id="datetime-picker">
                 </div>
                 <img src="../img/more.png" alt="" class="more-img">
             </a>
@@ -56,16 +81,25 @@
                     <p><span class="red">*</span>所在地</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder="" class="edit-msg" readonly id="city-picker">
+                    <input type="text" placeholder="未设置" class="edit-msg" readonly id="city-picker">
                 </div>
                 <img src="../img/more.png" alt="" class="more-img">
             </a>
             <a class="weui-cell weui-cell_access">
                 <div class="weui-cell__bd">
-                    <p>出生日期</p>
+                    <p><span class="red">*</span>企业名称</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" readonly placeholder=""  class="edit-msg" id="datetime-picker">
+                    <input type="text" placeholder="未填写" class="edit-msg"  id="componey-name">
+                </div>
+                <!--<img src="../img/more.png" alt="" class="more-img">-->
+            </a>
+            <a class="weui-cell weui-cell_access">
+                <div class="weui-cell__bd">
+                    <p>所在行业</p>
+                </div>
+                <div class="weui-cell__ft version-information">
+                    <input type="text"  readonly id="hy" placeholder="未设置">
                 </div>
                 <img src="../img/more.png" alt="" class="more-img">
             </a>
@@ -74,17 +108,8 @@
                     <p>职务</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text"  id="mine-duty">
+                    <input type="text"  id="mine-duty" placeholder="未填写">
                 </div>
-            </a>
-            <a class="weui-cell weui-cell_access">
-                <div class="weui-cell__bd">
-                    <p>公司所在行业</p>
-                </div>
-                <div class="weui-cell__ft version-information">
-                    <input type="text"  readonly id="hy">
-                </div>
-                <img src="../img/more.png" alt="" class="more-img">
             </a>
             <a class="weui-cell weui-cell_access consultant_a" data-href="mine-apply-consultant-goodat.html">
                 <div class="weui-cell__bd">
@@ -95,151 +120,25 @@
                 </div>
                 <img src="../img/more.png" alt="" class="more-img">
             </a>
-            <a class="weui-cell weui-cell_access">
-                <div class="weui-cell__bd">
-                    <p><span class="red">*</span>企业名称</p>
-                </div>
-                <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder="" class="edit-msg"  id="componey-name">
-                </div>
-                <!--<img src="../img/more.png" alt="" class="more-img">-->
-            </a>
             <a class="weui-cell weui-cell_access consultant_a" data-href="mine-apply-consultant-personal-msg.html">
                 <div class="weui-cell__bd">
-                    <p>个人经历</p>
+                    <p>个人简介</p>
                 </div>
                 <div class="weui-cell__ft version-information">
                     <input type="text" readonly id="personal_msg">
                 </div>
                 <img src="../img/more.png" alt="" class="more-img">
             </a>
-            <a class="weui-cell weui-cell_access consultant_a" data-href="mine-apply-consultant-case.html">
-                <div class="weui-cell__bd">
-                    <p>经典案例</p>
-                </div>
-                <div class="weui-cell__ft version-information">
-                    <input type="text"  readonly id="case_mine">
-                </div>
-                <img src="../img/more.png" alt="" class="more-img">
-            </a>
-            <a class="weui-cell weui-cell_access">
-                <div class="weui-cell__bd">
-                    <p><span class="red">*</span>身份证号</p>
-                </div>
-                <div class="weui-cell__ft version-information">
-                    <input type="text"  placeholder="" class="edit-msg"  id="id_card">
-                </div>
-            </a>
-            <a class="weui-cell weui-cell_access" style="border:none">
-                <div class="weui-cell__bd">
-                    <p><span class="red">*</span>身份证照片</p>
-                </div>
-                <div class="weui-cell__ft version-information">
-                    <p>请上传</p>
-                </div>
-            </a>
-            <div class="sfz-img">
-                <div class="inline-block certificate-upload-total id_front" data-src="">
-                    <img  class="img_look" src="" alt=""  id="id_front">
-                    <!--<div class="certificate-upload-div sfz-img-div1"></div>-->
-                    <img src="../img/icon-index-ask-certificate1.png" alt="" class="certificate-upload-div">
-                    <input type="file"  class="sfz_front certificate-upload-input" data-code="1">
-                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img2">
-                </div>
-                <div class="inline-block certificate-upload-total id_back">
-                    <img class="img_look" src="" alt="" id="id_back">
-                    <!--<div class="certificate-upload-div sfz-img-div2"></div>-->
-                    <img src="../img/icon-index-ask-certificate2.png" alt="" class="certificate-upload-div">
-                    <input type="file"  class="sfz_back certificate-upload-input"  data-code="1">
-                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img2">
-                </div>
-            </div>
+            <!--<a class="weui-cell weui-cell_access consultant_a" data-href="mine-apply-consultant-case.html">-->
+                <!--<div class="weui-cell__bd">-->
+                    <!--<p>经典案例</p>-->
+                <!--</div>-->
+                <!--<div class="weui-cell__ft version-information">-->
+                    <!--<input type="text"  readonly id="case_mine">-->
+                <!--</div>-->
+                <!--<img src="../img/more.png" alt="" class="more-img">-->
+            <!--</a>-->
         </div>
-    </div>
-    <div class="cxs-certificate-group">
-        <div class="certificate-name">
-            <span><span class="red">*</span>证书</span>
-            <span>请至少上传一种证书</span>
-        </div>
-        <div class="certificate-upload-group">
-            <div>注册会计师</div>
-            <div class="kjs_list">
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"  data-code="2">
-                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img" data-code="2">
-                </div>
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"  data-code="2">
-                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img" data-code="2">
-                </div>
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"  data-code="2">
-                    <img src="../img/icon-index-ask-close.png" alt="" class="del-certificate-img"  data-code="2">
-                </div>
-            </div>
-        </div>
-        <div class="certificate-upload-group">
-            <div>税务师</div>
-            <div class="sws_list">
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"  data-code="3">
-                    <img src="../img/icon-index-ask-close.png" alt=""  data-code="3" class="del-certificate-img">
-                </div>
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"  data-code="3">
-                    <img src="../img/icon-index-ask-close.png" alt=""  data-code="3" class="del-certificate-img">
-                </div>
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"   data-code="3">
-                    <img src="../img/icon-index-ask-close.png" alt=""   data-code="3" class="del-certificate-img">
-                </div>
-            </div>
-        </div>
-        <div class="certificate-upload-group">
-            <div>律师</div>
-            <div class="ls_list">
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"   data-code="4">
-                    <img src="../img/icon-index-ask-close.png" alt=""   data-code="4" class="del-certificate-img">
-                </div>
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"   data-code="4">
-                    <img src="../img/icon-index-ask-close.png" alt=""   data-code="4" class="del-certificate-img">
-                </div>
-                <div class="inline-block certificate-upload-total">
-                    <img class="img_look" src="" alt="">
-                    <div class="certificate-upload-div"></div>
-                    <input type="file"  class="certificate-upload-input"   data-code="4">
-                    <img src="../img/icon-index-ask-close.png" alt=""   data-code="4" class="del-certificate-img">
-                </div>
-            </div>
-        </div>
-        <div class="sqzxs-reminder">
-            <div class="red">温馨提示：</div>
-            <ul>
-                <li>1.开通咨询师须持有本人平台指定的有效证书：注册会计师证、税务师及律师证书；</li>
-                <li>2.证书照片可传1-3张，确保证书个人信息、发证日期及发证单位（印鉴）显示完整；</li>
-                <li>3.拍摄时确保证书边框完整，字体清晰，亮度均匀。</li>
-                <li>4.图片大小总计不超过3M</li>
-            </ul>
-        </div>
-        <div class="send-sqzxs-msg">提交</div>
     </div>
 </div>
 <div class="img-sel-model">

@@ -13,11 +13,18 @@
         .channel-c-main{
             margin-bottom: 0;
         }
+        .back2{
+            width: 3.5rem;
+            height: 3.5rem;
+            position: absolute;
+            bottom: 2.65rem;
+            left: 3rem;
+        }
     </style>
 </head>
 <body>
 <div class="jsb_header channel-header">
-    <img src="../img/channel-back.png" alt="" class="back" data-url="1">
+    <img src="../img/channel-back.png" alt="" class="back2" data-url="1">
     我的频道
 </div>
 <div class="channel-mine-body">
@@ -27,38 +34,24 @@
             <span class="inline-block">长按可拖动排序</span>
             <span class="channel-mine-edit orange">编辑</span>
         </div>
-        <div class="channel-c-main-list">
-            <div class="inline-block channel-mine-tj">其他</div>
-            <div class="inline-block channel-mine-buy">其他</div>
-            <div class="inline-block">其他 <img src="../img/channel-mine-del.png" class="channel-mine-del" alt=""></div>
-            <div class="inline-block">其他 <img src="../img/channel-mine-del.png" class="channel-mine-del" alt=""></div>
-            <div class="inline-block">其他 <img src="../img/channel-mine-del.png" class="channel-mine-del" alt=""></div>
-            <div class="inline-block">其他 <img src="../img/channel-mine-del.png" class="channel-mine-del" alt=""></div>
+        <div class="channel-c-main-list mine-gd-pd">
+            <!--<div class="inline-block mine-pd-list channel-mine-tj">其他</div>-->
+            <!--<div class="inline-block mine-pd-list channel-mine-buy">其他</div>-->
+        </div>
+        <div class="channel-c-main-list" id="foo">
+            <div class="inline-block mine-pd-list">其他 <img src="../img/channel-mine-del.png" class="channel-mine-del" alt=""></div>
         </div>
         <div class="channel-c-main-title">
             更多频道
             <span class="inline-block">点击添加至我的频道</span>
         </div>
-        <div class="channel-c-main-list channel-tj" id="foo">
-            <div class="inline-block channel-list-act">推荐 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">新技术产业 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">房地产与 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">农林牧渔 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">高新技业 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">新技术产业 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">推荐 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">新技术产业 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">房地产与 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">农林牧渔 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">高新技业 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">新技术产业 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">农林牧渔 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">高新技业 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
-            <div class="inline-block channel-list-act">新技术产业 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>
+        <div class="channel-c-main-list channel-tj">
+            <!--<div class="inline-block channel-list-act">推荐 <img src="../img/channel-mine-add.png" class="channel-mine-add" alt=""></div>-->
         </div>
     </div>
 </div>
 </body>
+<script src="../js/ajax.js"></script>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
 <script src="../js/jquery-weui.js"></script>

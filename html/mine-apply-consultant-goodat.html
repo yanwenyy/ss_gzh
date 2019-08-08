@@ -24,35 +24,19 @@
     <div class="tax-category consultant-class-group">
         <div>专题</div>
         <div class="consultant-list-sel zt">
-            <div class="inline-block">会计处理</div>
-            <div class="inline-block">并购重组</div>
-            <div class="inline-block">高新技术</div>
-            <div class="inline-block">出口退税</div>
-            <div class="inline-block">合集准则</div>
-            <div class="inline-block">跨境业务</div>
+            <!--<div class="inline-block">会计处理</div>-->
         </div>
     </div>
     <div class="tax-category consultant-class-group">
         <div>税种</div>
         <div  class="consultant-list-sel sz">
-            <div class="inline-block">房产税</div>
-            <div class="inline-block">印花税</div>
-            <div class="inline-block">进出口税收</div>
-            <div class="inline-block">城镇土地使用税</div>
-            <div class="inline-block">会计处理</div>
-            <div class="inline-block">会计处理</div>
+
         </div>
     </div>
     <div class="tax-category consultant-class-group">
         <div>行业</div>
         <div class="consultant-list-sel hy">
-            <div class="inline-block">金融保险</div>
-            <div class="inline-block">消费税</div>
-            <div class="inline-block">营业税</div>
-            <div class="inline-block">个人所得税</div>
-            <div class="inline-block">企业所得税</div>
-            <div class="inline-block">资源税</div>
-            <div class="inline-block">城镇土地使用税</div>
+
         </div>
     </div>
 </div>
@@ -68,7 +52,8 @@
     $(function () {
         FastClick.attach(document.body);
         //sessionStorage.removeItem("goodat");
-        var goodat_list=sessionStorage.getItem("goodat");
+        var expert_msg=JSON.parse(sessionStorage.getItem("expert_msg"));
+        var goodat_list=expert_msg.goodat_mine;
         console.log(goodat_list);
         function get_list(data){
             console.log(data);
@@ -123,8 +108,10 @@
             $(".consultant-goodat-act").each(function(){
                 goodat.push($(this).attr("data-id"));
             });
-            sessionStorage.setItem("goodat",goodat);
-            window.history.go(-1);
+            expert_msg.goodat_mine=goodat;
+            console.log(expert_msg);
+            sessionStorage.setItem("expert_msg",JSON.stringify(expert_msg));
+            window.location.href="mine-expert-authentication.html?from=goodat";
         })
     });
 </script>

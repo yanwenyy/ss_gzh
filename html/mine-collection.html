@@ -5,46 +5,143 @@
     <meta name="viewport" content="user-scalable=no">
     <link rel="stylesheet" href="../css/weui.css">
     <link rel="stylesheet" href="../css/jquery-weui.css">
-    <link rel="stylesheet" href="../css/swiper.min.css">
-    <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/quick-answer.css">
-    <link rel="stylesheet" href="../css/mine.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
     <title>我的收藏</title>
+    <style>
+        .sp,.hd{
+            display: none;
+        }
+        .channel-relevant-list{
+            display: block;
+        }
+    </style>
 </head>
 <body>
-<div class="jsb_header">
-    <img src="../img/back.png" alt="" class="back">
-    收藏列表
+<div class="jsb_header channel-header">
+    <img src="../img/channel-back.png" alt="" class="back" data-url="4">
+    收藏
 </div>
-<div class="weui-pull-to-refresh__layer" style="margin-top: 8.8rem">
-    <div class='weui-pull-to-refresh__arrow'></div>
-    <div class='weui-pull-to-refresh__preloader'></div>
-    <div class="down">下拉刷新</div>
-    <div class="up">释放刷新</div>
-    <div class="refresh">正在刷新</div>
-</div>
-<div class="mine-tab-buy">
-    <ul class="list-ul">
-        <!--<li class="list-li">-->
-            <!--<div class="con collection-list-msg">-->
-                <!--<div>公司生产用器检修暂时停产，停产期间发生的固定固 税前扣除吗？我来帮你解答一下。</div>-->
-                <!--<div>-->
-                    <!--<div class="inline-block">2018-09-09 12:00:01</div>-->
-                    <!--<div class="inline-block">-->
-                        <!--<span>评论<span class="blue">22</span></span>-->
-                        <!--<span>点赞<span class="red">22</span></span>-->
-                    <!--</div>-->
+<!--<div class="weui-pull-to-refresh__layer" style="margin-top: 8.8rem">-->
+    <!--<div class='weui-pull-to-refresh__arrow'></div>-->
+    <!--<div class='weui-pull-to-refresh__preloader'></div>-->
+    <!--<div class="down">下拉刷新</div>-->
+    <!--<div class="up">释放刷新</div>-->
+    <!--<div class="refresh">正在刷新</div>-->
+<!--</div>-->
+<!--<div class="mine-tab-buy">-->
+    <!--&lt;!&ndash;<ul class="list-ul">&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<li class="list-li">&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<div class="con collection-list-msg">&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<div>公司生产用器检修暂时停产，停产期间发生的固定固 税前扣除吗？我来帮你解答一下。</div>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<div>&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;<div class="inline-block">2018-09-09 12:00:01</div>&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;<div class="inline-block">&ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<span>评论<span class="blue">22</span></span>&ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<span>点赞<span class="red">22</span></span>&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<div class="btn">&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<div class="box-sizing">取消收藏</div>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+<!--</div>-->
+<div class="column-list-body">
+    <div class="collection-list-tab">
+        <div class="inline-block collection-list-act" data-html="ss">刷刷 </div>
+        <div class="inline-block" data-html="sp">视频 </div>
+        <!--<div class="inline-block" data-html="hd">活动 </div>-->
+    </div>
+    <div class="column-list-main ss collection-list">
+        <!--<div class="column-list-div inline-block">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="box-sizing">-->
+                <!--<div class="column-list-title">刷刷</div>-->
+                <!--<div class="column-list-name">-->
+                    <!--<img src="../img/user.png" alt="">-->
+                    <!--<div class="inline-block">董春辉</div>-->
                 <!--</div>-->
             <!--</div>-->
-            <!--<div class="btn">-->
-                <!--<div class="box-sizing">取消收藏</div>-->
-            <!--</div>-->
-        <!--</li>-->
-    </ul>
+        <!--</div>-->
+    </div>
+    <div class="sp collection-list">
+        <div class="channel-relevant-list">
+            <img src="../img/ceshi.jpg" alt="">
+            <div class="inline-block channel-relevant-list-msg">
+                <div>纳税人两种重要额程序性权企业风险案例合集</div>
+                <div>贾老师</div>
+                <div class="orange">频道会员免费</div>
+            </div>
+        </div>
+    </div>
+    <div class="column-list-main hd">
+        <div class="column-list-div inline-block">
+            <img src="../img/ceshi.jpg" alt="">
+            <div class="box-sizing">
+                <div class="column-list-title">活动</div>
+                <div class="column-list-name">
+                    <img src="../img/user.png" alt="">
+                    <div class="inline-block">董春辉</div>
+                </div>
+            </div>
+        </div>
+        <div class="column-list-div inline-block">
+            <img src="../img/ceshi.jpg" alt="">
+            <div class="box-sizing">
+                <div class="column-list-title">个人所得税专项附-加扣 暂行办法解读</div>
+                <div class="column-list-name">
+                    <img src="../img/user.png" alt="">
+                    <div class="inline-block">董春辉</div>
+                </div>
+            </div>
+        </div>
+        <div class="column-list-div inline-block">
+            <img src="../img/ceshi2.jpg" alt="">
+            <div class="box-sizing">
+                <div class="column-list-title">个人所得税专项附-加扣 暂行办法解读个人所得税专项附-加扣 暂行办法解读</div>
+                <div class="column-list-name">
+                    <img src="../img/user.png" alt="">
+                    <div class="inline-block">董春辉</div>
+                </div>
+            </div>
+        </div>
+        <div class="column-list-div inline-block">
+            <img src="../img/ceshi.jpg" alt="">
+            <div class="box-sizing">
+                <div class="column-list-title">个人所得税专项附-加扣 暂行办法解读</div>
+                <div class="column-list-name">
+                    <img src="../img/user.png" alt="">
+                    <div class="inline-block">董春辉</div>
+                </div>
+            </div>
+        </div>
+        <div class="column-list-div inline-block">
+            <img src="../img/ceshi.jpg" alt="">
+            <div class="box-sizing">
+                <div class="column-list-title">个人所得税专项附-加扣 暂行办法解读个人所得税专项附-加扣 暂行办法解读</div>
+                <div class="column-list-name">
+                    <img src="../img/user.png" alt="">
+                    <div class="inline-block">董春辉</div>
+                </div>
+            </div>
+        </div>
+        <div class="column-list-div inline-block">
+            <img src="../img/ceshi2.jpg" alt="">
+            <div class="box-sizing">
+                <div class="column-list-title">个人所得税专项附-加扣 暂行办法解读个人所得税专项附-加扣 暂行办法解读</div>
+                <div class="column-list-name">
+                    <img src="../img/user.png" alt="">
+                    <div class="inline-block">董春辉</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="none-msg">暂无任何收藏</div>
-<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>
+<!--<div class="none-msg">暂无任何收藏</div>-->
+<!--<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>-->
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>

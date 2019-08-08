@@ -16,7 +16,7 @@ $(function(){
         if(data.isAttention==1){
             $(".expert-gz").html("取消关注").addClass("gray");
         }
-        $(".expert_hp_headimg").attr("src",head_src+users.headImage);
+        $(".expert_hp_headimg").attr("src",headimage(users.headImage));
         $(".hp_realname").html(users.userName);
         $(".hp_levelname").html(users.levelName);
         $(".hp_address").html(users.province);
@@ -80,7 +80,7 @@ $(function(){
                             <div class="grwz card-list zx-list" data-id="${articles[i].uuid}" data-phone="${articles[i].userLevel.phoneNumber}">
                                 <div class="box-sizing watch-answer-expert">
                                     <div class="clist-head">
-                                        <img src="${head_src+articles[i].userLevel.headImage}" alt="" onerror=src="../img/user.png"  data-role="${articles[i].userLevel.role}" data-phone="${articles[i].userLevel.phoneNumber}">
+                                        <img src="${headimage(articles[i].userLevel.headImage)}" alt="" onerror=src="../img/user.png"  data-role="${articles[i].userLevel.role}" data-phone="${articles[i].userLevel.phoneNumber}">
                                         <div class="inline-block">
                                             <div class="user-name">
                                                 ${articles[i].userLevel.userName}
@@ -129,7 +129,7 @@ $(function(){
                             <div class="grwz card-list zx-list" data-id="${articles[i].uuid}" data-phone="${articles[i].userLevel.phoneNumber}">
                                 <div class="box-sizing watch-answer-expert">
                                     <div class="clist-head">
-                                        <img src="${head_src+articles[i].userLevel.headImage}" alt="" onerror=src="../img/user.png"  data-role="${articles[i].userLevel.role}" data-phone="${articles[i].userLevel.phoneNumber}">
+                                        <img src="${headimage(articles[i].userLevel.headImage)}" alt="" onerror=src="../img/user.png"  data-role="${articles[i].userLevel.role}" data-phone="${articles[i].userLevel.phoneNumber}">
                                         <div class="inline-block">
                                             <div class="user-name">
                                                 ${articles[i].userLevel.userName}
@@ -199,7 +199,7 @@ $(function(){
                         html+=`
                     <div class="box-sizing one_wg"  data-id="${answer[i].uuid}">
                             <div class="clist-head">
-                                <img src="${head_src+answer[i].headImage}" alt="" onerror=src="../img/user.png" data-role="${answer[i].role}" data-phone="${answer[i].phoneNumber}">
+                                <img src="${headimage(answer[i].headImage)}" alt="" onerror=src="../img/user.png" data-role="${answer[i].role}" data-phone="${answer[i].phoneNumber}">
                                 <div class="inline-block">
                                     <div class="user-name">
                                         ${realName||"匿名用户"}
@@ -242,7 +242,7 @@ $(function(){
                     html+=`
                     <div class="box-sizing">
                             <div class="clist-head">
-                                <img src="${head_src+answer[i].headImage}" alt="" onerror=src="../img/user.png"   data-role="${answer[i].role}" data-phone="${answer[i].phoneNumber}">
+                                <img src="${headimage(answer[i].headImage)}" alt="" onerror=src="../img/user.png"   data-role="${answer[i].role}" data-phone="${answer[i].phoneNumber}">
                                 <div class="inline-block">
                                     <div class="user-name">
                                         ${realName||""}

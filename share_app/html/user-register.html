@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no">
-    <title>邀请会员</title>
+    <title>注册即领新手礼包</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/index2.css">
+    <style>
+        body{
+            background: #fff;
+        }
+        .footer-img{
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-<!--<div class="jsb_header">-->
-    <!--<img src="../img/back.png" alt="" class="back">-->
-    <!--邀请会员-->
-<!--</div>-->
+<div class="footer-img share-downloade">
+    <img src="../img/icon-down-bg@2x.png" alt="">
+</div>
 <div class="invitation-page">
     <img src="../img/icon-invitation-banner.png" alt="">
     <div class="user-register-body">
@@ -44,6 +52,9 @@
 <script>
     $(function() {
         FastClick.attach(document.body);
+        $(".share-downloade").click(function(){
+            window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jieshuibao.jsb"
+        })
     });
     $(".back").click(function(){
         window.history.go(-1);
