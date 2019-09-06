@@ -6,28 +6,30 @@ $(function(){
     }
     //关注列表
     function get_attention(data){
-        console.log(data);
+        // console.log(data);
         var attentionUser=data.data,html="";
         if(attentionUser==""){
             $(".none-msg").show();
         }
-        for(var i=0;i<attentionUser.length;i++){
+        for(var i=0,len=attentionUser.length;i<len;i++){
+            var change_v=attentionUser[i];
             //用户等级
-            var score_img=get_score(attentionUser[i].integralScore,attentionUser[i].aision,attentionUser[i].vip);
-            var realName=get_name(attentionUser[i]);
+            var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
+            var realName=get_name(change_v);
             html+=`
-               <li class="box-sizing"  data-id="${attentionUser[i].uuid}">
-                    <img data-phone="${attentionUser[i].phoneNumber}" class="look-hp-image" src="${headimage(attentionUser[i].headImage)}"  alt="" onerror=src="../img/user.png">
-                    <div data-phone="${attentionUser[i].phoneNumber}" class="inline-block look-hp-image">
-                        <div class="inline-block fans-name">${realName||" "}</div>
-                        <div class="inline-block ${attentionUser[i].role==2?'fans-dj-msg':'fans-dj'} ">${attentionUser[i].role==2? attentionUser[i].levelName:`<img src='${score_img}' alt=''>`}</div>
+               <li class="box-sizing"  data-id="${change_v.uuid}">
+                    <img data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" class="look-hp-image" src="${headimage(change_v.headImage)}"  alt="" onerror=src="../img/user.png">
+                    <div data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" class="inline-block look-hp-image fans-name-div">
+                        <div class="inline-block fans-name">${realName.length>27?realName.slice(0,27)+"...":realName||" "}</div>
+                        <div class="inline-block ${change_v.role!=3? '':'out'} ${change_v.role==2?'fans-dj-msg':'fans-dj'} ">${change_v.role==2? change_v.levelName:`<img src='${score_img}' alt=''>`}</div>
                         <div class="fans-zw">
-                            <div class="inline-block ${attentionUser[i].lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
-                            <div class="inline-block ${attentionUser[i].role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ attentionUser[i].counselorDuty}</div>
+                            <div class="inline-block ${change_v.lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
+                            <div class="inline-block ${change_v.role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ change_v.counselorDuty}</div>
+                            <div class="inline-block ${change_v.role==3? '':'out'}"><img src="../img/office-icon.png" alt="">官方认证</div>
                         </div>
                     </div>
-                    <div data-phone="${attentionUser[i].phoneNumber}"  class="inline-block attention-fans ${Number(attentionUser[i].follow)==1?'each-attention':''} ${phoneNum?'':'out'}"><img src="../img/hg.png" class="hg-fans ${Number(attentionUser[i].mutual)==1?'':'out'}" alt="">${Number(attentionUser[i].follow)==1?(Number(attentionUser[i].mutual)==1?'互关':'已关注'):'+关注'}</div>
-                    <div data-phone="${attentionUser[i].phoneNumber}"  class="inline-block attention-fans each-attention ${phoneNum?'out':''}"><img src="../img/hg.png" class="hg-fans ${Number(attentionUser[i].mutual)==1?'':'out'}" alt="">${Number(attentionUser[i].mutual)==1?'互关':'已关注'}</div>
+                    <div data-phone="${change_v.phoneNumber}"  class="inline-block attention-fans ${Number(change_v.follow)==1?'each-attention':''} ${phoneNum?'':'out'}"><img src="../img/hg.png" class="hg-fans ${Number(change_v.mutual)==1?'':'out'}" alt="">${Number(change_v.follow)==1?(Number(change_v.mutual)==1?'互关':'已关注'):'+关注'}</div>
+                    <div data-phone="${change_v.phoneNumber}"  class="inline-block attention-fans each-attention ${phoneNum?'out':''}"><img src="../img/hg.png" class="hg-fans ${Number(change_v.mutual)==1?'':'out'}" alt="">${Number(change_v.mutual)==1?'互关':'已关注'}</div>
                 </li>
             `;
         }
@@ -37,21 +39,25 @@ $(function(){
         //console.log(data);
         var attentionUser=data.data,html="";
         if(attentionUser!=""){
-            for(var i=0;i<attentionUser.length;i++){
-                var realName=get_name(attentionUser[i]);
+            for(var i=0,len=attentionUser.length;i<len;i++){
+                var change_v=attentionUser[i];
+                //用户等级
+                var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
+                var realName=get_name(change_v);
                 html+=`
-               <li class="box-sizing"  data-id="${attentionUser[i].uuid}">
-                    <img data-phone="${attentionUser[i].phoneNumber}" class="look-hp-image" src="${headimage(attentionUser[i].headImage)}"  alt="" onerror=src="../img/user.png">
-                    <div data-phone="${attentionUser[i].phoneNumber}" class="inline-block look-hp-image">
-                        <div class="inline-block fans-name">${realName||" "}</div>
-                        <div class="inline-block ${attentionUser[i].role==2?'fans-dj-msg':'fans-dj'} ">${attentionUser[i].role==2? attentionUser[i].levelName:`<img src='${score_img}' alt=''>`}</div>
+               <li class="box-sizing"  data-id="${change_v.uuid}">
+                    <img data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" class="look-hp-image" src="${headimage(change_v.headImage)}"  alt="" onerror=src="../img/user.png">
+                    <div data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" class="inline-block look-hp-image fans-name-div">
+                        <div class="inline-block fans-name">${realName.length>27?realName.slice(0,27)+"...":realName||" "}</div>
+                        <div class="inline-block ${change_v.role!=3? '':'out'} ${change_v.role==2?'fans-dj-msg':'fans-dj'} ">${change_v.role==2? change_v.levelName:`<img src='${score_img}' alt=''>`}</div>
                         <div class="fans-zw">
-                            <div class="inline-block ${attentionUser[i].lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
-                            <div class="inline-block ${attentionUser[i].role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ attentionUser[i].counselorDuty}</div>
+                            <div class="inline-block ${change_v.lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
+                            <div class="inline-block ${change_v.role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ change_v.counselorDuty}</div>
+                            <div class="inline-block ${change_v.role==3? '':'out'}"><img src="../img/office-icon.png" alt="">官方认证</div>
                         </div>
                     </div>
-                    <div class="inline-block attention-fans ${Number(attentionUser[i].follow)==1?'each-attention':''} ${phoneNum?'':'out'}"><img src="../img/hg.png" class="hg-fans ${Number(attentionUser[i].mutual)==1?'':'out'}" alt="">${Number(attentionUser[i].follow)==1?(Number(attentionUser[i].mutual)==1?'互关':'已关注'):'+关注'}</div>
-                    <div data-phone="${attentionUser[i].phoneNumber}"  class="inline-block attention-fans each-attention ${phoneNum?'out':''}"><img src="../img/hg.png" class="hg-fans ${Number(attentionUser[i].mutual)==1?'':'out'}" alt="">${Number(attentionUser[i].mutual)==1?'互关':'已关注'}</div>
+                    <div data-phone="${change_v.phoneNumber}"  class="inline-block attention-fans ${Number(change_v.follow)==1?'each-attention':''} ${phoneNum?'':'out'}"><img src="../img/hg.png" class="hg-fans ${Number(change_v.mutual)==1?'':'out'}" alt="">${Number(change_v.follow)==1?(Number(change_v.mutual)==1?'互关':'已关注'):'+关注'}</div>
+                    <div data-phone="${change_v.phoneNumber}"  class="inline-block attention-fans each-attention ${phoneNum?'out':''}"><img src="../img/hg.png" class="hg-fans ${Number(change_v.mutual)==1?'':'out'}" alt="">${Number(change_v.mutual)==1?'互关':'已关注'}</div>
                 </li>
             `;
             }

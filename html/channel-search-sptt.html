@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <title>搜索官方账号</title>
+    <style>
+        .mine-tab-buy:before{
+            display: table;
+            content: '';
+        }
+        body{
+            background: #fff;
+        }
+        .channel-search-input{
+            width:53.7rem;
+            height:5.8rem;
+            line-height: 5.8rem;
+        }
+        .channel-search-input>img{
+            vertical-align: middle;
+            margin: 0;
+        }
+        .fans-name{
+            font-size: 3.2rem;
+            color:#333;
+        }
+        .mine-fans-list > li{
+            position: relative;
+        }
+        .channel-sptt-userimg-rz{
+            width: 3.2rem!important;
+            height: 3.2rem !important;
+            bottom:0;
+            right:2rem;
+        }
+        .channel-sptt-userimg-rz2{
+            width: 2.6rem;
+            height:2.6rem;
+            position: absolute;
+            bottom: 0;
+            right:0;
+        }
+        .mine-tab-buy{
+            margin-top: 0;
+        }
+        .jsb_header{
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header channel-header">
+    <img src="../img/channel-back.png" alt="" class="back" data-url="1">
+    <div class="inline-block channel-search-input">
+        <img src="../img/channle-search.png" alt="">
+        <input type="text"  class="box-sizing channel-search-msg" placeholder="请输入搜索关键词">
+    </div>
+    <div class="release inline-block">搜索</div>
+</div>
+<div class="mine-work-title">
+    <div  class="inline-block box-sizing orange" data-code="1">
+        视频
+        <span class="work-title-line inline-block"></span>
+    </div>
+    <div class="inline-block box-sizing" data-code="2">
+        官方账号
+        <span class="inline-block"></span>
+    </div>
+</div>
+<div class="mine-tab-buy">
+    <div data-code="1" class="channel-sptt-page-ul brush-search-main">
+        <!--<div class="channel-page-li">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="channel-sptt-looknum"><span>24</span>次观看</div>-->
+            <!--<div class="channel-page-li-title">房地产行业税务关政策以及税收风险分析以及锁企业面临的问题</div>-->
+            <!--<div class="channel-page-li-user channel-sptt-li-user">-->
+                <!--<div class="inline-block channle-sptt-user">-->
+                    <!--<img class="channel-sptt-userimg" src="../img/user.png" alt="">-->
+                    <!--<img class="channel-sptt-userimg-rz2" src="../img/office-p-rz.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="inline-block channel-sptt-li-username">-->
+                    <!--<div>国家税务总局</div>-->
+                    <!--<div>3分钟前</div>-->
+                <!--</div>-->
+                <!--<div class="inline-block orange channel-page-li-userbtn">政策发布会</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <div data-code="2" class="fans-search-body brush-search-main out">
+        <ul class="mine-fans-list">
+            <!--<li class="box-sizing">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<img class="channel-sptt-userimg-rz" src="../img/office-p-rz.png" alt="">-->
+                <!--<div class="inline-block">-->
+                    <!--<div class="inline-block fans-name">匿名用户</div>-->
+                    <!--<div class="fans-fans">-->
+                        <!--<span>1粉丝</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="inline-block attention-fans attention-fans-already">已关注</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/channel-search-sptt.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

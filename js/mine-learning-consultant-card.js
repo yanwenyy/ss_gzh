@@ -1,6 +1,6 @@
 $(function(){
     function get_money(data){
-        console.log(data);
+        // console.log(data);
         $(".balance").html(parseFloat(data.vipBalance).toFixed(2)||"0.0");
     }
     $(".back").click(function(){
@@ -11,14 +11,15 @@ $(function(){
     function get_card_list(data){
         //console.log(data);
         var vipCards=data.vipCards,html="";
-        for(var i=0;i<vipCards.length;i++){
+        for(var i=0,len=vipCards.length;i<len;i++){
+            var change_v=vipCards[i];
             html+=`
                 <li class="box-sizing">
-                    <img src="${showImg_src+vipCards[i].cardImage}" alt="">
+                    <img src="${showImg_src+change_v.cardImage}" alt="">
                     <div class="inline-block">
-                        <div class="xxgwk-money">金额：<span class="red">￥${vipCards[i].currentPrice}</span></div>
+                        <div class="xxgwk-money">金额：<span class="red">￥${change_v.currentPrice}</span></div>
                         <div class="xxgwk-fp"><img src="../img/icon-index-ask-anonymous unchecked.png" alt="" class="need_fp">需要发票</div>
-                        <div class="xxgwk-buy" data-uuid="${vipCards[i].uuid}" data-originalPrice="${vipCards[i].originalPrice}" data-currentPrice="${vipCards[i].currentPrice}" data-cardStyle="${vipCards[i].cardStyle}">购买</div>
+                        <div class="xxgwk-buy" data-uuid="${change_v.uuid}" data-originalPrice="${change_v.originalPrice}" data-currentPrice="${change_v.currentPrice}" data-cardStyle="${change_v.cardStyle}">购买</div>
                     </div>
                 </li>
             `;

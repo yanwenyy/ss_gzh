@@ -1,8 +1,9 @@
 $(function(){
     //省市内容
     var html='<li class="pro_blue" data-msg="">全部</li>';
-    for(var i=0;i<self_city.length;i++){
-        html+=`<li data-msg="${self_city[i].name}">${self_city[i].name}</li>`
+    for(var i=0,len=self_city.length;i<len;i++){
+        var change_v=self_city[i];
+        html+=`<li data-msg="${change_v.name}">${change_v.name}</li>`
     }
     $(".filter-city-city>ul").html(html);
    //一级筛选栏点击
@@ -17,33 +18,37 @@ $(function(){
            $(".filter-class").addClass("out");
        }else{
            function get_list(data){
-               console.log(data);
+               // console.log(data);
                var categorys=data.categorys,zt="",sz="",hy="",html='<li data-id="">全部</li>';
-               for(var p=0;p<categorys.length;p++){
-                   if(categorys[p].name=="专题"){
-                       zt=categorys[p];
-                   }else if(categorys[p].name=="税种"){
-                       sz=categorys[p];
-                   }else if(categorys[p].name=="行业"){
-                       hy=categorys[p];
+               for(var p=0,len_c=categorys.length;p<len_c;p++){
+                   var change_v=categorys[p];
+                   if(change_v.name=="专题"){
+                       zt=change_v;
+                   }else if(change_v.name=="税种"){
+                       sz=change_v;
+                   }else if(change_v.name=="行业"){
+                       hy=change_v;
                    }
                }
                if(that.attr("data-type")==1){//专题
-                   for(var i=0;i<zt.children.length;i++){
+                   for(var i=0,len1=zt.children.length;i<len1;i++){
+                       var change_v=zt.children[i];
                        html+=`
-                        <li data-type="1" data-id="${zt.children[i].uuid}">${zt.children[i].name}</li>
+                        <li data-type="1" data-id="${change_v.uuid}">${change_v.name}</li>
                     `
                    }
                }else if(that.attr("data-type")==2){//税种
-                   for(var i=0;i<sz.children.length;i++){
+                   for(var i=0,len2=sz.children.length;i<len2;i++){
+                       var change_v=sz.children[i];
                        html+=`
-                        <li data-type="2" data-id="${sz.children[i].uuid}">${sz.children[i].name}</li>
+                        <li data-type="2" data-id="${change_v.uuid}">${change_v.name}</li>
                     `
                    }
                }else if(that.attr("data-type")==3){//行业
-                   for(var i=0;i<hy.children.length;i++){
+                   for(var i=0,len3=hy.children.length;i<len3;i++){
+                       var change_v=hy.children[i];
                        html+=`
-                        <li data-type="3" data-id="${hy.children[i].uuid}">${hy.children[i].name}</li>
+                        <li data-type="3" data-id="${change_v.uuid}">${change_v.name}</li>
                     `
                    }
                }

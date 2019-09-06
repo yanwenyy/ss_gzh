@@ -12,9 +12,13 @@ $(function(){
             }else if(msg.charge=="1"){
                 $(".channel-d-video").html(`<img src="${cover_src+msg.cover}">`);
             }
+            if(msg.role==3){
+                $(".c-t-title").hide();
+                $(".channel-detail-rz").removeClass("out");
+            }
             $(".channel-d-author-title").html(msg.title);
-            $(".channel-teacher").html(get_name(msg));
-            $(".channel-d-author-msg>img").attr("src",headimage(msg.headImage)).attr("data-phone",msg.userId);
+            $(".channel-teacher").html(get_name(msg).length>25?get_name(msg).slice(0,25)+"...":get_name(msg));
+            $(".channel-d-author-msg .look-hp-image").attr("src",headimage(msg.headImage)).attr("data-phone",msg.userId);
             $(".attention-author").attr("data-phone",msg.userId);
             $(".channel-course").html(msg.introduction);
             $(".channel-d-comment-num").html(msg.discuss_num);
@@ -52,7 +56,7 @@ $(function(){
                     <div class="inline-block">
                         <div>
                         <div class="channel-d-c-name">
-                        <span class="inline-block blue">${get_name(data.data[i])}</span>
+                        <span class="inline-block blue">${get_name(data.data[i]).length>10?get_name(data.data[i]).slice(0,10)+"...":get_name(data.data[i])}</span>
                         <span class="liline-block">
                         <img src="../img/channel-zan-no.png" alt="">
                         <span>${data.data[i].sumPraisNum}</span>

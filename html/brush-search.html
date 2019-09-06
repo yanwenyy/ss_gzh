@@ -20,6 +20,20 @@
             vertical-align: middle;
             margin: 0;
         }
+        .jsb_header{
+            box-shadow: none;
+        }
+        .mine-work-title>div{
+            width: 33%;
+        }
+        .column-list-body{
+            margin-top: 0;
+            padding:0;
+        }
+        .column-list-main{
+            position: relative;
+            padding:3rem;
+        }
     </style>
 </head>
 <body>
@@ -28,12 +42,26 @@
         <img src="../img/channel-back.png" alt="" class="back" data-url="1">
         <div class="inline-block channel-search-input">
             <img src="../img/channle-search.png" alt="">
-            <input type="text"  class="box-sizing channel-search-msg" placeholder="请输入搜索关键词">
+            <input type="text" maxlength="30"  class="box-sizing channel-search-msg" placeholder="请输入搜索关键词">
         </div>
         <div class="release inline-block">搜索</div>
     </div>
 </div>
-<div class="column-list-body box-sizing">
+<div class="mine-work-title">
+    <div  class="inline-block box-sizing orange" data-code="1">
+        刷刷
+        <span class="work-title-line inline-block"></span>
+    </div>
+    <div class="inline-block box-sizing" data-code="2">
+        用户
+        <span class="inline-block"></span>
+    </div>
+    <div class="inline-block box-sizing" data-code="3">
+        标签
+        <span class="inline-block"></span>
+    </div>
+</div>
+<div class="column-list-body brush-search-main box-sizing" data-code="1">
     <div class="column-list-main">
         <!--<div class="column-list-div inline-block">-->
             <!--<img src="../img/ceshi.jpg" alt="">-->
@@ -46,12 +74,60 @@
             <!--</div>-->
         <!--</div>-->
     </div>
+    <div class="relevant-ss">
+        <div class="relevant-wd-title">相关推荐</div>
+        <div class="column-list-main"></div>
+    </div>
 </div>
+<ul class="mine-fans-list brush-search-main out" data-code="2">
+    <!--<li class="box-sizing">-->
+        <!--<img src="../img/ceshi.jpg" alt="">-->
+        <!--<div class="inline-block">-->
+            <!--<div class="inline-block fans-name">匿名用户</div>-->
+            <!--<div class="inline-block fans-dj-msg">资深咨询师</div>-->
+            <!--<div class="fans-zw">-->
+                <!--<div class="inline-block"><img src="../img/fans-js.png" alt="">讲师</div>-->
+                <!--<div class="inline-block"><img src="../img/fans-zxs.png" alt="">税务师、律师、注册会计师</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="inline-block attention-fans">+关注</div>-->
+    <!--</li>-->
+    <!--<li class="box-sizing">-->
+        <!--<img src="../img/ceshi.jpg" alt="">-->
+        <!--<div class="inline-block">-->
+            <!--<div class="inline-block fans-name">匿名用户</div>-->
+            <!--<div class="inline-block fans-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+            <!--<div class="fans-zw">-->
+                <!--<div class="inline-block"><img src="../img/fans-js.png" alt="">讲师</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+    <!--</li>-->
+    <!--<li class="box-sizing">-->
+        <!--<img src="../img/ceshi.jpg" alt="">-->
+        <!--<div class="inline-block">-->
+            <!--<div class="inline-block fans-name">匿名用户</div>-->
+            <!--<div class="inline-block fans-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+        <!--</div>-->
+        <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+    <!--</li>-->
+    <!--<li class="box-sizing">-->
+        <!--<img src="../img/ceshi.jpg" alt="">-->
+        <!--<div class="inline-block">-->
+            <!--<div class="inline-block fans-name">匿名用户</div>-->
+            <!--<div class="fans-zw">-->
+                <!--<div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+    <!--</li>-->
+</ul>
+<ul class="search-label-body brush-search-main out" data-code="3">
+    <!--<li># 闺蜜说税</li>-->
+</ul>
 </body>
 <script src="../js/ajax.js"></script>
 <script src="../js/rem-reset.js"></script>
-<script src="../js/jquery-2.1.4.js"></script>
-<script src="../js/jquery-weui.js"></script>
 <script src="../js/swiper.min.js"></script>
 <script src="../js/fastclick.js"></script>
 <script src="../js/index.js"></script>

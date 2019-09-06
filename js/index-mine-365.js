@@ -46,7 +46,7 @@ $(function(){
         $(".mine-gz-num").html(data.follow);
         $(".mine-gz-sc").html(data.stores);
         //收藏,刷刷作品,喜欢
-        $(".mine-brush").html(data.brushs);
+        $(".mine-brush").html(data.brushs+data.auditFailbrushs);
         $(".mine-like").html(data.praise);
         //钱包,问答金,财税问答卡余额
         if(parseFloat(data.balance).toFixed(2).length>7){
@@ -97,7 +97,7 @@ $(function(){
                 }else{
                     vip="航信会员过期";
                 }
-                var html=`<img src="" alt="" class="user-head-img look-hp-image" onerror=src="../img/user.png">
+                var html=`<img src="" alt="" class="user-head-img look-hp-image"  data-role="${data.role}" onerror=src="../img/user.png">
                             <div class="inline-block">
                                 <div class="mine-user-name">
                                     ${data.realName||"匿名用户"}
@@ -112,7 +112,7 @@ $(function(){
                 $(".mine-365-hangxin").html(html);
             }else{
                 $(".mine-365-normal").html(`
-                    <img src="" alt="" class="user-head-img look-hp-image" onerror=src="../img/user.png">
+                    <img src="" alt="" class="user-head-img look-hp-image"  data-role="${data.role}" onerror=src="../img/user.png">
                     <div class="inline-block">
                         <div class="mine-user-name">
                              ${data.realName||"匿名用户"}
@@ -137,7 +137,7 @@ $(function(){
                 }else{
                     vip="航信会员过期";
                 }
-                var html=`<img src="" alt="" class="user-head-img look-hp-image" onerror=src="../img/user.png">
+                var html=`<img src="" alt="" class="user-head-img look-hp-image" data-role="${data.role}" onerror=src="../img/user.png">
                             <div class="inline-block">
                                 <div class="mine-user-name">
                                     ${data.userName||"匿名用户"}
@@ -158,7 +158,7 @@ $(function(){
                 $(".mine-365-normal").addClass("out");
                 $(".mine-365-consultant").removeClass("out");
                 $(".mine-365-consultant").html(`
-                    <img src="" alt="" class="user-head-img look-hp-image" onerror=src="../img/user.png">
+                    <img src="" alt="" class="user-head-img look-hp-image"  data-role="${data.role}" onerror=src="../img/user.png">
                     <div class="inline-block">
                         <div class="mine-user-name">
                             ${data.userName||"匿名用户"}
@@ -174,6 +174,20 @@ $(function(){
                     <!--</div>-->
                 `)
             }
+        }else if(data.role==3){
+            $(".mine-365-normal").addClass("out");
+            $(".mine-365-consultant").removeClass("out");
+            $(".index-mine-office-hidden").hide();//我的提问,资料认证隐藏
+            $(".index-mine-office-show").show();
+            $(".mine-365-consultant").html(`
+                    <img src="" alt="" class="user-head-img look-hp-image" data-role="${data.role}" onerror=src="../img/user.png">
+                    <div class="inline-block">
+                        <div class="mine-user-name">
+                            ${get_name(data)}
+                        </div>
+                        <div><img src="../img/index-mine-office.png" alt="" class="user-grade mine-hydj" ></div>
+                    </div>
+                `)
         }
         $(".user-head-img").attr("src",headimage(data.headImage)).attr("data-role",data.role).attr("data-phone",data.phoneNumber);
 

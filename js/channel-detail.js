@@ -1,5 +1,5 @@
 $(function(){
-    var classifyId=getUrlParms("classifyId"),vid=getUrlParms("vid"),userid=getUrlParms("userid"),vip=getUrlParms("vip");
+    var classifyId=getUrlParms("classifyId"),vid=getUrlParms("vid"),userid=getUrlParms("userid"),vip=getUrlParms("vip"),from=getUrlParms("from");
     $(".sub_commit").attr("data-commitId",vid);
     $(".back-channel").click(function(){
         var playTime=document.querySelector('video')?document.querySelector('video').currentTime*1000:0;
@@ -9,10 +9,18 @@ $(function(){
                 "vid": vid
             },function(data){
                 console.log(data);
-                window.location.href="channel.html?classifyId="+classifyId;
+                if(from){
+                    window.location.href="channel.html?classifyId="+classifyId;
+                }else{
+                    window.history.go(-1);
+                }
             })
         }else{
-            window.location.href="channel.html?classifyId="+classifyId;
+            if(from){
+                window.location.href="channel.html?classifyId="+classifyId;
+            }else{
+                window.history.go(-1);
+            }
         }
     });
     ajax_nodata(http_url.url+"/user/message",function(data1){
@@ -40,12 +48,16 @@ $(function(){
             }else if(msg.ifAttention==1){
                 $(".attention-author").html("+ 关注")
             }
+            if(msg.role==3){
+                $(".c-t-title").hide();
+                $(".channel-detail-rz").removeClass("out");
+            }
             var v_html="&lt;script async src='https://p.bokecc.com/player?vid="+msg.cc_id+"&siteid=A0123BC413D6FBAE&autoStart=false&width=100%&height=100%&playerid=7E2195B034B0277B&playertype=1'>&lt;/script>";
             v_html=v_html.replace(/&lt;/g,'<');
             $(".channel-d-video").html(v_html);
             $(".channel-d-author-title").html(msg.title);
-            $(".channel-teacher").html(get_name(msg));
-            $(".channel-d-author-msg>img").attr("src",headimage(msg.headImage)).attr("data-phone",msg.userId);
+            $(".channel-teacher").html(get_name(msg).length>25?get_name(msg).slice(0,25)+"...":get_name(msg));
+            $(".channel-d-author-msg .look-hp-image").attr("src",headimage(msg.headImage)).attr("data-phone",msg.userId);
             $(".attention-author").attr("data-phone",msg.userId);
             $(".channel-course").html(msg.introduction);
             $(".channel-d-comment-num").html(msg.discuss_num);
@@ -64,13 +76,15 @@ $(function(){
         var html='';
         if(data.data&&data.data!=''&&data.data.length>3){
             $(".tj-more").removeClass("out");
-            for(var i=0;i<data.data.length;i++){
-                html+=`<div data-charge="${data.data[i].charge}" class="channel-relevant-list" data-classid="${data.data[i].classify_id}" data-vid="${data.data[i].id}" data-uid="${data.data[i].userId}">
-                        <img src="${cover_src+data.data[i].cover}" alt="">
+            var tj_list=data.data;
+            for(var i=0,len=tj_list.length;i<len;i++){
+                var change_v=tj_list[i];
+                html+=`<div data-charge="${change_v.charge}" class="channel-relevant-list" data-classid="${change_v.classify_id}" data-vid="${change_v.id}" data-uid="${change_v.userId}">
+                        <img src="${cover_src+change_v.cover}" alt="">
                         <div class="inline-block channel-relevant-list-msg">
-                            <div>${data.data[i].title}</div>
+                            <div>${change_v.title}</div>
                             <div>${get_name(data.data[i])}</div>
-                            <div class="orange ${data.data[i].charge==0||vip!=''?'out':''}"">频道会员免费</div>
+                            <div class="orange ${change_v.charge==0||vip!=''?'out':''}"">频道会员免费</div>
                         </div>
                     </div>`
             }
@@ -97,21 +111,26 @@ $(function(){
         "type": "4",
         "uuid": vid
     },function(data){
-        console.log(data);
+        // console.log(data);
         var html='';
         if(data.data&&data.data!=''){
-            for(var i=0;i<data.data.length;i++){
+            var commit_list=data.data;
+            for(var i=0,len=commit_list.length;i<len;i++){
+                var change_v=commit_list[i];
                 var reply=[],reply_html='';
-                if(data.data[i].childrens!=[]){
-                    reply=data.data[i].childrens;
+                if(change_v.childrens!=[]){
+                    reply=change_v.childrens;
                     for(var r=0;r<reply.length;r++){
                         reply_html+=`<div class="channel-d-c-reply-list box-sizing">
-                                            <img data-phone="${reply[r].userUuid}"  src="${headimage(reply[r].headImage)}" class="look-hp-image" alt="" onerror=src="../img/user.png">
+                                            <div class="inline-block comment-head-div">
+                                                  <img data-phone="${reply[r].userUuid}"  src="${headimage(reply[r].headImage)}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
+                                                   <img class="channel-detail-rz ${reply[r].role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                                            </div>
                                             <div class="inline-block" style="width:79%">
                                                 <div>
                                                     <div class="channel-d-c-name">
                                                         <span class="inline-block">
-                                                            ${get_name(reply[r])}
+                                                            ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
                                                             <!--span class="orange ${reply[r].author==0?'':'out'}">·作者</span-->
                                                             <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span> ${get_rname(reply[r])}
                                                             <!--span class="orange ${reply[r].pUserId==userid?'':'out'}">·作者</span-->
@@ -135,21 +154,24 @@ $(function(){
                 }
                 html+=`
                 <div class="channel-d-c-list">
-                    <img src="${headimage(data.data[i].headImage)}" data-phone="${data.data[i].userUuid}" class="look-hp-image" alt="" onerror=src="../img/user.png">
+                    <div class="inline-block comment-head-div">
+                          <img data-phone="${change_v.userUuid}"  src="${headimage(change_v.headImage)}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
+                           <img class="channel-detail-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                    </div>
                     <div class="inline-block">
                         <div>
                             <div class="channel-d-c-name">
-                                <span class="inline-block blue">${get_name(data.data[i])} 
-                                <!--span class="orange ${data.data[i].author==0?'':'out'}">·作者</span-->
+                                <span class="inline-block blue">${get_name(change_v).length>10?get_name(change_v).slice(0,10)+"...":get_name(change_v)}
+                                <!--span class="orange ${change_v.author==0?'':'out'}">·作者</span-->
                                 </span>
                                 <span class="liline-block">
-                                <img src="${data.data[i].praiseNum==0?'../img/channel-zan-no.png':'../img/channel-zan.png'}" data-id="${data.data[i].uuid}" class="zan-comment" alt="">
-                                <span>${data.data[i].sumPraisNum}</span>
+                                <img src="${change_v.praiseNum==0?'../img/channel-zan-no.png':'../img/channel-zan.png'}" data-id="${change_v.uuid}" class="zan-comment" alt="">
+                                <span>${change_v.sumPraisNum}</span>
                             </span>
                             </div>
-                            <div class="channel-d-c-content ${data.data[i].content=='该评论已被删除'?'orange':''}" data-name="${get_name(data.data[i])}" data-status="2"  data-id="${data.data[i].uuid}">${data.data[i].content}</div>
-                           <div class="channel-d-c-date">${format2(data.data[i].date)}  
-                                <span data-id="${data.data[i].uuid}" class="del-channel-comment ${sessionStorage.getItem("userid")==data.data[i].userUuid?'':'out'}">·删除</span>
+                            <div class="channel-d-c-content ${change_v.content=='该评论已被删除'?'orange':''}" data-name="${get_name(data.data[i])}" data-status="2"  data-id="${change_v.uuid}">${change_v.content}</div>
+                           <div class="channel-d-c-date">${format2(change_v.date)}  
+                                <span data-id="${change_v.uuid}" class="del-channel-comment ${sessionStorage.getItem("userid")==change_v.userUuid?'':'out'}">·删除</span>
                                
                            </div>
                         </div>
@@ -157,7 +179,7 @@ $(function(){
                             <div class="channel-d-c-reply-body">
                                 ${reply_html}
                             </div>
-                            <div class="blue more-reply ${data.data[i].childrens.length>1?'':'out'}" data-num="${data.data[i].childrens.length-1}">更多回复(${data.data[i].childrens.length-1})</div>
+                            <div class="blue more-reply ${change_v.childrens.length>1?'':'out'}" data-num="${change_v.childrens.length-1}">更多回复(${change_v.childrens.length-1})</div>
                         </div>
                     </div>
                 </div>
@@ -174,21 +196,27 @@ $(function(){
     },function(data){
         var html='';
         if(data.data!=''){
-            for(var i=0;i<data.data.length;i++){
+            var commit_list=data.data;
+            for(var i=0,len=commit_list.length;i<len;i++){
+                var change_v=commit_list[i];
                 var reply=[],reply_html='';
-                if(data.data[i].childrens!=[]){
-                    reply=data.data[i].childrens;
+                if(change_v.childrens!=[]){
+                    reply=change_v.childrens;
                     for(var r=0;r<reply.length;r++){
                         reply_html+=`<div class="channel-d-c-reply-list box-sizing">
-                                            <img data-phone="${reply[r].userUuid}"  src="${headimage(reply[r].headImage)}" class="look-hp-image" alt="" onerror=src="../img/user.png">
+                                            <div class="inline-block comment-head-div">
+                                                  <img data-phone="${reply[r].userUuid}"  src="${headimage(reply[r].headImage)}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
+                                                   <img class="channel-detail-rz ${reply[r].role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                                            </div>
                                             <div class="inline-block" style="width:79%">
                                                 <div>
                                                     <div class="channel-d-c-name">
                                                         <span class="inline-block">
-                                                            ${get_name(reply[r])}
+                                                            ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
                                                             <!--span class="orange ${reply[r].author==0?'':'out'}">·作者</span-->
                                                             <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span> ${get_rname(reply[r])}
-                                                            <!--span class="orange ${reply[r].pUserId==userid?'':'out'}">·作者</span></span-->
+                                                            <!--span class="orange ${reply[r].pUserId==userid?'':'out'}">·作者</span-->
+                                                            </span>
                                                         </span>
                                                         <span class="liline-block">
                                                             <img src="${reply[r].praiseNum==0?'../img/channel-zan-no.png':'../img/channel-zan.png'}"  data-id="${reply[r].uuid}" class="zan-comment" alt="">
@@ -208,29 +236,32 @@ $(function(){
                 }
                 html+=`
                 <div class="channel-d-c-list">
-                    <img src="${headimage(data.data[i].headImage)}" data-phone="${data.data[i].userUuid}" class="look-hp-image" alt="" onerror=src="../img/user.png">
+                    <div class="inline-block comment-head-div">
+                          <img data-phone="${change_v.userUuid}"  src="${headimage(change_v.headImage)}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
+                           <img class="channel-detail-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                    </div>
                     <div class="inline-block">
                         <div>
                             <div class="channel-d-c-name">
-                                <span class="inline-block blue">${get_name(data.data[i])} 
-                                <!--span class="orange ${data.data[i].author==0?'':'out'}">·作者</span-->
+                                <span class="inline-block blue">${get_name(change_v).length>10?get_name(change_v).slice(0,10)+"...":get_name(change_v)}
+                                <!--span class="orange ${change_v.author==0?'':'out'}">·作者</span-->
                                 </span>
                                 <span class="liline-block">
-                                <img src="${data.data[i].praiseNum==0?'../img/channel-zan-no.png':'../img/channel-zan.png'}" data-id="${data.data[i].uuid}" class="zan-comment" alt="">
-                                <span>${data.data[i].sumPraisNum}</span>
+                                <img src="${change_v.praiseNum==0?'../img/channel-zan-no.png':'../img/channel-zan.png'}" data-id="${change_v.uuid}" class="zan-comment" alt="">
+                                <span>${change_v.sumPraisNum}</span>
                             </span>
                             </div>
-                            <div class="channel-d-c-content ${data.data[i].content=='该评论已被删除'?'orange':''}" data-name="${get_name(data.data[i])}" data-status="2"  data-id="${data.data[i].uuid}">${data.data[i].content}</div>
-                            <div class="channel-d-c-date">${format2(data.data[i].date)}  
-                                <span data-id="${data.data[i].uuid}" class="del-channel-comment ${sessionStorage.getItem("userid")==data.data[i].userUuid?'':'out'}">·删除</span>
+                            <div class="channel-d-c-content ${change_v.content=='该评论已被删除'?'orange':''}" data-name="${get_name(data.data[i])}" data-status="2"  data-id="${change_v.uuid}">${change_v.content}</div>
+                           <div class="channel-d-c-date">${format2(change_v.date)}  
+                                <span data-id="${change_v.uuid}" class="del-channel-comment ${sessionStorage.getItem("userid")==change_v.userUuid?'':'out'}">·删除</span>
                                
-                            </div>
+                           </div>
                         </div>
                         <div class="channel-d-c-reply box-sizing ${reply!=''?'':'out'}">
                             <div class="channel-d-c-reply-body">
                                 ${reply_html}
                             </div>
-                            <div class="blue more-reply ${data.data[i].childrens.length>1?'':'out'}" data-num="${data.data[i].childrens.length-1}">更多回复(${data.data[i].childrens.length-1})</div>
+                            <div class="blue more-reply ${change_v.childrens.length>1?'':'out'}" data-num="${change_v.childrens.length-1}">更多回复(${change_v.childrens.length-1})</div>
                         </div>
                     </div>
                 </div>
@@ -487,7 +518,9 @@ $(function(){
                         'onMenuShareTimeline',       // 分享到朋友圈接口
                         'onMenuShareAppMessage',  //  分享到朋友接口
                         'onMenuShareQQ',         // 分享到QQ接口
-                        'onMenuShareQZone']   // 分享到qq空间] // 必填，需要使用的JS接口列表
+                        'onMenuShareQZone',// 分享到qq空间
+                        'scanQRCode'// 微信扫一扫接口
+                    ] // 必填，需要使用的JS接口列表
                 });
                 wx.ready(function () {
                     var shareData = {
@@ -520,6 +553,20 @@ $(function(){
                     wx.onMenuShareQZone(shareData);
                     wx.onMenuShareAppMessage(shareData);
                     wx.onMenuShareTimeline(shareData);
+                    $(".scan").click(function(){
+                        wx.scanQRCode({
+                            needResult : 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                            scanType : [ "qrCode", "barCode" ], // 可以指定扫二维码还是一维码，默认二者都有
+                            success : function(res) {
+                                var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                                alert(result);
+                                // window.location.href = result;//因为我这边是扫描后有个链接，然后跳转到该页面
+                            },
+                            error : function(e){
+                                alert(e)
+                            }
+                        });
+                    })
                 });
                 wx.error(function(res){
                     console.log(res)
@@ -531,5 +578,6 @@ $(function(){
             }
         });
     }
-    wx_share()
+    wx_share();
+
 });

@@ -4,35 +4,36 @@ $(function(){
     });
     //发票列表
     function get_invoice_list(data){
-        console.log(data);
+        // console.log(data);
         var purchaseOrders=data.purchaseOrders,html="";
         if(purchaseOrders==""){
             $(".none-msg").show();
         }
-        for(var i=0;i<purchaseOrders.length;i++){
+        for(var i=0,len=purchaseOrders.length;i<len;i++){
+            var change_v=purchaseOrders[i];
             var invoice_sta="",invoice_blue="";
-            if(purchaseOrders[i].invoiceStatus=="-1"){
+            if(change_v.invoiceStatus=="-1"){
                 invoice_sta="开发票";
                 invoice_blue="open-invoice-btn_blue";
-            }else if(purchaseOrders[i].invoiceStatus=="0"){
+            }else if(change_v.invoiceStatus=="0"){
                 invoice_sta="开发票中"
             }else{
                 invoice_sta="已开发票"
             }
             // html+=`
             //     <div class="box-sizing invoice-list">
-            //         <div>${purchaseOrders[i].productType}</div>
-            //         <div><span class="red">${parseFloat(purchaseOrders[i].currentPrice).toFixed(2)}</span>元</div>
-            //         <div>${format(purchaseOrders[i].paymentDate)}</div>
-            //         <div class="open-invoice-btn" data-uuid="${purchaseOrders[i].uuid}">${invoice_sta}</div>
+            //         <div>${change_v.productType}</div>
+            //         <div><span class="red">${parseFloat(change_v.currentPrice).toFixed(2)}</span>元</div>
+            //         <div>${format(change_v.paymentDate)}</div>
+            //         <div class="open-invoice-btn" data-uuid="${change_v.uuid}">${invoice_sta}</div>
             //     </div>
             // `;
             html+=`
                 <div class="box-sizing invoice-list">
-                    <div><span>${purchaseOrders[i].productType}</span><span style="margin-right: 3.2rem">${parseFloat(purchaseOrders[i].currentPrice).toFixed(2)}元</span></div>
+                    <div><span>${change_v.productType}</span><span style="margin-right: 3.2rem">${parseFloat(change_v.currentPrice).toFixed(2)}元</span></div>
                     <div class="inline-block"></div>
-                    <div>${format(purchaseOrders[i].paymentDate)}</div>
-                    <div class="open-invoice-btn ${invoice_blue}" data-uuid="${purchaseOrders[i].uuid}">${invoice_sta}</div>
+                    <div>${format(change_v.paymentDate)}</div>
+                    <div class="open-invoice-btn ${invoice_blue}" data-uuid="${change_v.uuid}">${invoice_sta}</div>
                 </div>
             `;
         }
@@ -41,22 +42,31 @@ $(function(){
     function get_invoice_list_more(data){
         var purchaseOrders=data.purchaseOrders,html="";
         if(purchaseOrders!=""){
-            for(var i=0;i<purchaseOrders.length;i++){
+            for(var i=0,len=purchaseOrders.length;i<len;i++){
+                var change_v=purchaseOrders[i];
                 var invoice_sta="",invoice_blue="";
-                if(purchaseOrders[i].invoiceStatus=="-1"){
+                if(change_v.invoiceStatus=="-1"){
                     invoice_sta="开发票";
                     invoice_blue="open-invoice-btn_blue";
-                }else if(purchaseOrders[i].invoiceStatus=="0"){
+                }else if(change_v.invoiceStatus=="0"){
                     invoice_sta="开发票中"
                 }else{
                     invoice_sta="已开发票"
                 }
+                // html+=`
+                //     <div class="box-sizing invoice-list">
+                //         <div>${change_v.productType}</div>
+                //         <div><span class="red">${parseFloat(change_v.currentPrice).toFixed(2)}</span>元</div>
+                //         <div>${format(change_v.paymentDate)}</div>
+                //         <div class="open-invoice-btn" data-uuid="${change_v.uuid}">${invoice_sta}</div>
+                //     </div>
+                // `;
                 html+=`
                 <div class="box-sizing invoice-list">
-                    <div><span>${purchaseOrders[i].productType}</span><span style="margin-right: 3.2rem">${parseFloat(purchaseOrders[i].currentPrice).toFixed(2)}元</span></div>
+                    <div><span>${change_v.productType}</span><span style="margin-right: 3.2rem">${parseFloat(change_v.currentPrice).toFixed(2)}元</span></div>
                     <div class="inline-block"></div>
-                    <div>${format(purchaseOrders[i].paymentDate)}</div>
-                    <div class="open-invoice-btn ${invoice_blue}" data-uuid="${purchaseOrders[i].uuid}">${invoice_sta}</div>
+                    <div>${format(change_v.paymentDate)}</div>
+                    <div class="open-invoice-btn ${invoice_blue}" data-uuid="${change_v.uuid}">${invoice_sta}</div>
                 </div>
             `;
             }

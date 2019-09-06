@@ -7,7 +7,8 @@ $(function(){
         ajax(http_url.url+"/brush/allSpecialcolumn",{
             "userId":data.phoneNumber
         },function(data){
-            if(data.data==''){
+            var list=data.data;
+            if(list==''){
                 $(".no-column").removeClass("out");
                 $(".column-body").addClass("out");
             }else{
@@ -15,15 +16,16 @@ $(function(){
                 if(data.rows>2){
                     $(".crate-column-btn").addClass("crate-column-btn-no")
                 }
-                for(var i=0;i<data.data.length;i++){
+                for(var i=0,len=list.length;i<len;i++){
+                    var change_v=list[i];
                     html+=`
                     <li class="box-sizing">
                         <div class="inline-block column-group-num">${i+1}</div>
-                        <div class="inline-block column-group-msg"  data-id="${data.data[i].id}">
-                            <div>${data.data[i].specialColumnName}</div>
-                            <div>${data.data[i].specialColumnVideoNumber}篇视频</div>
+                        <div class="inline-block column-group-msg"  data-id="${change_v.id}">
+                            <div>${change_v.specialColumnName}</div>
+                            <div>${change_v.specialColumnVideoNumber}篇视频</div>
                         </div>
-                        <div class="inline-block column-group-more" data-num="${data.data[i].specialColumnVideoNumber}" data-id="${data.data[i].id}" data-name="${data.data[i].specialColumnName}"><img src="../img/column-mone.png" alt=""></div>
+                        <div class="inline-block column-group-more" data-num="${change_v.specialColumnVideoNumber}" data-id="${change_v.id}" data-name="${change_v.specialColumnName}"><img src="../img/column-mone.png" alt=""></div>
                     </li>`
                 }
                 $(".column-group").html(html);

@@ -50,7 +50,7 @@ $(function(){
                 <img src="${headimage(questionUser.headImage)}" alt="" onerror=src="../img/user.png"  class="look-hp-image"  data-role="${questionUser.role}" data-phone="${questionUser.phoneNumber}">
                 <div class="inline-block">
                     <div class="user-name">
-                       ${realName||"匿名用户"}
+                       ${realName.length>11?realName.slice(0,11)+"...":realName||"匿名用户"}
                         <div class="user-grade inline-block zx-detail-grade">
                             <img src="${score_img}" alt="">
                         </div>
@@ -126,13 +126,16 @@ $(function(){
                         <img src="${headimage(answewrUser[m].headImage)}" alt="" onerror=src="../img/user.png"   class="look-hp-image" data-role="${answewrUser[m].role}" data-phone="${answewrUser[m].phoneNumber}">
                         <div class="inline-block ${zxs_role}">
                             <div class="user-name">
-                                ${answewrUser[m].userName||"匿名用户"}
-                                <div class="inline-block zxs-grade">
+                                ${get_name(answewrUser[m]).length>15?get_name(answewrUser[m]).slice(0,15)+"...":get_name(answewrUser[m])}
+                                <div class="inline-block zxs-grade ${answewrUser[m].role!=3?'':'out'}">
                                     <img src="../img/icon-expert icon.png" alt="">
                                     ${answewrUser[m].levelName}
                                 </div>
                             </div>
-                            <div class="zx-detail-date">${answewrUser[m].counselorDuty}</div>
+                            <div class="zx-detail-date ${answewrUser[m].role!=3?'':'out'}">${answewrUser[m].counselorDuty}</div>
+                            <div class="fans-zw ${answewrUser[m].role==3?'':'out'}">
+                                    <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                             </div>
                         </div>
                         <div class="inline-block ${user_role}">
                             <div class="user-name">
@@ -207,13 +210,16 @@ $(function(){
                                     <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${headimage(all_usermsg.headImage)}" alt="" onerror=src="../img/user.png">
                                     <div class="inline-block ${zxs_role}">
                                         <div class="user-name">
-                                            ${data.userName||"匿名用户"}
-                                            <div class="inline-block zxs-grade">
+                                            ${get_name(data).length>15? get_name(data).slice(0,15)+"...":get_name(data)}
+                                            <div class="inline-block zxs-grade ${data.role!=3?'':'out'}">
                                                 <img src="../img/icon-expert icon.png" alt="">
                                                 ${data.levelName}
                                             </div>
                                         </div>
-                                        <div class="zx-detail-date">${data.counselorDuty}</div>
+                                        <div class="zx-detail-date ${data.role!=3?'':'out'}">${data.counselorDuty}</div>
+                                        <div class="fans-zw ${data.role==3?'':'out'}">
+                                            <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                                        </div>
                                     </div>
                                     <div class="inline-block ${user_role}">
                                             <div class="user-name">
@@ -268,9 +274,12 @@ $(function(){
                     <div class="inline-block">
                         <div class="user-name">
                             ${realName||"匿名用户"}
-                            <div class="user-grade inline-block zx-detail-grade">
+                            <div class="user-grade inline-block zx-detail-grade ${discussUsers[k].role!=3?'':'out'}">
                                 <img src="${score_img}" alt="">
                             </div>
+                        </div>
+                        <div class="fans-zw ${discussUsers[k].role==3?'':'out'}">
+                             <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
                         </div>
                     </div>
                 </div>
@@ -293,13 +302,16 @@ $(function(){
                 var realName=get_name(discussUsers[k]);
                 dis_html+=`<div class="box-sizing">
                 <div class="clist-head">
-                    <img src="${headimage(discussUsers[k].headImage)}" alt="" onerror=src="../img/user.png" class="look-hp-image"   data-role="${discussUsers[k].role}" data-phone="${discussUsers[k].userUuid}">
+                    <img src="${headimage(discussUsers[k].headImage)}" alt="" onerror=src="../img/user.png" class="look-hp-image" data-role="${discussUsers[k].role}" data-phone="${discussUsers[k].userUuid}">
                     <div class="inline-block">
                         <div class="user-name">
                             ${realName||"匿名用户"}
-                            <div class="user-grade inline-block zx-detail-grade">
+                            <div class="user-grade inline-block zx-detail-grade ${discussUsers[k].role!=3?'':'out'}">
                                 <img src="${score_img}" alt="">
                             </div>
+                        </div>
+                        <div class="fans-zw ${discussUsers[k].role==3?'':'out'}">
+                             <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
                         </div>
                     </div>
                 </div>

@@ -330,10 +330,10 @@ $(function(){
                             distance=marker_data[k].distance;
                         }
                         var look_num='';
-                        if(marker_data[k].views&&marker_data[k].views.length>4){
-                            look_num=parseFloat(marker_data[k].views/10000).toFixed(1)+"万";
+                        if(marker_data[k].detailedViews&&marker_data[k].detailedViews.length>4){
+                            look_num=parseFloat(marker_data[k].detailedViews/10000).toFixed(1)+"万";
                         }else{
-                            look_num=marker_data[k].views||0;
+                            look_num=marker_data[k].detailedViews||0;
                         }
                         var picture=marker_data[k].picture.split(",");
                         var html=`

@@ -115,7 +115,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 .weui-tabbar__icon {
     width: 4rem;
     height: 4rem;
-    margin-top: 1.8rem;
+    margin-top: 1rem;
     box-sizing: border-box
 }
 
@@ -432,7 +432,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     border: 2px solid rgba(0, 0, 0, 0.12);
     border-top: 4px solid rgba(0, 0, 0, 0.12);
     border-left: 4px solid rgba(0, 0, 0, 0.12);
-    box-shadow: .3rem .3rem .3rem rgba(0, 0, 0, 0.12);
+    box-shadow: 0.5rem 0.5rem 0.6rem rgba(0, 0, 0, 0.12);
     vertical-align: top
 }
 
@@ -1905,10 +1905,20 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     border-radius:6px;
     padding:2.8rem;
 }
-.look-peo-num img{
+.look-peo-img>div{
+    position: relative;
+}
+.look-peo-img-list{
     width:6.5rem;
     height:6.5rem;
     border-radius: 50%;
+}
+.look-p-img-rz{
+    width: 2.4rem;
+    height:2.4rem;
+    position: absolute;
+    bottom:0;
+    right:0;
 }
 .look-peo-num>div:nth-child(1){
     display: flex;
@@ -2456,4 +2466,14 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 .card-list:before{
     display: table;
     content: '';
+}
+.relevant-wd,.relevant-ss{
+    border-top: 1.6rem solid #f2f2f2;
+    display: none;
+}
+.relevant-wd-title{
+    color:#333;
+    font-size: 3.2rem;
+    padding:3rem;
+    font-weight: bold;
 }

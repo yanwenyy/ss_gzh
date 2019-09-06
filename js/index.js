@@ -10,23 +10,6 @@ function getUrlParms(name){
 $(".back").click(function(){
     window.history.go(-1);
 });
-//轮播图
-var mySwiper2 = new Swiper('.s2', {
-        autoplay:3000,//可选选项，自动滑动
-        //autoHeight: true,
-        speed: 2000,
-        roundLengths: true,
-        // pagination: '.swiper-pagination',
-        type: 'bullets',
-        paginationClickable: true,
-        loop: true, //循环播放
-        //touchRatio:1,
-        observer: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true ,//修改swiper的父元素时，自动初始化swiper
-        autoplayStopOnLast:false,
-        // nextButton: '.swiper-button-next2',
-        // prevButton: '.swiper-button-prev2',
-    });
 //大咖访谈
 $(".dkft-more").click(function(){
         window.location.href="../html/cafe-interview.html"
@@ -46,7 +29,11 @@ $(".smw_btn_all").click(function(){
 //用户头像点击
 $("body").on("click",".look-hp-image",function(){
         var role=$(this).attr("data-role"),phone=$(this).attr("data-phone");
-        window.location.href="personal-new.html?phone="+phone;
+        if(role==3){
+            window.location.href="personal-official.html?phone="+phone;
+        }else{
+            window.location.href="personal-new.html?phone="+phone;
+        }
     });
 //时间转换
 function add0(m){return m<10?'0'+m:m }
@@ -59,6 +46,51 @@ function format(shijianchuo) {
     var mm = time.getMinutes();
     var s = time.getSeconds();
     return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+}
+//视频头条时间显示
+function timeago(dateTimeStamp){
+    // dateTimeStamp是一个时间毫秒，注意时间戳是秒的形式，在这个毫秒的基础上除以1000，就是十位数的时间戳。13位数的都是时间毫秒。
+    var minute=1000*60;      //把分，时，天，周，半个月，一个月用毫秒表示
+    var  hour=minute*60;
+    var day=hour*24;
+    var week=day*7;
+    var halfamonth=day*15;
+    var month=day*30;
+    var result='';
+    var  now=new Date().getTime();   //获取当前时间毫秒
+    var diffValue=now - dateTimeStamp;//时间差
+    if(diffValue<0){return;}
+
+    var  minC=diffValue / minute;  //计算时间差的分，时，天，周，月
+    var  hourC=diffValue / hour;
+    var  dayC=diffValue / day;
+    var  weekC=diffValue / week;
+    var  monthC=diffValue / month;
+    var time = new Date(dateTimeStamp);
+    var y = time.getFullYear();
+    var m = time.getMonth()+1;
+    var d = time.getDate();
+    if(monthC>=12){
+        result=y+'-'+add0(m)+'-'+add0(d);
+    }
+    // if(monthC>=1){
+    //     result="" + parseInt(monthC) + "月前";
+    // }
+    // else if(weekC>=1){
+    //     result="" + parseInt(weekC) + "周前";
+    // }
+    else if(dayC>=1){
+        // result=""+ parseInt(dayC) +"天前";
+        result=add0(m)+'-'+add0(d);
+    }
+    else if(hourC>=1){
+        result=""+ parseInt(hourC) +"小时前";
+    }
+    else if(minC>=1){
+        result=""+ parseInt(minC) +"分钟前";
+    }else
+        result="刚刚";
+    return result;
 }
 function reload_msg(ele,url_name,data,succ){
     ele.pullToRefresh({
@@ -129,6 +161,7 @@ function scroll_more(url_name,data,succ){
 }
 //用户等级
 function get_score(data,aision,vip){
+    //data=integralScore 分数
     var score_img;
     if(aision==0){
         if(vip==0){
@@ -227,7 +260,7 @@ function headimage(val){
     var src='';
     if(val&&val!=''&&val.indexOf("http")!=-1){
         src=val;
-    }else{
+    }else if(val&&val!=null){
         src=head_src+val
     }
     return src;
@@ -244,3 +277,48 @@ $(".down-app-model").click(function(){
 $(".new-user-down-app").click(function(){
    window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jieshuibao.jsb";
 });
+
+//动态加载js文件
+function loadScripts(url) {
+   if(Array.isArray(url)||Object.prototype.toString.call(url) === "[object Array]"){
+        var scripts='',
+            i=0,
+            len=url.length;
+        for(;i<len;i++){
+            var script="&lt;script src="+url[i]+">&lt;/script>";
+                script=script.replace(/&lt;/g,'<');
+            scripts+=script;
+        }
+       console.log(scripts);
+        $("body").append(scripts);
+
+   }else{
+       console.log("动态加载js文件传入的参数必须是数组");
+   }
+}
+
+//页面加载后获取code
+var code=getUrlParms("code");
+var cookieId;
+if(code!=null){
+    sessionStorage.setItem("code",code);
+    $.ajax({
+        type:"POST",
+        url:http_url.url+'/wx/getOpenid/'+code,
+        dataType: "json",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json;charset=utf-8"
+        },
+        success:function(data){
+            cookieId=data.data;
+            sessionStorage.setItem("cookieId",cookieId);
+        },
+        error:function(){
+            alert("程序出错,请重试");
+        }
+    });
+}else{
+    var cookieId="oPUdI0pZbHIYBCHUn_aQPCJAmRIU"; //晏雯
+    sessionStorage.setItem("cookieId",cookieId);
+}

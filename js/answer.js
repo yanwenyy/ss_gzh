@@ -11,7 +11,6 @@ $(function(){
         if(questionUserOwnMsg.isAnon!=0){
             img_src=headimage(questionUserOwnMsg.headImage);
         }
-        console.log(img_src);
         $(".look-hp-image").attr("src",img_src).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
         $(".user-name").html(`
              <div class="user-name">
@@ -31,9 +30,10 @@ $(function(){
         `);
         var imgs=questionUserOwnMsg.images,html="";
         if(imgs!=null){
-            for(var i=0;i<imgs.length;i++){
+            for(var i=0,len=imgs.length;i<len;i++){
+                var change_v=imgs[i];
                 html+=`
-                   <img src="${question_src+imgs[i]}" alt="">
+                   <img src="${question_src+change_v}" alt="">
                 `;
             }
         }

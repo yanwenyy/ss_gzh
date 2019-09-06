@@ -1,5 +1,5 @@
 $(function(){
-    var phone=getUrlParms("phone"),code=getUrlParms("code"),to=getUrlParms("to"),msg=getUrlParms("msg");
+    var phone=getUrlParms("phone"),code=getUrlParms("code"),to=getUrlParms("to"),msg=getUrlParms("msg"),sid=getUrlParms("sid");
     count_end=10;count_start=1;
     if(code==1){
         $(".back").click(function(){
@@ -25,6 +25,8 @@ $(function(){
                 "praise":'1',
                 "userId": phone,
             },'p-xh');
+        }else if(msg=="p-zl"){
+            $(".column-list-main").show();
         }
     }
     var users='',self=0;
@@ -91,9 +93,10 @@ $(function(){
         ajax(http_url.url+"/brush/allSpecialcolumn",{
             "userId":phone
         },function(data){
-            var html='';
-            for(var i=0;i<data.data.length;i++){
-                html+=`<div class="inline-block ${i==0?'column-list-tab-act':''}" data-id="${data.data[i].id}">${data.data[i].specialColumnName} </div>`
+            var html='',datas=data.data;
+            for(var i=0,len=datas.length;i<len;i++){
+                var d_change=datas[i];
+                html+=`<div class="inline-block ${sid&&sid==d_change.id? 'column-list-tab-act':(!sid&&i==0?'column-list-tab-act':'')}" data-id="${d_change.id}">${d_change.specialColumnName} </div>`
             }
             $(".column-list-tab").html(html);
             list("/brush/brushVideorRequirement",{
@@ -111,7 +114,7 @@ $(function(){
         var code=$(this).attr("data-html");
         $(".personal-main-detail>div").hide();
         $("."+code).show();
-        count_end=10;count_start=1,scroll_status=true,num=1;
+        count_end=10;count_start=1;scroll_status=true;num=1;
         switch (code){
             case 'p-ss':
                 list("/brush/brushVideorRequirement",{
@@ -181,30 +184,30 @@ $(function(){
     function list(jk,cc,sel){
         cc.maxId=10;cc.sinceId=1;
         ajax(http_url.url+jk,cc,function(data){
-            var html='';
-            if(data.data.length<3&&(sel=="p-ss"||sel=="column-list-main-zl"||sel=="p-xh")){
+            var html='',mine_data=data.data;
+            if(mine_data.length<3&&(sel=="p-ss"||sel=="column-list-main-zl"||sel=="p-xh")){
                 $(".column-list-main").css("column-count","1")
             }
-            for(var i=0;i<data.data.length;i++){
-
+            for(var i=0,len=mine_data.length;i<len;i++){
+                var change_m=mine_data[i];
                 if(sel=="p-ss"||sel=="column-list-main-zl"||sel=="p-xh"){
-                    html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
-                        <img src="${cover_src+data.data[i].image}" alt="">
+                    html+=`<div class="column-list-div inline-block ${change_m.checkStatus!=2?'':'out'}"  data-checkStatus="${change_m.checkStatus}" data-id="${change_m.id}" data-vid="${change_m.vid}">
+                        <img src="${cover_src+change_m.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
+                            <div class="column-list-title">${change_m.title.length>18?change_m.title.slice(0,18)+"..":change_m.title}</div>
                             <div class="column-list-name">
-                                <img src="${headimage(data.data[i].headImage)}" alt="">
-                                <div class="inline-block">${get_name(data.data[i])}</div>
+                                <img src="${headimage(change_m.headImage)}" alt="">
+                                <div class="inline-block">${get_name(change_m).length>8?get_name(change_m).slice(0,8)+"...":get_name(change_m)}</div>
                             </div>
                         </div>
                     </div>`
                 }else if(sel=="p-sp"){
-                    html+=`<div class="channel-relevant-list" data-charge="${data.data[i].charge}" data-classify_id="${data.data[i].classify_id}" data-id="${data.data[i].id}" data-ifClassifyVip="${data.data[i].ifClassifyVip}"  data-userId="${data.data[i].userId}">  
-                            <img src="${cover_src+data.data[i].cover}" alt="">
+                    html+=`<div class="channel-relevant-list" data-charge="${change_m.charge}" data-classify_id="${change_m.classify_id}" data-id="${change_m.id}" data-ifClassifyVip="${change_m.ifClassifyVip}"  data-userId="${change_m.userId}">  
+                            <img src="${cover_src+change_m.cover}" alt="">
                             <div class="inline-block channel-relevant-list-msg">
-                                <div>${data.data[i].title.length>17?data.data[i].title.slice(0,17)+"..":data.data[i].title}</div>
-                                <div>${data.data[i].classify_name}</div>
-                                <div class="orange ${data.data[i].charge==0||data.data[i].ifClassifyVip==0?'out':''}"">频道会员免费</div>
+                                <div>${change_m.title.length>17?change_m.title.slice(0,17)+"..":change_m.title}</div>
+                                <div>${change_m.classify_name}</div>
+                                <div class="orange ${change_m.charge==0||change_m.ifClassifyVip==0?'out':''}"">频道会员免费</div>
                             </div>
                         </div>`
                 }else if(sel=="p-wd"){
@@ -256,26 +259,28 @@ $(function(){
     function list_more(jk,cc,sel){
         ajax(http_url.url+jk,cc,function(data){
             var html='';
-            if(data.data!=''){
-                for(var i=0;i<data.data.length;i++){
-                    if(sel=="p-ss"||sel=="p-zl"||sel=="p-xh"){
-                        html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
-                        <img src="${cover_src+data.data[i].image}" alt="">
+            if(mine_data!=''){
+                var mine_data=data.data;
+                for(var i=0,len=mine_data.length;i<len;i++){
+                    var change_m=mine_data[i];
+                    if(sel=="p-ss"||sel=="column-list-main-zl"||sel=="p-xh"){
+                        html+=`<div class="column-list-div inline-block ${change_m.checkStatus!=2?'':'out'}"  data-checkStatus="${change_m.checkStatus}" data-id="${change_m.id}" data-vid="${change_m.vid}">
+                        <img src="${cover_src+change_m.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
+                            <div class="column-list-title">${change_m.title.length>18?change_m.title.slice(0,18)+"..":change_m.title}</div>
                             <div class="column-list-name">
-                                <img src="${headimage(data.data[i].headImage)}" alt="">
-                                <div class="inline-block">${get_name(data.data[i])}</div>
+                                <img src="${headimage(change_m.headImage)}" alt="">
+                                <div class="inline-block">${get_name(change_m).length>8?get_name(change_m).slice(0,8)+"...":get_name(change_m)}</div>
                             </div>
                         </div>
                     </div>`
                     }else if(sel=="p-sp"){
-                        html+=`<div class="channel-relevant-list" data-charge="${data.data[i].charge}" data-classify_id="${data.data[i].classify_id}" data-id="${data.data[i].id}" data-ifClassifyVip="${data.data[i].ifClassifyVip}"  data-userId="${data.data[i].userId}">
-                            <img src="${cover_src+data.data[i].cover}" alt="">
+                        html+=`<div class="channel-relevant-list" data-charge="${change_m.charge}" data-classify_id="${change_m.classify_id}" data-id="${change_m.id}" data-ifClassifyVip="${change_m.ifClassifyVip}"  data-userId="${change_m.userId}">  
+                            <img src="${cover_src+change_m.cover}" alt="">
                             <div class="inline-block channel-relevant-list-msg">
-                                <div>${data.data[i].title.length>17?data.data[i].title.slice(0,17)+"..":data.data[i].title}</div>
-                                <div>${get_name(data.data[i])}</div>
-                                <div class="orange ${data.data[i].charge==0||data.data[i].ifClassifyVip==0?'':'out'}"">频道会员免费</div>
+                                <div>${change_m.title.length>17?change_m.title.slice(0,17)+"..":change_m.title}</div>
+                                <div>${change_m.classify_name}</div>
+                                <div class="orange ${change_m.charge==0||change_m.ifClassifyVip==0?'out':''}"">频道会员免费</div>
                             </div>
                         </div>`
                     }else if(sel=="p-wd"){
@@ -370,7 +375,11 @@ $(function(){
     });
     //刷刷列表点击
     $("body").on("click",".column-list-div",function(){
-        window.location.href="brush-video.html?vid="+$(this).attr("data-vid")+"&id="+$(this).attr("data-id");
+        if(self==0){
+            window.location.href="brush-video.html?vid="+$(this).attr("data-vid")+"&id="+$(this).attr("data-id");
+        }else if(self==1){
+            window.location.href="brush-nopass-video.html?vid="+$(this).attr("data-vid")+"&id="+$(this).attr("data-id");
+        }
     });
     //专栏tab点击
     $("body").on("click",".column-list-tab>div",function(){
@@ -483,9 +492,10 @@ $(function(){
         function get_price(data){
             console.log(data);
             var list=data.data,html="";
-            for(var i=0;i<list.length;i++){
+            for(var i=0,len=list.length;i<len;i++){
+                var change_v=list[i];
                 html+=`
-                    <li data-money="${list[i].money}">${list[i].name}: ${list[i].money}元/次</li>
+                    <li data-money="${change_v.money}">${change_v.name}: ${change_v.money}元/次</li>
                 `;
             }
             html+=`<div class="red" style="font-size:2.4rem;padding:1rem">注: 该资费标准是根据用户当前等级制度,等级越高咨询费用越高</div>`

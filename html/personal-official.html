@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <title>官方主页</title>
+    <style>
+        .personal-new-body{
+            background: #fff;
+        }
+        .jsb_header{
+            background: transparent;
+            color:#fff;
+            border: none;
+            position: absolute;
+            box-shadow:none;
+        }
+        .p-zl,.p-ss,.p-sp{
+            display: none;
+        }
+        .personal-head-tab-list,.personal-head-tab-list>div:first-child{
+            color:#fff;
+        }
+        .personal-head{
+            margin-bottom: 0;
+        }
+        .personal-main-msg{
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+            margin-top: -1rem;
+        }
+        .channel-page-li{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header channel-header">
+    <img src="../img/personal-back.png" alt="" class="back">
+    官方主页
+</div>
+<div class="personal-new-body user-p">
+    <div class="personal-head office-personal-head">
+        <div class="personal-head-msg">
+            <img src="../img/user.png" alt="" class="personal-img-head"  onerror=src="../img/user.png">
+            <img src="../img/office-p-rz.png" class="office-p-rz" alt="">
+            <div class="inline-block office-p-name">国家税务总局</div>
+        </div>
+        <div class="office-p-adress">
+            <img src="../img/personal-office-dw.png" alt="">
+            <div class="inline-block">北京市海淀区田村街雅士合金公寓8号楼</div>
+        </div>
+        <div class="personal-head-tab box-sizing">
+            <div class="inline-block personal-head-tab-list atten-click" data-url="mine-fans.html">
+                <div class="new-p-gz">122</div>
+                <div>粉丝</div>
+            </div>
+            <span class="gray-line inline-block"></span>
+            <div class="inline-block personal-head-tab-list">
+                <div class="new-p-fs">122</div>
+                <div>视频</div>
+            </div>
+            <div class="inline-block office-p-attention office-p-attention-add">+关注</div>
+            <div class="inline-block office-p-edit out">编辑资料</div>
+        </div>
+    </div>
+    <div class="personal-main-msg box-sizing">
+        <div class="personal-main-tab">
+            <div class="inline-block personal-main-tab-act" data-html="p-sptt">视频头条<span class="new-p-sptt-num">(0)</span></div>
+            <div class="inline-block" data-html="p-ss">刷刷<span class="new-p-ss-num">(0)</span></div>
+            <div class="inline-block" data-html="p-xh">喜欢 <span class="new-p-xh-num">(0)</span></div>
+            <div class="inline-block p-zl-title" data-html="p-zl">专栏 <span class="new-p-zl-num">(0)</span></div>
+            <div class="inline-block p-sp-title" data-html="p-sp">视频 <span class="new-p-sp-num">(<span>0</span>)</span></div>
+        </div>
+        <div class="personal-main-detail">
+            <div class="p-sptt">
+                <div class="column-list-tab list-tab-sptt">
+                    <!--<div class="inline-block column-list-tab-act">政策发布会 </div>-->
+                </div>
+                <div class="column-list-main-sptt">
+                    <!--<div class="column-list-div inline-block">-->
+                        <!--<img src="../img/ceshi.jpg" alt="">-->
+                        <!--<div class="box-sizing">-->
+                            <!--<div class="column-list-title">个人所得税专项附-加扣 暂行办法解读个人所得税专项附-加扣 暂行办法解读</div>-->
+                            <!--<div class="column-list-name">-->
+                                <!--<img src="../img/user.png" alt="">-->
+                                <!--<div class="inline-block">董春辉</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="column-list-main p-ss">
+                <!--<div class="column-list-div inline-block">-->
+                    <!--<img src="../img/ceshi.jpg" alt="">-->
+                    <!--<div class="box-sizing">-->
+                        <!--<div class="column-list-title">个人所得税专项附-加扣 暂行办法解读个人所得税专项附-加扣 暂行办法解读</div>-->
+                        <!--<div class="column-list-name">-->
+                            <!--<img src="../img/user.png" alt="">-->
+                            <!--<div class="inline-block">董春辉</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div class="p-zl">
+                <div class="column-list-tab list-tab-zl">
+                    <!--<div class="inline-block column-list-tab-act">新闺蜜谁说 </div>-->
+                </div>
+                <div class="column-list-main column-list-main-zl">
+
+                </div>
+            </div>
+            <div class="column-list-main p-xh">
+
+            </div>
+            <div class="p-sp">
+                <!--<div class="channel-relevant-list">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<div class="inline-block channel-relevant-list-msg">-->
+                <!--<div>纳税人两种重要额程序性权企业..</div>-->
+                <!--<div>贾老师</div>-->
+                <!--<div class="orange">频道会员免费</div>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/personal-office.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

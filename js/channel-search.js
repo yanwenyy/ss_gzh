@@ -5,11 +5,12 @@ $(function(){
         $(".channel-search-history").removeClass("out");
         if(channel_search_history!=''){
             var html='';
-            for(var i=0;i<channel_search_history.length;i++){
+            for(var i=0,len=channel_search_history.length;i<len;i++){
+                var change_v=channel_search_history[i];
                 html+=`
                 <li>
-                    <div class="inline-block c-s-h-msg">${channel_search_history[i]}</div>
-                    <div class="inline-block c-s-h-del" data-val="${channel_search_history[i]}">x</div>
+                    <div class="inline-block c-s-h-msg">${change_v}</div>
+                    <div class="inline-block c-s-h-del" data-val="${change_v}">x</div>
                 </li>
             `;
             }
@@ -50,17 +51,18 @@ $(function(){
             "sinceId": count_start,
             "content":val
         },function(data){
-            var html='';
-            if(data.data&&data.data!=''){
-                for(var i=0;i<data.data.length;i++){
+            var html='',list=data.data;
+            if(list&&list!=''){
+                for(var i=0,len=list.length;i<len;i++){
+                    var change_v=list[i];
                     html+=`
-                    <div class="channel-page-li" data-id="${data.data[i].classify_id}" data-charge="${data.data[i].charge}" data-vid="${data.data[i].id}" data-userid="${data.data[i].userId}">
-                        <img src="${cover_src+data.data[i].cover}" alt="">
-                        <div class="channel-page-li-title">${data.data[i].title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                    <div class="channel-page-li" data-id="${change_v.classify_id}" data-charge="${change_v.charge}" data-vid="${change_v.id}" data-userid="${change_v.userId}">
+                        <img src="${cover_src+change_v.cover}" alt="">
+                        <div class="channel-page-li-title">${change_v.title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
                         <div class="channel-page-li-user">
-                            <img src="${headimage(data.data[i].headImage)}" onerror=src="../img/user.png" alt="">
-                            <div class="inline-block channel-page-li-username">${get_name(data.data[i])}</div>
-                            <div class="inline-block orange channel-page-li-userbtn ${data.data[i].charge==0||vip=='yes'?'out':''}">频道会员免费</div>
+                            <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                            <div class="inline-block channel-page-li-username">${get_name(data.data[i]).replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                            <div class="inline-block orange channel-page-li-userbtn ${change_v.charge==0||vip=='yes'?'out':''}">频道会员免费</div>
                         </div>
                     </div>`
                 }
@@ -78,17 +80,18 @@ $(function(){
             "sinceId": count_start,
             "content":val
         },function(data){
-            var html='';
-            if(data.data!=''){
-                for(var i=0;i<data.data.length;i++){
+            var html='',list=data.data;
+            if(list&&list!=''){
+                for(var i=0,len=list.length;i<len;i++){
+                    var change_v=list[i];
                     html+=`
-                    <div class="channel-page-li" data-id="${data.data[i].classify_id}" data-charge="${data.data[i].charge}" data-vid="${data.data[i].id}" data-userid="${data.data[i].userId}">
-                        <img src="${cover_src+data.data[i].cover}" alt="">
-                        <div class="channel-page-li-title">${data.data[i].title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                    <div class="channel-page-li" data-id="${change_v.classify_id}" data-charge="${change_v.charge}" data-vid="${change_v.id}" data-userid="${change_v.userId}">
+                        <img src="${cover_src+change_v.cover}" alt="">
+                        <div class="channel-page-li-title">${change_v.title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
                         <div class="channel-page-li-user">
-                            <img src="${headimage(data.data[i].headImage)}" onerror=src="../img/user.png" alt="">
-                            <div class="inline-block channel-page-li-username">${get_name(data.data[i])}</div>
-                            <div class="inline-block orange channel-page-li-userbtn ${data.data[i].charge==0||vip=='yes'?'out':''}">频道会员免费</div>
+                            <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                            <div class="inline-block channel-page-li-username">${get_name(data.data[i]).replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                            <div class="inline-block orange channel-page-li-userbtn ${change_v.charge==0||vip=='yes'?'out':''}">频道会员免费</div>
                         </div>
                     </div>`
                 }

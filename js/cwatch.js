@@ -19,7 +19,7 @@ $(function(){
                 <img src="${headimage(questionUser.headImage)}" alt="" onerror=src="../img/user.png">
                 <div class="inline-block">
                     <div class="user-name">
-                        ${realName||"匿名用户"}
+                        ${realName.length>11?realName.slice(0,11)+"...":realName||"匿名用户"}
                         <div class="user-grade inline-block zx-detail-grade">
                             <img src="${score_img}" alt="">
                         </div>
@@ -52,10 +52,15 @@ $(function(){
         console.log(data);
         var OnLookCountDetail=data.OnLookCountDetail,html='';
         for(var i=0;i<8;i++){
-            var v_html='';
-            if(OnLookCountDetail[i]){
+            var v_html='',change_v=OnLookCountDetail[i];
+            if(change_v){
+                // v_html=`
+                // <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png" >`;
                 v_html=`
-                <img src="${headimage(OnLookCountDetail[i].headImage)}" alt="" onerror=src="../img/user.png" >`;
+                 <div class="inline-block">
+                       <img class="look-peo-img-list" src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png" >
+                       <img class="look-p-img-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                   </div>`;
             }else{
                 v_html='<img src="../img/csq-moren.png" alt="">'
             }

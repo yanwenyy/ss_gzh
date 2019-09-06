@@ -78,55 +78,56 @@ $(function(){
     }
     $(".city-name-m").html(city||province||"全国");
     function get_msg(data){
-        console.log(data);
+        // console.log(data);
         var datas=data.datas,html='';
-        for(var i=0;i<datas.length;i++){
+        for(var i=0,len=datas.length;i<len;i++){
+            var change_v=datas[i];
             var company_img='';
-            if(datas[i].type==2){
+            if(change_v.type==2){
                 company_img="../img/icon-map-list-red.png";
-            }else if(datas[i].type==3){
+            }else if(change_v.type==3){
                 company_img="../img/icon-map-list-blue.png";
             }
             var distance="";
-            if(datas[i].distance>1000){
-                distance=parseFloat(datas[i].distance/1000).toFixed(1)+"k"
+            if(change_v.distance>1000){
+                distance=parseFloat(change_v.distance/1000).toFixed(1)+"k"
             }else{
-                distance=datas[i].distance;
+                distance=change_v.distance;
             }
             var look_num='';
-            if(datas[i].views&&datas[i].views.length>4){
-                look_num=parseFloat(datas[i].views/10000).toFixed(1)+"万";
+            if(change_v.detailedViews&&change_v.detailedViews.length>4){
+                look_num=parseFloat(change_v.detailedViews/10000).toFixed(1)+"万";
             }else{
-                look_num=datas[i].views||0;
+                look_num=change_v.detailedViews||0;
             }
-            var picture=datas[i].picture.split(",");
+            var picture=change_v.picture&&change_v.picture.split(",");
             html+=`
-                <div class="map-marker-msg box-sizing" data-id="${datas[i].id}">
+                <div class="map-marker-msg box-sizing" data-id="${change_v.id}">
                     <div>
-                        <img src="${datas[i].videoCover?cover_src+datas[i].videoCover:cover_src+picture[0]}" data-id="${datas[i].id}" class="marker-msg-img jglb_click"  data-vid="${datas[i].videoId}" alt="">
+                        <img src="${change_v.videoCover?cover_src+change_v.videoCover:cover_src+picture[0]}" data-id="${change_v.id}" class="marker-msg-img jglb_click"  data-vid="${change_v.videoId}" alt="">
                         <div class="inline-block marker-msg-main">
-                            <div class="marker-msg-title jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">${datas[i].name}</div>
-                            <div class="marker-msg-distance jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">
+                            <div class="marker-msg-title jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">${change_v.name}</div>
+                            <div class="marker-msg-distance jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">
                                 <div class="inline-block">
                                     <img src="${company_img}" alt="">
                                 </div>
                                 
-                                <div class="distance-grounp jglb_click"  data-vid="${datas[i].videoId}"  data-id="${datas[i].id}">
+                                <div class="distance-grounp jglb_click"  data-vid="${change_v.videoId}"  data-id="${change_v.id}">
                                       <div class="inline-block"><span>${look_num}</span>人浏览</div>
                                       <div class="inline-block">距您${distance}m</div>
                                 </div>
                             </div>
                             <div class="marker-msg-phone">
-                                <div class="inline-block lx-phone"><a  href="tel:${datas[i].contactNo}">${datas[i].contactNo}<img src="../img/mer-hzhb-phone.png" alt=""></a></div>
+                                <div class="inline-block lx-phone"><a  href="tel:${change_v.contactNo}">${change_v.contactNo}<img src="../img/mer-hzhb-phone.png" alt=""></a></div>
                             </div>
                         </div>
                     </div>
                     <div class="marker-msg-footer">
-                        <div class="inline-block jglb_click"  data-vid="${datas[i].videoId}"  data-id="${datas[i].id}">
+                        <div class="inline-block jglb_click"  data-vid="${change_v.videoId}"  data-id="${change_v.id}">
                             <div class="inline-block" style=""><img src="../img/icon-map-bottom-position.png" alt=""></div>
-                            <div class="inline-block" style="line-height: 3.3rem;width: 80%;vertical-align: middle">${datas[i].address}</div>
+                            <div class="inline-block" style="line-height: 3.3rem;width: 80%;vertical-align: middle">${change_v.address}</div>
                         </div>
-                        <div class="inline-block daohang" data-lat="${datas[i].latitude}" data-lng="${datas[i].longitude}">
+                        <div class="inline-block daohang" data-lat="${change_v.latitude}" data-lng="${change_v.longitude}">
                              <img src="../img/icon-map-leading2.png"  style="margin-top: -0.3rem"  alt="">
                              <!--<span class="orange">导航</span>-->
                         </div>
@@ -137,56 +138,57 @@ $(function(){
         $(".merhcanism-list-msg").html(html);
     }
     function get_msg_more(data){
-        console.log(data);
+        // console.log(data);
         var datas=data.datas,html='';
         if(datas!=""){
-            for(var i=0;i<datas.length;i++){
+            for(var i=0,len=datas.length;i<len;i++){
+                var change_v=datas[i];
                 var company_img='';
-                if(datas[i].type==2){
+                if(change_v.type==2){
                     company_img="../img/icon-map-list-red.png";
-                }else if(datas[i].type==3){
+                }else if(change_v.type==3){
                     company_img="../img/icon-map-list-blue.png";
                 }
                 var distance="";
-                if(datas[i].distance>1000){
-                    distance=parseFloat(datas[i].distance/1000).toFixed(1)+"k"
+                if(change_v.distance>1000){
+                    distance=parseFloat(change_v.distance/1000).toFixed(1)+"k"
                 }else{
-                    distance=datas[i].distance;
+                    distance=change_v.distance;
                 }
                 var look_num='';
-                if(datas[i].views&&datas[i].views.length>4){
-                    look_num=parseFloat(datas[i].views/10000).toFixed(1)+"万";
+                if(change_v.detailedViews&&change_v.detailedViews.length>4){
+                    look_num=parseFloat(change_v.detailedViews/10000).toFixed(1)+"万";
                 }else{
-                    look_num=datas[i].views||0;
+                    look_num=change_v.detailedViews||0;
                 }
-                var picture=datas[i].picture.split(",");
+                var picture=change_v.picture.split(",");
                 html+=`
-                <div class="map-marker-msg box-sizing" data-id="${datas[i].id}">
+                <div class="map-marker-msg box-sizing" data-id="${change_v.id}">
                     <div>
-                        <img src="${datas[i].videoCover?cover_src+datas[i].videoCover:cover_src+picture[0]}" data-id="${datas[i].id}" class="marker-msg-img jglb_click"  data-vid="${datas[i].videoId}" alt="">
+                        <img src="${change_v.videoCover?cover_src+change_v.videoCover:cover_src+picture[0]}" data-id="${change_v.id}" class="marker-msg-img jglb_click"  data-vid="${change_v.videoId}" alt="">
                         <div class="inline-block marker-msg-main">
-                            <div class="marker-msg-title jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">${datas[i].name}</div>
-                            <div class="marker-msg-distance jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">
+                            <div class="marker-msg-title jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">${change_v.name}</div>
+                            <div class="marker-msg-distance jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">
                                 <div class="inline-block">
                                     <img src="${company_img}" alt="">
                                 </div>
                                 
-                                <div class="distance-grounp jglb_click"  data-vid="${datas[i].videoId}"  data-id="${datas[i].id}">
+                                <div class="distance-grounp jglb_click"  data-vid="${change_v.videoId}"  data-id="${change_v.id}">
                                       <div class="inline-block"><span>${look_num}</span>人浏览</div>
                                       <div class="inline-block">距您${distance}m</div>
                                 </div>
                             </div>
                             <div class="marker-msg-phone">
-                                <div class="inline-block lx-phone"><a  href="tel:${datas[i].contactNo}">${datas[i].contactNo}<img src="../img/mer-hzhb-phone.png" alt=""></a></div>
+                                <div class="inline-block lx-phone"><a  href="tel:${change_v.contactNo}">${change_v.contactNo}<img src="../img/mer-hzhb-phone.png" alt=""></a></div>
                             </div>
                         </div>
                     </div>
                     <div class="marker-msg-footer">
-                        <div class="inline-block jglb_click"  data-vid="${datas[i].videoId}" data-id="${datas[i].id}">
+                        <div class="inline-block jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">
                             <div class="inline-block" style=""><img src="../img/icon-map-bottom-position.png" alt=""></div>
-                            <div class="inline-block" style="line-height: 3.3rem;width: 80%;vertical-align: middle">${datas[i].address}</div>
+                            <div class="inline-block" style="line-height: 3.3rem;width: 80%;vertical-align: middle">${change_v.address}</div>
                         </div>
-                        <div class="inline-block daohang" data-lat="${datas[i].latitude}" data-lng="${datas[i].longitude}">
+                        <div class="inline-block daohang" data-lat="${change_v.latitude}" data-lng="${change_v.longitude}">
                              <img src="../img/icon-map-leading2.png" style="margin-top: -0.3rem" alt="">
                              <span class="blue">导航</span>
                         </div>

@@ -2,7 +2,7 @@ $(function(){
     var phones = getQueryString('phone'),
         firmId = getQueryString('firmId'),
         inviteUserId = getQueryString('inviteUserId');
-    console.log(phones+'--'+firmId+'--'+inviteUserId)
+    // console.log(phones+'--'+firmId+'--'+inviteUserId)
 
     //确定
     $(".user-rig-next-btn").on("click",function(){

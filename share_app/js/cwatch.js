@@ -31,7 +31,7 @@ $(function(){
                 <img src="${headimage(questionUser.headImage)}" alt="" onerror=src="../img/user.png">
                 <div class="inline-block">
                     <div class="user-name">
-                        ${questionUser.realName||""}
+                        ${get_name(questionUser).length>9?get_name(questionUser).slice(0,9)+"...":get_name(questionUser)||""}
                         <div class="user-grade inline-block zx-detail-grade">
                             <img src="${score_img}" alt="">
                         </div>
@@ -67,6 +67,12 @@ $(function(){
                                 ${data.answerUser.levelName||''}
                             </div>
                         </div>
+                        <div class="user-name ${data.answerUser.role==3?'':'out'}">
+                            ${get_name(data.answerUser).length>15?get_name(data.answerUser).slice(0,15)+"...":get_name(data.answerUser)}
+                            <div class="fans-zw">
+                                <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                            </div>
+                        </div>
                         <div class="user-name ${data.answerUser.role==1?'':'out'}">
                             ${get_name(data.answerUser)}
                             <div class="user-grade inline-block zx-detail-grade">
@@ -90,6 +96,12 @@ $(function(){
                             <div class="inline-block zxs-grade">
                                 <img src="../img/fans-zxs.png" alt="">
                                 ${data.answerUser.levelName||''}
+                            </div>
+                        </div>
+                        <div class="user-name ${data.answerUser.role==3?'':'out'}">
+                            ${get_name(data.answerUser).length>13?get_name(data.answerUser).slice(0,13)+"...":get_name(data.answerUser)}
+                            <div class="fans-zw">
+                                <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
                             </div>
                         </div>
                         <div class="user-name ${data.answerUser.role==1?'':'out'}">
@@ -125,7 +137,7 @@ $(function(){
                         </div>
                         <div class="index-new-zxwd-list-footer">
                         <img src="${headimage(data.data[i].headImage)}" onerror=src="../img/user.png" alt="">
-                        <div class="inline-block">${get_name(data.data[i])}</div>
+                        <div class="inline-block">${get_name(data.data[i]).length>20?get_name(data.data[i]).slice(0,20)+"...":get_name(data.data[i])}</div>
                         <div class="inline-block index-new-zxwd-list-footer-wg">围观 ${data.data[i].lookNum}</div>
                         </div>
                     </div>
@@ -152,7 +164,7 @@ $(function(){
                         </div>
                         <div class="index-new-zxwd-list-footer">
                         <img src="${headimage(data.data[i].headImage)}" onerror=src="../img/user.png" alt="">
-                        <div class="inline-block">${get_name(data.data[i])}</div>
+                        <div class="inline-block">${get_name(data.data[i]).length>20?get_name(data.data[i]).slice(0,20)+"...":get_name(data.data[i])}</div>
                         <div class="inline-block index-new-zxwd-list-footer-wg">围观 ${data.data[i].lookNum}</div>
                         </div>
                     </div>

@@ -30,22 +30,22 @@
             z-index: 99999999;
             width: 100%;
         }
-        .channel-page{
+        .channel-page,.channel-sptt-page{
             margin-top: 20rem;
         }
     </style>
 </head>
 <body>
 <div class="channel-header">
-    <div>
+    <div style="padding:1rem 0">
         <div class="inline-block channel-tab box-sizing">
             <!--<div class="inline-block channel-tab-act">-->
-            <!--房地产-->
-            <!--<div class="channel-tab-line"></div>-->
+                <!--视频头条-->
+                <!--<div class="channel-tab-line"></div>-->
             <!--</div>-->
             <!--<div class="inline-block">-->
-            <!--建筑业-->
-            <!--<div class="channel-tab-line out"></div>-->
+                <!--建筑业-->
+                <!--<div class="channel-tab-line out"></div>-->
             <!--</div>-->
         </div>
         <div class="inline-block channel-mine-btn box-sizing"><img src="../img/channel-mine-btn.png" alt=""></div>
@@ -57,8 +57,8 @@
         </div>
         <div class="inline-block channel-tax-sel-btn">
             <img src="../img/channel-sx.png" alt="">
-            <span class="channel-sz-show inline-block">全部税种</span>
-            <span class="channel-sz-hidden inline-block out">全部税种</span>
+            <span class="channel-sz-show inline-block">类型筛选</span>
+            <span class="channel-sz-hidden inline-block out">全部类型</span>
         </div>
     </div>
     <div class="channel-tax-sel-model out">
@@ -72,7 +72,63 @@
         </div>
     </div>
 </div>
-<div class="channel-page">
+<div class="channel-sptt-page">
+    <div class="channel-sptt-head box-sizing">
+        <div class="channel-sptt-tab-group">
+            <div class="inline-block channel-sptt-head-tab" data-code="1">关注</div>
+            <span class="channel-sptt-line-tab inline-block"></span>
+            <div class="inline-block channel-sptt-head-tab orange" data-code="2">推荐</div>
+            <!--<div class="inline-block find-marvellous">发现精彩视频</div>-->
+        </div>
+        <div class="channel-sptt-tab-attention out">
+            <div class="inline-block channel-sptt-att-more">
+                <div class="inline-block att-img-group">
+                    <img src="../img/channel-sptt-gzgd.png" alt="">
+                    <div>关注更多</div>
+                </div>
+            </div>
+            <div class="inline-block channel-sptt-att-user box-sizing channel-sptt-att-user-yes">
+                <!--<div class="inline-block att-img-group">-->
+                    <!--<div class="channel-sptt-p-img">-->
+                        <!--<img src="../img/user.png" alt="">-->
+                        <!--<img class="channel-sptt-home-rz" src="../img/office-p-rz.png" alt="">-->
+                    <!--</div>-->
+                    <!--<div>国家税务总局</div>-->
+                    <!--<div class="sptt-gz-office">+关注</div>-->
+                <!--</div>-->
+            </div>
+            <div class="inline-block channel-sptt-att-user box-sizing out channel-sptt-att-user-no">
+                <!--<div class="inline-block att-img-group">-->
+                <!--<div class="channel-sptt-p-img">-->
+                <!--<img src="../img/user.png" alt="">-->
+                <!--<img class="channel-sptt-home-rz" src="../img/office-p-rz.png" alt="">-->
+                <!--</div>-->
+                <!--<div>国家税务总局</div>-->
+                <!--<div class="sptt-gz-office">+关注</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="channel-sptt-page-ul">
+        <!--<div class="channel-page-li">-->
+            <!--<img src="../img/ceshi.jpg" alt="">-->
+            <!--<div class="channel-sptt-looknum"><span>0</span>次观看</div>-->
+            <!--<div class="channel-page-li-title">房地产行业税务关政策以及税收风险分析以及锁企业面临的问题</div>-->
+            <!--<div class="channel-page-li-user channel-sptt-li-user">-->
+                <!--<div class="inline-block channle-sptt-user">-->
+                    <!--<img class="channel-sptt-userimg" src="../img/user.png" alt="">-->
+                    <!--<img class="channel-sptt-userimg-rz" src="../img/office-p-rz.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="inline-block channel-sptt-li-username">-->
+                    <!--<div>国家税务总局</div>-->
+                    <!--<div>3分钟前</div>-->
+                <!--</div>-->
+                <!--<div class="inline-block orange channel-page-li-userbtn">政策发布会</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="channel-page out">
     <div class="channel-vip channel-vip-yes box-sizing ">
         <img src="" alt="" class="channel-vip-icon">
         <div class="channel-vip-msg">
@@ -141,39 +197,40 @@
             <div class="channel-rule-footer">以上规则最终解释权归北京解税宝科技有限公司所有</div>
         </div>
     </div>
-    <div class="weui-tabbar index-tab-a">
-        <a  data-code="1"  href="index.html" class="weui-tabbar__item">
-            <div class="weui-tabbar__icon">
-                <img src="../img/icon-index-index line.png" alt="" data-src="../img/icon-index-index line.png" data-act="../img/icon-index-index.png">
-            </div>
-            <p class="weui-tabbar__label">首页</p>
-        </a>
-        <a data-code="2"  href="brush.html" class="weui-tabbar__item ymmd-click" data-md-name="刷刷">
-            <div class="weui-tabbar__icon">
-                <img src="../img/icon-index-text line.png" alt=""  data-src="../img/icon-index-text line.png" data-act="../img/icon-index-text.png">
-            </div>
-            <p class="weui-tabbar__label">刷刷</p>
-        </a>
-        <a data-code="3"  href="" class="weui-tabbar__item  weui-bar__item--on ymmd-click" data-md-name="频道">
-            <div class="weui-tabbar__icon">
-                <img src="../img/icon-index-video.png" alt="" data-src="../img/icon-index-video line.png" data-act="../img/icon-index-video.png">
-            </div>
-            <p class="weui-tabbar__label">频道</p>
-        </a>
-        <a data-code="4" href="index-mine.html" class="weui-tabbar__item ymmd-click" data-md-name="我的">
-            <div class="weui-tabbar__icon">
-                <img src="../img/icon-index-my line.png" alt=""  data-src="" data-act="../img/icon-index-my.png">
-            </div>
-            <p class="weui-tabbar__label">我的</p>
-        </a>
-    </div>
 </div>
-</body>
+<div class="weui-tabbar index-tab-a">
+    <a  data-code="1"  href="index.html" class="weui-tabbar__item">
+        <div class="weui-tabbar__icon">
+            <img src="../img/icon-index-index line.png" alt="" data-src="../img/icon-index-index line.png" data-act="../img/icon-index-index.png">
+        </div>
+        <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a data-code="2"  href="brush.html" class="weui-tabbar__item ymmd-click" data-md-name="刷刷">
+        <div class="weui-tabbar__icon">
+            <img src="../img/icon-index-text line.png" alt=""  data-src="../img/icon-index-text line.png" data-act="../img/icon-index-text.png">
+        </div>
+        <p class="weui-tabbar__label">刷刷</p>
+    </a>
+    <a data-code="3"  href="" class="weui-tabbar__item  weui-bar__item--on ymmd-click" data-md-name="频道">
+        <div class="weui-tabbar__icon">
+            <img src="../img/icon-index-video.png" alt="" data-src="../img/icon-index-video line.png" data-act="../img/icon-index-video.png">
+        </div>
+        <p class="weui-tabbar__label">频道</p>
+    </a>
+    <a data-code="4" href="index-mine.html" class="weui-tabbar__item ymmd-click" data-md-name="我的">
+        <div class="weui-tabbar__icon">
+            <img src="../img/icon-index-my line.png" alt=""  data-src="" data-act="../img/icon-index-my.png">
+        </div>
+        <p class="weui-tabbar__label">我的</p>
+    </a>
+</div>
 <script src="../js/ajax.js"></script>
+<script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_"+ym_md.url+"'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D"+ym_md.url+"' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
-<script src="../js/jquery-weui.js"></script>
-<script src="../js/swiper.min.js"></script>
 <script src="../js/fastclick.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/channel.js"></script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>刷刷</title>
+    <style>
+        .channel-header{
+            background: transparent;
+            box-shadow:none;
+        }
+        .ccH5Poster{
+            width: 210%!important;
+            margin-left: -55%;
+        }
+        .ccH5Poster img {
+            width: 100%;
+            height:100%;
+        }
+        .brush-v-xz{
+            position: relative;
+        }
+        .brush-v-xz>a{
+            width: 100%;
+            height:100%;
+            position: absolute;
+            top:0;
+            left: 0;
+            opacity: 0;
+        }
+        .brush-v-xh{
+            display: none;
+        }
+        .ccH5PlayBtn{
+            width: 10rem!important;
+            height: 10rem!important;
+            background-size: 100% 100%!important;
+            margin: -5rem 0 0 -5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header channel-header">
+    <img src="../img/personal-back.png" alt="" class="back" data-url="1">
+</div>
+<div class="brush-video-body">
+
+</div>
+<div class="brush-video-msg box-sizing">
+    <div class="brush-video-column inline-block">新闺蜜说税</div>
+    <div class="brush-video-user">王嘉佳专家</div>
+    <div class="brush-video-label">#个人所得税</div>
+    <div class="brush-video-title">免费诊断，一键检测企业税收优化空间</div>
+</div>
+<div class="brush-video-btn-group">
+    <div class="brush-v-gz">
+        <img src="../img/user.png" class="" onerror=src="../img/ss-user.png" alt="">
+    </div>
+    <div class="brush-v-xh">
+        <img src="../img/brush-v-xh.png" alt="">
+        <div class="brush-v-xh-num">0</div>
+    </div>
+    <div class="brush-v-del">
+        <img src="../img/nopass-del.png" alt="">
+        <div>删除</div>
+    </div>
+    <div class="brush-v-xz">
+        <img src="../img/nopass-down.png" alt="">
+        <div>下载</div>
+    </div>
+</div>
+</body>
+<script src="../js/ajax.js"></script>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/md5.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../js/brush-nopass-video.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

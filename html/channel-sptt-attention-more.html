@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <title>关注更多</title>
+    <style>
+        .mine-tab-buy:before{
+            display: table;
+            content: '';
+        }
+        .channel-search-input{
+            width:53.7rem;
+            height:5.8rem;
+            line-height: 5.8rem;
+        }
+        .channel-search-input>img{
+            vertical-align: middle;
+            margin: 0;
+        }
+        .fans-dj-msg{
+            font-size: 2.4rem;
+            color:#666;
+            vertical-align: top;
+            margin-top: 0.5rem;
+        }
+        .fans-name{
+            font-size: 3.2rem;
+            color:#333;
+        }
+        .recommend-title{
+            font-size: 3rem;
+            color:#333;
+            font-weight: bold;
+            margin-left: 3rem;
+        }
+        .recommend-title{
+            margin-top:3.6rem;
+        }
+        .fans-search-body{
+            border-top: 1.6rem solid #f2f2f2;
+        }
+        .mine-fans-list > li{
+            position: relative;
+        }
+        .channel-sptt-userimg-rz{
+            width: 3.2rem!important;
+            height: 3.2rem !important;
+            bottom:0;
+            right:2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header channel-header">
+    <img src="../img/channel-back.png" alt="" class="back" data-url="1">
+    <div class="inline-block channel-search-input">
+        <img src="../img/channle-search.png" alt="">
+        <input type="text" readonly  class="find-btn box-sizing channel-search-msg" placeholder="请输入搜索关键词">
+    </div>
+    <div class="release inline-block find-btn">搜索</div>
+</div>
+<div class="mine-tab-buy">
+    <div class="mine-fans-recommend">
+        <div class="recommend-title box-sizing">
+            推荐
+            <!--<div class="inline-block sptt-change" data-num="1"><img src="../img/sptt-change.png" alt="">换一批</div>-->
+        </div>
+        <ul class="mine-fans-list mine-fans-list-rc">
+            <!--<li class="box-sizing">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<img class="channel-sptt-userimg-rz" src="../img/office-p-rz.png" alt="">-->
+                <!--<div class="inline-block">-->
+                    <!--<div class="inline-block fans-name">匿名用户</div>-->
+                    <!--<div class="fans-fans">-->
+                    <!--<span>1粉丝</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="inline-block attention-fans attention-fans-already">+关注</div>-->
+            <!--</li>-->
+        </ul>
+        <div class="sptt-more">加载更多</div>
+    </div>
+    <div class="fans-search-body">
+        <div class="recommend-title box-sizing">全部</div>
+        <ul class="mine-fans-list mine-fans-list-all">
+            <!--<li class="box-sizing">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<img class="channel-sptt-userimg-rz" src="../img/office-p-rz.png" alt="">-->
+                <!--<div class="inline-block">-->
+                    <!--<div class="inline-block fans-name">匿名用户</div>-->
+                    <!--<div class="fans-fans">-->
+                        <!--<span>1粉丝</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="inline-block attention-fans attention-fans-already">已关注</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/channel-sptt-attention-more.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

@@ -471,6 +471,7 @@
     width:5.2rem;
     height:5.2rem;
     margin-right: 1.4rem;
+    border-radius: 50%;
 }
 .attention-author{
     width:13.5rem;
@@ -1219,6 +1220,7 @@
 .brush-video-user{
     font-weight: bold;
     margin: 2rem 0;
+    width: 70%;
 }
 .brush-video-title{
     font-size: 2.8rem;
@@ -1226,6 +1228,7 @@
 .brush-video-label{
     font-size: 2.6rem;
     margin-top: 2rem;
+    width: 70%;
 }
 .brush-video-btn-group{
     position: absolute;
@@ -1577,4 +1580,177 @@
 .video-bf>img{
     width: 14.1rem;
     height:14.1rem;
+}
+.bg-img{
+    position: relative;
+}
+.bg-img>img{
+    width: 100%;
+}
+.contact{
+    height:8.8rem;
+    line-height: 8.8rem;
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    top:0;
+    left: 10%;
+    color: #fff;
+    font-size: 3rem;
+}
+.contact>a{
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+.regist-office{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    padding:0 7rem;
+}
+.regist-office>ul>li{
+    width: 100%;
+}
+.regist-office-title{
+    font-size: 3rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+.regist-office-input::placeholder{
+    color: #aaa;
+}
+.regist-office-input{
+    border: none;
+    background: #F6F6F6;
+    width: 100%;
+    height:8.8rem;
+    padding-left: 3.2rem;
+    font-size: 3rem;
+    color: #333;
+    border-radius: 1.6rem;
+    margin-bottom: 3rem;
+}
+.office-img-code{
+    display: flex;
+    justify-content: space-between;
+}
+.office-img-code>input,.office-msg-code>input{
+    width: 70%;
+}
+.office-img-code>img{
+    width: 28%;
+    height:8.8rem;
+    min-width: 18%;
+    min-height:8.8rem;
+    background: #F6F6F6;
+    margin-left: 2%;
+}
+.office-msg-code{
+    background: #F6F6F6;
+    height:8.8rem;
+    line-height: 8.8rem;
+    border-radius: 1.6rem;
+}
+.office-msg-code>div{
+    vertical-align: top;
+    color: #FBB12A;
+    font-size: 3rem;
+}
+.office-sub-btn{
+    width: 100%;
+    height: 8.8rem;
+    line-height: 8.8rem;
+    text-align: center;
+    font-size: 3rem;
+    color:#fff;
+    background: #F18803;
+    border-radius: 1.2rem;
+    margin: 8rem 0 4.9rem 0;
+}
+.office-sub-must-known{
+    font-size: 2.6rem;
+    color:#999;
+    margin-left: 1rem;
+}
+.office-sub-must-known>input{
+    width: 2.6rem;
+    height:2.6rem;
+    vertical-align: middle;
+}
+.office-sub-must-known a{
+    color:#F18803;
+}
+.office-footer{
+    font-size: 2.4rem;
+    color:#999;
+    text-align: center;
+    position: absolute;
+    bottom:6rem;
+    width: 100%;
+}
+.channel-sttt-look-num{
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    padding:0 2.4rem;
+    font-size: 2.2rem;
+    color: #fff;
+    background:rgba(0,0,0,0.3);
+    border-radius: 2.5rem;
+    position: absolute;
+    top:0;
+    left: 0;
+    margin: 1.9rem 0 0 7rem;
+    z-index: 99999;
+}
+.channel-sptt-msg-time{
+    font-size: 2.4rem;
+    color:#999;
+    margin-bottom: 4.2rem;
+}
+.channel-sptt-looknum {
+    width: 16rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    font-size: 2.2rem;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    border-radius: 2.5rem;
+    position: absolute;
+    top: 2.9rem;
+    left: 3.2rem;
+}
+.channel-detail-rz {
+    width: 2rem!important;
+    height: 2rem!important;
+    position: absolute;
+    bottom: 0;
+    left: 3rem;
+}
+.channel-teacher-div{
+    width: 69%;
+}
+.channel-teacher{
+    width: 68%;
+    font-size: 2.8rem;
+    vertical-align: middle;
+}
+.c-d-a-img-div{
+    position: relative;
+    vertical-align: middle;
+}
+.c-d-a-img-div>img{
+    width: 5.2rem;
+    height: 5.2rem;
+    margin-right: 1.4rem;
+    border-radius: 50%;
+}
+.fans-zw img {
+    width: 2.3rem;
+    height: 2.3rem;
+    vertical-align: middle;
+    margin-right: 0.7rem;
 }

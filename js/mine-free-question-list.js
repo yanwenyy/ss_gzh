@@ -4,50 +4,51 @@ $(function(){
     });
     //获取列表
     function get_list(data){
-        console.log(data);
+        // console.log(data);
         var questions=data.questions,html="";
         if(questions==""){
             $(".none-msg").show();
         }
-        for(var i=0;i<questions.length;i++){
+        for(var i=0,len=questions.length;i<len;i++){
             var status="",status_time='';
-            if(questions[i].status==1){
+            var change_v=questions[i];
+            if(change_v.status==1){
                 status="未采纳";
-                status_time=questions[i].endDate;
-            }if(questions[i].status==2){
+                status_time=change_v.endDate;
+            }if(change_v.status==2){
                 status="未采纳";
-            }else if(questions[i].status==3){
+            }else if(change_v.status==3){
                 status="已采纳";
-            }else if(questions[i].status==4){
+            }else if(change_v.status==4){
                 status="已采纳";
-            }else if(questions[i].status==5){
+            }else if(change_v.status==5){
                 status="已过期";
-            }else if(questions[i].status==6){
+            }else if(change_v.status==6){
                 status="已退款";
-            }else if(questions[i].status==7){
+            }else if(change_v.status==7){
                 status="退款异常";
-            }else if(questions[i].status==8){
+            }else if(change_v.status==8){
                 status="退款异常";
-            }else if(questions[i].status==9){
+            }else if(change_v.status==9){
                 status="已纠错";
             }
-            var content=questions[i].content;
-            if(questions[i].content.length>40){
-                content=questions[i].content.substr(0,40)+"...";
+            var content=change_v.content;
+            if(change_v.content.length>40){
+                content=change_v.content.substr(0,40)+"...";
             }
             html+=`
-            <div class="mine-f-q-list box-sizing"  data-id="${questions[i].uuid}" data-status="${questions[i].status}"  data-quType="${questions[i].quType}">
+            <div class="mine-f-q-list box-sizing"  data-id="${change_v.uuid}" data-status="${change_v.status}"  data-quType="${change_v.quType}">
                 <div>
-                    <div class="inline-block">${format(questions[i].date)}</div>
+                    <div class="inline-block">${format(change_v.date)}</div>
                     <div class="inline-block red time-msg" data-time="${status_time}">${status}</div>
                 </div>
                 <div class="box-sizing">${content}</div>
                 <div>
                     <div class="inline-block">
                         <img src="../img/label.png" alt="">
-                       <div class="inline-block">${questions[i].area||""} ${questions[i].quTrade||""}</div>
+                       <div class="inline-block">${change_v.area||""} ${change_v.quTrade||""}</div>
                     </div>
-                    <div class="inline-block">赏金: <span class="red">${parseFloat(questions[i].money).toFixed(2)}元</span></div>
+                    <div class="inline-block">赏金: <span class="red">${parseFloat(change_v.money).toFixed(2)}元</span></div>
                 </div>
             </div>
             `;
@@ -64,48 +65,49 @@ $(function(){
         },1000);
     }
     function get_list_more(data){
-        console.log(data);
+        // console.log(data);
         var questions=data.questions,html="";
         if(questions!=""){
-            for(var i=0;i<questions.length;i++){
+            for(var i=0,len=questions.length;i<len;i++){
                 var status="",status_time='';
-                if(questions[i].status==1){
+                var change_v=questions[i];
+                if(change_v.status==1){
                     status="未采纳";
-                    status_time=questions[i].endDate;
-                }if(questions[i].status==2){
+                    status_time=change_v.endDate;
+                }if(change_v.status==2){
                     status="未采纳";
-                }else if(questions[i].status==3){
+                }else if(change_v.status==3){
                     status="已采纳";
-                }else if(questions[i].status==4){
+                }else if(change_v.status==4){
                     status="已采纳";
-                }else if(questions[i].status==5){
+                }else if(change_v.status==5){
                     status="已过期";
-                }else if(questions[i].status==6){
+                }else if(change_v.status==6){
                     status="已退款";
-                }else if(questions[i].status==7){
+                }else if(change_v.status==7){
                     status="退款异常";
-                }else if(questions[i].status==8){
+                }else if(change_v.status==8){
                     status="退款异常";
-                }else if(questions[i].status==9){
+                }else if(change_v.status==9){
                     status="已纠错";
                 }
-                var content=questions[i].content;
-                if(questions[i].content.length>40){
-                    content=questions[i].content.substr(0,40)+"...";
+                var content=change_v.content;
+                if(change_v.content.length>40){
+                    content=change_v.content.substr(0,40)+"...";
                 }
                 html+=`
-            <div class="mine-f-q-list box-sizing"  data-id="${questions[i].uuid}"  data-status="${questions[i].status}" data-quType="${questions[i].quType}">
+            <div class="mine-f-q-list box-sizing"  data-id="${change_v.uuid}" data-status="${change_v.status}"  data-quType="${change_v.quType}">
                 <div>
-                    <div class="inline-block">${format(questions[i].date)}</div>
-                    <div class="inline-block red">${status}</div>
+                    <div class="inline-block">${format(change_v.date)}</div>
+                    <div class="inline-block red time-msg" data-time="${status_time}">${status}</div>
                 </div>
                 <div class="box-sizing">${content}</div>
                 <div>
                     <div class="inline-block">
                         <img src="../img/label.png" alt="">
-                       <div class="inline-block">${questions[i].area||""} ${questions[i].quTrade||""}</div>
+                       <div class="inline-block">${change_v.area||""} ${change_v.quTrade||""}</div>
                     </div>
-                    <div class="inline-block">赏金: <span class="red">${parseFloat(questions[i].money).toFixed(2)}元</span></div>
+                    <div class="inline-block">赏金: <span class="red">${parseFloat(change_v.money).toFixed(2)}元</span></div>
                 </div>
             </div>
             `;

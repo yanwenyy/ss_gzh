@@ -9,25 +9,32 @@ $(function(){
             "realName":type==2?val:'',
             "userName":type==1?val:''
         },function(data){
-            console.log(data);
+            var search=$(".recommend-title").attr("data-search"),list=data.data;
             var html='';
-            for(var i=0;i<data.data.length;i++){
+            for(var i=0,len=list.length;i<len;i++){
+                var change_v=list[i];
                 html+=`<li class="box-sizing">
-                            <img  data-phone="${data.data[i].phoneNumber}" class="look-hp-image" src="${headimage(data.data[i].headImage)}"  alt="" onerror=src="../img/user.png">
-                            <div  data-phone="${data.data[i].phoneNumber}" class="inline-block look-hp-image">
-                                <div class="inline-block fans-name">${get_name(data.data[i])}</div>
-                                <div class="inline-block fans-dj-msg ${data.data[i].role==2?'':'out'}">${data.data[i].levelName}</div>
-                                <div class="inline-block fans-dj ${data.data[i].role==1?'':'out'}"><img src="${get_score(data.data[i].integralScore,data.data[i].aision,data.data[i].vip)}" alt=""></div>
-                                <div class="fans-fans">
-                                    <span>${data.data[i].fansNumber} 粉丝</span>
-                                    <span>${data.data[i].brushNumber} 刷刷</span>
+                            <img  data-phone="${change_v.phoneNumber}" class="look-hp-image"  data-role="${change_v.role}" src="${headimage(change_v.headImage)}"  alt="" onerror=src="../img/user.png">
+                            <div  data-phone="${change_v.phoneNumber}" class="inline-block look-hp-image fans-name-div" data-role="${change_v.role}">
+                                <div class="inline-block fans-name">${get_name(change_v).length>25?get_name(change_v).slice(0,25)+"...":get_name(change_v)}</div>
+                                <div class="inline-block fans-dj-msg ${change_v.role==2?'':'out'}">${change_v.levelName}</div>
+                                <div class="inline-block fans-dj ${change_v.role==1?'':'out'}"><img src="${get_score(change_v.integralScore,change_v.aision,change_v.vip)}" alt=""></div>
+                                <div class="fans-fans ${search==1?'out':''}">
+                                    <span>${change_v.fansNumber} 粉丝</span>
+                                    <span>${change_v.brushNumber} 刷刷</span>
                                 </div>
                                 <div class="fans-zw">
-                                    <div class="inline-block ${data.data[i].lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
-                                    <div class="inline-block ${data.data[i].counselorDuty!=null&&data.data[i].role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ data.data[i].counselorDuty}</div>
+                                    <div class="inline-block ${change_v.lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
+                                    <div class="inline-block ${change_v.counselorDuty!=null&&change_v.role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ change_v.counselorDuty}</div>
+                                    <div class="inline-block ${change_v.role==3? '':'out'}"><img src="../img/office-icon.png" alt="">官方认证</div>
+                                </div>
+                                <div class="fans-s-msg">
+                                    <div class="${type==3?'':'out'}">手机号：${change_v.phone}</div>
+                                    <div class="${type==2&&change_v.role==2?'':'out'}">昵称：${change_v.realName}</div>
+                                    <div class="${type==1&&change_v.role==1?'':'out'}">真实姓名：${change_v.userName}</div>
                                 </div>
                             </div>
-                            <div data-phone="${data.data[i].phoneNumber}" class="inline-block attention-fans ${data.data[i].follow==1?'each-attention':'gzfs'}"><img src="../img/hg.png" class="hg-fans ${Number(data.data[i].mutual)==1?'':'out'}" alt="">${data.data[i].follow==1?(data.data[i].mutual==1?'互关':'已关注'):'+关注'}</div>
+                            <div data-phone="${change_v.phoneNumber}" class="inline-block attention-fans ${change_v.follow==1?'each-attention':'gzfs'}"><img src="../img/hg.png" class="hg-fans ${Number(change_v.mutual)==1?'':'out'}" alt="">${change_v.follow==1?(change_v.mutual==1?'互关':'已关注'):'+关注'}</div>
                         </li>
                 `
             }
@@ -37,23 +44,31 @@ $(function(){
     function list_more(data){
         var html='';
         if(data.data&&data.data!=''){
-            for(var i=0;i<data.data.length;i++){
+            var search=$(".recommend-title").attr("data-search"),list=data.data;
+            for(var i=0,len=list.length;i<len;i++){
+                var change_v=list[i];
                 html+=`<li class="box-sizing">
-                            <img  data-phone="${data.data[i].phoneNumber}" src="${headimage(data.data[i].headImage)}" class="look-hp-image"  alt="" onerror=src="../img/user.png">
-                            <div  data-phone="${data.data[i].phoneNumber}" class="inline-block look-hp-image">
-                                <div class="inline-block fans-name">${get_name(data.data[i])}</div>
-                                <div class="inline-block fans-dj-msg ${data.data[i].role==2?'':'out'}">${data.data[i].levelName}</div>
-                                <div class="inline-block fans-dj ${data.data[i].role==1?'':'out'}"><img src="${get_score(data.data[i].integralScore,data.data[i].aision,data.data[i].vip)}" alt=""></div>
-                                 <div class="fans-fans">
-                                    <span>${data.data[i].fansNumber} 粉丝</span>
-                                    <span>${data.data[i].brushNumber} 刷刷</span>
+                            <img  data-phone="${change_v.phoneNumber}" class="look-hp-image"  data-role="${change_v.role}" src="${headimage(change_v.headImage)}"  alt="" onerror=src="../img/user.png">
+                            <div  data-phone="${change_v.phoneNumber}" class="inline-block look-hp-image fans-name-div" data-role="${change_v.role}">
+                                <div class="inline-block fans-name">${get_name(change_v).length>25?get_name(change_v).slice(0,25)+"...":get_name(change_v)}</div>
+                                <div class="inline-block fans-dj-msg ${change_v.role==2?'':'out'}">${change_v.levelName}</div>
+                                <div class="inline-block fans-dj ${change_v.role==1?'':'out'}"><img src="${get_score(change_v.integralScore,change_v.aision,change_v.vip)}" alt=""></div>
+                                <div class="fans-fans ${search==1?'out':''}">
+                                    <span>${change_v.fansNumber} 粉丝</span>
+                                    <span>${change_v.brushNumber} 刷刷</span>
                                 </div>
                                 <div class="fans-zw">
-                                    <div class="inline-block ${data.data[i].lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
-                                    <div class="inline-block ${data.data[i].counselorDuty!=null&&data.data[i].role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ data.data[i].counselorDuty}</div>
+                                    <div class="inline-block ${change_v.lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
+                                    <div class="inline-block ${change_v.counselorDuty!=null&&change_v.role==2? '':'out'}"><img src="../img/fans-zxs.png" alt="">${ change_v.counselorDuty}</div>
+                                    <div class="inline-block ${change_v.role==3? '':'out'}"><img src="../img/office-icon.png" alt="">官方认证</div>
+                                </div>
+                                <div class="fans-s-msg">
+                                    <div class="${type==3?'':'out'}">手机号：${change_v.phone}</div>
+                                    <div class="${type==2&&change_v.role==2?'':'out'}">昵称：${change_v.realName}</div>
+                                    <div class="${type==1&&change_v.role==1?'':'out'}">真实姓名：${change_v.userName}</div>
                                 </div>
                             </div>
-                            <div data-phone="${data.data[i].phoneNumber}" class="inline-block attention-fans ${data.data[i].follow==1?'each-attention':'gzfs'}"><img src="../img/hg.png" class="hg-fans ${Number(data.data[i].mutual)==1?'':'out'}" alt="">${data.data[i].follow==1?(data.data[i].mutual==1?'互关':'已关注'):'+关注'}</div>
+                            <div data-phone="${change_v.phoneNumber}" class="inline-block attention-fans ${change_v.follow==1?'each-attention':'gzfs'}"><img src="../img/hg.png" class="hg-fans ${Number(change_v.mutual)==1?'':'out'}" alt="">${change_v.follow==1?(change_v.mutual==1?'互关':'已关注'):'+关注'}</div>
                         </li>
                 `
             }
@@ -90,6 +105,7 @@ $(function(){
             if(val==''){
                 alert("请输入搜索内容")
             }else{
+                $(".recommend-title").hide().attr("data-search",'1');
                 //请求搜索接口  
                 count_start=1;count_end=10;num=1;
                 list(val,type);
@@ -106,11 +122,18 @@ $(function(){
     //关注按钮点击
     $("body").on("click",".attention-fans",function(){
         var that=$(this),phoneNum=that.attr("data-phone");
-        ajax(http_url.url+"/attention/user",{"phoneNum":phoneNum, "isAttention":1},function(data){
-            alert(data.des);
-            if(data.code==1){
-                that.addClass("each-attention").html("已关注");
-            }
-        })
+        if(that.text()=="+关注"){
+            ajax(http_url.url+"/attention/user",{"phoneNum":phoneNum, "isAttention":1},function(data){
+                alert(data.des);
+                if(data.code==1){
+                    that.addClass("each-attention").html("已关注");
+                    if($(".recommend-title").attr("data-search")=="1"){
+                        that.text("已关注");
+                    }else{
+                        that.parent().remove();
+                    }
+                }
+            })
+        }
     });
 });

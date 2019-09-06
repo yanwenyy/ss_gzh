@@ -21,25 +21,26 @@ $(function(){
 });
 //获取全部的交易记录
 function get_all(data){
-    console.log(data);
+    // console.log(data);
     $(".record-sr").html(parseFloat(data.incomeSum||0.00).toFixed(2));
     $(".record-zc").html(parseFloat(data.outpaySum||0.00).toFixed(2));
     var records=data.records,html="";
-    for(var i=0;i<records.length;i++){
-        var record_date=format(records[i].paySucTime),tradetype,red,trade_img="",trade_opacity='';
-        if(records[i].payType==0||records[i].payType==4){
+    for(var i=0,len=records.length;i<len;i++){
+        var change_v=records[i];
+        var record_date=format(change_v.paySucTime),tradetype,red,trade_img="",trade_opacity='';
+        if(change_v.payType==0||change_v.payType==4){
             trade_img="../img/icon-buy-money.png"
-        }else if(records[i].payType==1){
+        }else if(change_v.payType==1){
             trade_img="../img/icon-buy-vip.png"
-        }else if(records[i].payType==7){
+        }else if(change_v.payType==7){
             trade_img="../img/icon-buy-askcard.png"
-        }else if(records[i].payType==3){
+        }else if(change_v.payType==3){
             trade_img="../img/icon-buy-wechat.png"
         }
         if(trade_img==""){
             trade_opacity="style='opacity:0'"
         }
-        if(records[i].tradeType==1){
+        if(change_v.tradeType==1){
             tradetype="-";
             red="red";
         }else{
@@ -50,7 +51,7 @@ function get_all(data){
                 <li class="box-sizing">
                 <div class="inline-block transaction_list_name">
                     <div>
-                        ${records[i].goodsType}
+                        ${change_v.goodsType}
                         <img src="${trade_img}" alt="" class="money-from" ${trade_opacity}>
                     </div>
                     <div>
@@ -58,7 +59,7 @@ function get_all(data){
                     </div>
                 </div>
                 <div class="inline-block transaction_list_money red ${red}">
-                    ${tradetype}${parseFloat(records[i].sum).toFixed(2)}元
+                    ${tradetype}${parseFloat(change_v.sum).toFixed(2)}元
                 </div>
             </li>
             `;
@@ -69,24 +70,25 @@ function get_all(data){
     $(".transaction_record_body>ul").html(html);
 }
 function get_all_more(data){
-    console.log(data);
+    // console.log(data);
     var records=data.records,html="";
     if(records!=""){
-        for(var i=0;i<records.length;i++){
-            var record_date=format(records[i].paySucTime),tradetype,red,trade_img="",trade_opacity='';
-            if(records[i].payType==0||records[i].payType==4){
+        for(var i=0,len=records.length;i<len;i++){
+            var change_v=records[i];
+            var record_date=format(change_v.paySucTime),tradetype,red,trade_img="",trade_opacity='';
+            if(change_v.payType==0||change_v.payType==4){
                 trade_img="../img/icon-buy-money.png"
-            }else if(records[i].payType==1){
+            }else if(change_v.payType==1){
                 trade_img="../img/icon-buy-vip.png"
-            }else if(records[i].payType==7){
+            }else if(change_v.payType==7){
                 trade_img="../img/icon-buy-askcard.png"
-            }else if(records[i].payType==3){
+            }else if(change_v.payType==3){
                 trade_img="../img/icon-buy-wechat.png"
             }
             if(trade_img==""){
                 trade_opacity="style='opacity:0'"
             }
-            if(records[i].tradeType==1){
+            if(change_v.tradeType==1){
                 tradetype="-";
                 red="red";
             }else{
@@ -97,7 +99,7 @@ function get_all_more(data){
                 <li class="box-sizing">
                 <div class="inline-block transaction_list_name">
                     <div>
-                        ${records[i].goodsType}
+                        ${change_v.goodsType}
                         <img src="${trade_img}" alt="" class="money-from" ${trade_opacity}>
                     </div>
                     <div>
@@ -105,7 +107,7 @@ function get_all_more(data){
                     </div>
                 </div>
                 <div class="inline-block transaction_list_money red ${red}">
-                    ${tradetype}${parseFloat(records[i].sum).toFixed(2)}元
+                    ${tradetype}${parseFloat(change_v.sum).toFixed(2)}元
                 </div>
             </li>
             `;

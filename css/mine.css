@@ -270,7 +270,8 @@
 }
 
 .mine-fans-list > li {
-    height: 15rem;
+    min-height: 15rem;
+    height:auto;
     padding: 3rem;
     border-bottom: 1px solid #eee;
     color: rgba(51, 51, 51, 1);
@@ -281,9 +282,20 @@
     height: 8.4rem;
     width: 8.4rem;
     border-radius: 50%;
+    margin-right: 2.3rem;
+}
+.c-sptt-head-div{
+    vertical-align: top;
+}
+.c-sptt-head-div>.look-hp-image{
+    height: 8.4rem;
+    width: 8.4rem;
+    border-radius: 50%;
     margin-right: 2.3rem
 }
-
+.c-sptt-head-div{
+    position: relative;
+}
 .mine-fans-list > li > div > img {
     width: 7.7rem;
     height: 1.9rem
@@ -1049,7 +1061,7 @@
 
 .attention-export-msg > div:first-child > span:first-child {
     color: #333;
-    font-size: 3rem
+    font-size: 3rem;
 }
 
 .attention-btn {
@@ -1437,7 +1449,7 @@
     padding-bottom: 11.8rem;
 }
 .mine-365-header{
-    height:48.3rem;
+    height:46.3rem;
     width: 100%;
     padding:0 3.2rem;
     background: url(../img/mine-365-header-bg.png) no-repeat 100% 100%;
@@ -1477,7 +1489,7 @@
     background: url(../img/365_My_vipcard-pt.png) no-repeat;
     background-size: 100% 100%;
     position: absolute;
-    bottom: 0;
+    bottom: -1.3rem;
     left:0;
 }
 .card-365-date,.card-365-open{
@@ -1528,7 +1540,7 @@
     width:19.5%;
     text-align: center;
     font-size: 2.4rem;
-    margin-top:4.5rem;
+    margin-top:2.5rem;
     vertical-align: top;
 }
 .mine-mb-list-one{
@@ -1830,4 +1842,8 @@
     margin:0 1.4rem 0 4.9rem;
     vertical-align: middle;
     color:#FA8449;
+}
+.fans-s-msg{
+    font-size: 2.4rem;
+    color:#999;
 }

@@ -3,15 +3,16 @@ $(function(){
     //列表数据
     ajax(http_url.url+"/goods/goodslist",{"id":id},function(data){
         console.log(data);
-        var html='';
-        for(var i=0;i<data.data.length;i++){
+        var html='',list=data.data;
+        for(var i=0,len=list.length;i<len;i++){
+            var change_v=list[i];
             html+=`
-                <div class="channel-card-list ${i==0?'channel-card-list-act':''} box-sizing" data-id="${data.data[i].id}" data-price="${data.data[i].price}">
+                <div class="channel-card-list ${i==0?'channel-card-list-act':''} box-sizing" data-id="${change_v.id}" data-price="${change_v.price}">
                     <img class="channel-card-sel" src="${i==0?'../img/channel-card-select.png':'../img/channel-card-select-no.png'}" alt="">
                     <div class="inline-block">
-                        <div class="channel-card-name">${data.data[i].goods_name}</div>
-                        <div class="channel-card-msg">${data.data[i].introduction}</div>
-                        <div class="orange channel-card-money"><span style="font-size: 2.8rem">¥</span>${parseFloat(data.data[i].price).toFixed(2)}/<span style="font-size: 2.4rem">${data.data[i].unit==1?'年':data.data[i].unit==2?'季':data.data[i].unit==3?'月':'周'}</span></div>
+                        <div class="channel-card-name">${change_v.goods_name}</div>
+                        <div class="channel-card-msg">${change_v.introduction}</div>
+                        <div class="orange channel-card-money"><span style="font-size: 2.8rem">¥</span>${parseFloat(change_v.price).toFixed(2)}/<span style="font-size: 2.4rem">${change_v.unit==1?'年':change_v.unit==2?'季':change_v.unit==3?'月':'周'}</span></div>
                     </div>
                 </div>
             `;

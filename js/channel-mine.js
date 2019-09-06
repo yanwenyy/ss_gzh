@@ -1,8 +1,9 @@
 $(function(){
     $(".back2").click(function(){
         var list=$("#foo>div"),list_id=[];
-        for(var i=0;i<list.length;i++){
-            list_id.push(list[i].dataset.id);
+        for(var i=0,len=list.length;i<len;i++){
+            var change_v=list[i];
+            list_id.push(change_v.dataset.id);
         }
         if(list_id!=''){
             ajax(http_url.url+"/classify/attention/classify",{ids:list_id},function(data){
@@ -16,25 +17,29 @@ $(function(){
     //我的频道列表
     ajax_nodata(http_url.url+"/classify/attention/classifylist",function(data){
         // console.log(data);
-        var gd_list=[],gm_list=[],pt_list=[];
-        for(var i=0;i<data.data.length;i++){
-            if(data.data[i].recommend_type==2){
-                gd_list.push(data.data[i])
-            }else if(data.data[i].classifyVip==0){
-                gm_list.push(data.data[i])
+        var gd_list=[],gm_list=[],pt_list=[],mine_list=data.data;
+        for(var i=0,len=mine_list.length;i<len;i++){
+            var change_v=mine_list[i];
+            if(change_v.recommend_type==2){
+                gd_list.push(change_v)
+            }else if(change_v.classifyVip==0){
+                gm_list.push(change_v)
             }else{
-                pt_list.push(data.data[i])
+                pt_list.push(change_v)
             }
         }
         var d_html='',m_html='',p_html='';
-        for(var d=0;d<gd_list.length;d++){
-            d_html+=`<div class="inline-block mine-pd-list channel-mine-tj ${gd_list[d].name.length>7?'mine-pd-list-two':''}"><span>${gd_list[d].name}</span></div>`;
+        for(var d=0,len1=gd_list.length;d<len1;d++){
+            var d_change=gd_list[d];
+            d_html+=`<div class="inline-block mine-pd-list channel-mine-tj ${d_change.name.length>7?'mine-pd-list-two':''}"><span>${d_change.name}</span></div>`;
         }
-        for(var m=0;m<gm_list.length;m++){
-            m_html+=`<div class="inline-block mine-pd-list channel-mine-buy ${gm_list[m].name.length>7?'mine-pd-list-two':''}"><span>${gm_list[m].name}</span></div>`;
+        for(var m=0,len2=gm_list.length;m<len2;m++){
+            var m_change=gm_list[m];
+            m_html+=`<div class="inline-block mine-pd-list channel-mine-buy ${m_change.name.length>7?'mine-pd-list-two':''}"><span>${m_change.name}</span></div>`;
         }
-        for(var p=0;p<pt_list.length;p++){
-            p_html+=`<div class="inline-block mine-pd-list mine-pt-pd ${pt_list[p].name.length>7?'mine-pd-list-two':''}" data-id="${pt_list[p].id}"><span>${pt_list[p].name}</span> <img data-id="${pt_list[p].id}" data-name="${pt_list[p].name}" src="../img/channel-mine-del.png" class="channel-mine-del" alt=""></div>`;
+        for(var p=0,len3=pt_list.length;p<len3;p++){
+            var p_change=pt_list[p];
+            p_html+=`<div class="inline-block mine-pd-list mine-pt-pd ${p_change.name.length>7?'mine-pd-list-two':''}" data-id="${p_change.id}"><span>${p_change.name}</span> <img data-id="${p_change.id}" data-name="${p_change.name}" src="../img/channel-mine-del.png" class="channel-mine-del" alt=""></div>`;
         }
         $(".mine-gd-pd").html(d_html).append(m_html);
         $("#foo").html(p_html);

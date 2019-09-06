@@ -1,31 +1,32 @@
 $(function(){
     //获取列表
     function get_list(data){
-        console.log(data);
+        // console.log(data);
         var questions=data.questionUserAnswerRewardFlows,html="";
-        for(var i=0;i<questions.length;i++){
+        for(var i=0,len=questions.length;i<len;i++){
+            var change_v=questions[i];
             var status="";
-            if(questions[i].status==1){
+            if(change_v.status==1){
                 status="未采纳";
-            }else if(questions[i].status==2||questions[i].status==7){
+            }else if(change_v.status==2||change_v.status==7){
                 status="已采纳";
-            }else if(questions[i].status==3){
+            }else if(change_v.status==3){
                 status="未采纳";
-            }else if(questions[i].status==4){
+            }else if(change_v.status==4){
                 status="未采纳";
-            }else if(questions[i].status==5){
+            }else if(change_v.status==5){
                 status="未采纳";
-            }else if(questions[i].status==6){
+            }else if(change_v.status==6){
                 status="已纠错";
             }
             //用户等级
-            var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
+            var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
             var realName=get_name(questions[i]);
             html+=`
-            <div class="card-list mine-answer-list" data-id="${questions[i].uuid}" data-status="${questions[i].status}">
+            <div class="card-list mine-answer-list" data-id="${change_v.uuid}" data-status="${change_v.status}">
                 <div class="box-sizing">
                     <div class="clist-head">
-                        <img src="${headimage(questions[i].headImage)}" alt="" onerror=src="../img/user.png">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -33,20 +34,20 @@ $(function(){
                                     <img src="${score_img}" alt="">
                                 </div>
                             </div>
-                            <div class="zx-detail-date">${format(questions[i].date)}</div>
+                            <div class="zx-detail-date">${format(change_v.date)}</div>
                         </div>
                         <div class="inline-block red mine-ans-cn">${status}</div>
                     </div>
                     <div class="clist-msg"  style="margin-top: 1rem">
-                       ${questions[i].content}
+                       ${change_v.content}
                     </div>
                     <div class="zx-detail-city mine-answer-date">
                         <div class="inline-block">
                              <img src="../img/label.png" alt="">
-                            ${questions[i].area||""} ${questions[i].quTrade||""}
+                            ${change_v.area||""} ${change_v.quTrade||""}
                         </div>
                         <div class="inline-block mine-ans-sj">
-                            赏金: <span class="red">${parseFloat(questions[i].money).toFixed(2)||"0.00"}元</span>
+                            赏金: <span class="red">${parseFloat(change_v.money).toFixed(2)||"0.00"}元</span>
                         </div>
                     </div>
                 </div>
@@ -56,32 +57,33 @@ $(function(){
         $(".mine-free-ques").html(html);
     }
     function get_list_more(data){
-        console.log(data);
+        // console.log(data);
         var questions=data.questionUserAnswerRewardFlows,html="";
         if(questions!=""){
-            for(var i=0;i<questions.length;i++){
+            for(var i=0,len=questions.length;i<len;i++){
+                var change_v=questions[i];
                 var status="";
-                if(questions[i].status==1){
+                if(change_v.status==1){
                     status="未采纳";
-                }else if(questions[i].status==2||questions[i].status==7){
+                }else if(change_v.status==2||change_v.status==7){
                     status="已采纳";
-                }else if(questions[i].status==3){
+                }else if(change_v.status==3){
                     status="未采纳";
-                }else if(questions[i].status==4){
+                }else if(change_v.status==4){
                     status="未采纳";
-                }else if(questions[i].status==5){
+                }else if(change_v.status==5){
                     status="未采纳";
-                }else if(questions[i].status==6){
+                }else if(change_v.status==6){
                     status="已纠错";
                 }
                 //用户等级
-                var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
+                var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
                 var realName=get_name(questions[i]);
                 html+=`
-            <div class="card-list mine-answer-list" data-id="${questions[i].uuid}" data-status="${questions[i].status}">
+            <div class="card-list mine-answer-list" data-id="${change_v.uuid}" data-status="${change_v.status}">
                 <div class="box-sizing">
                     <div class="clist-head">
-                        <img src="${headimage(questions[i].headImage)}" alt="" onerror=src="../img/user.png">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -89,20 +91,20 @@ $(function(){
                                     <img src="${score_img}" alt="">
                                 </div>
                             </div>
-                            <div class="zx-detail-date">${format(questions[i].date)}</div>
+                            <div class="zx-detail-date">${format(change_v.date)}</div>
                         </div>
                         <div class="inline-block red mine-ans-cn">${status}</div>
                     </div>
                     <div class="clist-msg"  style="margin-top: 1rem">
-                       ${questions[i].content}
+                       ${change_v.content}
                     </div>
                     <div class="zx-detail-city mine-answer-date">
-                         <div class="inline-block">
+                        <div class="inline-block">
                              <img src="../img/label.png" alt="">
-                            ${questions[i].area||""} ${questions[i].quTrade||""}
+                            ${change_v.area||""} ${change_v.quTrade||""}
                         </div>
                         <div class="inline-block mine-ans-sj">
-                            赏金: <span class="red">${parseFloat(questions[i].money).toFixed(2)||"0.00"}元</span>
+                            赏金: <span class="red">${parseFloat(change_v.money).toFixed(2)||"0.00"}元</span>
                         </div>
                     </div>
                 </div>

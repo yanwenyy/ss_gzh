@@ -47,6 +47,7 @@ function ajax(url,data,succ){
             "Content-Type": "application/json;charset=utf-8",
             "cookieId":sessionStorage.getItem("cookieId"),
             "version":"1",
+            // "Accept-Encoding":"gzip,deflate"
         },
         data:JSON.stringify(data),
         success:function(data){
@@ -74,6 +75,7 @@ function ajax_get(url,succ){
             "Content-Type": "application/json;charset=utf-8",
             "cookieId":sessionStorage.getItem("cookieId"),
             "version":"1",
+            // "Accept-Encoding":"gzip,deflate"
         },
         success:function(data){
             if(data.code=="2"){
@@ -98,7 +100,8 @@ function ajax_nodata(url,succ){
             "Accept": "application/json",
             "Content-Type": "application/json;charset=utf-8",
             "cookieId":sessionStorage.getItem("cookieId"),
-            "version":"1"
+            "version":"1",
+            // "Accept-Encoding":"gzip,deflate"
         },
         success:function(data){
             if(data.code=="2"){

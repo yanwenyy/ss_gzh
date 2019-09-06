@@ -1,6 +1,6 @@
 $(function(){
     function get_money(data){
-        console.log(data);
+        // console.log(data);
         $(".mine-wx-money").html(parseFloat(data.balance).toFixed(2)||"0.0");
     }
     ajax_nodata(http_url.url+"/user/sectionMessage",get_money);

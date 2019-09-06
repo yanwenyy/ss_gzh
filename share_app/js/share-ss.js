@@ -2,38 +2,40 @@ $(function(){
     var id=getUrlParms("id");
     //刷刷视频
     ajax_nodata(http_url.url+"/share/brush/"+id+"/share",function(data){
-        $("title").html(data.data.title);
-        var v_html="&lt;script async src='https://p.bokecc.com/player?vid="+data.data.vid+"&siteid=A0123BC413D6FBAE&autoStart=true&width=100%&height=100%&playerid=7E2195B034B0277B&playertype=1'>&lt;/script>";
+        var datas=data.data;
+        $("title").html(datas.title);
+        var v_html="&lt;script async src='https://p.bokecc.com/player?vid="+datas.vid+"&siteid=A0123BC413D6FBAE&autoStart=true&width=100%&height=100%&playerid=7E2195B034B0277B&playertype=1'>&lt;/script>";
         v_html=v_html.replace(/&lt;/g,'<');
         $(".brush-video-body").html(v_html);
-        var html=`<div class="brush-video-column inline-block ${data.data.specialColumnName?'':'out'}">${data.data.specialColumnName||''}</div>
-                    <div class="brush-video-user">${get_name(data.data)}</div>
-                    <div class="brush-video-label">${data.data.title}</div>
-                    <div class="brush-video-title">${data.data.labelName||''}</div>
+        var html=`<div class="brush-video-column inline-block ${datas.specialColumnName?'':'out'}">${datas.specialColumnName||''}</div>
+                    <div class="brush-video-user">${get_name(datas)}</div>
+                    <div class="brush-video-label">${datas.title}</div>
+                    <div class="brush-video-title">${datas.labelName||''}</div>
                     `;
         $(".brush-video-msg").html(html);
-        $(".brush-v-xh-num").html(data.data.praiseNum);
-        $(".brush-v-gz>img").attr("src",headimage(data.data.headImage));
-        $(".channel-d-comment-num").html(data.data.discussNum);
+        $(".brush-v-xh-num").html(datas.praiseNum);
+        $(".brush-v-gz>img").attr("src",headimage(datas.headImage));
+        $(".channel-d-comment-num").html(datas.discussNum);
     });
     //评论列表
     ajax_nodata(http_url.url+"/share/discusslist/"+id+"/share",function(data){
-        if(data.data&&data.data!=''&&data.data!=[]){
-            var html='';
-            for(var i=0;i<data.data.length;i++){
+        var html='',datas=data.data;
+        if(datas&&datas!=''&&datas!=[]){
+            for(var i=0,len=datas.length;i<len;i++){
+                var change_v=datas[i];
                 html+=`
                   <div class="channel-d-c-list share-downloade">
-                    <img src="${headimage(data.data[i].headImage)}" onerror=src="../img/user.png" alt="">
+                    <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
                     <div class="inline-block">
                         <div>
                         <div class="channel-d-c-name">
                         <span class="inline-block blue">${get_name(data.data[i])}</span>
                         <span class="liline-block">
                         <img src="../img/channel-zan-no.png" alt="">
-                        <span>${data.data[i].sumPraisNum}</span>
+                        <span>${change_v.sumPraisNum}</span>
                         </span>
                         </div>
-                        <div class="channel-d-c-content">${data.data[i].content}</div>
+                        <div class="channel-d-c-content">${change_v.content}</div>
                         </div>
                     </div>
                   </div>  
@@ -48,22 +50,25 @@ $(function(){
     });
     //更多热门视频
     ajax_nodata(http_url.url+"/share/brush/list/share",function(data){
-        var html='';
-        for(var i=0;i<data.data.length;i++){
-            html+=`
+        var html='',datas=data.data;
+        if(datas&&datas!=''&&datas!=[]){
+            for(var i=0,len=datas.length;i<len;i++){
+                var change_v=datas[i];
+                html+=`
                 <div class="column-list-div inline-block share-downloade">
-                    <img src="${cover_src+data.data[i].image}" alt="">
+                    <img src="${cover_src+change_v.image}" alt="">
                     <div class="box-sizing">
-                    <div class="column-list-title">${data.data[i].title}</div>
+                    <div class="column-list-title">${change_v.title.length>18?change_v.title.slice(0,18)+"..":change_v.title}</div>
                     <div class="column-list-name">
-                    <img src="${headimage(data.data[i].headImage)}" onerror=src="../img/user.png" alt="">
+                    <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
                     <div class="inline-block">${get_name(data.data[i])}</div>
                     </div>
                     </div>
                 </div>
             `
+            }
+            $(".column-list-main").html(html);
         }
-        $(".column-list-main").html(html);
     });
     //微信分享
     function wx_share(){
