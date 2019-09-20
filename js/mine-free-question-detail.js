@@ -137,6 +137,9 @@ $(function(){
                                     </div>
                                 </div>
                                 <div class="zx-detail-date">${answerUsers[i].counselorDuty}</div>
+                                <div class="fans-zw ${answerUsers[i].role==3?'':'out'}">
+                                    <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                                </div>
                             </div>
                             <div class="inline-block ${user_role}">
                                 <div class="user-name">
@@ -211,6 +214,9 @@ $(function(){
                                             </div>
                                         </div>
                                         <div class="zx-detail-date">${data.counselorDuty}</div>
+                                        <div class="fans-zw ${answerUsers[i].role==3?'':'out'}">
+                                            <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                                        </div>
                                     </div>
                                     <div class="inline-block ${user_role}">
                                             <div class="user-name">
@@ -292,6 +298,9 @@ $(function(){
                                     </div>
                                 </div>
                                 <div class="zx-detail-date"> ${answerUsers[i].counselorDuty}</div>
+                                <div class="fans-zw ${answerUsers[i].role==3?'':'out'}">
+                                    <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                                </div>
                             </div>
                            
                         </div>

@@ -22,7 +22,7 @@ $(function(){
         $(".qyjs-msg").html(data.obj.introduction);
         $(".lxdh").html(data.obj.contactNo);
         $(".phone_num").attr("href","tel:"+data.obj.contactNo);
-        $(".mer-look-num").html(data.obj.views||0);
+        $(".mer-look-num").html(data.obj.detailedViews||0);
         $(".daohang").attr("data-lat",data.obj.latitude).attr("data-lng",data.obj.longitude);
         if(data.obj.type==2){
             $(".mer-video-msg-footer").show();

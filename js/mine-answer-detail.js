@@ -8,7 +8,7 @@ $(function(){
     // }
     function get_detail(data){
         //我的提问
-        console.log(data);
+        // console.log(data);
         var questionUserOwnMsg=data.question;
         //用户等级
         var score_img=get_score(questionUserOwnMsg.integralScore,questionUserOwnMsg.aision,questionUserOwnMsg.vip);
@@ -20,7 +20,7 @@ $(function(){
         $(".answer-answer .look-hp-image").attr("src",img_src).attr("data-phone",questionUserOwnMsg.phoneNumber).attr("data-role",questionUserOwnMsg.role);
         $(".answer-answer .user-name").html(`
              <div class="user-name">
-                        ${realName||"匿名用户"}
+                        ${realName.length>11?realName.slice(0,11)+"...":realName||"匿名用户"}
                         <div class="user-grade inline-block zx-detail-grade">
                             <img src="${score_img}" alt="">
                         </div>
@@ -88,13 +88,16 @@ $(function(){
                         <img class="look-hp-image" data-role="${answerUsers[m].role}" data-phone="${answerUsers[m].phoneNumber}" src="${headimage(answerUsers[m].headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||""}
-                                <div class="inline-block zxs-grade">
+                                ${get_name(answerUsers[m]).length>15?get_name(answerUsers[m]).slice(0,15)+"...":get_name(answerUsers[m])}
+                                <div class="inline-block zxs-grade ${answerUsers[m].role!=3?'':'out'}">
                                     <img src="../img/icon-expert icon.png" alt="">
                                     ${answerUsers[m].levelName}
                                 </div>
                             </div>
-                            <div class="zx-detail-date">${answerUsers[m].counselorDuty}</div>
+                            <div class="zx-detail-date ${answerUsers[m].role!=3?'':'out'}">${answerUsers[m].counselorDuty}</div>
+                            <div class="fans-zw ${answerUsers[m].role==3?'':'out'}">
+                                    <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                             </div>
                         </div>
                         <div class="adopt">${adopt_html}</div>
                     </div>
@@ -133,7 +136,7 @@ $(function(){
             ajax_nodata(http_url.url+"/user/message",function(data){
                 if(data.code==1){
                     var all_usermsg=data;
-                    console.log(all_usermsg);
+                    // console.log(all_usermsg);
                     $(".mine-jc-show").show();
                     var zxs_role,user_role;
                     if(data.role==1){
@@ -149,13 +152,16 @@ $(function(){
                                    <img class="look-hp-image" data-role="${all_usermsg.role}" data-phone="${changerAnswer[j].phoneNumber}" src="${headimage(all_usermsg.headImage)}" alt="" onerror=src="../img/user.png">
                                    <div class="inline-block ${zxs_role}">
                                         <div class="user-name">
-                                            ${data.userName||"匿名用户"}
-                                            <div class="inline-block zxs-grade">
+                                            ${get_name(data).length>15? get_name(data).slice(0,15)+"...":get_name(data)}
+                                            <div class="inline-block zxs-grade ${data.role!=3?'':'out'}">
                                                 <img src="../img/icon-expert icon.png" alt="">
                                                 ${data.levelName}
                                             </div>
                                         </div>
-                                        <div class="zx-detail-date">${data.counselorDuty}</div>
+                                        <div class="zx-detail-date ${data.role!=3?'':'out'}">${data.counselorDuty}</div>
+                                        <div class="fans-zw ${data.role==3?'':'out'}">
+                                            <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                                        </div>
                                     </div>
                                    <div class="inline-block ${user_role}">
                                             <div class="user-name">

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/cafe-interview.css">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/channel.css">
-    <title>首页</title>
+    <title>刷刷</title>
     <style>
         body{
             background: #f2f2f2;
@@ -44,7 +44,7 @@
         }
         .jg_img > img{
             height:100%;
-            min-height: 28.6rem;
+            min-height: 26rem;
         }
     </style>
     <script>
@@ -56,13 +56,13 @@
 <div class="jsb_header channel-header">
     <img src="../img/down_app.png" alt="" class="down_app new-user-down-app">
     刷刷
+    <img src="../img/index_add.png" class="release index-add out" alt="">
 </div>
-
 <div class="weui-tab index-page-body">
     <div class="index-new-card">
         <div class="index-serach box-sizing">
             <img src="../img/ss-search.png" class="search-index zrwg-sear" alt="">
-            <input type="text" placeholder="请输入您要搜索的问答" readonly  class="box-sizing" >
+            <input type="text" placeholder="请输入您要搜索的内容" readonly  class="box-sizing" >
         </div>
         <div class="swiper-container s2">
             <div class="swiper-wrapper">
@@ -327,43 +327,33 @@
     <img src="../img/text.png" alt=""  class="down-app-index2">
     <img src="../img/button.png" alt="" class="down-app-index3 new-user-down-app">
 </div>
+<div class="index-add-model">
+    <div class="index-add-bg box-sizing">
+        <div class="index-add-list" data-code="1">
+            <img src="../img/index-add-sys.png" alt="">
+            扫一扫
+        </div>
+        <div class="index-add-list" data-code="2">
+            <img src="../img/index-add-mp.png" alt="">
+            名片二维码
+        </div>
+        <div class="index-add-list" data-code="3">
+            <img src="../img/index-add-tjhy.png" alt="">
+            添加好友
+        </div>
+    </div>
+</div>
 <script src="../js/ajax.js"></script>
 <script type="text/javascript">
     var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_"+ym_md.url+"'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D"+ym_md.url+"' type='text/javascript'%3E%3C/script%3E"));
 </script>
 </body>
-<script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-weui.js"></script>
 <script src="../js/swiper.min.js"></script>
 <script src="../js/fastclick.js"></script>
-<script src="../js/index.js"></script>
 <script src="../js/index-msg.js"></script>
-<script>
-    //屏蔽手机自带返回键
-    $(document).ready(function() {
-        if (window.history && window.history.pushState) {
-            $(window).on('popstate', function () {
-                window.history.pushState('forward', null, '#');
-                window.history.forward(1);
-            });
-        }
-        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
-        window.history.forward(1);
-    });
-    $(function() {
-        FastClick.attach(document.body);
-        var offset = sessionStorage.getItem("offsetTop2");
-        console.log(offset);
-        setTimeout(function(){$(document).scrollTop(offset)},2000);
-    });
-
-    //滚动时保存滚动位置
-    $(window).scroll(function(){
-        if($(document).scrollTop()!=0){
-            sessionStorage.setItem("offsetTop2", $(window).scrollTop());
-        }
-    });
-    $(".swiper-container").swiper();
-</script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </html>

@@ -10,6 +10,19 @@ $(document).ready(function() {
     window.history.forward(1);
 });
 $(function(){
+    //html挪过来
+    FastClick.attach(document.body);
+    var offset = sessionStorage.getItem("offsetTop2");
+    // console.log(offset);
+    setTimeout(function(){$(document).scrollTop(offset)},2000);
+    //滚动时保存滚动位置
+    $(window).scroll(function(){
+        if($(document).scrollTop()!=0){
+            sessionStorage.setItem("offsetTop2", $(window).scrollTop());
+        }
+    });
+    $(".swiper-container").swiper();
+    //html挪过来结束
     var icode = getUrlParms("icode"),newuser=getUrlParms("newuser"),if_365=false;
     var hot_count_start=1,hot_count_end=5,recommend_count_start=1,recommend_count_end=5;
     //是否新用户
@@ -19,6 +32,9 @@ $(function(){
     //是否航信
     function if_hangxin(data){
         // console.log(data);
+        if(data.role==3){
+            $(".suspension_model").hide();
+        }
         if(data.aision==0){
             $(".mfw>img").attr("src","../img/hangxin-ask.png");
         }else if(data.aision==2){
@@ -41,21 +57,40 @@ $(function(){
         }
         var rotations=data.rotations,rotationImageUrl=data.rotationImageUrl;
         var html='';
-        for(var i=0;i<rotations.length;i++){
-            html+=`<div class="swiper-slide ymmd-click" data-md-name="${rotations[i].image}" data-imageLink="${rotations[i].imageLink}"  data-nativeLink="${rotations[i].nativeLink}"  data-isNative="${rotations[i].isNative}"><img src="${http_url.url+rotationImageUrl+rotations[i].image}" data-id="${rotations[i].uuid}" data-name="${rotations[i].image}' alt=""></div>`
+        for(var i=0,len=rotations.length;i<len;i++){
+            var change_v=rotations[i];
+            html+=`<div class="swiper-slide ymmd-click" data-md-name="${change_v.image}" data-imageLink="${change_v.imageLink}"  data-nativeLink="${change_v.nativeLink}"  data-isNative="${change_v.isNative}"><img src="${http_url.url+rotationImageUrl+change_v.image}" data-id="${rotations[i].uuid}" data-name="${rotations[i].image}' alt=""></div>`
         }
         $(".s2>.swiper-wrapper").html(html);
     }
     ajax_nodata(http_url.url+'/rotation/display',get_lunbo);
+    //轮播图
+    var mySwiper2 = new Swiper('.s2', {
+        autoplay:3000,//可选选项，自动滑动
+        //autoHeight: true,
+        speed: 2000,
+        roundLengths: true,
+        // pagination: '.swiper-pagination',
+        type: 'bullets',
+        paginationClickable: true,
+        loop: true, //循环播放
+        //touchRatio:1,
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true ,//修改swiper的父元素时，自动初始化swiper
+        autoplayStopOnLast:false,
+        // nextButton: '.swiper-button-next2',
+        // prevButton: '.swiper-button-prev2',
+    });
     //通告消息
     var scroll=0,num=0;
     function get_notice(data){
         // console.log(data);
         var data=data.datas,html='';
-        for(var i=0;i<data.length;i++){
+        for(var i=0,len=data.length;i<len;i++){
+            var change_v=data[i];
             html+=`<li class="notice-li">
-                        <img src="${headimage(data[i].headImage)}" alt="" onerror=src="../img/user.png">
-                        <div class="inline-block">用户${data[i].peepName.length>8?data[i].peepName.slice(0,8)+"..":data[i].peepName}围观了一个问题</div>
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
+                        <div class="inline-block">用户${change_v.peepName.length>6?change_v.peepName.slice(0,6)+"..":change_v.peepName}围观了一个问题</div>
                     </li>`
         }
         $(".notice-ul").html(html);
@@ -80,18 +115,19 @@ $(function(){
         function get_list(data){
             // console.log(data);
             var list=data.data,html="";
-            for(var i=0;i<list.length;i++){
+            for(var i=0,len=list.length;i<len;i++){
+                var change_v=list[i];
                 var content="",
-                    creatdate=format(list[i].date);
+                    creatdate=format(change_v.date);
                 //用户等级
-                var score_img=get_score(list[i].integralScore,list[i].aision,list[i].vip);
-                if(list[i].content.length>40){
-                    content=list[i].content.substr(0,40)+"...";
+                var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
+                if(change_v.content.length>40){
+                    content=change_v.content.substr(0,40)+"...";
                 }else{
-                    content=list[i].content;
+                    content=change_v.content;
                 }
                 var if_buy="",cwatch_buy='';
-                if(list[i].status=="1"){
+                if(change_v.status=="1"){
                     if_buy="已围观";
                     cwatch_buy="cwatch_buy";
                 }else{
@@ -99,22 +135,22 @@ $(function(){
                 }
                 var realName=get_name(list[i]);
                 var look_img="";
-                if(list[i].isAnon!=0){
+                if(change_v.isAnon!=0){
                     look_img="look-hp-image";
                 }
                 html+=`
-                <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
+                <div class="box-sizing one_wg"  data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
+                                ${realName.length>11?realName.slice(0,11)+"...":realName||"匿名用户"}
                             </div>
                             <div class="user-grade">
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
-                        <div class="cwatch ${cwatch_buy}" data-id="${list[i].uuid}">${if_buy}</div>
+                        <div class="cwatch ${cwatch_buy}" data-id="${change_v.uuid}">${if_buy}</div>
                     </div>
                     <div class="clist-msg">
                        ${content}
@@ -122,8 +158,8 @@ $(function(){
                     <div class="clist-foot">
                         <div>${creatdate}</div>
                         <div>
-                            <div class="inline-block">点赞 ${list[i].approveNum}</div>
-                            <div class="inline-block">围观 ${list[i].lookNum}</div>
+                            <div class="inline-block">点赞 ${change_v.approveNum}</div>
+                            <div class="inline-block">围观 ${change_v.lookNum}</div>
                         </div>
                     </div>
                 </div>
@@ -144,7 +180,7 @@ $(function(){
     function get_jgtj(data){
         // console.log(data);
         var datas=data.datas,html='';
-        for(var i=0;i<datas.length;i++){
+        for(var i=0,len=datas.length;i<len;i++){
             var picture=datas[i].picture.split(",");
             html+=`
                 <div class="jg_img" data-id="${datas[i].id}" data-vid="${datas[i].videoId}">
@@ -159,18 +195,19 @@ $(function(){
     function hot_watch(data){
         //console.log(data);
         var list=data.data,html="";
-        for(var i=0;i<list.length;i++){
+        for(var i=0,len=list.length;i<len;i++){
+            var change_v=list[i];
             var content="",
-                creatdate=format(list[i].date);
+                creatdate=format(change_v.date);
            //用户等级
-            var score_img=get_score(list[i].integralScore,list[i].aision,list[i].vip);
-            if(list[i].content.length>40){
-                content=list[i].content.substr(0,40)+"...";
+            var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
+            if(change_v.content.length>40){
+                content=change_v.content.substr(0,40)+"...";
             }else{
-                content=list[i].content;
+                content=change_v.content;
             }
             var if_buy="",cwatch_buy='';
-            if(list[i].status=="1"){
+            if(change_v.status=="1"){
                 if_buy="已围观";
                 cwatch_buy="cwatch_buy";
             }else{
@@ -178,23 +215,23 @@ $(function(){
             }
             var realName=get_name(list[i]);
             var look_img="";
-            if(list[i].isAnon!=0){
+            if(change_v.isAnon!=0){
                 look_img="look-hp-image";
             }
             html+=`
-                <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
+                <div class="box-sizing one_wg"  data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
-                                <img src="../img/icon-index-hot.png" alt="">
+                                ${realName.length>11?realName.slice(0,11)+"...":realName||"匿名用户"}
+                                <!--<img src="../img/icon-index-hot.png" alt="">-->
                             </div>
                             <div class="user-grade">
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
-                        <div class="cwatch ${cwatch_buy}" data-id="${list[i].uuid}">${if_buy}</div>
+                        <div class="cwatch ${cwatch_buy}" data-id="${change_v.uuid}">${if_buy}</div>
                     </div>
                     <div class="clist-msg">
                        ${content}
@@ -202,8 +239,8 @@ $(function(){
                     <div class="clist-foot">
                         <div>${creatdate}</div>
                         <div>
-                            <div class="inline-block">点赞 ${list[i].approveNum}</div>
-                            <div class="inline-block">围观 ${list[i].lookNum}</div>
+                            <div class="inline-block">点赞 ${change_v.approveNum}</div>
+                            <div class="inline-block">围观 ${change_v.lookNum}</div>
                         </div>
                     </div>
                 </div>
@@ -218,12 +255,13 @@ $(function(){
         "maxId":6
     },function(data){
         // console.log(data);
-        var html='';
-        for(var i=0;i<data.data.length;i++){
+        var html='',list=data.data;
+        for(var i=0,len=list.length;i<len;i++){
+            var change_v=list[i];
             html+=`
-            <div class="inline-block" data-vid="${data.data[i].vid}"  data-id="${data.data[i].id}">
-                <img src="${cover_src+data.data[i].image}" alt="">
-                <div>${data.data[i].title.length>12?data.data[i].title.slice(0,12)+"...":data.data[i].title}</div>
+            <div class="inline-block" data-vid="${change_v.vid}"  data-id="${change_v.id}">
+                <img src="${cover_src+change_v.image}" alt="">
+                <div>${change_v.title.length>12?change_v.title.slice(0,12)+"...":change_v.title}</div>
             </div>`
         }
         $(".index-new-brush-list").html(html);
@@ -242,18 +280,19 @@ $(function(){
     function new_watch(data){
         //console.log(data);
         var list=data.data,html="";
-        for(var i=0;i<list.length;i++){
+        for(var i=0,len=list.length;i<len;i++){
+            var change_v=list[i];
             var content="",
-                creatdate=format(list[i].date);
+                creatdate=format(change_v.date);
             //用户等级
-            var score_img=get_score(list[i].integralScore,list[i].aision,list[i].vip);
-            if(list[i].content.length>40){
-                content=list[i].content.substr(0,40)+"...";
+            var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
+            if(change_v.content.length>40){
+                content=change_v.content.substr(0,40)+"...";
             }else{
-                content=list[i].content;
+                content=change_v.content;
             }
             var if_buy="",cwatch_buy='';
-            if(list[i].status=="1"){
+            if(change_v.status=="1"){
                 if_buy="已围观";
                 cwatch_buy="cwatch_buy";
             }else{
@@ -261,22 +300,22 @@ $(function(){
             }
             var realName=get_name(list[i]);
             var look_img="";
-            if(list[i].isAnon!=0){
+            if(change_v.isAnon!=0){
                 look_img="look-hp-image";
             }
             html+=`
-                <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
+                <div class="box-sizing one_wg"  data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png"  class="${look_img}" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
+                                ${realName.length>11?realName.slice(0,11)+"...":realName||"匿名用户"}
                             </div>
                             <div class="user-grade">
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
-                        <div class="cwatch ${cwatch_buy}"  data-id="${list[i].uuid}">${if_buy}</div>
+                        <div class="cwatch ${cwatch_buy}"  data-id="${change_v.uuid}">${if_buy}</div>
                     </div>
                     <div class="clist-msg">
                        ${content}
@@ -284,8 +323,8 @@ $(function(){
                     <div class="clist-foot">
                         <div>${creatdate}</div>
                         <div>
-                            <div class="inline-block">点赞 ${list[i].approveNum}</div>
-                            <div class="inline-block">围观 ${list[i].lookNum}</div>
+                            <div class="inline-block">点赞 ${change_v.approveNum}</div>
+                            <div class="inline-block">围观 ${change_v.lookNum}</div>
                         </div>
                     </div>
                 </div>
@@ -320,12 +359,13 @@ $(function(){
     function recommend_export(data){
         //console.log(data);
         var export_list=data.data,html='';
-        for(var i=0;i<export_list.length;i++){
+        for(var i=0,len=export_list.length;i<len;i++){
+            var export_change_v=export_list[i];
             html+=`
-                <div class="zjtj_list inline-block" data-phone="${export_list[i].phoneNumber}">
-                        <div><img src="${headimage(export_list[i].headImage)}" alt="" onerror=src="../img/user.png"></div>
-                        <div>${export_list[i].userName||"匿名用户"}</div>
-                        <div>${export_list[i].counselorDuty}</div>
+                <div class="zjtj_list inline-block" data-phone="${export_change_v.phoneNumber}">
+                        <div><img src="${headimage(export_change_v.headImage)}" alt="" onerror=src="../img/user.png"></div>
+                        <div>${export_change_v.userName||"匿名用户"}</div>
+                        <div>${export_change_v.counselorDuty}</div>
                     </div>
             `;
         }
@@ -395,7 +435,8 @@ $(function(){
     });
     //围观搜索
     $(".index-serach").click(function(){
-        window.location.href="../html/watch-search.html";
+        // window.location.href="../html/watch-search.html";
+        window.location.href="../html/index-search.html";
     });
     //顶部tab栏点击
     $(".tab-class-list").click(function(){
@@ -440,6 +481,70 @@ $(function(){
             window.location.href="brush.html?msg="+imageLink;
         }else if(isNative==5){
             window.location.href="brush-video.html?id="+imageLink;
+        }
+    });
+    //微信分享
+    function wx_share(){
+        //配置微信信息
+        var path_url=encodeURIComponent(window.location.href.split('#')[0]);
+        $.ajax({
+            type:"POST",
+            url:http_url.url+"/wx/createJsapiSignature?url="+path_url,
+            success:function(data){
+                console.log(data.datum);
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: data.datum.appid, // 必填，公众号的唯一标识
+                    timestamp:data.datum.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: data.datum.noncestr, // 必填，生成签名的随机串
+                    signature: data.datum.signature,// 必填，签名
+                    jsApiList: [
+                        'onMenuShareTimeline',       // 分享到朋友圈接口
+                        'onMenuShareAppMessage',  //  分享到朋友接口
+                        'onMenuShareQQ',         // 分享到QQ接口
+                        'onMenuShareQZone',// 分享到qq空间
+                        'scanQRCode',// 微信扫一扫接口
+                    ] // 必填，需要使用的JS接口列表
+                });
+                wx.ready(function () {
+
+                });
+                wx.error(function(res){
+                    console.log(res)
+                    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                });
+            },
+            error:function(){
+                alert("程序出错,请重试")
+            }
+        });
+    }
+    // wx_share();
+    //加号按钮点击
+    $(".release").click(function(){
+        $(".index-add-model").show();
+    });
+    $(".index-add-model").click(function(){
+        $(".index-add-model").hide();
+    });
+    //扫一扫相关列表点击
+    $(".index-add-list").click(function(){
+        var code=$(this).attr("data-code");
+        switch(code){
+            case "1":
+                wx.scanQRCode({
+                    needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                    success: function (res) {
+                        var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                    }
+                });
+                break;
+            case "2":
+                break;
+            case "3":
+                window.location.href="mine-fans-add.html";
+                break;
         }
     });
 });

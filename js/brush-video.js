@@ -1,6 +1,7 @@
 $(function(){
     var vid=getUrlParms("vid"),id=getUrlParms("id"),userId='';
     ajax(http_url.url+"/brush/brushVideorRequirement",{
+        "source":'0',
         "id":id,
         "sinceId":'1',
         "maxId":'2'
@@ -9,17 +10,17 @@ $(function(){
         var v_html="&lt;script async src='https://p.bokecc.com/player?vid="+data.data[0].vid+"&siteid=A0123BC413D6FBAE&autoStart=true&width=100%&height=100%&playerid=7E2195B034B0277B&playertype=1'>&lt;/script>";
         v_html=v_html.replace(/&lt;/g,'<');
         $(".brush-video-body").html(v_html);
-        var html=`<div class="brush-video-column inline-block ${data.data[0].specialColumnName?'':'out'}">${data.data[0].specialColumnName||''}</div>
+        var html=`<div class="brush-video-column inline-block ${data.data[0].specialColumnName?'':'out'}" data-phone="${data.data[0].userId}" data-id="${data.data[0].specialcolumnId}">${data.data[0].specialColumnName||''}</div>
                     <div class="brush-video-user">${get_name(data.data[0])}</div>
                     <div class="brush-video-label">${data.data[0].title}</div>
-                    <div class="brush-video-title">${data.data[0].labelName?"#"+data.data[0].labelName:''}</div>`;
+                    <div class="brush-video-title" data-id="${data.data[0].labelId}">${data.data[0].labelName?"#"+data.data[0].labelName:''}</div>`;
         $(".brush-video-msg").html(html);
         $(".brush-v-xh-num").html(data.data[0].praiseNum);
         $(".brush-v-gz>div").attr("data-id",data.data[0].userId);
         if(data.data[0].ifAttention==0||data.data[0].ifAttention==2){
             $(".brush-v-gz>div").hide();
         }
-        $(".brush-v-gz>img").attr("src",headimage(data.data[0].headImage)).attr("data-phone",data.data[0].userId);
+        $(".brush-v-gz>img").attr("src",headimage(data.data[0].headImage)).attr("data-phone",data.data[0].userId).attr("data-role",data.data[0].role);
         userId=data.data[0].userId;
         // if(data.data[0].ifAttention==0){
         //     $(".brush-v-gz>div").html("取消关注")
@@ -120,6 +121,16 @@ $(function(){
             })
         }
 
+    });
+    //标签点击
+    $("body").on("click",".brush-video-title",function(){
+        var name=$(this).html().split("#")[1];
+        window.location.href="brush-label-detail.html?id="+$(this).attr("data-id")+"&name="+encodeURIComponent(encodeURIComponent(name));
+    });
+    //专栏点击
+    $("body").on("click",".brush-video-column",function(){
+        var phone=$(this).attr("data-phone");
+        window.location.href="personal-new.html?phone="+phone+"&to=personal-new-title&msg=p-zl&sid="+$(this).attr("data-id");
     });
     //微信分享
     function wx_share(){

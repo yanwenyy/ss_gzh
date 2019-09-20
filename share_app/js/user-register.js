@@ -9,7 +9,7 @@ $(function(){
     sessionStorage.setItem("codeinfos",codemessages);
     $('.imgsrc').show();
     $(".code-img-yz").hide();
-    $('.imgsrc').attr("src",hostName.url+"/random/randCode/"+codemessages+"");
+    $('.imgsrc').attr("src",http_url.url+"/random/randCode/"+codemessages+"");
     //验证手机号
     $(".phones").on("blur",function(){
         var timestamp=new Date().getTime();
@@ -30,7 +30,7 @@ $(function(){
         //
         // $('.imgsrc').show();
         // $(".code-img-yz").hide();
-        // $('.imgsrc').attr("src",hostName.url+"/random/randCode/"+codemessages+"");
+        // $('.imgsrc').attr("src",http_url.url+"/random/randCode/"+codemessages+"");
         // $(".phones").attr("readonly","readonly");
     });
 
@@ -41,7 +41,7 @@ $(function(){
         var codemessages = hex_md5(phonenum+timestamp); //手机号+时间戳的MD5加密
         sessionStorage.setItem("codeinfos",codemessages);
 
-        $(this).attr("src",hostName.url+"/random/randCode/"+codemessages+"");
+        $(this).attr("src",http_url.url+"/random/randCode/"+codemessages+"");
 
     });
     //短信验证码倒计时
@@ -71,7 +71,7 @@ $(function(){
             return false;
         }else{
             $.ajax({
-                url:hostName.url+"api/sendSms",
+                url:http_url.url+"api/sendSms",
                 type:"post",
                 dataType: "json",
                 headers: {
@@ -114,7 +114,7 @@ $(function(){
         }
         if(inviteUserId!=null){
             $.ajax({
-                url:hostName.url+"/newRegist",
+                url:http_url.url+"/newRegist",
                 type:"post",
                 dataType: "json",
                 headers: {
@@ -141,7 +141,7 @@ $(function(){
             });
         }else if(batchId!=null){
             $.ajax({
-                url:hostName.url+"/newRegist",
+                url:http_url.url+"/newRegist",
                 type:"post",
                 dataType: "json",
                 headers: {

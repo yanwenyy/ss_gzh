@@ -270,7 +270,8 @@
 }
 
 .mine-fans-list > li {
-    height: 15rem;
+    min-height: 15rem;
+    height:auto;
     padding: 3rem;
     border-bottom: 1px solid #eee;
     color: rgba(51, 51, 51, 1);
@@ -281,9 +282,20 @@
     height: 8.4rem;
     width: 8.4rem;
     border-radius: 50%;
+    margin-right: 2.3rem;
+}
+.c-sptt-head-div{
+    vertical-align: top;
+}
+.c-sptt-head-div>.look-hp-image{
+    height: 8.4rem;
+    width: 8.4rem;
+    border-radius: 50%;
     margin-right: 2.3rem
 }
-
+.c-sptt-head-div{
+    position: relative;
+}
 .mine-fans-list > li > div > img {
     width: 7.7rem;
     height: 1.9rem
@@ -1049,7 +1061,7 @@
 
 .attention-export-msg > div:first-child > span:first-child {
     color: #333;
-    font-size: 3rem
+    font-size: 3rem;
 }
 
 .attention-btn {
@@ -1437,13 +1449,15 @@
     padding-bottom: 11.8rem;
 }
 .mine-365-header{
-    height:48.3rem;
+    min-height:46.3rem;
+    height: auto;
     width: 100%;
     padding:0 3.2rem;
     background: url(../img/mine-365-header-bg.png) no-repeat 100% 100%;
     background-size: 100% 100%;
     color:#fff;
     position: relative;
+    padding-bottom: 12.8rem;
 }
 .mine-365-header .mine-msg-name{
     width:100%;
@@ -1477,7 +1491,7 @@
     background: url(../img/365_My_vipcard-pt.png) no-repeat;
     background-size: 100% 100%;
     position: absolute;
-    bottom: 0;
+    bottom: -1.3rem;
     left:0;
 }
 .card-365-date,.card-365-open{
@@ -1528,7 +1542,7 @@
     width:19.5%;
     text-align: center;
     font-size: 2.4rem;
-    margin-top:4.5rem;
+    margin-top:2.5rem;
     vertical-align: top;
 }
 .mine-mb-list-one{
@@ -1830,4 +1844,245 @@
     margin:0 1.4rem 0 4.9rem;
     vertical-align: middle;
     color:#FA8449;
+}
+.fans-s-msg{
+    font-size: 2.4rem;
+    color:#999;
+}
+.mine-card-body{
+    margin-top: 8.8rem;
+    padding:4.5rem 6.8rem;
+    position: absolute;
+    top:0;
+}
+.mine-card-bg1{
+    background: url(../img/mine-card-bg1.png) no-repeat 100% 100%;
+    background-size: 100% 100%;
+}
+.mine-card-bg2{
+    background: url(../img/mine-card-bg2.png) no-repeat 100% 100%;
+    background-size: 100% 100%;
+}
+.mine-card-bg3{
+    background: url(../img/mine-card-bg3.png) no-repeat 100% 100%;
+    background-size: 100% 100%;
+}
+.mine-card-bg4{
+    background: url(../img/mine-card-bg4.png) no-repeat 100% 100%;
+    background-size: 100% 100%;
+}
+.mine-card-main{
+    width: 100%;
+    padding:4.6rem 6.5rem;
+    background: url(../img/mine-card-main-bg.png) no-repeat 100% 100%;
+    background-size: 100% 100%;
+}
+.mine-card-head>img,.mine-card-head-btn>img:nth-child(1){
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-bottom: 2rem;
+}
+.mine-card-head-btn{
+    position: relative;
+}
+.mine-card-head-btn-sel{
+    width: 6.1rem;
+    height:6.1rem;
+    position: absolute;
+    bottom:1rem;
+    right:0;
+}
+.mine-card-head-btn-input{
+    width: 100%;
+    height:100%;
+    opacity: 0;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.mine-card-name{
+    font-size: 3.7rem;
+    color:#333;
+    font-weight: bold;
+    margin-right: 1.2rem;
+    max-width: 70%;
+    margin-left: 1rem;
+    vertical-align: middle;
+}
+.mine-card-head-msg-group{
+    max-width: 70%;
+    margin-left: 2rem;
+    vertical-align: middle;
+}
+.mine-card-dj{
+    font-size: 2.2rem;
+    color:#999;
+    vertical-align: middle;
+}
+.mine-card-rz>div>img{
+    width: 2.2rem;
+    height:2.2rem;
+    vertical-align: middle;
+    margin-right: 0.7rem;
+}
+.mine-card-rz{
+    margin-bottom: 2.7rem;
+}
+.mine-card-rz>div{
+    font-size: 2.3rem;
+    margin-right: 2.7rem;
+}
+.mine-card-rz-color1{
+    color:#454754;
+}
+.mine-card-rz-color2{
+    color:#2E9E93;
+}
+.mine-card-rz-color3{
+    color:#F56A32;
+}
+.mine-card-rz-color4{
+    color:#193043;
+}
+.mine-card-agdress{
+    font-size: 2.2rem;
+    color:#333;
+    margin-bottom: 2.5rem;
+}
+.mine-card-agdress-line{
+    width:0.3rem;
+    height: 1.5rem;
+    background:#454754;
+    vertical-align: middle;
+    margin: 0 1.3rem;
+}
+.mine-card-company{
+    font-size: 2.2rem;
+    padding-bottom: 3.8rem;
+    border-bottom: 1px dotted #454754;
+    margin-bottom: 1rem;
+}
+.mine-card-msg-li{
+    margin-top: 3.1rem;
+    font-size: 2.2rem;
+    color:#333;
+}
+.mine-card-msg-li>img{
+    vertical-align: middle;
+}
+.mine-card-code{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin:4.1rem 0 2.8rem 0 ;
+}
+.mine-card-code>#qrcode,.mine-card-code>#qrcode2{
+    width: 22.3rem;
+    height: 22.3rem;
+    margin: 0 auto;
+}
+#qrcode img,#qrcode2 img{
+    width: 100%;
+    height: 100%;
+}
+.mine-card-code-logo{
+    width: 4.4rem;
+    height: 4.4rem;
+    position:absolute;
+    top:9rem;
+    left:22rem;
+}
+.mine-card-code-logo>img{
+    width: 100%;
+    height:100%;
+}
+.mine-card-code-ss{
+    font-size: 2rem;
+    color:#333;
+    text-align: center;
+    margin-bottom: 1.7rem;
+}
+.mine-card-code-footer{
+    font-size: 2rem;
+    color:#999;
+    margin-bottom: 10rem;
+    text-align: center;
+}
+.mine-card-btn-group{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5.4rem;
+}
+.mine-card-btn-group>div{
+    width:19rem;
+    height:7.8rem;
+    line-height: 7.8rem;
+    text-align: center;
+    font-size: 2.8rem;
+    border-radius: 1.2rem;
+    color:#333;
+    background: #fff;
+}
+.send-mine-card{
+    background: #F37846!important;
+    color:#fff!important;
+}
+.mine-card-msg-ul-name{
+    font-size: 3rem;
+    color:#333;
+    font-weight: bold;
+    margin:4.6rem 0 3.9rem 0;
+}
+.mine-card-bg-sel{
+    display: flex;
+    justify-content: space-between;
+}
+.mine-card-bg-opt{
+    width: 24%;
+    position: relative;
+}
+.mine-card-bg-opt-show{
+    width: 100%;
+    height:100%;
+}
+.mine-card-bg-opted{
+    width: 3rem;
+    height:3rem;
+    position: absolute;
+    bottom:1.7rem;
+    right:2rem;
+}
+.mine-card-msg-ul-input{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2.5rem;
+    font-size: 2.8rem;
+    color:#999;
+}
+.mine-card-msg-ul-input>div{
+    float:right;
+}
+.mine-card-msg-ul-input>input{
+    width: 70%;
+    border: none;
+    background: none;
+    font-size: 2.8rem;
+    color:#999;
+    padding-left: 1rem;
+}
+.if-show{
+    width: 2.4rem;
+    height: 2.4rem;
+}
+.mine-card-edit-sub{
+    width: 68.6rem;
+    height: 8.8rem;
+    line-height: 8.8rem;
+    text-align: center;
+    font-size: 3rem;
+    color:#fff;
+    border-radius: 0.8rem;
+    background: #FE6D27;
+    margin: 2rem auto;
 }

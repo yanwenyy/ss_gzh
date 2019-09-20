@@ -4,23 +4,24 @@ $(function(){
     });
     //快速答列表
     function get_list(data){
-        console.log(data);
+        // console.log(data);
         var questions=data.questions,html="";
         if(questions!=''){
-            for(var i=0;i<questions.length;i++){
+            for(var i=0,len=questions.length;i<len;i++){
+                var change_v=questions[i];
                 var content='';
-                if(questions[i].content.length>40){
-                    content=questions[i].content.substr(0,40)+"..."
+                if(change_v.content.length>40){
+                    content=change_v.content.substr(0,40)+"..."
                 }else{
-                    content=questions[i].content
+                    content=change_v.content
                 }
-                var realName=get_name(questions[i]);
+                var realName=get_name(change_v);
                 //用户等级
-                var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
+                var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
                 html+=`
-                <div class="box-sizing" data-id="${questions[i].uuid}">
+                <div class="box-sizing" data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img src="${headimage(questions[i].headImage)}" alt="" onerror=src="../img/user.png">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -29,13 +30,13 @@ $(function(){
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
-                        <div class="money-reword">赏金:<span>${parseFloat(questions[i].money).toFixed(2)}元</span></div>
+                        <div class="money-reword">赏金:<span>${parseFloat(change_v.money).toFixed(2)}元</span></div>
                     </div>
                     <div class="clist-msg">
                        ${content}
                     </div>
                     <div class="clist-foot">
-                        <div>${format(questions[i].date)}</div>
+                        <div>${format(change_v.date)}</div>
                     </div>
                 </div>
             `;
@@ -48,20 +49,21 @@ $(function(){
     }
     function get_list_more(data){
         var questions=data.questions,html="";
-        for(var i=0;i<questions.length;i++){
+        for(var i=0,len=questions.length;i<len;i++){
+            var change_v=questions[i];
             var content='';
-            if(questions[i].content.length>40){
-                content=questions[i].content.substr(0,40)+"..."
+            if(change_v.content.length>40){
+                content=change_v.content.substr(0,40)+"..."
             }else{
-                content=questions[i].content
+                content=change_v.content
             }
-            var realName=get_name(questions[i]);
+            var realName=get_name(change_v);
             //用户等级
-            var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
+            var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
             html+=`
-                <div class="box-sizing" data-id="${questions[i].uuid}">
+                <div class="box-sizing" data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img src="${headimage(questions[i].headImage)}" alt="" onerror=src="../img/user.png">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -70,13 +72,13 @@ $(function(){
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
-                        <div class="money-reword">赏金:<span>${parseFloat(questions[i].money).toFixed(2)}元</span></div>
+                        <div class="money-reword">赏金:<span>${parseFloat(change_v.money).toFixed(2)}元</span></div>
                     </div>
                     <div class="clist-msg">
                        ${content}
                     </div>
                     <div class="clist-foot">
-                        <div>${format(questions[i].date)}</div>
+                        <div>${format(change_v.date)}</div>
                     </div>
                 </div>
             `;

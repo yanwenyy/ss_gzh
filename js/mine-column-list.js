@@ -6,9 +6,10 @@ $(function(){
             "userId":data.phoneNumber
         },function(data){
            // console.log(data);
-           var html='';
-           for(var i=0;i<data.data.length;i++){
-               html+=`<div class="inline-block ${id==data.data[i].id?'column-list-tab-act':''}" data-id="${data.data[i].id}">${data.data[i].specialColumnName} </div>`
+           var html='',datas=data.data;
+           for(var i=0,len=datas.length;i<len;i++){
+               var change_v=datas[i];
+               html+=`<div class="inline-block ${id==change_v.id?'column-list-tab-act':''}" data-id="${change_v.id}">${change_v.specialColumnName} </div>`
            }
            $(".column-list-tab").html(html);
             list($(".column-list-tab-act").attr("data-id"));
@@ -25,7 +26,8 @@ $(function(){
     });
     //视频列表点击
     $("body").on("click",".column-list-div",function(){
-        window.location.href="brush-video.html?vid="+$(this).attr("data-vid")+"&id="+$(this).attr("data-id");
+        // window.location.href="brush-video.html?vid="+$(this).attr("data-vid")+"&id="+$(this).attr("data-id");
+        window.location.href="brush-nopass-video.html?vid="+$(this).attr("data-vid")+"&id="+$(this).attr("data-id");
     });
     //专栏视频列表
     function list(val){
@@ -34,19 +36,20 @@ $(function(){
             "sinceId":count_start,
             "specialcolumnId":val,
         },function(data){
-            console.log(data);
-            var html='';
-            if(data.data.length<3){
+            // console.log(data);
+            var html='',datas=data.data;
+            if(datas.length<3){
                 $(".column-list-main").css("column-count","1")
             }
-            for(var i=0;i<data.data.length;i++){
-                html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
-                        <img src="${cover_src+data.data[i].image}" alt="">
+            for(var i=0,len=datas.length;i<len;i++){
+                var change_v=datas[i];
+                html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
+                        <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
+                            <div class="column-list-title">${change_v.title.length>18?change_v.title.slice(0,18)+"..":change_v.title}</div>
                             <div class="column-list-name">
-                                <img src="${headimage(data.data[i].headImage)}" alt="">
-                                <div class="inline-block">${get_name(data.data[i])}</div>
+                                <img src="${headimage(change_v.headImage)}" alt="">
+                                <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
                     </div>`
@@ -60,16 +63,17 @@ $(function(){
             "sinceId":count_start,
             "specialcolumnId":val,
         },function(data){
-            var html='';
-            if(data.data!=''){
-                for(var i=0;i<data.data.length;i++){
-                    html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
-                        <img src="${cover_src+data.data[i].image}" alt="">
+            var html='',datas=data.data;
+            if(datas!=''){
+                for(var i=0,len=datas.length;i<len;i++){
+                    var change_v=datas[i];
+                    html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
+                        <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
+                            <div class="column-list-title">${change_v.title.length>18?change_v.title.slice(0,18)+"..":change_v.title}</div>
                             <div class="column-list-name">
-                                <img src="${headimage(data.data[i].headImage)}" alt="">
-                                <div class="inline-block">${get_name(data.data[i])}</div>
+                                <img src="${headimage(change_v.headImage)}" alt="">
+                                <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
                     </div>`

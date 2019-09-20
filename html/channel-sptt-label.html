@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>视频类型集合</title>
+    <style>
+        .channel-search-input{
+            width:53.7rem;
+            height:5.8rem;
+            line-height: 5.8rem;
+            background:rgba(255,255,255,0.2);
+            border: none;
+        }
+        .channel-search-input>input::placeholder{
+            color:#fff;
+        }
+        .channel-search-input>img{
+            vertical-align: middle;
+            margin: 0;
+        }
+        .jsb_header{
+            box-shadow: none;
+            color:#fff;
+            background: transparent;
+        }
+        .mine-work-title>div{
+            width: 33%;
+        }
+        .channel-sptt-userimg-rz2{
+            width: 2.6rem;
+            height:2.6rem;
+            position: absolute;
+            bottom: 0;
+            right:0;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header channel-header brush-title">
+    <div class="jsb_header channel-header">
+        <img src="../img/white-back.png" alt="" class="back" data-url="1">
+        <div class="inline-block channel-search-input">
+            <img src="../img/white-search.png" alt="">
+            <input type="text" readonly  class="find-btn box-sizing channel-search-msg" placeholder="请输入搜索关键词">
+        </div>
+        <div class="release inline-block find-btn">搜索</div>
+    </div>
+</div>
+<div class="channel-sptt-label-body">
+    <div class="channel-s-l-head box-sizing">
+        <img class="channel-s-l-head-bg" src="" alt="">
+        <img class="channel-s-l-head-shadow" src="../img/channel-s-l-bg.png" alt="">
+        <div class="box-sizing">
+            <div class="chaanel-s-l-name"></div>
+            <div class="chaanel-s-l-msg"></div>
+        </div>
+    </div>
+    <div>
+        <!--解决内容上移-->
+    </div>
+    <div class="channel-s-l-body box-sizing">
+        <div class="channel-s-l-body-title">
+            <div class="inline-block channel-s-l-body-title-tab">
+                <span class="inline-block channel-s-l-body-title-act" data-code="3">最新</span>
+                <span class="inline-block" data-code="4">最热</span>
+            </div>
+            <div class="inline-block"><span class="sptt-total-num">0</span>个视频</div>
+        </div>
+        <div class="channel-sptt-page-ul">
+            <!--<div class="channel-page-li">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<div class="channel-sptt-looknum"><span>24</span>次观看</div>-->
+                <!--<div class="channel-page-li-title">房地产行业税务关政策以及税收风险分析以及锁企业面临的问题</div>-->
+                <!--<div class="channel-page-li-user channel-sptt-li-user">-->
+                    <!--<div class="inline-block channle-sptt-user">-->
+                        <!--<img class="channel-sptt-userimg" src="../img/user.png" alt="">-->
+                        <!--<img class="channel-sptt-userimg-rz" src="../img/office-p-rz.png" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="inline-block channel-sptt-li-username">-->
+                        <!--<div>国家税务总局</div>-->
+                        <!--<div>3分钟前</div>-->
+                    <!--</div>-->
+                    <!--<div class="inline-block orange channel-page-li-userbtn">政策发布会</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/ajax.js"></script>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/channel-sptt-label.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

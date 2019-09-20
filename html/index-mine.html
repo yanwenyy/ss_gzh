@@ -22,6 +22,12 @@
             display: flex;
             justify-content: space-between;
         }
+        .index-mine-office-show{
+            display: none;
+        }
+        .mine-msg-name>div:nth-child(2){
+            width: 70%;
+        }
     </style>
 </head>
 <body>
@@ -138,11 +144,19 @@
                         <!--<div class="mine-mb-list-one orange">2.00</div>-->
                         <!--<div>草稿</div>-->
                     <!--</div>-->
-                    <div class="inline-block mine-365-mb-list mine-center" data-url="personal-new.html?to=personal-new-title&&msg=p-ss">
+                    <!--<div class="inline-block mine-365-mb-list mine-center" data-url="personal-new.html?to=personal-new-title&&msg=p-ss">-->
+                        <!--<div class="mine-mb-list-one orange mine-brush">0</div>-->
+                        <!--<div>作品</div>-->
+                    <!--</div>-->
+                    <div class="inline-block mine-365-mb-list mine-center" data-url="mine-works.html?">
                         <div class="mine-mb-list-one orange mine-brush">0</div>
                         <div>作品</div>
                     </div>
-                    <div class="inline-block mine-365-mb-list mine-center" data-url="personal-new.html?to=personal-new-title&&msg=p-xh">
+                    <div class="inline-block mine-365-mb-list mine-center mine-like-p" data-url="personal-new.html?to=personal-new-title&&msg=p-xh">
+                        <div class="mine-mb-list-one orange mine-like">0</div>
+                        <div>喜欢</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list mine-center mine-like-office out" data-url="personal-official.html?to=personal-new-title&&msg=p-xh">
                         <div class="mine-mb-list-one orange mine-like">0</div>
                         <div>喜欢</div>
                     </div>
@@ -155,7 +169,7 @@
             <!--<div class="workbench-normal">-->
                 <!--<img src="../img/365_My_expert.png" alt="">-->
             <!--</div>-->
-            <div class="mine-365-model workbench-consultant box-sizing">
+            <div class="mine-365-model workbench-consultant index-mine-office-hidden box-sizing">
                 <div class="mine-365-model-title box-sizing">
                     我的工作台
                 </div>
@@ -219,7 +233,22 @@
                     </div>
                 </div>
             </div>
-            <div class="mine-365-model box-sizing">
+            <div class="mine-365-model workbench-consultant index-mine-office-show box-sizing">
+                <div class="mine-365-model-title box-sizing">
+                    我的咨询
+                </div>
+                <div class="mine-365-model-body box-sizing new-bench-user">
+                    <div class="inline-block mine-365-mb-list m365-model-list-btn" data-url="mine-buy.html?type=wg">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-look.png" alt=""></div>
+                        <div>我的围观</div>
+                    </div>
+                    <div class="inline-block mine-365-mb-list m365-dowapp">
+                        <div class="mine-mb-list-one"><img src="../img/new-mine-ask.png" alt=""></div>
+                        <div>私密问</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mine-365-model box-sizing index-mine-office-hidden">
                 <div class="mine-365-model-title box-sizing">
                     资料认证
                 </div>
@@ -315,8 +344,6 @@
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
-<script src="../js/jquery-weui.js"></script>
-<script src="../js/swiper.min.js"></script>
 <script src="../js/fastclick.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/index-mine-365.js"></script>

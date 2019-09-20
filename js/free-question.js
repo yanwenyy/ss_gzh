@@ -159,7 +159,7 @@ $(function(){
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload=function(e){
-            //console.log(e.target.result);
+            // console.log(e.target.result);
             html='<div class="inline-block"><img  class="img_look" src="'+e.target.result+'" alt="" data-src="'+e.target.result.split(",")[1]+'">'+'<img src="../img/icon-index-ask-close.png" alt="" class="del-img"></div>';
             $(".qus-img-group").append(html);
             src_list.push(e.target.result.split(",")[1]);

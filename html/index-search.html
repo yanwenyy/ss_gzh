@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <link rel="stylesheet" href="../css/free-question.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <title>搜索</title>
+    <style>
+        .channel-search-input{
+            width:53.7rem;
+            height:5.8rem;
+            line-height: 5.8rem;
+        }
+        .channel-search-input>img{
+            vertical-align: middle;
+            margin: 0;
+        }
+        .jsb_header{
+            box-shadow: none;
+        }
+        .mine-work-title>div{
+            width: 24%;
+        }
+        .column-list-body{
+            margin-top: 0;
+            padding:0;
+        }
+        .column-list-main{
+            position: relative;
+            padding:3rem;
+        }
+        .wacth-search-list{
+            padding-top: 0;
+            min-height: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header channel-header brush-title">
+    <div class="jsb_header channel-header">
+        <img src="../img/channel-back.png" alt="" class="back" data-url="1">
+        <div class="inline-block channel-search-input">
+            <img src="../img/channle-search.png" alt="">
+            <input type="text" maxlength="30"  class="box-sizing channel-search-msg" placeholder="请输入搜索关键词">
+        </div>
+        <div class="release inline-block">搜索</div>
+    </div>
+</div>
+<div class="mine-work-title">
+    <div  class="inline-block box-sizing orange" data-code="1">
+        问答
+        <span class="work-title-line inline-block"></span>
+    </div>
+    <div class="inline-block box-sizing" data-code="2">
+        用户
+        <span class="inline-block"></span>
+    </div>
+    <div class="inline-block box-sizing" data-code="3">
+        刷刷
+        <span class="inline-block"></span>
+    </div>
+    <div class="inline-block box-sizing" data-code="4">
+        视频
+        <span class="inline-block"></span>
+    </div>
+</div>
+<div class="wacth-search-list index-search-main"  data-code="1">
+    <ul>
+        <!--<li>-->
+        <!--公司生产用器检修暂时停产，停产期间发生的固定固 税前扣除吗？我来帮你解答一下。-->
+        <!--<div class="watch-search-footer">-->
+        <!--<div class="inline-block">2018-09-09 12:00:01</div>-->
+        <!--<div class="inline-block"><span>点赞:39</span><span>围观:39</span></div>-->
+        <!--</div>-->
+        <!--</li>-->
+    </ul>
+    <div class="relevant-wd">
+        <div class="relevant-wd-title">相关推荐</div>
+        <ul>
+
+        </ul>
+    </div>
+    <!--<div class="msg-loading"><img src="../img/msg-loading.png" alt="">正在加载</div>-->
+</div>
+<ul class="mine-fans-list index-search-main out" data-code="2">
+    <!--<li class="box-sizing">-->
+    <!--<img src="../img/ceshi.jpg" alt="">-->
+    <!--<div class="inline-block">-->
+    <!--<div class="inline-block fans-name">匿名用户</div>-->
+    <!--<div class="inline-block fans-dj-msg">资深咨询师</div>-->
+    <!--<div class="fans-zw">-->
+    <!--<div class="inline-block"><img src="../img/fans-js.png" alt="">讲师</div>-->
+    <!--<div class="inline-block"><img src="../img/fans-zxs.png" alt="">税务师、律师、注册会计师</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="inline-block attention-fans">+关注</div>-->
+    <!--</li>-->
+    <!--<li class="box-sizing">-->
+    <!--<img src="../img/ceshi.jpg" alt="">-->
+    <!--<div class="inline-block">-->
+    <!--<div class="inline-block fans-name">匿名用户</div>-->
+    <!--<div class="inline-block fans-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+    <!--<div class="fans-zw">-->
+    <!--<div class="inline-block"><img src="../img/fans-js.png" alt="">讲师</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+    <!--</li>-->
+    <!--<li class="box-sizing">-->
+    <!--<img src="../img/ceshi.jpg" alt="">-->
+    <!--<div class="inline-block">-->
+    <!--<div class="inline-block fans-name">匿名用户</div>-->
+    <!--<div class="inline-block fans-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></div>-->
+    <!--</div>-->
+    <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+    <!--</li>-->
+    <!--<li class="box-sizing">-->
+    <!--<img src="../img/ceshi.jpg" alt="">-->
+    <!--<div class="inline-block">-->
+    <!--<div class="inline-block fans-name">匿名用户</div>-->
+    <!--<div class="fans-zw">-->
+    <!--<div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="inline-block attention-fans attention-fans-already">互相关注</div>-->
+    <!--</li>-->
+</ul>
+<div class="column-list-body index-search-main box-sizing out" data-code="3">
+    <div class="column-list-main column-list-main-ss">
+        <!--<div class="column-list-div inline-block">-->
+        <!--<img src="../img/ceshi.jpg" alt="">-->
+        <!--<div class="box-sizing">-->
+        <!--<div class="column-list-title">个人所得税专项附-加扣 暂行办法解读个人所得税专项附-加扣 暂行办法解读</div>-->
+        <!--<div class="column-list-name">-->
+        <!--<img src="../img/user.png" alt="">-->
+        <!--<div class="inline-block">董春辉</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+    <div class="relevant-ss">
+        <div class="relevant-wd-title">相关推荐</div>
+        <div class="column-list-main"></div>
+    </div>
+</div>
+<div class="channel-page-ul channel-sptt-page-ul index-search-main out" data-code="4">
+    <!--<div class="channel-page-li">-->
+    <!--<img src="../img/ceshi.jpg" alt="">-->
+    <!--<div class="channel-page-li-title">房地产行业税务关政策以及税收风险分析以及锁企业面临的问题</div>-->
+    <!--<div class="channel-page-li-user">-->
+    <!--<img src="../img/user.png" alt="">-->
+    <!--<div class="inline-block channel-page-li-username">贾老师</div>-->
+    <!--<div class="inline-block orange channel-page-li-userbtn">频道会员免费</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="channel-page-ad">-->
+    <!--<div class="inline-block channel-page-ad-msg">-->
+    <!--<img src="../img/ceshi.jpg" alt="">-->
+    <!--<div class="box-sizing">-->
+    <!--<div class="channel-page-ad-name">机构推荐</div>-->
+    <!--<div class="channel-page-ad-line"></div>-->
+    <!--<div class="channel-page-ad-company">北京致通振业税务师事务所有限公司</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<img src="../img/ceshi.jpg" alt="">-->
+    <!--</div>-->
+</div>
+<div class="no-msg">
+    <div>
+        暂时没有相关内容，
+    </div>
+    <div>
+        请输入其他关键词进行搜索~
+    </div>
+</div>
+</body>
+<script src="../js/ajax.js"></script>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/index-search.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

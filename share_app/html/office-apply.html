@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="format-detection" content="telephone=yes"/>
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index2.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <title>官方认证</title>
+    <style>
+        .jsb_header{
+            display: none;
+        }
+        .margin-header{
+            margin-top: 8.8rem;
+        }
+        body{
+            background: #FFFAF4;
+        }
+        .footer-img{
+            top:0;
+            z-index: 999999;
+            display: none;
+        }
+        .contact-app{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="jsb_header channel-header">
+        <img src="../../img/back.png" alt="" class="back">
+        官方认证
+    </div>
+    <div class="footer-img share-downloade">
+        <img src="../img/icon-down-bg@2x.png" alt="">
+        <!--<div  class="share-downloade">立即下载app</div>-->
+    </div>
+    <div class="bg-img bg-img1">
+        <img src="../img/offical_message_bg1.png" alt="">
+    </div>
+    <div class="bg-img">
+        <img src="../img/offical_message_bg2.png" alt="">
+        <div class="contact contact-h5"><a href="tel:15568680068">点击拨打客服热线：15568680068</a></div>
+        <div class="contact contact-app">点击拨打客服热线：15568680068</div>
+    </div>
+    <div class="bg-img">
+        <img src="../img/offical_message_bg3.png" alt="">
+        <div class="regist-office box-sizing">
+            <ul>
+                <li>
+                    <div class="regist-office-title"><span class="red">*</span>单位名称:</div>
+                    <div><input class="regist-office-input box-sizing office-name" data-msg="单位名称不能为空" maxlength="25" placeholder="请输入单位名称" type="text"></div>
+                </li>
+                <li>
+                    <div class="regist-office-title"><span class="red">*</span>认证类型:</div>
+                    <div>
+                        <select class="regist-office-input box-sizing office-class" data-msg="认证类型不能为空" >
+                            <option value="" selected>请选择认证类型</option>
+                            <option value="1">税务局官方账号</option>
+                            <option value="2">行业协会官方账号</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <div class="regist-office-title"><span class="red">*</span>联系人姓名:</div>
+                    <div><input class="regist-office-input box-sizing office-people" data-msg="联系人姓名不能为空" placeholder="最多输入5个字" maxlength="5" type="text"></div>
+                </li>
+                <li>
+                    <div class="regist-office-title"><span class="red">*</span>身份证号码:</div>
+                    <div><input class="regist-office-input sfz-office box-sizing office-card" data-msg="请输入负责人身份证号码" placeholder="请输入负责人身份证号码" type="text"></div>
+                </li>
+                <li>
+                    <div class="regist-office-title"><span class="red">*</span>联系电话:</div>
+                    <div><input class="regist-office-input box-sizing office-phone" data-msg="联系电话不能为空" placeholder="最多输入11位手机号" maxlength="11" type="text"></div>
+                </li>
+                <li>
+                    <div class="regist-office-title"><span class="red">*</span>图形验证码:</div>
+                    <div class="office-img-code">
+                        <input class="regist-office-input box-sizing office-imgcode" data-msg="图形验证码不能为空" placeholder="请输入图形验证码" type="text">
+                        <img class="imgsrc" src="" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="regist-office-title"><span class="red">*</span>验证码:</div>
+                    <div class="office-msg-code">
+                        <input class="regist-office-input box-sizing office-msgcode" data-msg="验证码不能为空" placeholder="请输入验证码" type="text">
+                        <div class="inline-block office-send-code">发送验证码</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="office-sub-btn">提交申请</div>
+            <div class="office-sub-must-known">
+                <input type="checkbox">
+                <span>我已阅读并同意<a href="office-privacy-agreement.html">《官方认证协议》</a></span>
+            </div>
+        </div>
+        <div class="office-footer">最终解释权归北京解税宝科技有限公司所有</div>
+    </div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../../js/ajax.js"></script>
+<script src="../js/md5.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../js/office-apply.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+        $("body").on("click",".share-downloade",function(){
+            window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jieshuibao.jsb"
+        })
+    });
+</script>
+</html>

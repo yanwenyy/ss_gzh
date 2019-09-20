@@ -12,12 +12,13 @@ $(function(){
     function recommend_export(data){
         // console.log(data);
         var export_list=data.data,html='';
-        for(var i=0;i<export_list.length;i++){
-            var counselorDuty=export_list[i].counselorDuty.split(" ");
+        for(var i=0,len=export_list.length;i<len;i++){
+            var change_v=export_list[i];
+            var counselorDuty=change_v.counselorDuty.split(" ");
                 counselorDuty=counselorDuty.join(" | ");
             var a_html='';
-            if(export_list[i].adept&&export_list[i].adept!=''&&export_list[i].adept!=null){
-                var adept=export_list[i].adept.split(" ");
+            if(change_v.adept&&change_v.adept!=''&&change_v.adept!=null){
+                var adept=change_v.adept.split(" ");
                 for(var a=0;a<adept.length;a++){
                     a_html+=`
                     <div class="inline-block">
@@ -26,22 +27,22 @@ $(function(){
                     `
                 }
             }
-            html+=`<div class="box-sizing" data-phone="${export_list[i].phoneNumber}">
+            html+=`<div class="box-sizing" data-phone="${change_v.phoneNumber}">
                         <div class="expert-msg">
-                            <img  data-phone="${export_list[i].phoneNumber}" src="${headimage(export_list[i].headImage)}" alt="" onerror=src="../img/user.png">
+                            <img  data-phone="${change_v.phoneNumber}" src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
                             <div class="inline-block">
-                                <div><div class="inline-block office-e-name">${get_name(export_list[i])}</div> <div class="inline-block office-e-dj">${export_list[i].levelName}</div></div>
+                                <div><div class="inline-block office-e-name">${get_name(export_list[i])}</div> <div class="inline-block office-e-dj">${change_v.levelName}</div></div>
                                 <div class="fans-zw">
-                                    <div class="inline-block ${export_list[i].lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
-                                    <div class="inline-block"><img src="../img/fans-zxs.png" alt="">${export_list[i].counselorDuty}</div>
+                                    <div class="inline-block ${change_v.lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
+                                    <div class="inline-block"><img src="../img/fans-zxs.png" alt="">${change_v.counselorDuty}</div>
                                 </div>
-                                <div class="office-e-adress">${export_list[i].address||''}  <span class="gray-line inline-block ${export_list[i].address&&export_list[i].companyName?'':'out'}"></span>  ${export_list[i].companyName}</div>
+                                <div class="office-e-adress">${change_v.address||''}  <span class="gray-line inline-block ${change_v.address&&change_v.companyName?'':'out'}"></span>  ${change_v.companyName}</div>
                                 <div class="office-e-good">
                                     ${a_html}
                                 </div>
                                 <div class="office-e-smw">
                                     <img src="../img/icon_expert_ask.png" alt="">
-                                    <div class="inline-block">私密问 <span class="orange">(${parseFloat(export_list[i].consultMoney).toFixed(2)}/次)</span></div>
+                                    <div class="inline-block">私密问 <span class="orange">(${parseFloat(change_v.consultMoney).toFixed(2)}/次)</span></div>
                                 </div>
                             </div>
                         </div>
@@ -52,12 +53,13 @@ $(function(){
     function recommend_export_more(data){
         var export_list=data.data,html='';
         if(export_list!=""){
-            for(var i=0;i<export_list.length;i++){
-                var counselorDuty=export_list[i].counselorDuty.split(" ");
+            for(var i=0,len=export_list.length;i<len;i++){
+                var change_v=export_list[i];
+                var counselorDuty=change_v.counselorDuty.split(" ");
                 counselorDuty=counselorDuty.join(" | ");
                 var a_html='';
-                if(export_list[i].adept&&export_list[i].adept!=''&&export_list[i].adept!=null){
-                    var adept=export_list[i].adept.split(" ");
+                if(change_v.adept&&change_v.adept!=''&&change_v.adept!=null){
+                    var adept=change_v.adept.split(" ");
                     for(var a=0;a<adept.length;a++){
                         a_html+=`
                     <div class="inline-block">
@@ -66,22 +68,22 @@ $(function(){
                     `
                     }
                 }
-                html+=`<div class="box-sizing" data-phone="${export_list[i].phoneNumber}">
+                html+=`<div class="box-sizing" data-phone="${change_v.phoneNumber}">
                         <div class="expert-msg">
-                            <img  data-phone="${export_list[i].phoneNumber}" src="${headimage(export_list[i].headImage)}" alt="" onerror=src="../img/user.png">
+                            <img  data-phone="${change_v.phoneNumber}" src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
                             <div class="inline-block">
-                                <div><div class="inline-block office-e-name">${get_name(export_list[i])}</div> <div class="inline-block office-e-dj">${export_list[i].levelName}</div></div>
+                                <div><div class="inline-block office-e-name">${get_name(export_list[i])}</div> <div class="inline-block office-e-dj">${change_v.levelName}</div></div>
                                 <div class="fans-zw">
-                                    <div class="inline-block ${export_list[i].lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
-                                    <div class="inline-block"><img src="../img/fans-zxs.png" alt="">${export_list[i].counselorDuty}</div>
+                                    <div class="inline-block ${change_v.lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
+                                    <div class="inline-block"><img src="../img/fans-zxs.png" alt="">${change_v.counselorDuty}</div>
                                 </div>
-                                <div class="office-e-adress">${export_list[i].address||''}  <span class="gray-line inline-block ${export_list[i].address&&export_list[i].companyName?'':'out'}"></span>  ${export_list[i].companyName}</div>
+                                <div class="office-e-adress">${change_v.address||''}  <span class="gray-line inline-block ${change_v.address&&change_v.companyName?'':'out'}"></span>  ${change_v.companyName}</div>
                                 <div class="office-e-good">
                                     ${a_html}
                                 </div>
                                 <div class="office-e-smw">
                                     <img src="../img/icon_expert_ask.png" alt="">
-                                    <div class="inline-block">私密问 <span class="orange">(${parseFloat(export_list[i].consultMoney).toFixed(2)}/次)</span></div>
+                                    <div class="inline-block">私密问 <span class="orange">(${parseFloat(change_v.consultMoney).toFixed(2)}/次)</span></div>
                                 </div>
                             </div>
                         </div>

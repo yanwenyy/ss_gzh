@@ -199,33 +199,34 @@ $(function(){
     });
     function list(jk,data,sel){
         ajax(http_url.url+jk,data,function(data){
-            var html='';
-            if(data.data.length<3&&data.data.length>1){
+            var html='',datas=data.data;
+            if(datas.length<3&&datas.length>1){
                 $(".column-list-main").css("column-count","1");
                 $(".column-list-div").css("width","33.8rem");
             }else{
                 $(".column-list-main").css("column-count","2");
                 $(".column-list-div").css("width","auto");
             }
-            for(var i=0;i<data.data.length;i++){
+            for(var i=0,len=datas.length;i<len;i++){
+                var change_v=datas[i];
                 if(sel=="ss"){
-                    html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
-                        <img src="${cover_src+data.data[i].image}" alt="">
+                    html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
+                        <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
+                            <div class="column-list-title">${change_v.title.length>18?change_v.title.slice(0,18)+"..":change_v.title}</div>
                             <div class="column-list-name">
-                                <img src="${headimage(data.data[i].headImage)}" onerror=src='../img/user.png' alt="">
-                                <div class="inline-block">${get_name(data.data[i])}</div>
+                                <img src="${headimage(change_v.headImage)}" onerror=src='../img/user.png' alt="">
+                                <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
                     </div>`
                 }else if(sel=="sp"){
-                    html+=`<div class="channel-relevant-list" data-charge="${data.data[i].charge}" data-classify_id="${data.data[i].classify_id}" data-id="${data.data[i].id}" data-ifClassifyVip="${data.data[i].ifClassifyVip}"  data-userId="${data.data[i].userId}">  
-                            <img src="${cover_src+data.data[i].cover}" alt="">
+                    html+=`<div class="channel-relevant-list" data-type="${change_v.video_type}" data-charge="${change_v.charge}" data-classify_id="${change_v.classify_id}" data-id="${change_v.id}" data-ifClassifyVip="${change_v.ifClassifyVip}"  data-userId="${change_v.userId}">  
+                            <img src="${cover_src+change_v.cover}" alt="">
                             <div class="inline-block channel-relevant-list-msg">
-                                <div>${data.data[i].title.length>17?data.data[i].title.slice(0,17)+"..":data.data[i].title}</div>
-                                <div>${data.data[i].classify_name}</div>
-                                <div class="orange ${data.data[i].charge==0||data.data[i].ifClassifyVip==0?'out':''}"">频道会员免费</div>
+                                <div>${change_v.title.length>17?change_v.title.slice(0,17)+"..":change_v.title}</div>
+                                <div>${change_v.video_type==1?change_v.classify_name:'视频头条'}</div>
+                                <div class="orange ${change_v.charge==0||change_v.ifClassifyVip==0?'out':''}"">频道会员免费</div>
                             </div>
                         </div>`
                 }
@@ -237,25 +238,27 @@ $(function(){
         scroll_more(http_url.url+jk,data,function(data){
             var html='';
             if(data.data!=''){
-                for(var i=0;i<data.data.length;i++){
+                var datas=data.data;
+                for(var i=0,len=datas.length;i<len;i++){
+                    var change_v=datas[i];
                     if(sel=="ss"){
-                        html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
-                        <img src="${cover_src+data.data[i].image}" alt="">
+                        html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
+                        <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
+                            <div class="column-list-title">${change_v.title.length>18?change_v.title.slice(0,18)+"..":change_v.title}</div>
                             <div class="column-list-name">
-                                <img src="${headimage(data.data[i].headImage)}"  onerror=src='../img/user.png' alt="">
-                                <div class="inline-block">${get_name(data.data[i])}</div>
+                                <img src="${headimage(change_v.headImage)}" onerror=src='../img/user.png' alt="">
+                                <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
                     </div>`
                     }else if(sel=="sp"){
-                        html+=`<div class="channel-relevant-list" data-charge="${data.data[i].charge}" data-classify_id="${data.data[i].classify_id}" data-id="${data.data[i].id}" data-ifClassifyVip="${data.data[i].ifClassifyVip}"  data-userId="${data.data[i].userId}">  
-                            <img src="${cover_src+data.data[i].cover}" alt="">
+                        html+=`<div class="channel-relevant-list" data-type="${change_v.video_type}" data-charge="${change_v.charge}" data-classify_id="${change_v.classify_id}" data-id="${change_v.id}" data-ifClassifyVip="${change_v.ifClassifyVip}"  data-userId="${change_v.userId}">  
+                            <img src="${cover_src+change_v.cover}"  alt="">
                             <div class="inline-block channel-relevant-list-msg">
-                                <div>${data.data[i].title.length>17?data.data[i].title.slice(0,17)+"..":data.data[i].title}</div>
-                                <div>${data.data[i].classify_name}</div>
-                                <div class="orange ${data.data[i].charge==0||data.data[i].ifClassifyVip==0?'out':''}"">频道会员免费</div>
+                                <div>${change_v.title.length>17?change_v.title.slice(0,17)+"..":change_v.title}</div>
+                                <div>${change_v.video_type==1?change_v.classify_name:'视频头条'}</div>
+                                <div class="orange ${change_v.charge==0||change_v.ifClassifyVip==0?'out':''}"">频道会员免费</div>
                             </div>
                         </div>`
                     }
@@ -267,18 +270,34 @@ $(function(){
         });
     }
     //视频列表点击
-    $("body").on("click",".sp>div",function(){
+    $("body").on("click",".channel-relevant-list",function(e){
         var charge=$(this).attr("data-charge"),
             classify_id=$(this).attr("data-classify_id"),
             id=$(this).attr("data-id"),
             ifClassifyVip=$(this).attr("data-ifClassifyVip"),
-            userId=$(this).attr("data-userId");
-        if(charge=="0"||ifClassifyVip=="0"){
-            window.location.href="channel-detail.html?classifyId="+classify_id+"&vid="+id+"&userid="+userId;
-        }else{
-            if(confirm("您还不是频道会员！ 开通后可观看频道下全部视频～")==true){
-                window.location.href="channel-vip-card.html?id="+classify_id;
+            userId=$(this).attr("data-userId"),
+            type=$(this).attr("data-type");
+        if(type==1){
+            if(charge=="0"||ifClassifyVip=="0"){
+                window.location.href="channel-detail.html?classifyId="+classify_id+"&vid="+id+"&userid="+userId;
+            }else{
+                ajax(http_url.url+"/goods/classify/goods",{"id": classify_id},function(data){
+                    var datas=data.data;
+                    if(datas.classifyVip==0){
+                        window.location.href="channel-detail.html?classifyId="+classify_id+"&vid="+id+"&userid="+userId;
+                    }else if(datas.classifyVip==1||datas.classifyVip==2){
+                        if(confirm("您还不是频道会员！ 开通后可观看频道下全部视频～")==true){
+                            window.location.href="channel-vip-card.html?id="+classify_id;
+                        }
+                    }else if(datas.classifyVip==3){
+                        if(confirm("此视频属于"+datas.name+"频道，您需要去关注并购买才可观看视频")){
+                            window.location.href="channel-mine.html";
+                        }
+                    }
+                });
             }
+        }else{
+            window.location.href="channel-sptt-detail.html?id="+id;
         }
     });
     //刷刷列表点击

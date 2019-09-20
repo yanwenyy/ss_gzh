@@ -4,18 +4,19 @@ $(function(){
    function get_list(data){
        //console.log(data);
        var list=data.data,html="";
-       for(var i=0;i<list.length;i++){
+       for(var i=0,len=list.length;i<len;i++){
+           var change_v=list[i];
            var content="",
-               creatdate=format(list[i].date);
+               creatdate=format(change_v.date);
            //用户等级
-           var score_img=get_score(list[i].integralScore,list[i].aision,list[i].vip);
-           if(list[i].content.length>40){
-               content=list[i].content.substr(0,40)+"...";
+           var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
+           if(change_v.content.length>40){
+               content=change_v.content.substr(0,40)+"...";
            }else{
-               content=list[i].content;
+               content=change_v.content;
            }
            var if_buy="",cwatch_buy='';
-           if(list[i].status=="1"){
+           if(change_v.status=="1"){
                if_buy="已围观";
                cwatch_buy="cwatch_buy";
            }else{
@@ -23,13 +24,13 @@ $(function(){
            }
            var realName=get_name(list[i]);
            var look_img="";
-           if(list[i].isAnon!=0){
+           if(change_v.isAnon!=0){
                look_img="look-hp-image";
            }
            html+=`
-                <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
+                <div class="box-sizing one_wg"  data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -39,7 +40,7 @@ $(function(){
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
-                        <div class="cwatch ${cwatch_buy}" data-id="${list[i].uuid}">${if_buy}</div>
+                        <div class="cwatch ${cwatch_buy}" data-id="${change_v.uuid}">${if_buy}</div>
                     </div>
                     <div class="clist-msg">
                        ${content}
@@ -47,8 +48,8 @@ $(function(){
                     <div class="clist-foot">
                         <div>${creatdate}</div>
                         <div>
-                            <div class="inline-block">点赞 ${list[i].approveNum}</div>
-                            <div class="inline-block">围观 ${list[i].lookNum}</div>
+                            <div class="inline-block">点赞 ${change_v.approveNum}</div>
+                            <div class="inline-block">围观 ${change_v.lookNum}</div>
                         </div>
                     </div>
                 </div>
@@ -59,32 +60,33 @@ $(function(){
    function get_list_more(data){
         //console.log(data);
         var list=data.data,html="";
-        for(var i=0;i<list.length;i++){
-            var content="",
-                creatdate=format(list[i].date);
-            //用户等级
-            var score_img=get_score(list[i].integralScore,list[i].aision,list[i].vip);
-            if(list[i].content.length>40){
-                content=list[i].content.substr(0,40)+"...";
-            }else{
-                content=list[i].content;
-            }
-            var if_buy="",cwatch_buy='';
-            if(list[i].status=="1"){
-                if_buy="已围观";
-                cwatch_buy="cwatch_buy";
-            }else{
-                if_buy="围观"
-            }
-            var realName=get_name(list[i]);
-            var look_img="";
-            if(list[i].isAnon!=0){
-                look_img="look-hp-image";
-            }
-            html+=`
-                <div class="box-sizing one_wg"  data-id="${list[i].uuid}">
+       for(var i=0,len=list.length;i<len;i++){
+           var change_v=list[i];
+           var content="",
+               creatdate=format(change_v.date);
+           //用户等级
+           var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
+           if(change_v.content.length>40){
+               content=change_v.content.substr(0,40)+"...";
+           }else{
+               content=change_v.content;
+           }
+           var if_buy="",cwatch_buy='';
+           if(change_v.status=="1"){
+               if_buy="已围观";
+               cwatch_buy="cwatch_buy";
+           }else{
+               if_buy="围观"
+           }
+           var realName=get_name(list[i]);
+           var look_img="";
+           if(change_v.isAnon!=0){
+               look_img="look-hp-image";
+           }
+           html+=`
+                <div class="box-sizing one_wg"  data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img src="${headimage(list[i].headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${list[i].role}" data-phone="${list[i].phoneNumber}">
+                        <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png" class="${look_img}" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}">
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName||"匿名用户"}
@@ -94,7 +96,7 @@ $(function(){
                                 <img src="${score_img}" alt="">
                             </div>
                         </div>
-                        <div class="cwatch ${cwatch_buy}" data-id="${list[i].uuid}">${if_buy}</div>
+                        <div class="cwatch ${cwatch_buy}" data-id="${change_v.uuid}">${if_buy}</div>
                     </div>
                     <div class="clist-msg">
                        ${content}
@@ -102,13 +104,13 @@ $(function(){
                     <div class="clist-foot">
                         <div>${creatdate}</div>
                         <div>
-                            <div class="inline-block">点赞 ${list[i].approveNum}</div>
-                            <div class="inline-block">围观 ${list[i].lookNum}</div>
+                            <div class="inline-block">点赞 ${change_v.approveNum}</div>
+                            <div class="inline-block">围观 ${change_v.lookNum}</div>
                         </div>
                     </div>
                 </div>
             `;
-        }
+       }
         $(".wacth-search-list").append(html);
     }
    ajax(http_url.url+"/onlook/serarch",{"sinceId":count_start,

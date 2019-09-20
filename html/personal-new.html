@@ -11,10 +11,12 @@
     <title>个人中心</title>
     <style>
         .jsb_header{
-            background: transparent;
+            background: url(../img/icon_per_bg1.png) no-repeat 100% 100%;
+            background-size: 100% 100%;
             color:#fff;
             border: none;
-            position: absolute;
+            position: fixed;
+            top:0;
             box-shadow:none;
         }
         .p-zl,.p-xh,.p-wd,.p-sp{
@@ -96,7 +98,7 @@
                 </div>
             </div>
         </div>
-        <div class="personal-main-msg" id="personal-new-title">
+        <div class="personal-main-msg box-sizing" id="personal-new-title">
             <div class="personal-main-tab">
                 <div class="inline-block personal-main-tab-act" data-html="p-ss">刷刷 <span class="new-p-ss-num">(0)</span></div>
                 <div class="inline-block p-zl-title" data-html="p-zl">专栏 <span class="new-p-zl-num">(0)</span></div>
@@ -169,7 +171,7 @@
                 </div>
             </div>
         </div>
-        <div class="personal-main-msg">
+        <div class="personal-main-msg box-sizing">
             <div class="personal-main-tab">
                 <div class="inline-block personal-main-tab-act" data-html="p-ss">刷刷 <span class="new-p-ss-num">(0)</span></div>
                 <div class="inline-block p-zl-title" data-html="p-zl">专栏 <span class="new-p-zl-num">(0)</span></div>
@@ -226,8 +228,6 @@
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
-<script src="../js/jquery-weui.js"></script>
-<script src="../js/swiper.min.js"></script>
 <script src="../js/fastclick.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/ajax.js"></script>

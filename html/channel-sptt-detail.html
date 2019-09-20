@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/channel.css">
+    <title>视频头条详情</title>
+    <style>
+        .blue{
+            color:#22517F!important;
+        }
+        .channel-d-c-reply-list>div{
+            width: 100%;
+        }
+        .back-channel{
+            width: 3.5rem;
+            height: 3.5rem;
+            position: absolute;
+            bottom: 2.65rem;
+            left: 3rem;
+        }
+        .channel-detail-video-top{
+            position: fixed;
+            width: 100%;
+            background: #fff;
+            top:0rem;
+            z-index: 999;
+        }
+        .channel-d-author{
+            margin-top: 51rem;
+        }
+        .channel-relevant-list-msg{
+            width: 47%;
+        }
+        .channel-d-author-title{
+            margin-bottom: 3.2rem;
+        }
+        .channel-d-author-msg{
+            position: relative;
+        }
+        .channel-relevant-list{
+            position: relative;
+        }
+        .jsb_header{
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="jsb_header channel-header">
+    <img src="../img/white-back.png" alt="" class="back-channel back" data-url="1">
+    <div class="channel-sttt-look-num inline-block"><span>0</span>次观看</div>
+    <!--<span class="title">视频头条详情</span>-->
+</div>
+<div class="channel-detail-body">
+    <div class="channel-detail-video-top">
+        <div class="channel-d-video"></div>
+        <div class="channel-d-tab box-sizing">
+            <div class="inline-block"><a class="inline-block channel-d-tab-act" href="#">介绍</a></div>
+            <div class="inline-block"><a class="inline-block" href="#commit">评论</a></div>
+        </div>
+    </div>
+    <div class="channel-d-author">
+        <div class="channel-d-author-title">
+            本月29、30号将举办房地产开发企业税收政策变化与土地增值税清算实操题专题
+        </div>
+        <div class="channel-sptt-msg-time">2小时前</div>
+        <div class="channel-d-author-msg">
+            <div class="inline-block c-d-a-img-div">
+                <img class="look-hp-image" src="../img/user.png" onerror=src="../img/user.png" alt="">
+                <img class="channel-detail-rz" src="../img/office-p-rz.png" alt="">
+            </div>
+            <div class="inline-block channel-teacher">北京市注册税务师协会</div>
+            <div class="inline-block attention-author orange">+ 关注</div>
+        </div>
+    </div>
+    <div class="channel-d-card">
+        <div class="channel-d-card-title">内容介绍</div>
+        <div class="channel-course">
+
+        </div>
+        <!--<div class="channel-fold curriculum-more">-->
+        <!--<span>查看全部</span>-->
+        <!--<img src="../img/channel-lookmore.png" alt="">-->
+        <!--</div>-->
+    </div>
+    <div class="channel-d-card tj-channel-detail">
+        <div class="channel-d-card-title">更多视频</div>
+        <div class="channel-relevant">
+            <!--<div class="channel-relevant-list">-->
+                <!--<img src="../img/ceshi.jpg" alt="">-->
+                <!--<div class="channel-sptt-looknum"><span>0</span>次观看</div>-->
+                <!--<div class="inline-block channel-relevant-list-msg">-->
+                <!--<div>纳税人两种重要额程序性权企业风险..</div>-->
+                <!--<div class="orange">实时新闻</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="channel-fold tj-more out">
+            <span>查看全部</span>
+            <img src="../img/channel-lookmore.png" alt="">
+        </div>
+    </div>
+    <div class="channel-d-card" id="commit">
+        <div class="channel-d-card-title">评论 (<span class="channel-d-comment-num">0</span>)</div>
+        <div class="channel-detail-commit">
+            <div class="sofa">
+                <img src="../img/sofa.png" alt="">
+            </div>
+            <!--<div class="channel-d-c-list">-->
+            <!--<img src="../img/user.png" alt="">-->
+            <!--<div class="inline-block">-->
+            <!--<div>-->
+            <!--<div class="channel-d-c-name">-->
+            <!--<span class="inline-block blue">张佳绩</span>-->
+            <!--<span class="liline-block">-->
+            <!--<img src="../img/channel-zan-no.png" alt="">-->
+            <!--<span>20</span>-->
+            <!--</span>-->
+            <!--</div>-->
+            <!--<div class="channel-d-c-content">老师讲的好棒呀，我听了之后这方面的疑惑完全解决了呢？老师还有其他的课程吗？</div>-->
+            <!--<div class="channel-d-c-date">10-10 10:00  <span>·删除</span></div>-->
+            <!--</div>-->
+            <!--<div class="channel-d-c-reply box-sizing">-->
+            <!--<div class="channel-d-c-reply-body">-->
+            <!--<div class="channel-d-c-reply-list box-sizing">-->
+            <!--<img src="../img/user.png" alt="">-->
+            <!--<div class="inline-block">-->
+            <!--<div>-->
+            <!--<div class="channel-d-c-name">-->
+            <!--<span class="inline-block">张佳绩</span>-->
+            <!--<span class="liline-block">-->
+            <!--<img src="../img/channel-zan-no.png" alt="">-->
+            <!--<span>20</span>-->
+            <!--</span>-->
+            <!--</div>-->
+            <!--<div class="channel-d-c-content">老师讲的好棒呀，我听了之后这方面的疑惑完全解决了呢？老师还有其他的课程吗？</div>-->
+            <!--<div class="channel-d-c-date">10-10 10:00</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="channel-d-c-reply-list box-sizing">-->
+            <!--<img src="../img/user.png" alt="">-->
+            <!--<div class="inline-block">-->
+            <!--<div>-->
+            <!--<div class="channel-d-c-name">-->
+            <!--<span class="inline-block">张佳绩</span>-->
+            <!--<span class="liline-block">-->
+            <!--<img src="../img/channel-zan-no.png" alt="">-->
+            <!--<span>20</span>-->
+            <!--</span>-->
+            <!--</div>-->
+            <!--<div class="channel-d-c-content">老师讲的好棒呀，我听了之后这方面的疑惑完全解决了呢？老师还有其他的课程吗？</div>-->
+            <!--<div class="channel-d-c-date">10-10 10:00</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="blue more-reply">更多回复(4)</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<div class="channel-d-commit-input box-sizing" >
+    <input type="text" data-commitId="" data-type="5" data-status="1" class="box-sizing sub_commit" placeholder="快来发表一下您的意见吧～">
+    <div class="inline-block channel-d-commit-input-img box-sizing">
+        <div class="inline-block">
+            <img class="channel-zan" src="../img/channel-c-zan-no.png" alt="">
+            <span class="inline-block channel-zan-num">0</span>
+        </div>
+        <div class="inline-block">
+            <img class="channel-sc" src="../img/channel-sc-no.png" alt="">
+        </div>
+        <div class="inline-block">
+            <img class="channel-fx" src="../img/channel-share.png" alt="">
+        </div>
+    </div>
+</div>
+<div class="shadow">
+    <img src="../img/share.png" alt="" class="share_img">
+</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../js/channel-sptt-detail.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

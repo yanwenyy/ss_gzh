@@ -557,6 +557,9 @@ textarea::-webkit-input-placeholder,input::-webkit-input-placeholder{
 .csq-comment .card-list>div:not(:last-child){
     border:none!important;
 }
+.cursor{
+    cursor: pointer;
+}
 /*热点聚焦*/
 .hot-focus{
     margin-top: 8.8rem;
@@ -1014,4 +1017,70 @@ textarea::-webkit-input-placeholder,input::-webkit-input-placeholder{
 .sofa>img{
     width:32.8rem;
     height:19rem;
+}
+.office-list-title{
+    font-size:2rem;
+    font-weight: bold;
+    text-align: center;
+    padding:1rem 0;
+}
+.office-list-table{
+    border:1px solid #000;
+    margin: 1rem auto;
+    width: 95%;
+}
+.office-list-table tr{
+    border-bottom: 1px solid #000;
+}
+.office-list-table th{
+    font-size: 1.4rem;
+    background: #E0F2DF;
+    color: #000;
+}
+.office-list-table td{
+    font-size: 1rem;
+    word-break: break-all;
+    box-sizing: border-box;
+}
+.office-list-table th,.office-list-table td{
+    border-left:1px solid #000;
+    text-align: center;
+    padding:0.5rem;
+}
+.office-list-more{
+    text-align: center;
+    width:10%;
+    height:3rem;
+    line-height: 3rem;
+    background: #F97E07;
+    color: #fff;
+    border-radius: 1rem;
+    margin: 0 auto;
+}
+.body-img{
+    width: 100%;
+    margin-top: -0.3rem;
+}
+.body-div{
+    position: relative;
+    width: 100%;
+}
+.body-div>div{
+    position: absolute;
+    top:0;
+    width: 100%;
+}
+.share-yqh-body{
+    margin-top: 11.9rem;
+}
+.share-yqh-msg{
+    text-align: center;
+    color:#964500;
+    font-size: 3.2rem;
+    margin: 1.4rem auto;
+    width: 51rem;
+    line-height: 5.5rem;
+}
+.share-yqh-btn>img{
+    width: 49.5%;
 }

@@ -46,16 +46,17 @@ $(function(){
         }else{
             $(".none-msg").hide();
         }
-        for(var i=0;i<list.length;i++){
+        for(var i=0,len=list.length;i<len;i++){
+            var change_v=list[i];
             var title="";
-            if(list[i].title.length>20){
-                title=list[i].title.substr(0,20)+"...";
+            if(change_v.title.length>20){
+                title=change_v.title.substr(0,20)+"...";
             }else{
-                title=list[i].title;
+                title=change_v.title;
             }
             html+=`
                 <div class="inline-block dkft_list">
-                    <img class="sp-img" data-id="${list[i].vid}" src="${cover_src+list[i].image}" alt="" onerror=src="../img/ceshi.jpg">
+                    <img class="sp-img" data-id="${change_v.vid}" src="${cover_src+change_v.image}" alt="" onerror=src="../img/ceshi.jpg">
                     <div>${title}</div>
                 </div>
             `
@@ -63,19 +64,20 @@ $(function(){
         $(".mine-buy-video .dkft-model").html(html);
     }
     function buy_video_more(data){
-        console.log(data);
+        // console.log(data);
         var list=data.data,html='';
         if(list!=""){
-            for(var i=0;i<list.length;i++){
+            for(var i=0,len=list.length;i<len;i++){
+                var change_v=list[i];
                 var title="";
-                if(list[i].title.length>20){
-                    title=list[i].title.substr(0,20)+"...";
+                if(change_v.title.length>20){
+                    title=change_v.title.substr(0,20)+"...";
                 }else{
-                    title=list[i].title;
+                    title=change_v.title;
                 }
                 html+=`
                 <div class="inline-block dkft_list">
-                    <img class="sp-img" data-id="${list[i].vid}" src="${cover_src+list[i].image}" alt="" onerror=src="../img/ceshi.jpg">
+                    <img class="sp-img" data-id="${change_v.vid}" src="${cover_src+change_v.image}" alt="" onerror=src="../img/ceshi.jpg">
                     <div>${title}</div>
                 </div>
             `
@@ -92,38 +94,39 @@ $(function(){
     //     "maxId":count_end},buy_video_more);
     //我的围观
     function get_wg(data){
-        console.log(data);
+        // console.log(data);
         var questions=data.questions,html='';
         if(questions==""){
             $(".none-msg").show();
         }else{
             $(".none-msg").hide();
         }
-        for(var i=0;i<questions.length;i++){
+        for(var i=0,len=questions.length;i<len;i++){
+            var change_v=questions[i];
             var title='';
-            if(questions[i].content.length>40){
-                title=questions[i].content.substr(0,40)+"...";
+            if(change_v.content.length>40){
+                title=change_v.content.substr(0,40)+"...";
             }else{
-                title=questions[i].content;
+                title=change_v.content;
             }
             //用户等级
-            var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
+            var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
             var img_src="";
-            if(questions[i].isAnon!=0){
-                img_src=headimage(questions[i].headImage);
+            if(change_v.isAnon!=0){
+                img_src=headimage(change_v.headImage);
             }
             var realName=get_name(questions[i]);
             var jc_show='out';
-            if(questions[i].status==9){
+            if(change_v.status==9){
                 jc_show='';
             }
             html+=`
-                <div class="box-sizing" data-id="${questions[i].uuid}">
+                <div class="box-sizing" data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img class="look-hp-image" data-role="${questions[i].role}" data-phone="${questions[i].phoneNumber}" src="${img_src}" alt="" onerror=src="../img/user.png">
+                        <img class="look-hp-image" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}" src="${img_src}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
+                                ${realName.length>10?realName.slice(0,10)+"...":realName}
                             </div>
                             <div class="user-grade">
                                 <img src="${score_img}" alt="">
@@ -135,10 +138,10 @@ $(function(){
                        ${title}
                     </div>
                     <div class="clist-foot">
-                        <div>${format(questions[i].date)}</div>
+                        <div>${format(change_v.date)}</div>
                         <div>
-                            <div class="inline-block">点赞 ${questions[i].approveNum}</div>
-                            <div class="inline-block">围观 ${questions[i].lookNum}</div>
+                            <div class="inline-block">点赞 ${change_v.approveNum}</div>
+                            <div class="inline-block">围观 ${change_v.lookNum}</div>
                         </div>
                     </div>
                 </div>
@@ -147,34 +150,35 @@ $(function(){
         $(".card-list").html(html);
     }
     function get_wg_more(data){
-        console.log(data);
+        // console.log(data);
         var questions=data.questions,html='';
         if(questions!=""){
-            for(var i=0;i<questions.length;i++){
+            for(var i=0,len=questions.length;i<len;i++){
+                var change_v=questions[i];
                 var title='';
-                if(questions[i].content.length>40){
-                    title=questions[i].content.substr(0,40)+"...";
+                if(change_v.content.length>40){
+                    title=change_v.content.substr(0,40)+"...";
                 }else{
-                    title=questions[i].content;
+                    title=change_v.content;
                 }
                 //用户等级
-                var score_img=get_score(questions[i].integralScore,questions[i].aision,questions[i].vip);
+                var score_img=get_score(change_v.integralScore,change_v.aision,change_v.vip);
                 var img_src="";
-                if(questions[i].isAnon!=0){
-                    img_src=headimage(questions[i].headImage);
+                if(change_v.isAnon!=0){
+                    img_src=headimage(change_v.headImage);
                 }
                 var realName=get_name(questions[i]);
                 var jc_show='out';
-                if(questions[i].status==9){
+                if(change_v.status==9){
                     jc_show='';
                 }
                 html+=`
-                <div class="box-sizing" data-id="${questions[i].uuid}">
+                <div class="box-sizing" data-id="${change_v.uuid}">
                     <div class="clist-head">
-                        <img class="look-hp-image" data-role="${questions[i].role}" data-phone="${questions[i].phoneNumber}" src="${img_src}" alt="" onerror=src="../img/user.png">
+                        <img class="look-hp-image" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}" src="${img_src}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
+                                 ${realName.length>10?realName.slice(0,10)+"...":realName}
                             </div>
                             <div class="user-grade">
                                 <img src="${score_img}" alt="">
@@ -186,10 +190,10 @@ $(function(){
                        ${title}
                     </div>
                     <div class="clist-foot">
-                        <div>${format(questions[i].date)}</div>
+                        <div>${format(change_v.date)}</div>
                         <div>
-                            <div class="inline-block">点赞 ${questions[i].approveNum}</div>
-                            <div class="inline-block">围观 ${questions[i].lookNum}</div>
+                            <div class="inline-block">点赞 ${change_v.approveNum}</div>
+                            <div class="inline-block">围观 ${change_v.lookNum}</div>
                         </div>
                     </div>
                 </div>

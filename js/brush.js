@@ -7,8 +7,9 @@ $(function(){
     },function(data){
         var rotations=data.data;
         var html='';
-        for(var i=0;i<rotations.length;i++){
-            html+=`<div class="swiper-slide"  data-md-name="${rotations[i].image}" data-imageLink="${rotations[i].imageLink}"  data-nativeLink="${rotations[i].nativeLink}"  data-isNative="${rotations[i].isNative}"><img alt="" src="${rotation_src+rotations[i].image}" data-id="${rotations[i].uuid}" data-name="${rotations[i].image}' alt=""></div>`
+        for(var i=0,len=rotations.length;i<len;i++){
+            var change_v=rotations[i];
+            html+=`<div class="swiper-slide"  data-md-name="${change_v.image}" data-imageLink="${change_v.imageLink}"  data-nativeLink="${change_v.nativeLink}"  data-isNative="${change_v.isNative}"><img alt="" src="${rotation_src+change_v.image}" data-id="${change_v.uuid}" data-name="${change_v.image}' alt=""></div>`
         }
         $(".s3>.swiper-wrapper").html(html);
     });
@@ -36,12 +37,13 @@ $(function(){
             <div class="inline-block ${msg==''||msg==null?'channel-tab-act':''}" data-id="" data-recommend="1">
                 推荐
                 <div class="channel-tab-line ${msg==null||msg==''?'':'out'}"></div>
-            </div>`;
-        for(var i=0;i<data.data.length;i++){
+            </div>`,list_v=data.data;
+        for(var i=0,len=list_v.length;i<len;i++){
+            var change_v=list_v[i];
             html+=`
-            <div class="inline-block ${msg==data.data[i].id?'channel-tab-act':''}" data-id="${data.data[i].id}"  data-recommend="0">
-                #${data.data[i].labelName}
-                <div class="channel-tab-line ${msg==data.data[i].id?'':'out'}"></div>
+            <div class="inline-block ${msg==change_v.id?'channel-tab-act':''}" data-id="${change_v.id}" >
+                #${change_v.labelName}
+                <div class="channel-tab-line ${msg==change_v.id?'':'out'}"></div>
             </div>`;
         }
         $(".channel-tab").html(html);
@@ -101,22 +103,23 @@ $(function(){
             "recommend": recommend,
         },function(data){
             var html='';
-            if(data.data.length<3&&data.data.length>1){
-                console.log(data.data.length)
+            var list=data.data;
+            if(list.length<3&&list.length>1){
                 $(".column-list-main").css("column-count","1");
                 $(".column-list-div").css("width","33.8rem");
             }else{
                 $(".column-list-main").css("column-count","2");
                 $(".column-list-div").css("width","auto");
             }
-            for(var i=0;i<data.data.length;i++){
-                html+=`<div class="column-list-div inline-block" data-id="${data.data[i].id}" data-vid="${data.data[i].vid}">
-                        <img src="${cover_src+data.data[i].image}" alt="">
+            for(var i=0,len=list.length;i<len;i++){
+                var change_v=list[i];
+                html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
+                        <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
+                            <div class="column-list-title">${change_v.title.length>18?change_v.title.slice(0,18)+"..":change_v.title}</div>
                             <div class="column-list-name">
                                 <img src="../img/user.png" alt="">
-                                <div class="inline-block">${get_name(data.data[i])}</div>
+                                <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
                     </div>`
@@ -125,16 +128,17 @@ $(function(){
         })
     }
     function list_more(data){
-        var html='';
-        if(data.data!=''){
-            for(var i=0;i<data.data.length;i++){
-                html+=`<div class="column-list-div inline-block" data-vid="${data.data[i].vid}">
-                        <img src="${cover_src+data.data[i].image}" alt="">
+        var html='',list=data.data;
+        if(list&&list!=''){
+            for(var i=0,len=list.length;i<len;i++){
+                var change_v=list[i];
+                html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
+                        <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${data.data[i].title.length>18?data.data[i].title.slice(0,18)+"..":data.data[i].title}</div>
+                            <div class="column-list-title">${change_v.title.length>18?change_v.title.slice(0,18)+"..":change_v.title}</div>
                             <div class="column-list-name">
                                 <img src="../img/user.png" alt="">
-                                <div class="inline-block">${get_name(data.data[i])}</div>
+                                <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
                     </div>`

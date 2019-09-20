@@ -46,8 +46,6 @@
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
-<script src="../js/jquery-weui.js"></script>
-<script src="../js/swiper.min.js"></script>
 <script src="../js/fastclick.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/ajax.js"></script>
@@ -57,13 +55,14 @@
         function get_list(data){
             console.log(data);
             var withdraw=data.withdraws,html="";
-            for(var i=0;i<withdraw.length;i++){
+            for(var i=0,len=withdraw.length;i<len;i++){
                 var status='';
-                if(withdraw[i].status==0){
+                var change_v=withdraw[i];
+                if(change_v.status==0){
                     status="提现成功";
-                }else if(withdraw[i].status==1){
+                }else if(change_v.status==1){
                     status="提现审核中提现审核中";
-                }else if(withdraw[i].status==2){
+                }else if(change_v.status==2){
                     status="提现错误，请联系管理员";
                 }
                 html+=`
@@ -73,15 +72,15 @@
                                 用户提现
                             </div>
                             <div>
-                                ${format(withdraw[i].createDate)}
+                                ${format(change_v.createDate)}
                             </div>
                         </div>
                         <div class="inline-block transaction_list_name" style="text-align: right">
                             <div class="green">
-                                -${parseFloat(withdraw[i].money).toFixed(2)}元
+                                -${parseFloat(change_v.money).toFixed(2)}元
                             </div>
                             <div>
-                                ${withdraw[i].reason}
+                                ${change_v.reason}
                             </div>
                         </div>
                     </li>
@@ -93,13 +92,14 @@
             console.log(data);
             var withdraw=data.withdraws,html="";
             if(withdraw!=''){
-                for(var i=0;i<withdraw.length;i++){
+                for(var i=0,len=withdraw.length;i<len;i++){
                     var status='';
-                    if(withdraw[i].status==0){
+                    var change_v=withdraw[i];
+                    if(change_v.status==0){
                         status="提现成功";
-                    }else if(withdraw[i].status==1){
+                    }else if(change_v.status==1){
                         status="提现审核中提现审核中";
-                    }else if(withdraw[i].status==2){
+                    }else if(change_v.status==2){
                         status="提现错误，请联系管理员";
                     }
                     html+=`
@@ -109,15 +109,15 @@
                                 用户提现
                             </div>
                             <div>
-                                ${format(withdraw[i].createDate)}
+                                ${format(change_v.createDate)}
                             </div>
                         </div>
                         <div class="inline-block transaction_list_name" style="text-align: right">
                             <div class="green">
-                                -${parseFloat(withdraw[i].money).toFixed(2)}元
+                                -${parseFloat(change_v.money).toFixed(2)}元
                             </div>
                             <div>
-                               ${withdraw[i].reason}
+                                ${change_v.reason}
                             </div>
                         </div>
                     </li>
