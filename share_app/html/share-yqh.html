@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/index2.css">
+    <style>
+        .footer-img{
+            top:0;
+            z-index: 999999;
+        }
+    </style>
+</head>
+<body>
+    <div class="footer-img share-downloade">
+        <img src="../img/icon-down-bg@2x.png" alt="">
+        <!--<div  class="share-downloade">立即下载app</div>-->
+    </div>
+    <div class="share-yqh-body">
+        <img src="../img/share_invitation_1.png" alt="" class="body-img">
+        <div class="body-div">
+            <img src="../img/share_invitation_2.png"  class="body-img" alt="">
+            <div>
+                <div class="share-yqh-msg">
+                    Hi，我是<span class="share-yqh-name">三十个字的官方账号三十个字的官方账号三十个字的官方账号</span>，我正在使用刷刷进行财税领域的知识学习，
+                    现在点击下方的接受邀请下载刷刷APP后，搜索我的刷刷号:<span class="share-yqh-num orange">88888888</span> ，就可以关注我了~
+                </div>
+            </div>
+        </div>
+        <img src="../img/share_invitation_3.png" alt=""  class="body-img">
+        <div class="body-div">
+            <img src="../img/share_invitation_4.png" alt="" class="body-img">
+            <div>
+                <div class="share-yqh-btn">
+                    <img src="../img/share_invitation_button1.png" class="share-downloade" alt="">
+                    <img src="../img/share_invitation_button2.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/rem-reset.js"></script>
+<script src="../../js/ajax.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../js/share-yqh.js"></script>
+<script>
+    $(function() {
+        $("body").on("click",".share-downloade",function(){
+            window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jieshuibao.jsb"
+        })
+    });
+</script>
+</html>

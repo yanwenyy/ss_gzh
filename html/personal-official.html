@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/channel.css">
-    <title>官方主页</title>
+    <title>个人中心</title>
     <style>
         .personal-new-body{
             background: #fff;
         }
         .jsb_header{
-            background: transparent;
+            background: #4267A4;
             color:#fff;
             border: none;
-            position: absolute;
+            position: fixed;
+            top:0;
             box-shadow:none;
         }
         .p-zl,.p-ss,.p-sp{
@@ -37,18 +38,26 @@
         .channel-page-li{
             position: relative;
         }
+        .head-office-rz{
+            width: 3.4rem;
+            height: 3.4rem;
+            position: absolute;
+            bottom: 3rem;
+            left: 13rem;
+        }
     </style>
 </head>
 <body>
 <div class="jsb_header channel-header">
     <img src="../img/personal-back.png" alt="" class="back">
-    官方主页
+    个人中心
+    <a href="../share_app/html/office-apply.html?from=wx" class="release konw-gfzh">了解官方账号?</a>
 </div>
 <div class="personal-new-body user-p">
     <div class="personal-head office-personal-head">
         <div class="personal-head-msg">
             <img src="../img/user.png" alt="" class="personal-img-head"  onerror=src="../img/user.png">
-            <img src="../img/office-p-rz.png" class="office-p-rz" alt="">
+            <img src="../img/office-p-rz.png" class="head-office-rz" alt="">
             <div class="inline-block office-p-name">国家税务总局</div>
         </div>
         <div class="office-p-adress">
@@ -57,12 +66,12 @@
         </div>
         <div class="personal-head-tab box-sizing">
             <div class="inline-block personal-head-tab-list atten-click" data-url="mine-fans.html">
-                <div class="new-p-gz">122</div>
+                <div class="new-p-gz">0</div>
                 <div>粉丝</div>
             </div>
             <span class="gray-line inline-block"></span>
             <div class="inline-block personal-head-tab-list">
-                <div class="new-p-fs">122</div>
+                <div class="new-p-fs">0</div>
                 <div>视频</div>
             </div>
             <div class="inline-block office-p-attention office-p-attention-add">+关注</div>
@@ -73,8 +82,8 @@
         <div class="personal-main-tab">
             <div class="inline-block personal-main-tab-act" data-html="p-sptt">视频头条<span class="new-p-sptt-num">(0)</span></div>
             <div class="inline-block" data-html="p-ss">刷刷<span class="new-p-ss-num">(0)</span></div>
-            <div class="inline-block" data-html="p-xh">喜欢 <span class="new-p-xh-num">(0)</span></div>
             <div class="inline-block p-zl-title" data-html="p-zl">专栏 <span class="new-p-zl-num">(0)</span></div>
+            <div class="inline-block office-xh out" data-html="p-xh">喜欢 <span class="new-p-xh-num">(0)</span></div>
             <div class="inline-block p-sp-title" data-html="p-sp">视频 <span class="new-p-sp-num">(<span>0</span>)</span></div>
         </div>
         <div class="personal-main-detail">

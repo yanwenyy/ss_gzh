@@ -29,6 +29,31 @@ $(function(){
             $(".column-list-main").show();
         }
     }
+
+    //滚动到顶部时tab栏固定
+    var oTop = $(".personal-main-tab").offset().top;
+    //获取导航栏的高度，此高度用于保证内容的平滑过渡
+    var martop = $('.personal-main-tab').outerHeight();
+    var sTop = 0;
+    // //获取滚动距离
+    $(window).scroll(function(){
+        sTop = $(this).scrollTop();
+
+        // 当导航栏到达屏幕顶端
+        if (sTop >= oTop) {
+
+            // 修改导航栏position属性，使之固定在屏幕顶端
+            $(".personal-main-tab").addClass("personal-main-msg-fixed");
+
+            // 修改内容的margin-top值，保证平滑过渡
+            $(".personal-main-detail").css({ "margin-top": martop });
+        } else {
+
+            // 当导航栏脱离屏幕顶端时，回复原来的属性
+            $(".personal-main-tab").removeClass("personal-main-msg-fixed");
+            $(".personal-main-detail").css({ "margin-top": "0" });
+        }
+    });
     var users='',self=0;
     //用户信息
     ajax(http_url.url+"/personal/home",{"phone":phone},function(data){
@@ -41,19 +66,21 @@ $(function(){
         $(".new-p-ss-num").html("("+users.brushs+")");
         $(".new-p-zl-num").html("("+users.specialcolumns+")");
         $(".new-p-sp-num>span").html(users.classifys||0);
+        $(".new-p-xh-num").html("("+users.praise+")");
         if(data.self==1){
             $(".office-p-attention").addClass("out");
             $(".office-p-edit").removeClass("out");
+            $(".office-xh").removeClass("out");
         }
         if(data.isAttention==1){
-            $(".office-p-attention").html("取消关注").addClass("attention-person-already");
+            $(".office-p-attention").html("取消关注").addClass("office-p-attention").removeClass("office-p-attention-add");
         }
         $(".personal-img-head").attr("src",headimage(users.headImage));
         $(".office-p-name").html(get_name(users));
         var province=users.address||'',companyName=users.companyName||'';
         $(".office-p-adress>div").html(users.officialAddress);
-        $(".new-p-gz").html(users.follow);
-        $(".new-p-fs").html(users.fans);
+        $(".new-p-gz").html(users.fans);
+        $(".new-p-fs").html(users.officials+users.brushs+users.classifys);
         //视频头条类型
         ajax(http_url.url+"/headtype/headtype/classifyvideo",{ "userId": users.phoneNumber},function(data){
             var datas=data.data,html='';
@@ -74,6 +101,13 @@ $(function(){
                 html+=`<div class="inline-block ${sid&&sid==d_change.id? 'column-list-tab-act':(!sid&&i==0?'column-list-tab-act':'')}" data-id="${d_change.id}">${d_change.specialColumnName} </div>`
             }
             $(".list-tab-zl").html(html);
+            //专栏列表
+            list("/brush/brushVideorRequirement",{
+                "maxId": count_end,
+                "sinceId":count_start,
+                "specialcolumnId":$(".column-list-tab-act").attr("data-id"),
+                "userId": phone,
+            },"column-list-main-zl");
         });
         //视频头条列表
         list("/headvideo/list",{
@@ -81,13 +115,6 @@ $(function(){
             "sinceId": count_start,
             "userId": users.phoneNumber
         },"column-list-main-sptt");
-        //专栏列表
-        list("/brush/brushVideorRequirement",{
-            "maxId": count_end,
-            "sinceId":count_start,
-            "specialcolumnId":$(".column-list-tab-act").attr("data-id"),
-            "userId": phone,
-        },"column-list-main-zl");
     });
     //详情tab点击
     $(".personal-main-tab>div").click(function(){
@@ -162,13 +189,13 @@ $(function(){
         function attention(data){
             alert(data.des);
         }
-        if($(this).html()=="已关注"){
+        if($(this).html()=="取消关注"){
             $(this).html("+ 关注").addClass("office-p-attention-add");
-            // ajax(http_url.url+"/attention/user",{"phoneNum":phone,"isAttention":0},attention);
+            ajax(http_url.url+"/attention/user",{"phoneNum":phone,"isAttention":0},attention);
 
         }else{
-            $(this).html("已关注").removeClass("office-p-attention-add");
-            // ajax(http_url.url+"/attention/user",{"phoneNum":phone,"isAttention":1},attention);
+            $(this).html("取消关注").removeClass("office-p-attention-add");
+            ajax(http_url.url+"/attention/user",{"phoneNum":phone,"isAttention":1},attention);
         }
     });
     function list(jk,cc,sel){
@@ -205,18 +232,7 @@ $(function(){
                          <div class="channel-page-li channel-page-li-sptt" data-id="${change_m.id}">
                             <img src="${cover_src+change_m.cover}" data-id="${change_m.id}" alt="">
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_m.watch_num)<10000?change_m.watch_num:change_m.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_m.id}">${change_m.title.length>20?change_m.title.slice(0,20)+'...':change_m.title}</div>
-                            <div class="channel-page-li-user channel-sptt-li-user">
-                                <div class="inline-block channle-sptt-user" data-id="${change_m.id}">
-                                    <img class="channel-sptt-userimg"  data-id="${change_m.id}" src="${headimage(change_m.headImage)}" onerror=src="../img/user.png" alt="">
-                                    <img class="channel-sptt-userimg-rz ${change_m.role==3?'':'out'}" data-id="${change_m.id}" src="../img/office-p-rz.png" alt="">
-                                </div>
-                                <div class="inline-block channel-sptt-li-username" data-id="${change_m.id}">
-                                    <div>${get_name(change_m)}</div>
-                                    <div>${timeago(change_m.insert_time)}</div>
-                                </div>
-                                <div class="inline-block orange channel-page-li-userbtn" data-id="${change_m.head_type}">${change_m.videoTypeName}</div>
-                            </div>
+                            <div class="channel-page-li-title" data-id="${change_m.id}">${change_m.title.length>40?change_m.title.slice(0,40)+'...':change_m.title}</div>
                         </div>
                     `
                 }
@@ -256,18 +272,7 @@ $(function(){
                          <div class="channel-page-li channel-page-li-sptt" data-id="${change_m.id}">
                             <img src="${cover_src+change_m.cover}" data-id="${change_m.id}" alt="">
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_m.watch_num)<10000?change_m.watch_num:change_m.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_m.id}">${change_m.title.length>20?change_m.title.slice(0,20)+'...':change_m.title}</div>
-                            <div class="channel-page-li-user channel-sptt-li-user">
-                                <div class="inline-block channle-sptt-user" data-id="${change_m.id}">
-                                    <img class="channel-sptt-userimg"  data-id="${change_m.id}" src="${headimage(change_m.headImage)}" onerror=src="../img/user.png" alt="">
-                                    <img class="channel-sptt-userimg-rz ${change_m.role==3?'':'out'}" data-id="${change_m.id}" src="../img/office-p-rz.png" alt="">
-                                </div>
-                                <div class="inline-block channel-sptt-li-username" data-id="${change_m.id}">
-                                    <div>${get_name(change_m)}</div>
-                                    <div>${timeago(change_m.insert_time)}</div>
-                                </div>
-                                <div class="inline-block orange channel-page-li-userbtn" data-id="${change_m.head_type}">${change_m.videoTypeName}</div>
-                            </div>
+                            <div class="channel-page-li-title" data-id="${change_m.id}">${change_m.title.length>40?change_m.title.slice(0,40)+'...':change_m.title}</div>
                         </div>
                     `
                     }
@@ -335,12 +340,8 @@ $(function(){
         window.location.href=$(this).attr("data-url")+msg;
     });
     //编辑个人信息
-    $("body").on("click",".edit-personal-msg",function(){
-        if(users.role==1){
-            window.location.href="../html/mine-personal-data.html";
-        }else if(users.role==2){
-            window.location.href="../html/mine-apply-consultant.html";
-        }
+    $("body").on("click",".office-p-edit",function(){
+        window.location.href="office-edit-msg.html";
     });
     //视频列表点击
     $("body").on("click",".p-sp>div",function(){

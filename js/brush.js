@@ -128,8 +128,8 @@ $(function(){
         })
     }
     function list_more(data){
-        var html='';
-        if(data.data!=''){
+        var html='',list=data.data;
+        if(list&&list!=''){
             for(var i=0,len=list.length;i<len;i++){
                 var change_v=list[i];
                 html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">

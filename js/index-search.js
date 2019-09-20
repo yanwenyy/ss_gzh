@@ -12,11 +12,17 @@ $(function(){
     //tab切换点击
     $(".mine-work-title>div").click(function(){
         count_start=1;count_end=10;
+        $(".no-msg").hide();
         $(".mine-work-title>div").removeClass("orange").children("span").removeClass("work-title-line");
         $(this).addClass("orange").children("span").addClass("work-title-line");
         var code=$(this).attr("data-code");
         $(".index-search-main").addClass("out");
         $(".index-search-main[data-code="+code+"]").removeClass("out");
+        var val=$(".channel-search-msg").val();
+        if(val!=''){
+            list($(".mine-work-title>.orange").attr("data-code"),val);
+            list_more($(".mine-work-title>.orange").attr("data-code"),val);
+        }
     });
     function list(code,val){
         count_end=10;count_start=1;
@@ -26,10 +32,12 @@ $(function(){
                     "maxId":count_end,
                     "content":val
                     },function(data){
+                        $(".wacth-search-list>ul").html('');
                         var articles=data.data,html="",csq_detail='',search=$(".wg-search-input").val();
                         if(articles==""){
-                            $(".wacth-search-list ul").html('<li class="search-none">暂无内容</li>');
-                        }else{
+                           $(".no-msg").show();
+                        }else if(articles&&articles!=''){
+                            $(".no-msg").hide();
                             if(articles.length<10){
                                 relevant_list($(".channel-search-msg").val());
                             }
@@ -40,7 +48,7 @@ $(function(){
                                 }else{
                                     atc_title=change_v.content;
                                 }
-                                atc_title=atc_title.replace(search,`<span class="red">${search}</span>`);
+                                atc_title=atc_title.replace(val,`<span class="red">${val}</span>`);
                                 // html+="<li data-id='"+change_v.uuid+"' data-status='"+change_v.status+"'>"+atc_title+"</li>";
                                 html+=`
                                         <li  data-id='${change_v.uuid}' data-status="${change_v.status}">
@@ -62,8 +70,10 @@ $(function(){
                 "name": val,
                 "sinceId": count_start
             },function(data){
+                $(".mine-fans-list").html('');
                 var datas=data.data,html='';
                 if(datas&&datas!=""){
+                    $(".no-msg").hide();
                     for(var i=0,len=datas.length;i<len;i++){
                         var change_v=datas[i];
                         var name_v=get_name(change_v);
@@ -71,7 +81,7 @@ $(function(){
                        <li class="box-sizing">
                             <img  data-phone="${change_v.phoneNumber}" src="${headimage(change_v.headImage)}" class="look-hp-image" data-role="${change_v.role}"  alt="" onerror=src="../img/user.png">
                             <div  data-phone="${change_v.phoneNumber}" class="inline-block look-hp-image fans-name-div" data-role="${change_v.role}">
-                                <div class="inline-block fans-name">${name_v.length>27?name_v.slice(0,27).replace(val, "<span class='orange'>"+ val + "</span>")+"...":name_v.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                                <div class="inline-block fans-name">${name_v.length>27?name_v.slice(0,27)+"...":name_v}</div>
                                 <div class="inline-block fans-dj-msg ${change_v.role==2?'':'out'}">${change_v.levelName}</div>
                                 <div class="inline-block fans-dj ${change_v.role==1?'':'out'}"><img src="${get_score(change_v.integralScore,change_v.aision,change_v.vip)}" alt=""></div>
                                 <div class="fans-zw">
@@ -85,6 +95,8 @@ $(function(){
                         `
                     }
                     $(".mine-fans-list").html(html);
+                }else{
+                    $(".no-msg").show();
                 }
             })
         }else if(code==3){//刷刷
@@ -94,31 +106,43 @@ $(function(){
                 "content": val,
             },function(data){
                 var brush=data.data.brushVideoDtos;
-                var html='';
+                var html='',segments=data.data.segments;
+                $(".column-list-body>.column-list-main").html('');
                 if(brush&&brush!=""){
+                    $(".column-list-main-ss").show();
+                    if(brush.length<10){
+                        relevant_ss(val);
+                    }
                     if(brush.length<3){
                         $(".column-list-main").css("column-count","1")
                     }
                     for(var i=0,len=brush.length;i<len;i++){
                         var change_v=brush[i];
-                        var title='';
+                        var title='',s_name=get_name(change_v);
                         if(change_v.title.length>18){
                             title=change_v.title.slice(0,18)+".."
                         }else{
                             title=change_v.title
                         }
+                        if(s_name.length>8){
+                            s_name=s_name.slice(0,8)+".."
+                        }
                         html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
                         <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                            <div class="column-list-title">${keyWordRed(title,segments)}</div>
                             <div class="column-list-name">
-                                <img src="../img/user.png" alt="">
-                                <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
+                                <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                <div class="inline-block">${keyWordRed(s_name,segments)}</div>
                             </div>
                         </div>
                     </div>`
                     }
                     $(".column-list-body>.column-list-main").html(html);
+                }else{
+                    // $(".no-msg").show();
+                    $(".column-list-main-ss").hide();
+                    relevant_ss(val);
                 }
             })
         }else if(code==4){//视频
@@ -128,39 +152,57 @@ $(function(){
                 "type":"5",
                 "content":val
             },function(data){
-                var html='',datas=data.data;
+                $(".channel-page-ul").html('');
+                var html='',datas=data.data,segments=data.segments;
                 if(datas&&datas!=''){
+                    $(".no-msg").hide();
                     for(var i=0,len=datas.length;i<len;i++){
                         var change_v=datas[i];
+                        var v_name=get_name(change_v);
+                        if(v_name.length>15){
+                            v_name=v_name.slice(0,15)+"...";
+                        }
                         if(change_v.video_type=="1"){
-                            var videoAdvertising='';
+                            var videoAdvertising='',
+                                title='';
                             if(change_v.videoAdvertising&&change_v.videoAdvertising!==null&&change_v.videoAdvertising!==''){
                                 videoAdvertising=change_v.videoAdvertising;
+                            }
+                            if(change_v.title.length>40){
+                                title=change_v.title.slice(0,40)+'...';
+                            }else{
+                                title=change_v.title;
                             }
                             html+=`
                                     <div class="channel-page-li channel-page-li-pd" data-type="${change_v.video_type}" data-charge="${change_v.charge}" data-classify_id="${change_v.classify_id}" data-id="${change_v.id}" data-ifClassifyVip="${change_v.ifClassifyVip}"  data-userId="${change_v.userId}">
                                         <img src="${cover_src+change_v.cover}" alt="">
-                                        <div class="channel-page-li-title">${change_v.title}</div>
+                                        <div class="channel-page-li-title">${keyWordRed(title,segments)}</div>
                                         <div class="channel-page-li-user">
-                                            <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
-                                            <div class="inline-block channel-page-li-username">${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
+                                            <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
+                                                <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                                <img class="channel-list-userimg-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                                            </div>
+                                            <div class="inline-block channel-page-li-username">${keyWordRed(v_name,segments)}</div>
                                             <div class="inline-block orange channel-page-li-userbtn ${change_v.charge==0?'out':''}">频道会员免费</div>
                                         </div>
                                     </div>
                                 `
                         }else{
+                            if(change_v.title.length>40){
+                                title=change_v.title.slice(0,40)+'...';
+                            }else{
+                                title=change_v.title;
+                            }
                             html+=`<div class="channel-page-li channel-page-li-sptt" data-type="${change_v.video_type}" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
-                            <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>20?change_v.title.slice(0,20)+'...':change_v.title}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments)}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
-                                    <img class="channel-sptt-userimg" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
-                                    <img class="channel-sptt-userimg-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                                    <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                    <img class="channel-list-userimg-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                                 </div>
                                 <div class="inline-block channel-sptt-li-username" data-id="${change_v.id}">
-                                    <div>${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
-                                    <div>${timeago(change_v.insert_time)}</div>
+                                    <div data-id="${change_v.id}">${keyWordRed(v_name,segments)}</div>
                                 </div>
                                 <div class="inline-block orange channel-page-li-userbtn" data-id="${change_v.head_type}">${change_v.videoTypeName}</div>
                             </div>
@@ -168,6 +210,8 @@ $(function(){
                         }
                     }
                     $(".channel-page-ul").html(html);
+                }else{
+                    $(".no-msg").show();
                 }
             })
         }
@@ -188,7 +232,7 @@ $(function(){
                             }else{
                                 atc_title=change_v.content;
                             }
-                            atc_title=atc_title.replace(search,`<span class="red">${search}</span>`);
+                            atc_title=atc_title.replace(val,`<span class="red">${val}</span>`);
                             // html+="<li data-id='"+change_v.uuid+"' data-status='"+change_v.status+"'>"+atc_title+"</li>";
                             html+=`
                                         <li  data-id='${change_v.uuid}' data-status="${change_v.status}">
@@ -223,7 +267,7 @@ $(function(){
                        <li class="box-sizing">
                             <img  data-phone="${change_v.phoneNumber}" src="${headimage(change_v.headImage)}" class="look-hp-image" data-role="${change_v.role}"  alt="" onerror=src="../img/user.png">
                             <div  data-phone="${change_v.phoneNumber}" class="inline-block look-hp-image fans-name-div" data-role="${change_v.role}">
-                                <div class="inline-block fans-name">${name_v.length>27?name_v.slice(0,27).replace(val, "<span class='orange'>"+ val + "</span>")+"...":name_v.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                                <div class="inline-block fans-name">${name_v.length>27?name_v.slice(0,27)+"...":name_v}</div>
                                 <div class="inline-block fans-dj-msg ${change_v.role==2?'':'out'}">${change_v.levelName}</div>
                                 <div class="inline-block fans-dj ${change_v.role==1?'':'out'}"><img src="${get_score(change_v.integralScore,change_v.aision,change_v.vip)}" alt=""></div>
                                 <div class="fans-zw">
@@ -248,26 +292,29 @@ $(function(){
                 "content": val,
             },function(data){
                 var brush=data.data.brushVideoDtos;
-                var html='';
+                var html='',segments=data.data.segments;
                 if(brush&&brush!=""){
                     if(brush.length<3){
                         $(".column-list-main").css("column-count","1")
                     }
                     for(var i=0,len=brush.length;i<len;i++){
                         var change_v=brush[i];
-                        var title='';
+                        var title='',s_name=get_name(change_v);
                         if(change_v.title.length>18){
                             title=change_v.title.slice(0,18)+".."
                         }else{
                             title=change_v.title
                         }
+                        if(s_name.length>8){
+                            s_name=s_name.slice(0,8)+".."
+                        }
                         html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
                         <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                            <div class="column-list-title">${keyWordRed(title,segments)}</div>
                             <div class="column-list-name">
-                                <img src="../img/user.png" alt="">
-                                <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
+                                <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                <div class="inline-block">${keyWordRed(s_name,segments)}</div>
                             </div>
                         </div>
                     </div>`
@@ -285,39 +332,55 @@ $(function(){
                 "type":"5",
                 "content":val
             },function(data){
-                var html='',datas=data.data;
+                var html='',datas=data.data,segments=data.segments;
                 if(datas&&datas!=''){
                     for(var i=0,len=datas.length;i<len;i++){
                         var change_v=datas[i];
+                        var v_name=get_name(change_v);
+                        if(v_name.length>15){
+                            v_name=v_name.slice(0,15)+"...";
+                        }
                         if(change_v.video_type=="1"){
-                            var videoAdvertising='';
+                            var videoAdvertising='',
+                                title='';
                             if(change_v.videoAdvertising&&change_v.videoAdvertising!==null&&change_v.videoAdvertising!==''){
                                 videoAdvertising=change_v.videoAdvertising;
+                            }
+                            if(change_v.title.length>40){
+                                title=change_v.title.slice(0,40)+'...';
+                            }else{
+                                title=change_v.title;
                             }
                             html+=`
                                     <div class="channel-page-li channel-page-li-pd" data-type="${change_v.video_type}" data-charge="${change_v.charge}" data-classify_id="${change_v.classify_id}" data-id="${change_v.id}" data-ifClassifyVip="${change_v.ifClassifyVip}"  data-userId="${change_v.userId}">
                                         <img src="${cover_src+change_v.cover}" alt="">
-                                        <div class="channel-page-li-title">${change_v.title}</div>
+                                        <div class="channel-page-li-title">${keyWordRed(title,segments)}</div>
                                         <div class="channel-page-li-user">
-                                            <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
-                                            <div class="inline-block channel-page-li-username">${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
+                                            <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
+                                                <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                                <img class="channel-list-userimg-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                                            </div>
+                                            <div class="inline-block channel-page-li-username">${keyWordRed(v_name,segments)}</div>
                                             <div class="inline-block orange channel-page-li-userbtn ${change_v.charge==0?'out':''}">频道会员免费</div>
                                         </div>
                                     </div>
                                 `
                         }else{
+                            if(change_v.title.length>40){
+                                title=change_v.title.slice(0,40)+'...';
+                            }else{
+                                title=change_v.title;
+                            }
                             html+=`<div class="channel-page-li channel-page-li-sptt" data-type="${change_v.video_type}" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
-                            <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>20?change_v.title.slice(0,20)+'...':change_v.title}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments)}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
-                                    <img class="channel-sptt-userimg" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
-                                    <img class="channel-sptt-userimg-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
+                                    <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                    <img class="channel-list-userimg-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                                 </div>
                                 <div class="inline-block channel-sptt-li-username" data-id="${change_v.id}">
-                                    <div>${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
-                                    <div>${timeago(change_v.insert_time)}</div>
+                                    <div data-id="${change_v.id}">${keyWordRed(v_name,segments)}</div>
                                 </div>
                                 <div class="inline-block orange channel-page-li-userbtn" data-id="${change_v.head_type}">${change_v.videoTypeName}</div>
                             </div>
@@ -373,7 +436,7 @@ $(function(){
             "maxId": count_end,
             "sinceId": count_start
         },function(data){
-            var datas=data.data.brushVideoDtos,html='';
+            var datas=data.data.brushVideoDtos,html='',segments=data.data.segments;
             for(var i=0,len=datas.length;i<len;i++){
                 $(".relevant-ss").show();
                 var change_v=datas[i];
@@ -386,9 +449,9 @@ $(function(){
                 html+=`<div class="column-list-div inline-block" data-id="${change_v.id}" data-vid="${change_v.vid}">
                         <img src="${cover_src+change_v.image}" alt="">
                         <div class="box-sizing">
-                            <div class="column-list-title">${title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                            <div class="column-list-title">${keyWordRed(title,segments)}</div>
                             <div class="column-list-name">
-                                <img src="../img/user.png" alt="">
+                                <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
                                 <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
@@ -412,7 +475,7 @@ $(function(){
         window.location.href="brush-video.html?vid="+$(this).attr("data-vid")+"&id="+$(this).attr("data-id");
     });
     //视频列表点击
-    $("body").on("click",".channel-page-li",function(){
+    $("body").on("click",".channel-page-li",function(e){
         var charge=$(this).attr("data-charge"),
             classify_id=$(this).attr("data-classify_id"),
             id=$(this).attr("data-id"),
@@ -432,12 +495,29 @@ $(function(){
                             window.location.href="channel-vip-card.html?id="+classify_id;
                         }
                     }else if(datas.classifyVip==3){
-                        window.location.href="channel-mine.html";
+                        if(confirm("此视频属于"+datas.name+"频道，您需要去关注并购买才可观看视频")){
+                            window.location.href="channel-mine.html";
+                        }
                     }
                 });
             }
         }else{
-            window.location.href="channel-sptt-detail.html?id="+id;
+            var class_val=e.target.className.indexOf("channel-page-li-userbtn");
+            if(class_val!=-1){
+                window.location.href="channel-sptt-label.html?id="+e.target.getAttribute("data-id");
+            }else{
+                window.location.href="channel-sptt-detail.html?id="+e.target.getAttribute("data-id");
+            }
         }
     });
+    //关注按钮点击
+    $("body").on("click",".attention-fans",function(data){
+        var that=$(this),phoneNum=that.attr("data-phone");
+        if(that.html().indexOf("+关注")!=-1){
+            ajax(http_url.url+"/attention/user",{"phoneNum":phoneNum, "isAttention":1},function(data){
+                alert(data.des);
+                that.addClass("attention-fans-already").html("已关注");
+            });
+        }
+    })
 });

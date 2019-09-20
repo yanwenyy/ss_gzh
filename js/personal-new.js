@@ -29,6 +29,31 @@ $(function(){
             $(".column-list-main").show();
         }
     }
+
+    //滚动到顶部时tab栏固定
+    var oTop = $(".personal-main-tab").offset().top;
+    //获取导航栏的高度，此高度用于保证内容的平滑过渡
+    var martop = $('.personal-main-tab').outerHeight();
+    var sTop = 0;
+    // //获取滚动距离
+    $(window).scroll(function(){
+        sTop = $(this).scrollTop();
+
+        // 当导航栏到达屏幕顶端
+        if (sTop >= oTop) {
+
+            // 修改导航栏position属性，使之固定在屏幕顶端
+            $(".personal-main-tab").addClass("personal-main-msg-fixed");
+
+            // 修改内容的margin-top值，保证平滑过渡
+            $(".personal-main-detail").css({ "margin-top": martop });
+        } else {
+
+            // 当导航栏脱离屏幕顶端时，回复原来的属性
+            $(".personal-main-tab").removeClass("personal-main-msg-fixed");
+            $(".personal-main-detail").css({ "margin-top": "0" });
+        }
+    });
     var users='',self=0;
     //用户信息
     ajax(http_url.url+"/personal/home",{"phone":phone},function(data){
@@ -259,7 +284,7 @@ $(function(){
     function list_more(jk,cc,sel){
         ajax(http_url.url+jk,cc,function(data){
             var html='';
-            if(mine_data!=''){
+            if(mine_data&&mine_data!=''){
                 var mine_data=data.data;
                 for(var i=0,len=mine_data.length;i<len;i++){
                     var change_m=mine_data[i];

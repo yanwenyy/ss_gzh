@@ -28,7 +28,7 @@ $(function(){
             $(".e-wrz").hide();
             $(".e-shz").show();
         }
-        if(data.lecturer==0){
+        if(data.lecturer==0&&data.role!=3){
             $(".zl-mine").hide();
         }
         if(data.studentStatus==1){
@@ -179,13 +179,15 @@ $(function(){
             $(".mine-365-consultant").removeClass("out");
             $(".index-mine-office-hidden").hide();//我的提问,资料认证隐藏
             $(".index-mine-office-show").show();
+            $(".mine-like-p").addClass("out");
+            $(".mine-like-office").removeClass("out");
             $(".mine-365-consultant").html(`
                     <img src="" alt="" class="user-head-img look-hp-image" data-role="${data.role}" onerror=src="../img/user.png">
                     <div class="inline-block">
                         <div class="mine-user-name">
                             ${get_name(data)}
                         </div>
-                        <div><img src="../img/index-mine-office.png" alt="" class="user-grade mine-hydj" ></div>
+                        <div><img src="../img/index-mine-office.png" alt="" class="user-grade" ></div>
                     </div>
                 `)
         }

@@ -1,11 +1,6 @@
 $(function(){
     var msg=getUrlParms("msg"),grjl=getUrlParms("grjl");
     ajax_nodata(http_url.url+"/user/message",get_user);
-    if(msg!=null){
-        $(".apply-name").html("申请咨询师")
-    }else{
-        $(".apply-name").html("编辑资料")
-    }
     var kjs_list=[],ls_list=[],sws_list=[],sfz_list=[];
     if(sessionStorage.getItem("goodat")!=null){
         $("#goodat_mine").val("已填")
@@ -27,7 +22,11 @@ $(function(){
     $("#personal_msg").attr("data-msg",sessionStorage.getItem("person_msg"));
     $("#case_mine").attr("data-msg",sessionStorage.getItem("case_msg")).attr("data-img",sessionStorage.getItem("case_img"));
     function get_user(data){
-        console.log(data);
+        // console.log(data);
+        if(data.role==3){
+            $(".apply-office").attr("readonly",true);
+            $(".apply-office-img").attr("id","");
+        }
         var head_img='';
         if(data.headImage){
             head_img=headimage(data.headImage);
@@ -218,9 +217,17 @@ $(function(){
 //     });
 // //出生日期
 //     $("#datetime-picker").calendar();
-//头像点击
-    $("#userimg-sel-btn").click(function(){
-        $(".img-sel-model").show();
+
+    //头像点击
+    $(".apply-office-img").click(function(){
+        if($(this).attr("id")!=''){
+            $(".img-sel-model").show();
+        }else{
+            alert("官方账号不可修改头像和昵称，如需更换请联系客服。客服电话：010-57797977");
+        }
+    });
+    $(".apply-office").click(function(){
+        alert("官方账号不可修改头像和昵称，如需更换请联系客服。客服电话：010-57797977");
     });
     $(".img-sel-model-close").click(function(){
         $(".img-sel-model").hide();

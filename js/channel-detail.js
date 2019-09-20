@@ -1,6 +1,11 @@
 $(function(){
-    var classifyId=getUrlParms("classifyId"),vid=getUrlParms("vid"),userid=getUrlParms("userid"),vip=getUrlParms("vip"),from=getUrlParms("from");
+    var classifyId=getUrlParms("classifyId"),vid=getUrlParms("vid"),userid=getUrlParms("userid"),vip='',from=getUrlParms("from");
     $(".sub_commit").attr("data-commitId",vid);
+    ajax(http_url.url+"/goods/classify/goods",{"id": classifyId},function(data){
+        if(data.classifyVip==0){
+            vip="yes";
+        }
+    });
     $(".back-channel").click(function(){
         var playTime=document.querySelector('video')?document.querySelector('video').currentTime*1000:0;
         if(playTime>1000){
@@ -57,7 +62,7 @@ $(function(){
             $(".channel-d-video").html(v_html);
             $(".channel-d-author-title").html(msg.title);
             $(".channel-teacher").html(get_name(msg).length>25?get_name(msg).slice(0,25)+"...":get_name(msg));
-            $(".channel-d-author-msg .look-hp-image").attr("src",headimage(msg.headImage)).attr("data-phone",msg.userId);
+            $(".channel-d-author-msg .look-hp-image").attr("src",headimage(msg.headImage)).attr("data-phone",msg.userId).attr("data-role",msg.role);
             $(".attention-author").attr("data-phone",msg.userId);
             $(".channel-course").html(msg.introduction);
             $(".channel-d-comment-num").html(msg.discuss_num);
@@ -82,8 +87,8 @@ $(function(){
                 html+=`<div data-charge="${change_v.charge}" class="channel-relevant-list" data-classid="${change_v.classify_id}" data-vid="${change_v.id}" data-uid="${change_v.userId}">
                         <img src="${cover_src+change_v.cover}" alt="">
                         <div class="inline-block channel-relevant-list-msg">
-                            <div>${change_v.title}</div>
-                            <div>${get_name(data.data[i])}</div>
+                            <div>${change_v.title.length>18?change_v.title.slice(0,18)+'...':change_v.title}</div>
+                            <div>${get_name(data.data[i]).length>10?get_name(data.data[i]).slice(0,10)+"...":get_name(data.data[i])}</div>
                             <div class="orange ${change_v.charge==0||vip!=''?'out':''}"">频道会员免费</div>
                         </div>
                     </div>`
@@ -124,7 +129,6 @@ $(function(){
                         reply_html+=`<div class="channel-d-c-reply-list box-sizing">
                                             <div class="inline-block comment-head-div">
                                                   <img data-phone="${reply[r].userUuid}"  src="${headimage(reply[r].headImage)}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
-                                                   <img class="channel-detail-rz ${reply[r].role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                                             </div>
                                             <div class="inline-block" style="width:79%">
                                                 <div>
@@ -132,7 +136,7 @@ $(function(){
                                                         <span class="inline-block">
                                                             ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
                                                             <!--span class="orange ${reply[r].author==0?'':'out'}">·作者</span-->
-                                                            <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span> ${get_rname(reply[r])}
+                                                            <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span> ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
                                                             <!--span class="orange ${reply[r].pUserId==userid?'':'out'}">·作者</span-->
                                                             </span>
                                                         </span>
@@ -156,7 +160,6 @@ $(function(){
                 <div class="channel-d-c-list">
                     <div class="inline-block comment-head-div">
                           <img data-phone="${change_v.userUuid}"  src="${headimage(change_v.headImage)}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
-                           <img class="channel-detail-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                     </div>
                     <div class="inline-block">
                         <div>
@@ -206,7 +209,6 @@ $(function(){
                         reply_html+=`<div class="channel-d-c-reply-list box-sizing">
                                             <div class="inline-block comment-head-div">
                                                   <img data-phone="${reply[r].userUuid}"  src="${headimage(reply[r].headImage)}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
-                                                   <img class="channel-detail-rz ${reply[r].role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                                             </div>
                                             <div class="inline-block" style="width:79%">
                                                 <div>
@@ -214,7 +216,7 @@ $(function(){
                                                         <span class="inline-block">
                                                             ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
                                                             <!--span class="orange ${reply[r].author==0?'':'out'}">·作者</span-->
-                                                            <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span> ${get_rname(reply[r])}
+                                                            <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span> ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
                                                             <!--span class="orange ${reply[r].pUserId==userid?'':'out'}">·作者</span-->
                                                             </span>
                                                         </span>
@@ -238,7 +240,6 @@ $(function(){
                 <div class="channel-d-c-list">
                     <div class="inline-block comment-head-div">
                           <img data-phone="${change_v.userUuid}"  src="${headimage(change_v.headImage)}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
-                           <img class="channel-detail-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                     </div>
                     <div class="inline-block">
                         <div>
@@ -295,11 +296,12 @@ $(function(){
     });
     //评论列表点击
     $("body").on("click",".channel-d-c-content",function(){
+        var name=$(this).attr("data-name").length>10?$(this).attr("data-name").slice(0,10)+"...":$(this).attr("data-name");
         if($(this).html()!="该评论已被删除"){
             $(".sub_commit").focus().attr({
                 'data-commitId':$(this).attr("data-id"),
                 'data-status':$(this).attr("data-status"),
-                'placeholder':"回复: "+$(this).attr("data-name")
+                'placeholder':"回复: "+name
             })
         }
     });
@@ -519,7 +521,9 @@ $(function(){
                         'onMenuShareAppMessage',  //  分享到朋友接口
                         'onMenuShareQQ',         // 分享到QQ接口
                         'onMenuShareQZone',// 分享到qq空间
-                        'scanQRCode'// 微信扫一扫接口
+                        'scanQRCode',// 微信扫一扫接口
+                        'uploadImage',
+                        'downloadImage'//下载图片
                     ] // 必填，需要使用的JS接口列表
                 });
                 wx.ready(function () {
@@ -553,7 +557,6 @@ $(function(){
                     wx.onMenuShareQZone(shareData);
                     wx.onMenuShareAppMessage(shareData);
                     wx.onMenuShareTimeline(shareData);
-
                 });
                 wx.error(function(res){
                     console.log(res)
@@ -566,5 +569,4 @@ $(function(){
         });
     }
     wx_share();
-
 });

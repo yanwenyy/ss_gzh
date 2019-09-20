@@ -34,7 +34,7 @@ $(function(){
             $(".channel-d-author-title").html(msg.title);
             $("title").html(msg.title);
             $(".channel-teacher").html(get_name(msg));
-            $(".channel-d-author-msg .look-hp-image").attr("src",headimage(msg.headImage)).attr("data-phone",msg.userId);
+            $(".channel-d-author-msg .look-hp-image").attr("src",headimage(msg.headImage)).attr("data-phone",msg.userId).attr("data-role",msg.role);
             $(".attention-author").attr("data-phone",msg.userId);
             $(".channel-course").html(msg.introduction);
             $(".channel-d-comment-num").html(msg.discuss_num);
@@ -63,7 +63,7 @@ $(function(){
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
                             <div class="inline-block channel-relevant-list-msg">
                                 <div data-id="${change_v.id}">${change_v.title.length>18?change_v.title.slice(0,18)+'...':change_v.title}</div>
-                                <div class="orange" data-id="${change_v.head_type}">${change_v.videoTypeName}</div>
+                                <div data-id="${change_v.id}" class="orange" data-id="${change_v.head_type}">${change_v.videoTypeName}</div>
                             </div>
                         </div>
                     `;
@@ -103,14 +103,13 @@ $(function(){
                         reply_html+=`<div class="channel-d-c-reply-list box-sizing">
                                             <div class="inline-block comment-head-div">
                                                   <img data-phone="${reply[r].userUuid}"  src="${headimage(reply[r].headImage)}" class="look-hp-image" data-role="${reply[r].role}" alt="" onerror=src="../img/user.png">
-                                                   <img class="channel-detail-rz ${reply[r].role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                                             </div>
                                             <div class="inline-block" style="width:79%">
                                                 <div>
                                                     <div class="channel-d-c-name">
                                                         <span class="inline-block">
                                                             ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
-                                                            <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span> ${get_rname(reply[r])}
+                                                            <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span>  ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
                                                             </span>
                                                         </span>
                                                         <span class="liline-block">
@@ -133,7 +132,6 @@ $(function(){
                 <div class="channel-d-c-list">
                     <div class="inline-block comment-head-div">
                           <img src="${headimage(change_v.headImage)}" data-phone="${change_v.userUuid}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
-                           <img class="channel-detail-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                     </div>
                     <div class="inline-block">
                         <div>
@@ -183,14 +181,13 @@ $(function(){
                         reply_html+=`<div class="channel-d-c-reply-list box-sizing">
                                             <div class="inline-block comment-head-div">
                                                   <img data-phone="${reply[r].userUuid}"  src="${headimage(reply[r].headImage)}" class="look-hp-image" data-role="${reply[r].role}" alt="" onerror=src="../img/user.png">
-                                                   <img class="channel-detail-rz ${reply[r].role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                                             </div>
                                             <div class="inline-block" style="width:79%">
                                                 <div>
                                                     <div class="channel-d-c-name">
                                                         <span class="inline-block">
                                                             ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
-                                                            <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span> ${get_rname(reply[r])}
+                                                            <span class="${reply[r].reply==0?'':'out'}"><span style="color:#333">回复</span>  ${get_name(reply[r]).length>10?get_name(reply[r]).slice(0,10)+"...":get_name(reply[r])}
                                                             </span>
                                                         </span>
                                                         <span class="liline-block">
@@ -213,7 +210,6 @@ $(function(){
                 <div class="channel-d-c-list">
                     <div class="inline-block comment-head-div">
                           <img src="${headimage(change_v.headImage)}" data-phone="${change_v.userUuid}" class="look-hp-image" data-role="${change_v.role}" alt="" onerror=src="../img/user.png">
-                           <img class="channel-detail-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                     </div>
                     <div class="inline-block">
                         <div>
@@ -397,11 +393,12 @@ $(function(){
     });
     //评论列表点击
     $("body").on("click",".channel-d-c-content",function(){
+        var name=$(this).attr("data-name").length>10?$(this).attr("data-name").slice(0,10)+"...":$(this).attr("data-name");
         if($(this).html()!="该评论已被删除"){
             $(".sub_commit").focus().attr({
                 'data-commitId':$(this).attr("data-id"),
                 'data-status':$(this).attr("data-status"),
-                'placeholder':"回复: "+$(this).attr("data-name")
+                'placeholder':"回复: "+name
             })
         }
     });

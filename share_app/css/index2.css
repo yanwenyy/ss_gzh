@@ -1057,3 +1057,30 @@ textarea::-webkit-input-placeholder,input::-webkit-input-placeholder{
     border-radius: 1rem;
     margin: 0 auto;
 }
+.body-img{
+    width: 100%;
+    margin-top: -0.3rem;
+}
+.body-div{
+    position: relative;
+    width: 100%;
+}
+.body-div>div{
+    position: absolute;
+    top:0;
+    width: 100%;
+}
+.share-yqh-body{
+    margin-top: 11.9rem;
+}
+.share-yqh-msg{
+    text-align: center;
+    color:#964500;
+    font-size: 3.2rem;
+    margin: 1.4rem auto;
+    width: 51rem;
+    line-height: 5.5rem;
+}
+.share-yqh-btn>img{
+    width: 49.5%;
+}

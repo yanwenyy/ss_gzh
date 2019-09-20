@@ -1,5 +1,6 @@
 $(function(){
-    var msg=getUrlParms("msg");
+    var msg=getUrlParms("msg"),
+        from=getUrlParms("from");
     //获取标签列表
     ajax(http_url.url+"/brush/allLabel",{
         "labelType":1
@@ -17,6 +18,11 @@ $(function(){
     $("body").on("click",".brush-hot-body-list>div",function(){
         $(".brush-hot-body-list>div").removeClass("brush-hot-body-list-act");
         $(this).addClass("brush-hot-body-list-act");
-        window.location.href="brush.html?msg="+$(this).attr("data-id");
+        if(from){
+            var name=$(this).html().split("#")[1];
+            window.location.href="brush-label-detail.html?id="+$(this).attr("data-id")+"&name="+encodeURIComponent(encodeURIComponent(name));
+        }else{
+            window.location.href="brush.html?msg="+$(this).attr("data-id");
+        }
     })
 });

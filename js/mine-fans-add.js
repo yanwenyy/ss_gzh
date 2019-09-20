@@ -31,7 +31,7 @@ $(function(){
                                 <div class="fans-s-msg">
                                     <div class="${type==3?'':'out'}">手机号：${change_v.phone}</div>
                                     <div class="${type==2&&change_v.role==2?'':'out'}">昵称：${change_v.realName}</div>
-                                    <div class="${type==1&&change_v.role==1?'':'out'}">真实姓名：${change_v.userName}</div>
+                                    <div class="${type==1&&change_v.role!=2?'':'out'}">真实姓名：${change_v.userName}</div>
                                 </div>
                             </div>
                             <div data-phone="${change_v.phoneNumber}" class="inline-block attention-fans ${change_v.follow==1?'each-attention':'gzfs'}"><img src="../img/hg.png" class="hg-fans ${Number(change_v.mutual)==1?'':'out'}" alt="">${change_v.follow==1?(change_v.mutual==1?'互关':'已关注'):'+关注'}</div>
@@ -65,7 +65,7 @@ $(function(){
                                 <div class="fans-s-msg">
                                     <div class="${type==3?'':'out'}">手机号：${change_v.phone}</div>
                                     <div class="${type==2&&change_v.role==2?'':'out'}">昵称：${change_v.realName}</div>
-                                    <div class="${type==1&&change_v.role==1?'':'out'}">真实姓名：${change_v.userName}</div>
+                                    <div class="${type==1&&change_v.role!=2?'':'out'}">真实姓名：${change_v.userName}</div>
                                 </div>
                             </div>
                             <div data-phone="${change_v.phoneNumber}" class="inline-block attention-fans ${change_v.follow==1?'each-attention':'gzfs'}"><img src="../img/hg.png" class="hg-fans ${Number(change_v.mutual)==1?'':'out'}" alt="">${change_v.follow==1?(change_v.mutual==1?'互关':'已关注'):'+关注'}</div>

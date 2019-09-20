@@ -29,7 +29,7 @@ $(function(){
                         <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
+                                 ${realName.length>10?realName.slice(0,10)+"...":realName}
                                 <div class="user-grade inline-block zx-detail-grade">
                                     <img src="${score_img}" alt="">
                                 </div>
@@ -86,7 +86,7 @@ $(function(){
                         <img src="${headimage(change_v.headImage)}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
+                                 ${realName.length>10?realName.slice(0,10)+"...":realName}
                                 <div class="user-grade inline-block zx-detail-grade">
                                     <img src="${score_img}" alt="">
                                 </div>

@@ -126,7 +126,7 @@ function reload_msg(ele,url_name,data,succ){
 }
 //滚动加载
 function scroll_more(url_name,data,succ){
-    $(window).scroll(function(){
+    $(window).off("scroll").on("scroll",function(){
             var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
             var scrollHeight = $(document).height();   //当前页面的总高度
             var clientHeight = $(this).height();    //当前可视的页面高度
@@ -297,28 +297,14 @@ function loadScripts(url) {
    }
 }
 
-//页面加载后获取code
-var code=getUrlParms("code");
-var cookieId;
-if(code!=null){
-    sessionStorage.setItem("code",code);
-    $.ajax({
-        type:"POST",
-        url:http_url.url+'/wx/getOpenid/'+code,
-        dataType: "json",
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json;charset=utf-8"
-        },
-        success:function(data){
-            cookieId=data.data;
-            sessionStorage.setItem("cookieId",cookieId);
-        },
-        error:function(){
-            alert("程序出错,请重试");
-        }
-    });
-}else{
-    var cookieId="oPUdI0pZbHIYBCHUn_aQPCJAmRIU"; //晏雯
-    sessionStorage.setItem("cookieId",cookieId);
+//多个关键词变红
+function keyWordRed(val,arr){
+  if(Array.isArray(arr)||Object.prototype.toString.call(arr) === "[object Array]"){
+      for(var i=0,len=arr.length;i<len;i++){
+          var change_v=arr[i];
+          val=val.replace(new RegExp(change_v, 'g'),"<span class='red'>$&</span>");
+      }
+  }
+  return val;
 }
+

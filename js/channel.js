@@ -36,8 +36,13 @@ $(function(){
     });
     //tab导航栏点击
     $("body").on("click",".channel-tab>div",function(){
+       if($(this).text().indexOf("视频头条")!=-1){
+           $(".channel-search-input>input").attr("placeholder","搜索标题,官方账号等");
+       }else{
+           $(".channel-search-input>input").attr("placeholder","请输入搜索关键词");
+       }
         window.scroll(0, 0);
-        count_start=1;count_end=10;
+        count_end=10;count_start=1;scroll_status=true;num=1;
         $(".channel-tab>div").removeClass("channel-tab-act").children(".channel-tab-line").addClass("out");
         $(this).addClass("channel-tab-act").children(".channel-tab-line").removeClass("out");
         type_sel($(".channel-tab-act").attr("data-code"));
@@ -115,7 +120,7 @@ $(function(){
     });
     //频道列表数据
     function list(code){
-        count_end=10;count_start=1;
+        count_start=1;count_end=10;num=1;scroll_status=true;
         if(code=="sptt"){
             $(".channel-sptt-page").removeClass("out");
             $(".channel-page").addClass("out");
@@ -132,21 +137,23 @@ $(function(){
                         html+=`<div class="channel-page-li channel-page-li-sptt" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>20?change_v.title.slice(0,20)+'...':change_v.title}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>40?change_v.title.slice(0,40)+'...':change_v.title}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
                                     <img class="channel-sptt-userimg" src="${headimage(change_v.headImage)}" data-id="${change_v.id}" onerror=src="../img/user.png" alt="">
                                     <img class="channel-sptt-userimg-rz ${change_v.role==3?'':'out'}" data-id="${change_v.id}" src="../img/office-p-rz.png" alt="">
                                 </div>
                                 <div class="inline-block channel-sptt-li-username" data-id="${change_v.id}">
-                                    <div>${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
-                                    <div>${timeago(change_v.insert_time)}</div>
+                                    <div data-id="${change_v.id}">${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
+                                    <div data-id="${change_v.id}">${timeago(change_v.insert_time)}</div>
                                 </div>
                                 <div class="inline-block orange channel-page-li-userbtn" data-id="${change_v.head_type}">${change_v.videoTypeName}</div>
                             </div>
                         </div>`;
                     }
                     $(".channel-sptt-page-ul").html(html);
+                }else{
+                    $(".channel-sptt-page-ul").html("<div class='no-msg' style='display: block'><div>暂时没有视频,</div>快去关注更多官方账号吧<div></div></div>");
                 }
             })
         }else{
@@ -198,9 +205,12 @@ $(function(){
                     html+=`
                     <div class="channel-page-li channel-page-li-pd" data-charge="${change_v.charge}" data-vid="${change_v.id}" data-userid="${change_v.userId}">
                         <img src="${cover_src+change_v.cover}" alt="">
-                        <div class="channel-page-li-title">${change_v.title}</div>
+                        <div class="channel-page-li-title">${change_v.title.length>40?change_v.title.slice(0,40)+"...":change_v.title}</div>
                         <div class="channel-page-li-user">
-                            <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                             <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
+                                    <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                    <img class="channel-list-userimg-rz ${change_v.role==3?'':'out'}" data-id="${change_v.id}" src="../img/office-p-rz.png" alt="">
+                             </div>
                             <div class="inline-block channel-page-li-username">${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
                             <div class="inline-block orange channel-page-li-userbtn ${change_v.charge==0||vip=="会员"?'out':''}">频道会员免费</div>
                         </div>
@@ -226,10 +236,10 @@ $(function(){
     function list_more(code){
         if(code=="sptt"){
             scroll_more(http_url.url+'/headvideo/list',{
-                "headTypeId":$(".channel-tab-act").attr("data-id"),
+                "headTypeId":".channel-list-act&&data-id",
                 "maxId":count_end,
                 "sinceId":count_start,
-                "type":$(".channel-sptt-tab-group>.orange").attr("data-code")
+                "type":".channel-sptt-tab-group>.orange&&data-code"
             },function(data){
                 var html='',datas=data.data;
                 if(datas&&datas!=''){
@@ -238,15 +248,15 @@ $(function(){
                         html+=`<div class="channel-page-li channel-page-li-sptt" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>20?change_v.title.slice(0,20)+'...':change_v.title}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>40?change_v.title.slice(0,40)+'...':change_v.title}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
-                                    <img class="channel-sptt-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                    <img class="channel-sptt-userimg" src="${headimage(change_v.headImage)}" data-id="${change_v.id}" onerror=src="../img/user.png" alt="">
                                     <img class="channel-sptt-userimg-rz ${change_v.role==3?'':'out'}" data-id="${change_v.id}" src="../img/office-p-rz.png" alt="">
                                 </div>
                                 <div class="inline-block channel-sptt-li-username" data-id="${change_v.id}">
-                                    <div>${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
-                                    <div>${timeago(change_v.insert_time)}</div>
+                                    <div data-id="${change_v.id}">${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
+                                    <div data-id="${change_v.id}">${timeago(change_v.insert_time)}</div>
                                 </div>
                                 <div class="inline-block orange channel-page-li-userbtn" data-id="${change_v.head_type}">${change_v.videoTypeName}</div>
                             </div>
@@ -277,9 +287,12 @@ $(function(){
                         html+=`
                     <div class="channel-page-li channel-page-li-pd" data-charge="${change_v.charge}" data-vid="${change_v.id}" data-userid="${change_v.userId}">
                         <img src="${cover_src+change_v.cover}" alt="">
-                        <div class="channel-page-li-title">${change_v.title}</div>
+                        <div class="channel-page-li-title">${change_v.title.length>40?change_v.title.slice(0,40)+"...":change_v.title}</div>
                         <div class="channel-page-li-user">
-                            <img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                             <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
+                                    <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                    <img class="channel-list-userimg-rz ${change_v.role==3?'':'out'}" data-id="${change_v.id}" src="../img/office-p-rz.png" alt="">
+                             </div>
                             <div class="inline-block channel-page-li-username">${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
                             <div class="inline-block orange channel-page-li-userbtn ${change_v.charge==0||vip=="会员"?'out':''}">频道会员免费</div>
                         </div>
@@ -428,5 +441,5 @@ $(function(){
             alert(data.des);
             attention_list();
         });
-    })
+    });
 });

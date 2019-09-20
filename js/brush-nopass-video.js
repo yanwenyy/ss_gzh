@@ -39,7 +39,7 @@ $(function(){
         }
         $(".brush-v-del").attr("data-id",data.data[0].id);
         $(".brush-v-gz>div").attr("data-id",data.data[0].userId);
-        $(".brush-v-gz>img").attr("src",headimage(data.data[0].headImage)).attr("data-phone",data.data[0].userId);
+        $(".brush-v-gz>img").attr("src",headimage(data.data[0].headImage)).attr("data-phone",data.data[0].userId).attr("data-role",data.data[0].role);;
         userId=data.data[0].userId;
     });
     //删除点击

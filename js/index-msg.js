@@ -10,6 +10,7 @@ $(document).ready(function() {
     window.history.forward(1);
 });
 $(function(){
+    //html挪过来
     FastClick.attach(document.body);
     var offset = sessionStorage.getItem("offsetTop2");
     // console.log(offset);
@@ -21,6 +22,7 @@ $(function(){
         }
     });
     $(".swiper-container").swiper();
+    //html挪过来结束
     var icode = getUrlParms("icode"),newuser=getUrlParms("newuser"),if_365=false;
     var hot_count_start=1,hot_count_end=5,recommend_count_start=1,recommend_count_end=5;
     //是否新用户
@@ -223,7 +225,7 @@ $(function(){
                         <div class="inline-block">
                             <div class="user-name">
                                 ${realName.length>11?realName.slice(0,11)+"...":realName||"匿名用户"}
-                                <img src="../img/icon-index-hot.png" alt="">
+                                <!--<img src="../img/icon-index-hot.png" alt="">-->
                             </div>
                             <div class="user-grade">
                                 <img src="${score_img}" alt="">
@@ -479,6 +481,70 @@ $(function(){
             window.location.href="brush.html?msg="+imageLink;
         }else if(isNative==5){
             window.location.href="brush-video.html?id="+imageLink;
+        }
+    });
+    //微信分享
+    function wx_share(){
+        //配置微信信息
+        var path_url=encodeURIComponent(window.location.href.split('#')[0]);
+        $.ajax({
+            type:"POST",
+            url:http_url.url+"/wx/createJsapiSignature?url="+path_url,
+            success:function(data){
+                console.log(data.datum);
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: data.datum.appid, // 必填，公众号的唯一标识
+                    timestamp:data.datum.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: data.datum.noncestr, // 必填，生成签名的随机串
+                    signature: data.datum.signature,// 必填，签名
+                    jsApiList: [
+                        'onMenuShareTimeline',       // 分享到朋友圈接口
+                        'onMenuShareAppMessage',  //  分享到朋友接口
+                        'onMenuShareQQ',         // 分享到QQ接口
+                        'onMenuShareQZone',// 分享到qq空间
+                        'scanQRCode',// 微信扫一扫接口
+                    ] // 必填，需要使用的JS接口列表
+                });
+                wx.ready(function () {
+
+                });
+                wx.error(function(res){
+                    console.log(res)
+                    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                });
+            },
+            error:function(){
+                alert("程序出错,请重试")
+            }
+        });
+    }
+    // wx_share();
+    //加号按钮点击
+    $(".release").click(function(){
+        $(".index-add-model").show();
+    });
+    $(".index-add-model").click(function(){
+        $(".index-add-model").hide();
+    });
+    //扫一扫相关列表点击
+    $(".index-add-list").click(function(){
+        var code=$(this).attr("data-code");
+        switch(code){
+            case "1":
+                wx.scanQRCode({
+                    needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                    success: function (res) {
+                        var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                    }
+                });
+                break;
+            case "2":
+                break;
+            case "3":
+                window.location.href="mine-fans-add.html";
+                break;
         }
     });
 });

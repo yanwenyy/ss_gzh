@@ -225,7 +225,7 @@ $(function(){
                             <img src="${cover_src+change_v.cover}" alt="">
                             <div class="inline-block channel-relevant-list-msg">
                                 <div>${change_v.title.length>17?change_v.title.slice(0,17)+"..":change_v.title}</div>
-                                <div>${change_v.video_type==1?change_v.classify_name:change_v.videoTypeName}</div>
+                                <div>${change_v.video_type==1?change_v.classify_name:'视频头条'}</div>
                                 <div class="orange ${change_v.charge==0||change_v.ifClassifyVip==0?'out':''}"">频道会员免费</div>
                             </div>
                         </div>`
@@ -253,11 +253,11 @@ $(function(){
                         </div>
                     </div>`
                     }else if(sel=="sp"){
-                        html+=`<div class="channel-relevant-list" data-charge="${change_v.charge}" data-classify_id="${change_v.classify_id}" data-id="${change_v.id}" data-ifClassifyVip="${change_v.ifClassifyVip}"  data-userId="${change_v.userId}">  
-                            <img src="${cover_src+change_v.cover}" alt="">
+                        html+=`<div class="channel-relevant-list" data-type="${change_v.video_type}" data-charge="${change_v.charge}" data-classify_id="${change_v.classify_id}" data-id="${change_v.id}" data-ifClassifyVip="${change_v.ifClassifyVip}"  data-userId="${change_v.userId}">  
+                            <img src="${cover_src+change_v.cover}"  alt="">
                             <div class="inline-block channel-relevant-list-msg">
                                 <div>${change_v.title.length>17?change_v.title.slice(0,17)+"..":change_v.title}</div>
-                                <div>${change_v.classify_name}</div>
+                                <div>${change_v.video_type==1?change_v.classify_name:'视频头条'}</div>
                                 <div class="orange ${change_v.charge==0||change_v.ifClassifyVip==0?'out':''}"">频道会员免费</div>
                             </div>
                         </div>`
@@ -270,7 +270,7 @@ $(function(){
         });
     }
     //视频列表点击
-    $("body").on("click",".sp>div",function(){
+    $("body").on("click",".channel-relevant-list",function(e){
         var charge=$(this).attr("data-charge"),
             classify_id=$(this).attr("data-classify_id"),
             id=$(this).attr("data-id"),
@@ -283,12 +283,16 @@ $(function(){
             }else{
                 ajax(http_url.url+"/goods/classify/goods",{"id": classify_id},function(data){
                     var datas=data.data;
-                    if(datas.classifyVip==1||datas.classifyVip==2){
+                    if(datas.classifyVip==0){
+                        window.location.href="channel-detail.html?classifyId="+classify_id+"&vid="+id+"&userid="+userId;
+                    }else if(datas.classifyVip==1||datas.classifyVip==2){
                         if(confirm("您还不是频道会员！ 开通后可观看频道下全部视频～")==true){
                             window.location.href="channel-vip-card.html?id="+classify_id;
                         }
                     }else if(datas.classifyVip==3){
-                        window.location.href="channel-mine.html";
+                        if(confirm("此视频属于"+datas.name+"频道，您需要去关注并购买才可观看视频")){
+                            window.location.href="channel-mine.html";
+                        }
                     }
                 });
             }

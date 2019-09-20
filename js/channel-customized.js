@@ -9,13 +9,14 @@ $(function(){
     ajax_nodata(http_url.url+"/classify/classifylist",function(data){
         // console.log(data);
         var hy_list=[],gdtj_list=[],pttj_list=[],mine_list=data.data;
-        for(var i=0,len=mine_list.length;i<leni++){
-            if(mine_list.recommend_type==1){
-                hy_list.push(mine_list);
-            }else  if(mine_list.recommend_type==2){
-                gdtj_list.push(mine_list)
-            }else  if(mine_list.recommend_type==3){
-                pttj_list.push(mine_list)
+        for(var i=0,len=mine_list.length;i<len;i++){
+            var change_v=mine_list[i];
+            if(change_v.recommend_type==1){
+                hy_list.push(change_v);
+            }else  if(change_v.recommend_type==2){
+                gdtj_list.push(change_v)
+            }else  if(change_v.recommend_type==3){
+                pttj_list.push(change_v)
             }
         }
         var h_html='',g_html='',p_html='';

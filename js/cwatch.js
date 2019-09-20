@@ -98,28 +98,31 @@ $(function(){
     //回答者信息
     function get_answer(data){
         //console.log(data);
-        var html="";
-        if(data.userMsg.role==1){
-            html=`<img src="${headimage(data.userMsg.headImage)}" onerror=src="../img/user.png" alt="">
+        var html="",change_v=data.userMsg;
+        if(change_v.role==1){
+            html=`<img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
                 <div class="inline-block">
                     <div class="user-name">
-                        ${data.userMsg.realName||"匿名用户"}
+                         ${get_name(change_v)}
                         <div class="user-grade inline-block zx-detail-grade">
-                            <img src="${get_score(data.userMsg.integralSum,data.userMsg.aision,data.userMsg.vip)}" alt="">
+                            <img src="${get_score(change_v.integralSum,change_v.aision,change_v.vip)}" alt="">
                         </div>
                     </div>
                 </div>`;
         }else{
-            html=`<img src="${headimage(data.userMsg.headImage)}" onerror=src="../img/user.png" alt="">
+            html=`<img src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
                 <div class="inline-block">
                     <div class="user-name">
-                    ${data.userMsg.userName}
-                        <div class="inline-block zxs-grade">
-                        <img src="../img/icon-expert icon.png" alt="">
-                        ${data.userMsg.levelName}
+                       ${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}
+                        <div class="inline-block zxs-grade ${change_v.role==2?'':'out'}">
+                            <img src="../img/icon-expert icon.png" alt="">
+                            ${change_v.levelName}
                         </div>
                     </div>
-                    <div class="zx-detail-date">${data.userMsg.counselorDuty}</div>
+                    <div class="zx-detail-date ${change_v.role==2?'':'out'}">${change_v.counselorDuty}</div>
+                    <div class="fans-zw ${change_v.role==3?'':'out'}">
+                        <div class="inline-block"><img src="../img/office-icon.png" alt="">官方认证</div>
+                    </div>
                 </div>`;
         }
         $(".cwath-anser-body .clist-head").html(html);

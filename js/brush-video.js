@@ -20,7 +20,7 @@ $(function(){
         if(data.data[0].ifAttention==0||data.data[0].ifAttention==2){
             $(".brush-v-gz>div").hide();
         }
-        $(".brush-v-gz>img").attr("src",headimage(data.data[0].headImage)).attr("data-phone",data.data[0].userId);
+        $(".brush-v-gz>img").attr("src",headimage(data.data[0].headImage)).attr("data-phone",data.data[0].userId).attr("data-role",data.data[0].role);
         userId=data.data[0].userId;
         // if(data.data[0].ifAttention==0){
         //     $(".brush-v-gz>div").html("取消关注")

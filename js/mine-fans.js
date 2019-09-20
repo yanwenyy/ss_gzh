@@ -22,7 +22,7 @@ $(function(){
                <li class="box-sizing"  data-id="${change_v.uuid}">
                     <img data-phone="${change_v.phoneNumber}" src="${headimage(change_v.headImage)}" class="look-hp-image" data-role="${change_v.role}"  alt="" onerror=src="../img/user.png">
                     <div data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" class="inline-block look-hp-image fans-name-div">
-                        <div class="inline-block fans-name">${realName.length>27?realName.slice(0,27)+"...":realName||" "}</div>
+                        <div class="inline-block fans-name">${realName.length>25?realName.slice(0,25)+"...":realName||" "}</div>
                         <div class="inline-block ${change_v.role!=3? '':'out'} ${change_v.role==2?'fans-dj-msg':'fans-dj'} ">${change_v.role==2? change_v.levelName:'<img src="'+score_img+'" alt="">'}</div>
                         <div class="fans-zw">
                             <div class="inline-block ${change_v.lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>
@@ -51,7 +51,7 @@ $(function(){
                <li class="box-sizing"  data-id="${change_v.uuid}">
                     <img data-phone="${change_v.phoneNumber}" src="${headimage(change_v.headImage)}" class="look-hp-image" data-role="${change_v.role}"  alt="" onerror=src="../img/user.png">
                     <div data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" class="inline-block look-hp-image fans-name-div">
-                        <div class="inline-block fans-name">${realName.length>27?realName.slice(0,27)+"...":realName||" "}</div>
+                        <div class="inline-block fans-name">${realName.length>25?realName.slice(0,25)+"...":realName||" "}</div>
                         <div class="inline-block ${change_v.role!=3? '':'out'} ${change_v.role==2?'fans-dj-msg':'fans-dj'} ">${change_v.role==2? change_v.levelName:'<img src="'+score_img+'" alt="">'}</div>
                         <div class="fans-zw">
                             <div class="inline-block ${change_v.lecturer==1?'':'out'}"><img src="../img/fans-js.png" alt="">讲师</div>

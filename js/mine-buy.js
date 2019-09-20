@@ -126,7 +126,7 @@ $(function(){
                         <img class="look-hp-image" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}" src="${img_src}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
+                                ${realName.length>10?realName.slice(0,10)+"...":realName}
                             </div>
                             <div class="user-grade">
                                 <img src="${score_img}" alt="">
@@ -178,7 +178,7 @@ $(function(){
                         <img class="look-hp-image" data-role="${change_v.role}" data-phone="${change_v.phoneNumber}" src="${img_src}" alt="" onerror=src="../img/user.png">
                         <div class="inline-block">
                             <div class="user-name">
-                                ${realName||"匿名用户"}
+                                 ${realName.length>10?realName.slice(0,10)+"...":realName}
                             </div>
                             <div class="user-grade">
                                 <img src="${score_img}" alt="">

@@ -127,7 +127,7 @@ $(function(){
                                 if(from=="share"){
                                     window.location.href="http://a.app.qq.com/o/simple.jsp?pkgname=com.jieshuibao.jsb";
                                 }else if(from=="wx"){
-                                    location.reload();
+                                    window.history.go(-1);
                                 }else if(from=="app"){
                                     window.android.goBack();
                                 }

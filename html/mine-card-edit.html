@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/quick-answer.css">
+    <link rel="stylesheet" href="../css/mine.css">
+    <title>名片二维码</title>
+    <style>
+        .mine-card-main{
+            background: #fff;
+        }
+        .mine-card-body{
+            background: url(../img/mine-card-bg1.png) no-repeat 100% 100%;
+            background-size: cover;
+            padding:0;
+            width: 100%;
+            position: static;
+            max-height:64rem;
+            z-index: 999;
+        }
+        .mine-card-body:before{
+            display: table;
+            content: '';
+        }
+        .mine-card-msg-ul:before{
+            display: table;
+            content: '';
+        }
+        .mine-card-msg-ul{
+            z-index: 0;
+            width: 68.86rem;
+            margin: 6rem auto;
+        }
+        .mine-card-main{
+            margin: 6.1rem auto 0 auto;
+            width: 68.6rem;
+            border-radius: 2rem;
+            box-shadow:0px 1px 18px 0px rgba(0,0,1,0.1);
+            margin-bottom: -3rem;
+        }
+        body{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="jsb_header">
+        <img src="../img/back.png" alt="" class="back">
+        <div class="inline-block mine-buy-header">名片二维码</div>
+    </div>
+    <div class="mine-card-body box-sizing">
+        <div class="mine-card-main box-sizing">
+            <div class="mine-card-head">
+                <div class="mine-card-head-btn inline-block">
+                    <img src="../img/user.png" alt="">
+                    <img class="mine-card-head-btn-sel" src="../img/icon_renzheng_cam.png" alt="">
+                </div>
+                <div class="inline-block mine-card-name">
+                    王家营
+                </div>
+                <div class="inline-block mine-card-dj">资深咨询师</div>
+            </div>
+            <div class="mine-card-rz">
+                <div class="inline-block mine-card-rz-color1">
+                    <img src="../img/mine-card-rz1.png" alt="">
+                    讲师
+                </div>
+                <div class="inline-block mine-card-rz-color1">
+                    <img src="../img/mine-card-rz1.png" alt="">
+                    税务师、律师
+                </div>
+            </div>
+            <div class="mine-card-agdress">
+                <span>北京</span>
+                <span class="inline-block mine-card-agdress-line"></span>
+                <span>税务审计师</span>
+            </div>
+            <div class="mine-card-company">北京致通振业税务师事务所有限公</div>
+            <div class="mine-card-msg-li">
+                <img src="../img/mine-card-p.png" alt="">
+                18810409862
+            </div>
+            <div class="mine-card-msg-li">
+                <img src="../img/mine-card-m.png" alt="">
+                9898989878@qq.com
+            </div>
+            <div class="mine-card-msg-li">
+                <img src="../img/mine-card-a.png" alt="">
+                北京市朝阳区雅氏合金公寓8号楼2层科技有限公司
+            </div>
+        </div>
+    </div>
+    <div class="mine-card-msg-ul">
+        <div class="mine-card-msg-ul-name">选择背景</div>
+        <div class="mine-card-bg-sel">
+            <div class="mine-card-bg-opt" data-code="1">
+                <img class="mine-card-bg-opt-show" src="../img/mine-card-bg1.png" alt="">
+                <img class="mine-card-bg-opted" src="../img/mine-draft-select-no.png" alt="">
+            </div>
+            <div class="mine-card-bg-opt" data-code="2">
+                <img class="mine-card-bg-opt-show" src="../img/mine-card-bg2.png" alt="">
+                <img class="mine-card-bg-opted" src="../img/mine-draft-select-no.png" alt="">
+            </div>
+            <div class="mine-card-bg-opt" data-code="3">
+                <img class="mine-card-bg-opt-show" src="../img/mine-card-bg3.png" alt="">
+                <img class="mine-card-bg-opted" src="../img/mine-draft-select-no.png" alt="">
+            </div>
+            <div class="mine-card-bg-opt" data-code="4">
+                <img class="mine-card-bg-opt-show" src="../img/mine-card-bg4.png" alt="">
+                <img class="mine-card-bg-opted" src="../img/mine-draft-select-no.png" alt="">
+            </div>
+        </div>
+        <div class="mine-card-msg-ul-name"><span class="red">*</span>昵称</div>
+        <div class="mine-card-msg-ul-input">
+            <input type="text" class="userName" placeholder="请输入昵称">
+        </div>
+        <div class="mine-card-msg-ul-name">真实姓名</div>
+        <div class="mine-card-msg-ul-input">
+            <input type="text" class="realName" placeholder="请输入真实姓名">
+            <div class="inline-block">
+                <input class="if-show" type="checkbox"> 显示
+            </div>
+        </div>
+        <div class="mine-card-msg-ul-name"><span class="red">*</span>城市</div>
+        <div class="mine-card-msg-ul-input">
+            <input type="text" class="city" placeholder="请输入城市">
+            <div class="inline-block">
+                <img src="../img/more.png" alt="" class="more-img">
+            </div>
+        </div>
+        <div class="mine-card-msg-ul-name">公司</div>
+        <div class="mine-card-msg-ul-input">
+            <input type="text" class="companyName" placeholder="请输入公司">
+        </div>
+        <div class="mine-card-msg-ul-name">职务</div>
+        <div class="mine-card-msg-ul-input">
+            <input type="text" class="position" placeholder="请输入职务">
+        </div>
+        <div class="mine-card-msg-ul-name"><span class="red">*</span>联系电话</div>
+        <div class="mine-card-msg-ul-input">
+            <input type="text" class="cardPhone" placeholder="请输入联系电话">
+        </div>
+        <div class="mine-card-msg-ul-name">邮箱</div>
+        <div class="mine-card-msg-ul-input">
+            <input type="text" class="email" placeholder="请输入邮箱">
+        </div>
+        <div class="mine-card-msg-ul-name">办公地点</div>
+        <div class="mine-card-msg-ul-input">
+            <input type="text" class="officeAddress" placeholder="请输入办公地点">
+        </div>
+    </div>
+    <div class="mine-card-edit-sub">完成</div>
+</body>
+<script src="../js/rem-reset.js"></script>
+<script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/fastclick.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/ajax.js"></script>
+<script src="../js/mine-card-edit.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+</html>

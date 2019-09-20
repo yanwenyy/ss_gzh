@@ -31,27 +31,31 @@ $(function(){
                 "sinceId":count_start,
                 "content":val
             },function(data){
-                var html='',datas=data.data;
+                var html='',datas=data.data,segments=data.segments;
                 if(datas&&datas!=""){
                     for(var i=0,len=datas.length;i<len;i++){
                         var change_v=datas[i],title='';
-                        if(change_v.title.length>20){
-                            title=change_v.title.slice(0,20)+".."
+                        if(change_v.title.length>40){
+                            title=change_v.title.slice(0,40)+".."
                         }else{
                             title=change_v.title
+                        }
+                        var v_name=get_name(change_v);
+                        if(v_name.length>15){
+                            v_name=v_name.slice(0,15)+"...";
                         }
                         html+=`<div class="channel-page-li channel-page-li-sptt" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>20?change_v.title.slice(0,20)+'...':change_v.title}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments)}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
-                                    <img class="channel-sptt-userimg" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                    <img class="channel-sptt-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" onerror=src="../img/user.png" alt="">
                                     <img class="channel-sptt-userimg-rz2 ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                                 </div>
                                 <div class="inline-block channel-sptt-li-username" data-id="${change_v.id}">
-                                    <div>${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
-                                    <div>${timeago(change_v.insert_time)}</div>
+                                    <div data-id="${change_v.id}">${keyWordRed(v_name,segments)}</div>
+                                    <div data-id="${change_v.id}">${timeago(change_v.insert_time)}</div>
                                 </div>
                                 <div class="inline-block orange channel-page-li-userbtn" data-id="${change_v.head_type}">${change_v.videoTypeName}</div>
                             </div>
@@ -71,20 +75,20 @@ $(function(){
                 if(datas&&datas!=""){
                     for(var i=0,len=datas.length;i<len;i++){
                         var change_v=datas[i];
-                        var name_v=get_name(change_v);
+                        var name_v=get_name(change_v).length>25?get_name(change_v).slice(0,25)+"...":get_name(change_v);
                         html+=`
                     <li class="box-sizing">
                         <div class="inline-block c-sptt-head-div">
                             <img  class="look-hp-image" src="${headimage(change_v.headImage)}"  data-role="${change_v.role}" data-phone="${change_v.phoneNumber}" onerror=src="../img/user.png" alt="">
                             <img class="channel-sptt-userimg-rz" src="../img/office-p-rz.png" alt="">
                         </div>
-                        <div class="inline-block fans-name-div">
-                            <div class="inline-block fans-name">${name_v.length>25?name_v.slice(0,25).replace(val, "<span class='orange'>"+ val + "</span>")+"...":name_v.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                         <div class="inline-block fans-name-div look-hp-image"   data-role="${change_v.role}" data-phone="${change_v.phoneNumber}">
+                            <div class="inline-block fans-name">${name_v.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
                             <div class="fans-fans">
                             <span>${change_v.fansNumber}粉丝</span>
                             </div>
                         </div>
-                        <div class="inline-block attention-fans" data-phone="${change_v.phoneNumber}">+关注</div>
+                        <div class="inline-block attention-fans ${change_v.follow==1||change_v.follow==2?'attention-fans-already':''}" data-phone="${change_v.phoneNumber}"><img src="../img/hg.png" class="hg-fans ${change_v.follow==2?'':'out'}" alt="">${change_v.follow==1||change_v.follow==2?(change_v.follow==2?'互关':'已关注'):'+关注'}</div>
                     </li>
                 `
                     }
@@ -100,27 +104,27 @@ $(function(){
                 "sinceId":count_start,
                 "content":val
             },function(data){
-                var html='',datas=data.data;
+                var html='',datas=data.data,segments=data.segments;
                 if(datas&&datas!=""){
                     for(var i=0,len=datas.length;i<len;i++){
                         var change_v=datas[i],title='';
-                        if(change_v.title.length>20){
-                            title=change_v.title.slice(0,20)+".."
+                        if(change_v.title.length>40){
+                            title=change_v.title.slice(0,40)+".."
                         }else{
                             title=change_v.title
                         }
                         html+=`<div class="channel-page-li channel-page-li-sptt" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>20?change_v.title.slice(0,20)+'...':change_v.title}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments)}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
-                                    <img class="channel-sptt-userimg" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                    <img class="channel-sptt-userimg" src="${headimage(change_v.headImage)}" data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" onerror=src="../img/user.png" alt="">
                                     <img class="channel-sptt-userimg-rz2 ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                                 </div>
                                 <div class="inline-block channel-sptt-li-username" data-id="${change_v.id}">
-                                    <div>${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
-                                    <div>${timeago(change_v.insert_time)}</div>
+                                    <div data-id="${change_v.id}">${get_name(change_v).length>15?get_name(change_v).slice(0,15)+"...":get_name(change_v)}</div>
+                                    <div data-id="${change_v.id}">${timeago(change_v.insert_time)}</div>
                                 </div>
                                 <div class="inline-block orange channel-page-li-userbtn" data-id="${change_v.head_type}">${change_v.videoTypeName}</div>
                             </div>
@@ -141,20 +145,20 @@ $(function(){
                 if(datas&&datas!=""){
                     for(var i=0,len=datas.length;i<len;i++){
                         var change_v=datas[i];
-                        var name_v=get_name(change_v);
+                        var name_v=get_name(change_v).length>25?get_name(change_v).slice(0,25)+"...":get_name(change_v);
                         html+=`
                     <li class="box-sizing">
                         <div class="inline-block c-sptt-head-div">
                             <img  class="look-hp-image" src="${headimage(change_v.headImage)}"  data-role="${change_v.role}" data-phone="${change_v.phoneNumber}" onerror=src="../img/user.png" alt="">
                             <img class="channel-sptt-userimg-rz" src="../img/office-p-rz.png" alt="">
                         </div>
-                        <div class="inline-block fans-name-div">
-                            <div class="inline-block fans-name">${name_v.length>25?name_v.slice(0,25).replace(val, "<span class='orange'>"+ val + "</span>")+"...":name_v.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                         <div class="inline-block fans-name-div look-hp-image"   data-role="${change_v.role}" data-phone="${change_v.phoneNumber}">
+                            <div class="inline-block fans-name">${name_v.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
                             <div class="fans-fans">
                             <span>${change_v.fansNumber}粉丝</span>
                             </div>
                         </div>
-                        <div class="inline-block attention-fans" data-phone="${change_v.phoneNumber}">+关注</div>
+                        <div class="inline-block attention-fans ${change_v.follow==1||change_v.follow==2?'attention-fans-already':''}" data-phone="${change_v.phoneNumber}"><img src="../img/hg.png" class="hg-fans ${change_v.follow==2?'':'out'}" alt="">${change_v.follow==1||change_v.follow==2?(change_v.follow==2?'互关':'已关注'):'+关注'}</div>
                     </li>
                 `
                     }
@@ -172,4 +176,14 @@ $(function(){
             window.location.href="channel-sptt-detail.html?id="+e.target.getAttribute("data-id");
         }
     });
+    //关注按钮点击
+    $("body").on("click",".attention-fans",function(data){
+        var that=$(this),phoneNum=that.attr("data-phone");
+        if(that.html().indexOf("+关注")!=-1){
+            ajax(http_url.url+"/attention/user",{"phoneNum":phoneNum, "isAttention":1},function(data){
+                alert(data.des);
+                that.addClass("attention-fans-already").html("已关注");
+            });
+        }
+    })
 });

@@ -11,17 +11,27 @@
     <link rel="stylesheet" href="../css/quick-answer.css">
     <link rel="stylesheet" href="../css/mine.css">
     <link rel="stylesheet" href="../css/channel.css">
-    <title>申请咨询师</title>
+    <title>编辑信息</title>
     <style>
         input::placeholder{
             color:#999!important;
+        }
+        .username{
+            word-break: break-all;
+            border: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 2.8rem;
+            text-align: right;
+            background: transparent;
+            color: #333;
         }
     </style>
 </head>
 <body>
 <div class="jsb_header channel-header">
     <img src="../img/channel-back.png" alt="" class="back" data-url="4">
-    <span class="apply-name">申请咨询师</span>
+    <span class="apply-name">编辑信息</span>
     <div class="release inline-block orange">保存</div>
 </div>
 <div class="mine-per-data">
@@ -31,7 +41,7 @@
                     <!--<img src="../img/user.png" alt="" class="consultant-img" onerror=src="../img/user.png">-->
                     <!--<div class="consultant-upload-btn" id="userimg-sel-btn">上传真实头像</div>-->
             <!--</div>-->
-            <a class="weui-cell weui-cell_access" id="userimg-sel-btn">
+            <a class="weui-cell weui-cell_access apply-office-img" id="userimg-sel-btn">
                 <div class="weui-cell__bd">
                     <p>头像</p>
                 </div>
@@ -43,7 +53,7 @@
                     <p><span class="red">*</span>昵称</p>
                 </div>
                 <div class="weui-cell__ft version-information">
-                    <input type="text" placeholder="未填写"  maxlength="5"   class="username edit-msg">
+                    <textarea  placeholder="未填写"  maxlength="5"   class="username edit-msg apply-office"></textarea>
                 </div>
                 <!--<img src="../img/more.png" alt="" class="more-img">-->
             </a>
