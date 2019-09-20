@@ -43,6 +43,8 @@ $(function(){
                 `
                 }
                 $(".mine-fans-list-rc").append(html);
+            }else{
+                $(".mine-fans-recommend").hide();
             }
         })
     }

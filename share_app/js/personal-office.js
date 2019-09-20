@@ -62,6 +62,30 @@ $(function(){
                 `
             }
             $(".list-tab-sptt").html(html);
+            //视频列表
+            ajax(http_url.url+"/share/hoem/headvideo/share",{
+                "headTypeId": $(".column-list-tab-act").attr("data-id"),
+                "userId": phone,
+            },function(data){
+                var html='',
+                    datas=data.data,
+                    i=0,len=datas.length;
+                if(datas&&datas!=''){
+                    for(;i<len;i++){
+                        var change_v=datas[i];
+                        html+=`
+                         <div class="share-downloade channel-page-li channel-page-li-sptt" data-id="${change_v.id}">
+                            <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
+                            <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${change_v.title.length>40?change_v.title.slice(0,40)+'...':change_v.title}</div>
+                        </div>
+                    `
+                    }
+                    $(".column-list-main-sptt").html(html);
+                }else{
+                    $(".column-list-main-sptt").html("暂时无相关数据");
+                }
+            })
         });
     });
 });
