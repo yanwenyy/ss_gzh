@@ -21,12 +21,12 @@ $(function(){
                  </div>
                  <div class="inline-block mine-card-dj ${msg.role==2?'':'out'}">${msg.levelName}</div>
                 <div class="mine-card-rz">
-                        <div class="inline-block mine-card-rz-color${bg} ${msg.lecturer==1?'':'out'}">
-                            <img src="../img/mine-card-rz${bg}.png" alt="">
+                        <div class="inline-block mine-card-rz-color4 ${msg.lecturer==1?'':'out'}">
+                            <img src="../img/mine-card-rz4.png" alt="">
                             讲师
                         </div>
-                        <div class="inline-block mine-card-rz-color${bg} ${msg.role==2?'':'out'}">
-                            <img src="../img/mine-card-rz${bg}.png" alt="">
+                        <div class="inline-block mine-card-rz-color3 ${msg.role==2?'':'out'}">
+                            <img src="../img/mine-card-rz3.png" alt="">
                             税务师、律师
                         </div>
                         <div class="inline-block ${msg.role==3?'':'out'}">
@@ -55,6 +55,17 @@ $(function(){
             </div>
         `;
         $(".mine-card-main").html(html);
+        $(".realName").val(msg.realName).attr("data-val",msg.realName);
+        $(".userName").val(msg.userName).attr("data-val",msg.userName);
+        $(".city").val('').attr("data-val",'');
+        $(".companyName").val(msg.companyName).attr("data-val",msg.companyName);
+        $(".position").val(msg.position).attr("data-val",msg.position);
+        $(".cardPhone").val(msg.cardPhone).attr("data-val",msg.cardPhone);
+        $(".email").val(msg.email).attr("data-val",msg.email);
+        $(".officeAddress").val(msg.officeAddress).attr("data-val",msg.officeAddress);
+        if(msg.role==2&&msg.userName){
+            $(".if-show").attr("checked",true);
+        }
     });
     //选择背景
     $(".mine-card-bg-opt").click(function(){

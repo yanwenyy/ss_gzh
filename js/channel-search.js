@@ -87,7 +87,7 @@ $(function(){
             "sinceId": count_start,
             "content":val
         },function(data){
-            var html='',list=data.data;
+            var html='',list=data.data,segments=data.segments;
             if(list&&list!=''){
                 for(var i=0,len=list.length;i<len;i++){
                     var change_v=list[i];

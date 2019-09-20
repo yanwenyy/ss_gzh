@@ -2063,13 +2063,16 @@
 .mine-card-msg-ul-input>div{
     float:right;
 }
-.mine-card-msg-ul-input>input{
+.mine-card-msg-ul-input>input,.mine-card-msg-ul-input>textarea{
     width: 70%;
     border: none;
     background: none;
     font-size: 2.8rem;
     color:#999;
     padding-left: 1rem;
+}
+.mine-card-msg-ul-input>textarea{
+    line-height: 3rem;
 }
 .if-show{
     width: 2.4rem;

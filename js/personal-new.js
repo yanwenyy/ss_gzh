@@ -1,6 +1,6 @@
 $(function(){
     var phone=getUrlParms("phone"),code=getUrlParms("code"),to=getUrlParms("to"),msg=getUrlParms("msg"),sid=getUrlParms("sid");
-    count_end=10;count_start=1;
+    // count_end=10;count_start=1;
     if(code==1){
         $(".back").click(function(){
             window.location.href="index.html";
@@ -139,7 +139,7 @@ $(function(){
         var code=$(this).attr("data-html");
         $(".personal-main-detail>div").hide();
         $("."+code).show();
-        count_end=10;count_start=1;scroll_status=true;num=1;
+        // count_end=10;count_start=1;scroll_status=true;num =1;
         switch (code){
             case 'p-ss':
                 list("/brush/brushVideorRequirement",{
@@ -207,7 +207,8 @@ $(function(){
         }
     });
     function list(jk,cc,sel){
-        cc.maxId=10;cc.sinceId=1;
+        // cc.maxId=10;cc.sinceId=1;
+        count_end=10;count_start=1;scroll_status=true;num=1;
         ajax(http_url.url+jk,cc,function(data){
             var html='',mine_data=data.data;
             if(mine_data.length<3&&(sel=="p-ss"||sel=="column-list-main-zl"||sel=="p-xh")){
@@ -283,7 +284,7 @@ $(function(){
     }
     function list_more(jk,cc,sel){
         ajax(http_url.url+jk,cc,function(data){
-            var html='';
+            var html='',mine_data=data.data;;
             if(mine_data&&mine_data!=''){
                 var mine_data=data.data;
                 for(var i=0,len=mine_data.length;i<len;i++){
@@ -324,31 +325,31 @@ $(function(){
                             if_buy="围观"
                         }
                         html+=`
-                    <div class="box-sizing one_wg"  data-id="${answer[i].uuid}">
-                            <div class="clist-head">
-                                <img src="${headimage(answer[i].headImage)}" alt="" onerror=src="../img/user.png" data-role="${answer[i].role}" data-phone="${answer[i].phoneNumber}">
-                                <div class="inline-block">
-                                    <div class="user-name">
-                                        ${get_name(answer[i])}
+                            <div class="box-sizing one_wg"  data-id="${answer[i].uuid}">
+                                    <div class="clist-head">
+                                        <img src="${headimage(answer[i].headImage)}" alt="" onerror=src="../img/user.png" data-role="${answer[i].role}" data-phone="${answer[i].phoneNumber}">
+                                        <div class="inline-block">
+                                            <div class="user-name">
+                                                ${get_name(answer[i])}
+                                            </div>
+                                            <div class="user-grade">
+                                                <img src="${get_score(answer[i].integralScore,answer[i].aision,answer[i].vip)}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="cwatch ${cwatch_buy}"  data-id="${answer[i].uuid}">${if_buy}</div>
                                     </div>
-                                    <div class="user-grade">
-                                        <img src="${get_score(answer[i].integralScore,answer[i].aision,answer[i].vip)}" alt="">
+                                    <div class="clist-msg">
+                                        ${content}
+                                    </div>
+                                    <div class="clist-foot">
+                                        <div>${format(answer[i].date)}</div>
+                                        <div>
+                                            <div class="inline-block">点赞 ${answer[i].approveNum}</div>
+                                            <div class="inline-block">围观 ${answer[i].lookNum}</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="cwatch ${cwatch_buy}"  data-id="${answer[i].uuid}">${if_buy}</div>
-                            </div>
-                            <div class="clist-msg">
-                                ${content}
-                            </div>
-                            <div class="clist-foot">
-                                <div>${format(answer[i].date)}</div>
-                                <div>
-                                    <div class="inline-block">点赞 ${answer[i].approveNum}</div>
-                                    <div class="inline-block">围观 ${answer[i].lookNum}</div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+                            `;
                     }
                 }
                 $("."+sel).append(html);
@@ -410,7 +411,7 @@ $(function(){
     $("body").on("click",".column-list-tab>div",function(){
         $(".column-list-tab>div").removeClass("column-list-tab-act");
         $(this).addClass("column-list-tab-act");
-        count_start=1;count_end=10;
+        count_start=1;count_end=10;num=1;
         list("/brush/brushVideorRequirement",{
             "maxId": count_end,
             "sinceId":count_start,
@@ -432,7 +433,7 @@ $(function(){
         }
         ajax_nodata(http_url.url+"/onlook/wx/onlookAuthorized?uuid="+cwatch_id,cwatch_jurisdiction);
     });
-    $(window).scroll(function(){
+    $(window).off("scroll").on("scroll",function(){
         var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
         var scrollHeight = $(document).height();   //当前页面的总高度
         var clientHeight = $(this).height();    //当前可视的页面高度

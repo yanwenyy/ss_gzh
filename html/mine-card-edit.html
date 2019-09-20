@@ -118,11 +118,11 @@
         </div>
         <div class="mine-card-msg-ul-name"><span class="red">*</span>昵称</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="userName" placeholder="请输入昵称">
+            <textarea class="realName" placeholder="请输入昵称"></textarea>
         </div>
         <div class="mine-card-msg-ul-name">真实姓名</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="realName" placeholder="请输入真实姓名">
+            <input type="text" class="userName" readonly placeholder="请输入真实姓名">
             <div class="inline-block">
                 <input class="if-show" type="checkbox"> 显示
             </div>
@@ -159,6 +159,8 @@
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
+<script src="../js/city-picker.js"></script>
 <script src="../js/fastclick.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/ajax.js"></script>
@@ -166,6 +168,10 @@
 <script>
     $(function () {
         FastClick.attach(document.body);
+        //所在地
+        $(".city").cityPicker({
+            // title: "请选择收货地址"
+        });
     });
 </script>
 </html>

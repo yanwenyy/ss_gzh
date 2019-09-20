@@ -140,6 +140,7 @@
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
+<script src="../js/jquery-weui.js"></script>
 <script src="../js/city-picker.js"></script>
 <script src="../js/fastclick.js"></script>
 <script src="../js/index.js"></script>
@@ -161,11 +162,10 @@
             'onClose':function(){/*取消时触发事件*/
             }
         });
-
-    });
-    //所在地
-    $("#city-picker").cityPicker({
-        // title: "请选择收货地址"
+        //所在地
+        $("#city-picker").cityPicker({
+            // title: "请选择收货地址"
+        });
     });
 </script>
 </html>

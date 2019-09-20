@@ -276,6 +276,7 @@ $(function(){
                 "showProvince":user.province,
                 "taxId":".channel-sz-show&&data-id"
             },function(data){
+                var channel_list=data.data;
                 var html='';
                 if(data.data&&data.data!=''){
                     for(var i=0,len=channel_list.length;i<len;i++){
