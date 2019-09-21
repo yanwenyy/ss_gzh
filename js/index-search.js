@@ -195,7 +195,7 @@ $(function(){
                             }
                             html+=`<div class="channel-page-li channel-page-li-sptt" data-type="${change_v.video_type}" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments)}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments,change_v.id)}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
                                     <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
@@ -373,7 +373,7 @@ $(function(){
                             }
                             html+=`<div class="channel-page-li channel-page-li-sptt" data-type="${change_v.video_type}" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments)}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments,change_v.id)}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
                                     <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">

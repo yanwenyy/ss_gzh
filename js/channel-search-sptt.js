@@ -47,7 +47,7 @@ $(function(){
                         html+=`<div class="channel-page-li channel-page-li-sptt" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments)}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments,change_v.id)}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
                                     <img class="channel-sptt-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" onerror=src="../img/user.png" alt="">
@@ -116,7 +116,7 @@ $(function(){
                         html+=`<div class="channel-page-li channel-page-li-sptt" data-id="${change_v.id}">
                             <img src="${cover_src+change_v.cover}" data-id="${change_v.id}" alt="">
                             <div class="channel-sptt-looknum"><span>${parseFloat(change_v.watch_num)<10000?change_v.watch_num:change_v.watch_num/10000+'万'}</span>次观看</div>
-                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments)}</div>
+                            <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(title,segments,change_v.id)}</div>
                             <div class="channel-page-li-user channel-sptt-li-user">
                                 <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
                                     <img class="channel-sptt-userimg" src="${headimage(change_v.headImage)}" data-phone="${change_v.phoneNumber}" data-role="${change_v.role}" onerror=src="../img/user.png" alt="">
