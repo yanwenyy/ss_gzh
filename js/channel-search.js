@@ -62,7 +62,7 @@ $(function(){
                     html+=`
                     <div class="channel-page-li" data-type="${change_v.video_type}" data-id="${change_v.classify_id}" data-charge="${change_v.charge}" data-vid="${change_v.id}" data-userid="${change_v.userId}">
                         <img src="${cover_src+change_v.cover}" alt="">
-                        <div class="channel-page-li-title">${change_v.title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                        <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(change_v.title,segments,change_v.id)}</div>
                         <div class="channel-page-li-user">
                             <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
                                     <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
@@ -96,15 +96,15 @@ $(function(){
                         v_name=v_name.slice(0,15)+"...";
                     }
                     html+=`
-                    <div class="channel-page-li" data-id="${change_v.classify_id}" data-charge="${change_v.charge}" data-vid="${change_v.id}" data-userid="${change_v.userId}">
+                    <div class="channel-page-li" data-type="${change_v.video_type}" data-id="${change_v.classify_id}" data-charge="${change_v.charge}" data-vid="${change_v.id}" data-userid="${change_v.userId}">
                         <img src="${cover_src+change_v.cover}" alt="">
-                        <div class="channel-page-li-title">${change_v.title.replace(val, "<span class='orange'>"+ val + "</span>")}</div>
+                        <div class="channel-page-li-title" data-id="${change_v.id}">${keyWordRed(change_v.title,segments,change_v.id)}</div>
                         <div class="channel-page-li-user">
                             <div class="inline-block channle-sptt-user" data-id="${change_v.id}">
-                                    <img class="channel-list-userimg" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
+                                    <img class="channel-list-userimg" data-id="${change_v.id}" src="${headimage(change_v.headImage)}" onerror=src="../img/user.png" alt="">
                                     <img class="channel-list-userimg-rz ${change_v.role==3?'':'out'}" src="../img/office-p-rz.png" alt="">
                             </div>
-                            <div class="inline-block channel-page-li-username">${keyWordRed(v_name,segments)}</div>
+                            <div class="inline-block channel-page-li-username" data-id="${change_v.id}">${keyWordRed(v_name,segments)}</div>
                             <div class="inline-block orange channel-page-li-userbtn ${change_v.charge==0||vip=='yes'?'out':''}">频道会员免费</div>
                         </div>
                     </div>`

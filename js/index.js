@@ -298,11 +298,15 @@ function loadScripts(url) {
 }
 
 //多个关键词变红
-function keyWordRed(val,arr){
+function keyWordRed(val,arr,id){
+    //id为视频头条搜索时需要的参数
   if(Array.isArray(arr)||Object.prototype.toString.call(arr) === "[object Array]"){
       for(var i=0,len=arr.length;i<len;i++){
-          var change_v=arr[i];
-          val=val.replace(new RegExp(change_v, 'g'),"<span class='red'>$&</span>");
+          var change_v=arr[i],change_id='';
+          if(id){
+             change_id="data-id="+id;
+          }
+          val=val.replace(new RegExp(change_v, 'g'),"<span class='red' "+change_id+">$&</span>");
       }
   }
   return val;
