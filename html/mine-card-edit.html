@@ -47,11 +47,18 @@
         body{
             background: #fff;
         }
+        .card-back{
+            width: 3.5rem;
+            height: 3.5rem;
+            position: absolute;
+            bottom: 2.65rem;
+            left: 3rem;
+        }
     </style>
 </head>
 <body>
     <div class="jsb_header">
-        <img src="../img/back.png" alt="" class="back">
+        <img src="../img/back.png" alt="" class="card-back">
         <div class="inline-block mine-buy-header">名片二维码</div>
     </div>
     <div class="mine-card-body box-sizing">
@@ -99,9 +106,9 @@
     <div class="mine-card-msg-ul">
         <div class="mine-card-msg-ul-name">选择背景</div>
         <div class="mine-card-bg-sel">
-            <div class="mine-card-bg-opt" data-code="1">
+            <div class="mine-card-bg-opt mine-card-bg-opt-act" data-code="1">
                 <img class="mine-card-bg-opt-show" src="../img/mine-card-bg1.png" alt="">
-                <img class="mine-card-bg-opted" src="../img/mine-draft-select-no.png" alt="">
+                <img class="mine-card-bg-opted" src="../img/mine-draft-select.png" alt="">
             </div>
             <div class="mine-card-bg-opt" data-code="2">
                 <img class="mine-card-bg-opt-show" src="../img/mine-card-bg2.png" alt="">
@@ -118,41 +125,41 @@
         </div>
         <div class="mine-card-msg-ul-name"><span class="red">*</span>昵称</div>
         <div class="mine-card-msg-ul-input">
-            <textarea class="realName" placeholder="请输入昵称"></textarea>
+            <textarea class="realName val-check" maxlength="5" placeholder="请输入昵称"></textarea>
         </div>
         <div class="mine-card-msg-ul-name">真实姓名</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="userName" readonly placeholder="请输入真实姓名">
+            <input type="text" class="userName val-check" readonly placeholder="请输入真实姓名">
             <div class="inline-block">
                 <input class="if-show" type="checkbox"> 显示
             </div>
         </div>
         <div class="mine-card-msg-ul-name"><span class="red">*</span>城市</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="city" placeholder="请输入城市">
+            <input type="text" class="city val-check" placeholder="请输入城市">
             <div class="inline-block">
                 <img src="../img/more.png" alt="" class="more-img">
             </div>
         </div>
         <div class="mine-card-msg-ul-name">公司</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="companyName" placeholder="请输入公司">
+            <input type="text" class="companyName val-check" maxlength="20" placeholder="请输入公司">
         </div>
         <div class="mine-card-msg-ul-name">职务</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="position" placeholder="请输入职务">
+            <input type="text" class="position val-check" maxlength="5" placeholder="请输入职务">
         </div>
         <div class="mine-card-msg-ul-name"><span class="red">*</span>联系电话</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="cardPhone" placeholder="请输入联系电话">
+            <input type="text" class="cardPhone val-check" placeholder="请输入联系电话">
         </div>
         <div class="mine-card-msg-ul-name">邮箱</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="email" placeholder="请输入邮箱">
+            <input type="email" class="email val-check" placeholder="请输入邮箱">
         </div>
         <div class="mine-card-msg-ul-name">办公地点</div>
         <div class="mine-card-msg-ul-input">
-            <input type="text" class="officeAddress" placeholder="请输入办公地点">
+            <input type="text" maxlength="20" class="officeAddress val-check" placeholder="请输入办公地点">
         </div>
     </div>
     <div class="mine-card-edit-sub">完成</div>

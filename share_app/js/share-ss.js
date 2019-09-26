@@ -16,6 +16,7 @@ $(function(){
         $(".brush-v-xh-num").html(datas.praiseNum);
         $(".brush-v-gz>img").attr("src",headimage(datas.headImage));
         $(".channel-d-comment-num").html(datas.discussNum);
+        wx_share();
     });
     //评论列表
     ajax_nodata(http_url.url+"/share/discusslist/"+id+"/share",function(data){
@@ -126,5 +127,5 @@ $(function(){
             }
         });
     }
-    wx_share();
+
 });

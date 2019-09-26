@@ -52,6 +52,7 @@ $(function(){
                                 <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
+                        <span class="brush-num-main inline-block">${change_v.watchNum>10000?change_v.watchNum/10000+"万":change_v.watchNum}观看</span>
                     </div>`
             }
             $(".column-list-main").html(html);
@@ -76,6 +77,7 @@ $(function(){
                                 <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
+                        <span class="brush-num-main inline-block">${change_v.watchNum>10000?change_v.watchNum/10000+"万":change_v.watchNum}观看</span>
                     </div>`
                 }
                 $(".column-list-main").html(html);

@@ -25,15 +25,20 @@
         .personal-new-smw-money{
             display: none;
         }
-        /*.column-list-div{*/
-            /*width: 49.5%;*/
-        /*}*/
+        .ss-num{
+            font-size: 2.6rem;
+            color:#999;
+        }
+        #ss-num-copy{
+            position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;
+        }
     </style>
 </head>
 <body>
     <div class="jsb_header channel-header">
         <img src="../img/personal-back.png" alt="" class="back">
         个人中心
+        <div class="release inline-block">分享</div>
     </div>
     <div class="personal-new-body expert-p">
         <div class="personal-head">
@@ -42,6 +47,7 @@
                 <img src="../img/user.png" alt="" class="personal-img-head" onerror=src="../img/user.png">
                 <div class="personal-head-msg-new">
                     <div><span class="new-p-name">王家营</span> <span class="new-p-dj">资深咨询师</span></div>
+                    <div class="ss-num">刷刷号：<span></span></div>
                     <div class="new-p-counselorDuty"><span class="inline-block new-p-js"><img src="../img/fans-js.png" alt="">讲师</span><span class="inline-block new-p-zxs orange"><img src="../img/fans-zxs.png" alt="">税务师、律师、注册会计师</span></div>
                     <div class="new-p-address">北京 <span class="gray-line inline-block"></span> 北京致通振业税务师事务所有限公司</div>
                     <div class="attention-person">+关注</div>
@@ -153,6 +159,7 @@
                 <img src="../img/user.png" alt="" class="personal-img-head"  onerror=src="../img/user.png">
                 <div class="personal-head-msg-new">
                     <div><span class="new-p-name">王家营</span> <span class="new-p-dj"><img src="../img/icon-onlooked-copper member.png" alt=""></span></div>
+                    <div class="ss-num">刷刷号：<span></span></div>
                     <div class="new-p-counselorDuty"><span class="inline-block new-p-js"><img src="../img/fans-js.png" alt="">讲师</span><span class="inline-block new-p-zxs orange"><img src="../img/fans-zxs.png" alt="">税务师、律师、注册会计师</span></div>
                     <div class="new-p-address">北京 北京致通振业税务师事务所有限公司</div>
                     <div class="attention-person">+关注</div>
@@ -217,13 +224,17 @@
             </div>
         </div>
     </div>
-    <div class="shadow">
+    <div class="shadow price-shdow">
         <div class="shadow-body">
             <div class="price_title">咨询师价格表<div class="colse-shadow">X</div></div>
             <ul class="hp_price_list">
                 <li>111</li>
             </ul>
         </div>
+    </div>
+    <textarea id="ss-num-copy">这是幕后黑手</textarea>
+    <div class="shadow share-shadow">
+        <img src="../img/share.png" alt="" class="share_img">
     </div>
 </body>
 <script src="../js/rem-reset.js"></script>
@@ -232,6 +243,7 @@
 <script src="../js/index.js"></script>
 <script src="../js/ajax.js"></script>
 <script src="../js/personal-new.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     $(function() {
         FastClick.attach(document.body);

@@ -25,6 +25,7 @@ $(function(){
         }else{
             alert(data.des);
         }
+        wx_share()
     });
     //相关推荐
     ajax_get(http_url.url+"/share/classifyvideo/keywords/share?id="+id+"&&maxId=3&&sinceId=1",function(data){
@@ -133,5 +134,4 @@ $(function(){
             }
         });
     }
-    wx_share()
 });

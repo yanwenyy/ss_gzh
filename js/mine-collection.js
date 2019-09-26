@@ -219,6 +219,7 @@ $(function(){
                                 <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
+                        <span class="brush-num-main inline-block">${change_v.watchNum>10000?change_v.watchNum/10000+"万":change_v.watchNum}观看</span>
                     </div>`
                 }else if(sel=="sp"){
                     html+=`<div class="channel-relevant-list" data-type="${change_v.video_type}" data-charge="${change_v.charge}" data-classify_id="${change_v.classify_id}" data-id="${change_v.id}" data-ifClassifyVip="${change_v.ifClassifyVip}"  data-userId="${change_v.userId}">  
@@ -251,6 +252,7 @@ $(function(){
                                 <div class="inline-block">${get_name(change_v).length>8?get_name(change_v).slice(0,8)+"...":get_name(change_v)}</div>
                             </div>
                         </div>
+                        <span class="brush-num-main inline-block">${change_v.watchNum>10000?change_v.watchNum/10000+"万":change_v.watchNum}观看</span>
                     </div>`
                     }else if(sel=="sp"){
                         html+=`<div class="channel-relevant-list" data-type="${change_v.video_type}" data-charge="${change_v.charge}" data-classify_id="${change_v.classify_id}" data-id="${change_v.id}" data-ifClassifyVip="${change_v.ifClassifyVip}"  data-userId="${change_v.userId}">  

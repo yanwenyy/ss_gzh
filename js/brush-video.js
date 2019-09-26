@@ -10,7 +10,8 @@ $(function(){
         var v_html="&lt;script async src='https://p.bokecc.com/player?vid="+data.data[0].vid+"&siteid=A0123BC413D6FBAE&autoStart=true&width=100%&height=100%&playerid=7E2195B034B0277B&playertype=1'>&lt;/script>";
         v_html=v_html.replace(/&lt;/g,'<');
         $(".brush-video-body").html(v_html);
-        var html=`<div class="brush-video-column inline-block ${data.data[0].specialColumnName?'':'out'}" data-phone="${data.data[0].userId}" data-id="${data.data[0].specialcolumnId}">${data.data[0].specialColumnName||''}</div>
+        var html=`<div class="brush-video-look-num">${data.data[0].watchNum>10000?data.data[0].watchNum/10000+"万":data.data[0].watchNum}观看</div>
+                    <div class="brush-video-column inline-block ${data.data[0].specialColumnName?'':'out'}" data-phone="${data.data[0].userId}" data-id="${data.data[0].specialcolumnId}">${data.data[0].specialColumnName||''}</div>
                     <div class="brush-video-user">${get_name(data.data[0])}</div>
                     <div class="brush-video-label">${data.data[0].title}</div>
                     <div class="brush-video-title" data-id="${data.data[0].labelId}">${data.data[0].labelName?"#"+data.data[0].labelName:''}</div>`;
@@ -33,6 +34,7 @@ $(function(){
         if(data.data[0].ifStore==0){
             $(".brush-v-sc>img").attr("src","../img/brush-v-sc-already.png")
         }
+        wx_share();
     });
     //关注点击
     $(".brush-v-gz>div").click(function(){
@@ -164,13 +166,6 @@ $(function(){
                         },
                         success: function (res) {
                             console.log('已分享');
-                            function fx_hobao(data){
-
-                            }
-                            ajax(http_url.url+"/pay/companyEnveloeps",{
-                                "questionUuid":watch_id,
-                                "redType":"shareSecretly"
-                            },fx_hobao)
                         },
                         cancel: function (res) {
                             console.log('已取消');
@@ -195,5 +190,4 @@ $(function(){
             }
         });
     }
-    wx_share();
 });

@@ -78,6 +78,7 @@ $(function(){
             }
             $(".office-expert-list").html(a_html);
         }
+        wx_share();
     });
     //微信分享
     function wx_share(){
@@ -135,5 +136,4 @@ $(function(){
             }
         });
     }
-    wx_share();
 });

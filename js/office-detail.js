@@ -159,13 +159,6 @@ $(function(){
                         },
                         success: function (res) {
                             console.log('已分享');
-                            function fx_hobao(data){
-
-                            }
-                            ajax(http_url.url+"/pay/companyEnveloeps",{
-                                "questionUuid":watch_id,
-                                "redType":"shareSecretly"
-                            },fx_hobao)
                         },
                         cancel: function (res) {
                             console.log('已取消');

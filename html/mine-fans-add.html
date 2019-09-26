@@ -46,6 +46,7 @@
             <option value="3" selected>手机号</option>
             <option value="1" >真实姓名</option>
             <option value="2">昵称</option>
+            <option value="4">刷刷号</option>
         </select>
         <input type="text" placeholder="请输入好友手机号">
         <img src="../img/close-p-detail.png" alt="">
@@ -86,6 +87,13 @@
         </ul>
     </div>
     <div class="mine-fans-recommend">
+        <div class="send-wx box-sizing out">
+            <div class="inline-block">
+                <img class="send-wx-img" src="../img/send-wx.png" alt="">
+                <span>邀请微信朋友</span>
+            </div>
+            <img src="../img/more.png" alt="">
+        </div>
         <div class="recommend-title box-sizing">推荐好友</div>
         <ul class="mine-fans-list">
             <!--<li class="box-sizing">-->
@@ -140,6 +148,9 @@
         </ul>
     </div>
 </div>
+<div class="shadow">
+    <img src="../img/share.png" alt="" class="share_img">
+</div>
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
@@ -147,6 +158,7 @@
 <script src="../js/index.js"></script>
 <script src="../js/ajax.js"></script>
 <script src="../js/mine-fans-add.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     $(function () {
         FastClick.attach(document.body);

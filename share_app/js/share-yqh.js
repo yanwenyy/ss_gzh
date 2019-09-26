@@ -1,4 +1,19 @@
 $(function(){
+    var phone=getUrlParms("phone"),
+        role=getUrlParms("role");
+    ajax_nodata(http_url.url+"/share/home/"+phone+"/share",function(data){
+        var msg=data.data;
+        $(".share-yqh-name").html(get_name(msg));
+        $(".share-yqh-num").html(msg.brushNum);
+    });
+    //查看个人主页点击
+    $(".look-hp").click(function(){
+        if(role==3){
+            window.location.href="personal-official.html?phone="+phone;
+        }else{
+            window.location.href="personal-new.html?phone="+phone;
+        }
+    });
     //微信分享
     function wx_share(){
         //配置微信信息

@@ -45,6 +45,7 @@ $(function(){
         $(".mine-fs-num").html(data.fans);
         $(".mine-gz-num").html(data.follow);
         $(".mine-gz-sc").html(data.stores);
+        $(".index-mine-ss-num>span").html(data.brushNum);
         //收藏,刷刷作品,喜欢
         $(".mine-brush").html(data.brushs+data.auditFailbrushs);
         $(".mine-like").html(data.praise);

@@ -848,6 +848,31 @@
     box-sizing: border-box;
     vertical-align: top;
     -webkit-column-break-inside: avoid;
+    position: relative;
+}
+.brush-num-main{
+    width: 13.2rem;
+    height:4.6rem;
+    line-height: 4.6rem;
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    font-size: 2rem;
+    position: absolute;
+    top:2rem;
+    left: 1.9rem;
+    border-radius: 2.2rem;
+    text-align: center;
+}
+.brush-video-look-num{
+    width: 13.2rem;
+    height:4.6rem;
+    line-height: 4.6rem;
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    font-size: 2rem;
+    border-radius: 2.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 .column-list-div>img{
     width:33.8rem;
@@ -1366,6 +1391,7 @@
     margin-bottom: 2.2rem;
     vertical-align: top;
     overflow: hidden;
+    position: relative;
 }
 .index-new-brush-list>div>img{
     min-width: 100%;
