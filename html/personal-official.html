@@ -45,13 +45,32 @@
             bottom: 3rem;
             left: 13rem;
         }
+        .ss-num{
+            font-size: 2.6rem;
+            color:#D5E1F5;
+            margin: 2rem 0 0 6rem;
+        }
+        #ss-num-copy{
+            position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;
+        }
+        .release{
+            font-size: 3rem;
+            color:#BAC1DD;
+        }
+        .release img{
+            width: 3rem;
+            height:3rem;
+            margin-left: 2.8rem;
+            vertical-align: middle;
+            margin-top: -1rem;
+        }
     </style>
 </head>
 <body>
 <div class="jsb_header channel-header">
     <img src="../img/personal-back.png" alt="" class="back">
     个人中心
-    <a href="../share_app/html/office-apply.html?from=wx" class="release konw-gfzh">了解官方账号?</a>
+    <div class="release inline-block"><span>分享</span><a href="../share_app/html/office-apply.html?from=wx"><img class="konw-gfzh" src="../img/offical_konw.png" alt=""></a></div>
 </div>
 <div class="personal-new-body user-p">
     <div class="personal-head office-personal-head">
@@ -64,6 +83,7 @@
             <img src="../img/personal-office-dw.png" alt="">
             <div class="inline-block">北京市海淀区田村街雅士合金公寓8号楼</div>
         </div>
+        <div class="ss-num">刷刷号：<span></span></div>
         <div class="personal-head-tab box-sizing">
             <div class="inline-block personal-head-tab-list atten-click" data-url="mine-fans.html">
                 <div class="new-p-gz">0</div>
@@ -140,6 +160,10 @@
         </div>
     </div>
 </div>
+<textarea id="ss-num-copy">这是幕后黑手</textarea>
+<div class="shadow share-shadow">
+    <img src="../img/share.png" alt="" class="share_img">
+</div>
 </body>
 <script src="../js/rem-reset.js"></script>
 <script src="../js/jquery-2.1.4.js"></script>
@@ -147,6 +171,7 @@
 <script src="../js/index.js"></script>
 <script src="../js/ajax.js"></script>
 <script src="../js/personal-office.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
     $(function() {
         FastClick.attach(document.body);

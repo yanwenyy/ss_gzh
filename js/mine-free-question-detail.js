@@ -49,6 +49,7 @@ $(function(){
                 </div>
             </div>
             `);
+        wx_share();
     }
     ajax(http_url.url+"/question/acceptAnswer",{
         "status":status, "questionUuid":id},get_detail);
@@ -397,13 +398,6 @@ $(function(){
                             },
                             success: function (res) {
                                 console.log('已分享');
-                                function fx_hobao(data){
-
-                                }
-                                ajax(http_url.url+"/pay/companyEnveloeps",{
-                                    "questionUuid":id,
-                                    "redType":"shareQuestion"
-                                },fx_hobao)
                             },
                             cancel: function (res) {
                                 console.log('已取消');
@@ -428,7 +422,7 @@ $(function(){
                 }
             });
         }
-        wx_share();
+
         $(".release").click(function(){
             var share_name=$(this).attr("data-name");
             //alert("点击右上角进行分享");$(".shadow").show();

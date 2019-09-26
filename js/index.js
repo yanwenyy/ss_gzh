@@ -311,3 +311,31 @@ function keyWordRed(val,arr,id){
   }
   return val;
 }
+//页面加载后获取code
+var code=getUrlParms("code");
+var cookieId;
+if(code!=null){
+    sessionStorage.setItem("code",code);
+    $.ajax({
+        type:"POST",
+        url:http_url.url+'/getOpenid/'+code,
+        dataType: "json",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json;charset=utf-8"
+        },
+        success:function(data){
+            cookieId=data.data;
+            sessionStorage.setItem("cookieId",cookieId);
+        },
+        error:function(){
+            alert("程序出错,请重试");
+        }
+    });
+}else{
+    // var cookieId="oPUdI0pZbHIYBCHUn_aQPCJAmRIU"; //晏雯
+    // var cookieId="oPUdI0gVT-meEWt-tVtwK--UUkkM"; //贺
+    var cookieId="oPUdI0tRQtv4XYUCQVszDIuNlU9Y"; //刘维
+    // var cookieId="oPUdI0t8JcoXHwr5SR0KPL7-dXVE";
+    sessionStorage.setItem("cookieId",cookieId);
+}

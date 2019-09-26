@@ -1,5 +1,10 @@
 $(function(){
-    var phone=getUrlParms("phone"),code=getUrlParms("code"),to=getUrlParms("to"),msg=getUrlParms("msg"),sid=getUrlParms("sid");
+    var phone=getUrlParms("phone"),
+        code=getUrlParms("code"),
+        to=getUrlParms("to"),
+        msg=getUrlParms("msg"),
+        share_url='',
+        sid=getUrlParms("sid");
     count_end=10;count_start=1;
     if(code==1){
         $(".back").click(function(){
@@ -59,6 +64,8 @@ $(function(){
     ajax(http_url.url+"/personal/home",{"phone":phone},function(data){
         self=data.self;
         users=data.users;
+        share_url=users.role!=3?"jsb_weixin/share_app/html/personal-new.html?phone="+phone:"jsb_weixin/share_app/html/personal-official.html?phone="+phone;
+        wx_share();
         if(users.specialcolumns==0||users.specialcolumns==""||users.specialcolumns==null){
             $(".p-zl-title").hide();
         }
@@ -81,6 +88,7 @@ $(function(){
         $(".office-p-adress>div").html(users.officialAddress);
         $(".new-p-gz").html(users.fans);
         $(".new-p-fs").html(users.officials+users.brushs+users.classifys);
+        $(".ss-num>span").html(users.brushNum);
         //视频头条类型
         ajax(http_url.url+"/headtype/headtype/classifyvideo",{ "userId": users.phoneNumber},function(data){
             var datas=data.data,html='';
@@ -217,6 +225,7 @@ $(function(){
                                 <div class="inline-block">${get_name(change_m).length>8?get_name(change_m).slice(0,8)+"...":get_name(change_m)}</div>
                             </div>
                         </div>
+                        <span class="brush-num-main inline-block">${change_m.watchNum>10000?change_m.watchNum/10000+"万":change_m.watchNum}观看</span>
                     </div>`
                 }else if(sel=="p-sp"){
                     html+=`<div class="channel-relevant-list" data-charge="${change_m.charge}" data-classify_id="${change_m.classify_id}" data-id="${change_m.id}" data-ifClassifyVip="${change_m.ifClassifyVip}"  data-userId="${change_m.userId}">  
@@ -257,6 +266,7 @@ $(function(){
                                 <div class="inline-block">${get_name(change_m).length>8?get_name(change_m).slice(0,8)+"...":get_name(change_m)}</div>
                             </div>
                         </div>
+                        <span class="brush-num-main inline-block">${change_m.watchNum>10000?change_m.watchNum/10000+"万":change_m.watchNum}观看</span>
                     </div>`
                     }else if(sel=="p-sp"){
                         html+=`<div class="channel-relevant-list" data-charge="${change_m.charge}" data-classify_id="${change_m.classify_id}" data-id="${change_m.id}" data-ifClassifyVip="${change_m.ifClassifyVip}"  data-userId="${change_m.userId}">  
@@ -375,4 +385,80 @@ $(function(){
             window.location.href="channel-sptt-detail.html?id="+e.target.getAttribute("data-id");
         }
     });
+    //刷刷号点击
+    $(".ss-num").click(function(){
+        var text = $(".ss-num>span").html();
+        var input = document.getElementById("ss-num-copy");
+        input.value = text; // 修改文本框的内容
+        input.select(); // 选中文本
+        document.execCommand("copy"); // 执行浏览器复制命令
+        alert("已复制");
+    });
+    //分享按钮点击
+    $(".release>span").click(function(){
+        $(".share-shadow").show();
+    });
+    $(".share-shadow").click(function(){
+        $(".share-shadow").hide();
+    });
+    //微信分享
+    function wx_share(){
+        //配置微信信息
+        var path_url=encodeURIComponent(window.location.href.split('#')[0]);
+        $.ajax({
+            type:"POST",
+            url:http_url.url+"/wx/createJsapiSignature?url="+path_url,
+            success:function(data){
+                console.log(data.datum);
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: data.datum.appid, // 必填，公众号的唯一标识
+                    timestamp:data.datum.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: data.datum.noncestr, // 必填，生成签名的随机串
+                    signature: data.datum.signature,// 必填，签名
+                    jsApiList: [
+                        'onMenuShareTimeline',       // 分享到朋友圈接口
+                        'onMenuShareAppMessage',  //  分享到朋友接口
+                        'onMenuShareQQ',         // 分享到QQ接口
+                        'onMenuShareQZone',// 分享到qq空间
+                        'scanQRCode',// 微信扫一扫接口
+                        'uploadImage',
+                        'downloadImage'//下载图片
+                    ] // 必填，需要使用的JS接口列表
+                });
+                wx.ready(function () {
+                    var shareData = {
+                        title: "在刷刷，打开财税新世界",
+                        desc: "行业大咖都在用刷刷，你还在等什么，快来围观！", //这里请特别注意是要去除html
+                        link: total_share_url.url+share_url,
+                        imgUrl: total_share_url.url+"jsb_weixin/share_app/img/share-logo.png",
+                        trigger: function (res) {
+                            console.log('用户点击发送给朋友');
+                        },
+                        success: function (res) {
+                            console.log('已分享');
+                        },
+                        cancel: function (res) {
+                            console.log('已取消');
+                        },
+                        fail: function (res) {
+                            console.log(JSON.stringify(res));
+                            console.log(shareData.link)
+                        }
+                    };
+                    wx.onMenuShareQQ(shareData);
+                    wx.onMenuShareQZone(shareData);
+                    wx.onMenuShareAppMessage(shareData);
+                    wx.onMenuShareTimeline(shareData);
+                });
+                wx.error(function(res){
+                    console.log(res)
+                    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                });
+            },
+            error:function(){
+                alert("程序出错,请重试")
+            }
+        });
+    }
 });

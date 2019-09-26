@@ -50,6 +50,7 @@ $(function(){
                                 <div class="inline-block">${keyWordRed(s_name,segments)}</div>
                             </div>
                         </div>
+                        <span class="brush-num-main inline-block">${change_v.watchNum>10000?change_v.watchNum/10000+"万":change_v.watchNum}观看</span>
                     </div>`
                     }
                     $(".column-list-main").html(html);
@@ -138,6 +139,7 @@ $(function(){
                                 <div class="inline-block">${keyWordRed(s_name,segments)}</div>
                             </div>
                         </div>
+                        <span class="brush-num-main inline-block">${change_v.watchNum>10000?change_v.watchNum/10000+"万":change_v.watchNum}观看</span>
                     </div>`
                     }
                     $(".column-list-main").append(html);

@@ -262,6 +262,7 @@ $(function(){
             <div class="inline-block" data-vid="${change_v.vid}"  data-id="${change_v.id}">
                 <img src="${cover_src+change_v.image}" alt="">
                 <div>${change_v.title.length>12?change_v.title.slice(0,12)+"...":change_v.title}</div>
+                <span class="brush-num-main inline-block">${change_v.watchNum>10000?change_v.watchNum/10000+"万":change_v.watchNum}观看</span>
             </div>`
         }
         $(".index-new-brush-list").html(html);
@@ -380,7 +381,6 @@ $(function(){
     //免费问
     $(".mfw").click(function(){
         function get_user(data){
-            console.log(data);
             if(data.userName||data.companyName||data.province){
                 ajax_nodata(http_url.url+"/answer/isAnswer",if_anwser);
             }else{
@@ -529,7 +529,8 @@ $(function(){
     });
     //扫一扫相关列表点击
     $(".index-add-list").click(function(){
-        var code=$(this).attr("data-code");
+        var code=$(this).attr("data-code"),
+            user='';
         switch(code){
             case "1":
                 wx.scanQRCode({
@@ -541,9 +542,16 @@ $(function(){
                 });
                 break;
             case "2":
+                ajax_nodata(http_url.url+"/user/message",function(data){
+                    user=data;
+                    window.location.href="mine-card.html?phone="+user.phoneNumber+"&role="+user.role;
+                });
                 break;
             case "3":
-                window.location.href="mine-fans-add.html";
+                ajax_nodata(http_url.url+"/user/message",function(data){
+                    user=data;
+                    window.location.href="mine-fans-add.html?from=index&phone="+user.phoneNumber+"&role="+user.role;
+                });
                 break;
         }
     });

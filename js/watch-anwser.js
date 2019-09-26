@@ -257,6 +257,7 @@ $(function(){
         //评论列表
         ajax(http_url.url+"/discuss/all",{"sinceId":count_start, "maxId":count_end, "answerUuid":answerUuid},answer_list);
         scroll_more(http_url.url+"/discuss/all",{"sinceId":count_start, "maxId":count_end, "answerUuid":answerUuid},answer_list_more)
+        wx_share();
     }
     ajax_nodata(http_url.url+"/onlook/wx/onlookAuthorized?uuid="+watch_id,get_answer);
     //评论列表
@@ -445,13 +446,6 @@ $(function(){
                         },
                         success: function (res) {
                             console.log('已分享');
-                            function fx_hobao(data){
-
-                            }
-                            ajax(http_url.url+"/pay/companyEnveloeps",{
-                                "questionUuid":watch_id,
-                                "redType":"shareSecretly"
-                            },fx_hobao)
                         },
                         cancel: function (res) {
                             console.log('已取消');
@@ -476,7 +470,7 @@ $(function(){
             }
         });
     }
-    wx_share();
+
     $(".share-wx").click(function(){
         var share_name=$(this).attr("data-name");
         //alert("点击右上角进行分享");$(".shadow").show();
