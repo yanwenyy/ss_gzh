@@ -52,7 +52,11 @@ $(function(){
         $(".office-p-adress>div").html(users.officialAddress);
         $(".new-p-gz").html(users.fans);
         $(".new-p-fs").html(users.officials+users.brushs+users.classifys);
-        $(".ss-num>span").html(users.brushNum);
+        if(users.brushNum){
+            $(".ss-num>span").html(users.brushNum);
+        }else{
+            $(".ss-num").hide();
+        }
         //视频头条类型
         ajax_nodata(http_url.url+"/share/headtype/"+phone+"/share",function(data){
             var datas=data.data,html='';
@@ -84,7 +88,7 @@ $(function(){
                     }
                     $(".column-list-main-sptt").html(html);
                 }else{
-                    $(".column-list-main-sptt").html("暂时无相关数据");
+                    $(".column-list-main-sptt").html("<div class='no-msg'>暂时无相关数据</div>");
                 }
             })
         });

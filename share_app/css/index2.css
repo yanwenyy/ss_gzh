@@ -18,6 +18,9 @@ body{
     width: 100%;
     height: 100%;
 }
+.no-msg{
+    font-size: 3rem;
+}
 .footer-img>div{
     width:16.6rem;
     height:6rem;
