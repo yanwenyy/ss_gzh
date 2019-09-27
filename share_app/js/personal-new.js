@@ -72,7 +72,12 @@ $(function(){
         $(".new-p-scly").html(users.adept);
         var experience=users.experience?(users.experience.length>45?users.experience.slice(0,45)+"...":users.experience):'TA有些低调...';
         $(".new-p-grjs").html(experience);
-        $(".ss-num>span").html(users.brushNum);
+        if(users.brushNum){
+            $(".ss-num>span").html(users.brushNum);
+        }else{
+            $(".ss-num").hide();
+        }
+
     });
     ajax_nodata(http_url.url+"/share/home/brushvideo/"+phone+"/share",function(data){
         var html='',
@@ -94,7 +99,7 @@ $(function(){
             }
             $(".p-ss").html(html);
         }else{
-            $(".p-ss").html("暂时无相关数据");
+            $(".p-ss").html("<div class='no-msg'>暂时无相关数据</div>");
         }
     })
 
