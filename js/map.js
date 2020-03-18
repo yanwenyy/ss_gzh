@@ -362,7 +362,7 @@ $(function(){
                                                 <div class="inline-block footer_adress" style="line-height: 2.1rem;width: 80%;vertical-align: middle">${marker_data[k].address}</div>
                                             </div>
                                             <div class="inline-block daohang">
-                                                <img style="width:3.5rem;height:1.2rem" src="../img/icon-map-leading2.png" alt="">
+                                                <img style="width:5rem;height:1.7rem" src="../img/icon-map-leading2.png" alt="">
                                                 <!--<span class="blue">导航</span>-->
                                             </div>
                                     </div>

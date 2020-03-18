@@ -34,7 +34,9 @@ $(function(){
             }
             $(".office-goodats").html(e_html)
         }
-        $(".office-company-intro").html(agency.introduction);
+        if(agency.introduction){
+            $(".office-company-intro").html(agency.introduction);
+        }
         // var html=`<div class="swiper-slide office-video" data-vid="${agency.videoId}">
         //             <img class="swiper-lazy" data-src="${cover_src+agency.videoCover}" alt="">
         //             <div class="swiper-lazy-preloader"></div>
@@ -86,7 +88,7 @@ $(function(){
                  <div class="inline-block office-expert-list-li"  data-phone="${agencyCounselors[a].phoneNumber}">
                     <img src="${headimage(agencyCounselors[a].headImage)}"  onerror=src="../img/user.png" alt="">
                     <div class="office-expert-list-li-name">${get_name(agencyCounselors[a])}</div>
-                    <div>${agencyCounselors[a].counselorDuty}.</div>
+                    <div>${agencyCounselors[a].counselorDuty}</div>
                 </div>
             `;
             }

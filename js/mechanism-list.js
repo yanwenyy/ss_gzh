@@ -109,7 +109,7 @@ $(function(){
                             <div class="marker-msg-title jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">${change_v.name}</div>
                             <div class="marker-msg-distance jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">
                                 <div class="inline-block">
-                                    <img src="${company_img}" alt="">
+                                    <img class="new-company-icon" src="${company_img}" alt="">
                                 </div>
                                 
                                 <div class="distance-grounp jglb_click"  data-vid="${change_v.videoId}"  data-id="${change_v.id}">
@@ -124,7 +124,7 @@ $(function(){
                     </div>
                     <div class="marker-msg-footer">
                         <div class="inline-block jglb_click"  data-vid="${change_v.videoId}"  data-id="${change_v.id}">
-                            <div class="inline-block" style=""><img src="../img/icon-map-bottom-position.png" alt=""></div>
+                            <div class="inline-block" style=""><img class="new-address-icon" src="../img/icon-map-bottom-position.png" alt=""></div>
                             <div class="inline-block" style="line-height: 3.3rem;width: 80%;vertical-align: middle">${change_v.address}</div>
                         </div>
                         <div class="inline-block daohang" data-lat="${change_v.latitude}" data-lng="${change_v.longitude}">
@@ -170,7 +170,7 @@ $(function(){
                             <div class="marker-msg-title jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">${change_v.name}</div>
                             <div class="marker-msg-distance jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">
                                 <div class="inline-block">
-                                    <img src="${company_img}" alt="">
+                                    <img class="new-company-icon" src="${company_img}" alt="">
                                 </div>
                                 
                                 <div class="distance-grounp jglb_click"  data-vid="${change_v.videoId}"  data-id="${change_v.id}">
@@ -185,7 +185,7 @@ $(function(){
                     </div>
                     <div class="marker-msg-footer">
                         <div class="inline-block jglb_click"  data-vid="${change_v.videoId}" data-id="${change_v.id}">
-                            <div class="inline-block" style=""><img src="../img/icon-map-bottom-position.png" alt=""></div>
+                            <div class="inline-block" style=""><img class="new-address-icon" src="../img/icon-map-bottom-position.png" alt=""></div>
                             <div class="inline-block" style="line-height: 3.3rem;width: 80%;vertical-align: middle">${change_v.address}</div>
                         </div>
                         <div class="inline-block daohang" data-lat="${change_v.latitude}" data-lng="${change_v.longitude}">

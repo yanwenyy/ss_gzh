@@ -1213,7 +1213,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
 }
 
 .sfz-img {
-    padding: 3rem
+    padding: 0 3rem 3rem 3rem;
 }
 
 .sfz-img .certificate-upload-total > img:first-child, .sfz-img .certificate-upload-input, .sfz-img .certificate-upload-div {
@@ -1419,7 +1419,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     border: 0;
     outline: 0;
     margin-left: 2rem;
-    font-size: 3rem
+    font-size: 2.9rem
 }
 
 .map-marker-msg {
@@ -2073,6 +2073,7 @@ textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
     padding:2.6rem 2.9rem;
     font-size: 2.8rem;
     vertical-align: middle;
+    border-top:1px solid #eee;
 }
 .index-notice>img{
     width:12.6rem;

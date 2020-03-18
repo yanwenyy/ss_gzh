@@ -1112,7 +1112,8 @@
     border-radius: .4rem;
     background: rgba(248, 248, 248, 1);
     font-size: 3rem;
-    padding: 3.2rem
+    padding: 3.2rem;
+    line-height: 4rem;
 }
 
 .consultant-img-group {
@@ -1700,7 +1701,7 @@
     background:url(../img/authentication-head.png) no-repeat 100% 100%;
     background-size: 100% 100%;
     color:#FEFDFF;
-    padding-top: 17rem;
+    padding-top: 15rem;
 }
 .authentication-title{
     margin-left: 5.2rem;
@@ -1757,6 +1758,7 @@
     height:2.3rem;
     vertical-align: middle;
     margin-right: 0.7rem;
+    margin-top: -0.4rem;
 }
 .attention-fans{
     width:11.9rem;
